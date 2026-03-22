@@ -15,18 +15,23 @@ import type { Pokemon, Habitat } from './types'
 import { computeHabitatGroups } from './matching'
 import { groupScore } from './matching'
 import { habitatColors, habitatEmoji } from './habitatColors'
+import OverviewTab from './OverviewTab'
 
 const allPokemon: Pokemon[] = [
   ...(rawData.standard as Pokemon[]),
   ...(rawData.event as Pokemon[]),
 ]
 
+// Tab index 0 = Overview, 1..N = habitats
+const OVERVIEW_TAB = 0
+
 export default function App() {
   const habitatGroups = useMemo(() => computeHabitatGroups(allPokemon), [])
   const [activeTab, setActiveTab] = useState(0)
 
-  const current = habitatGroups[activeTab]
-  const colors = habitatColors[current.habitat]
+  const isOverview = activeTab === OVERVIEW_TAB
+  const habitatIndex = activeTab - 1
+  const current = isOverview ? null : habitatGroups[habitatIndex]
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#fafafa' }}>
@@ -40,7 +45,7 @@ export default function App() {
         </Typography>
       </Box>
 
-      {/* Habitat Tabs */}
+      {/* Tabs */}
       <Box sx={{ bgcolor: 'white', borderBottom: '1px solid #e0e0e0' }}>
         <Tabs
           value={activeTab}
@@ -48,6 +53,7 @@ export default function App() {
           variant="scrollable"
           scrollButtons="auto"
         >
+          <Tab label="Overview" />
           {habitatGroups.map((hg, i) => (
             <Tab
               key={hg.habitat}
@@ -58,7 +64,11 @@ export default function App() {
                   <Chip
                     label={hg.pokemon.length}
                     size="small"
-                    sx={{ height: 18, fontSize: 11, bgcolor: i === activeTab ? colors.bg : undefined }}
+                    sx={{
+                      height: 18,
+                      fontSize: 11,
+                      bgcolor: activeTab === i + 1 ? habitatColors[hg.habitat].bg : undefined,
+                    }}
                   />
                 </Stack>
               }
@@ -69,25 +79,30 @@ export default function App() {
 
       {/* Content */}
       <Container maxWidth="lg" sx={{ py: 3 }}>
-        <Stack direction="row" spacing={1} alignItems="center" mb={2}>
-          <Typography variant="h6" fontWeight={600}>
-            {habitatEmoji[current.habitat]} {current.habitat} Habitat
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            — {current.pokemon.length} Pokémon across {current.groups.length} groups
-          </Typography>
-        </Stack>
-
-        <Stack spacing={2}>
-          {current.groups.map((group, gi) => (
-            <GroupCard
-              key={gi}
-              group={group}
-              groupNumber={gi + 1}
-              habitat={current.habitat}
-            />
-          ))}
-        </Stack>
+        {isOverview ? (
+          <OverviewTab pokemon={allPokemon} />
+        ) : current ? (
+          <>
+            <Stack direction="row" spacing={1} alignItems="center" mb={2}>
+              <Typography variant="h6" fontWeight={600}>
+                {habitatEmoji[current.habitat]} {current.habitat} Habitat
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                — {current.pokemon.length} Pokémon across {current.groups.length} groups
+              </Typography>
+            </Stack>
+            <Stack spacing={2}>
+              {current.groups.map((group, gi) => (
+                <GroupCard
+                  key={gi}
+                  group={group}
+                  groupNumber={gi + 1}
+                  habitat={current.habitat}
+                />
+              ))}
+            </Stack>
+          </>
+        ) : null}
       </Container>
     </Box>
   )
@@ -116,13 +131,8 @@ function GroupCard({
   return (
     <Paper
       variant="outlined"
-      sx={{
-        borderColor: colors.border,
-        borderRadius: 2,
-        overflow: 'hidden',
-      }}
+      sx={{ borderColor: colors.border, borderRadius: 2, overflow: 'hidden' }}
     >
-      {/* Group header */}
       <Box
         sx={{
           bgcolor: colors.bg,
@@ -142,7 +152,13 @@ function GroupCard({
               key={fav}
               label={`${fav} ×${count}`}
               size="small"
-              sx={{ bgcolor: 'white', fontSize: 11, height: 20, color: colors.text, border: `1px solid ${colors.border}` }}
+              sx={{
+                bgcolor: 'white',
+                fontSize: 11,
+                height: 20,
+                color: colors.text,
+                border: `1px solid ${colors.border}`,
+              }}
             />
           ))}
           <Chip
@@ -155,15 +171,14 @@ function GroupCard({
 
       <Divider />
 
-      {/* Pokemon list */}
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0, divideX: 1 }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
         {group.map((pokemon, pi) => (
           <Box
             key={pokemon.id}
             sx={{
               flex: '1 1 220px',
               p: 1.5,
-              borderRight: pi < group.length - 1 ? `1px solid #f0f0f0` : 'none',
+              borderRight: pi < group.length - 1 ? '1px solid #f0f0f0' : 'none',
               minWidth: 0,
             }}
           >
