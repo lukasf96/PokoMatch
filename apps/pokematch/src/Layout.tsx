@@ -11,7 +11,7 @@ import {
 import { useStore } from './store'
 import { allPokemon, eventPokemon } from './pokemon'
 
-type Page = 'matcher' | 'pokedex'
+type Page = 'matcher' | 'overview' | 'pokedex'
 
 interface Props {
   activePokemonCount: number
@@ -115,6 +115,9 @@ export default function Layout({
         <Stack direction="row" spacing={3}>
           <NavLink active={page === 'matcher'} onClick={() => onPageChange('matcher')}>
             Match-Maker
+          </NavLink>
+          <NavLink active={page === 'overview'} onClick={() => onPageChange('overview')}>
+            Overview
           </NavLink>
           <NavLink active={page === 'pokedex'} onClick={() => onPageChange('pokedex')}>
             Pokédex

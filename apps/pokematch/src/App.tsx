@@ -3,9 +3,10 @@ import { useStore } from './store'
 import { allPokemon, standardPokemon } from './pokemon'
 import Layout from './Layout'
 import MatcherPage from './MatcherPage'
+import OverviewPage from './OverviewPage'
 import PokedexPage from './PokedexPage'
 
-type Page = 'matcher' | 'pokedex'
+type Page = 'matcher' | 'overview' | 'pokedex'
 
 export default function App() {
   const { mode, includeEvents, unlockedIds } = useStore()
@@ -30,6 +31,8 @@ export default function App() {
       onPageChange={setPage}
     >
       {page === 'matcher' && <MatcherPage activePokemon={activePokemon} />}
+
+      {page === 'overview' && <OverviewPage />}
 
       {page === 'pokedex' && (
         <PokedexPage pokemon={includeEvents ? allPokemon : standardPokemon} />
