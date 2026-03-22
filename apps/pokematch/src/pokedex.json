@@ -4618,7 +4618,7 @@
   ],
   "event": [
     {
-      "id": "001",
+      "id": "e001",
       "dexNumber": "001",
       "name": "Hoppip",
       "specialties": ["Grow"],
@@ -4633,7 +4633,7 @@
       "favoriteFlavor": "Sweet flavors"
     },
     {
-      "id": "002",
+      "id": "e002",
       "dexNumber": "002",
       "name": "Skiploom",
       "specialties": ["Grow"],
@@ -4648,7 +4648,7 @@
       "favoriteFlavor": "Dry flavors"
     },
     {
-      "id": "003",
+      "id": "e003",
       "dexNumber": "003",
       "name": "Jumpluff",
       "specialties": ["Grow", "Litter"],

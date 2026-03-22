@@ -18,6 +18,8 @@ interface Props {
   pokemon: Pokemon[]
 }
 
+const isEvent = (p: Pokemon) => p.id.startsWith('e')
+
 export default function OverviewTab({ pokemon }: Props) {
   // Habitat counts
   const habitatMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
@@ -61,7 +63,7 @@ export default function OverviewTab({ pokemon }: Props) {
           </Typography>
           <Stack spacing={0.75}>
             {favorites.map(([fav, members]) => (
-              <FavoriteRow key={fav} favorite={fav} pokemon={members} />
+              <FavoriteRow key={fav} favorite={fav} pokemon={members} totalPokemon={pokemon.length} />
             ))}
           </Stack>
         </Grid>
@@ -110,9 +112,14 @@ function HabitatRow({ habitat, pokemon }: { habitat: Habitat; pokemon: Pokemon[]
           {pokemon.map((p) => (
             <Chip
               key={p.id}
-              label={`#${p.dexNumber} ${p.name}`}
+              label={`#${p.dexNumber} ${p.name}${isEvent(p) ? ' ★' : ''}`}
               size="small"
-              sx={{ height: 20, fontSize: 10 }}
+              sx={{
+                height: 20,
+                fontSize: 10,
+                bgcolor: isEvent(p) ? '#f3e5f5' : undefined,
+                color: isEvent(p) ? '#7b1fa2' : undefined,
+              }}
             />
           ))}
         </Box>
@@ -121,10 +128,17 @@ function HabitatRow({ habitat, pokemon }: { habitat: Habitat; pokemon: Pokemon[]
   )
 }
 
-function FavoriteRow({ favorite, pokemon }: { favorite: string; pokemon: Pokemon[] }) {
+function FavoriteRow({
+  favorite,
+  pokemon,
+  totalPokemon,
+}: {
+  favorite: string
+  pokemon: Pokemon[]
+  totalPokemon: number
+}) {
   const [open, setOpen] = useState(false)
-  const maxCount = 311 // approx total, just for bar width
-  const pct = Math.round((pokemon.length / maxCount) * 100)
+  const pct = Math.round((pokemon.length / totalPokemon) * 100)
 
   return (
     <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden' }}>
@@ -164,9 +178,14 @@ function FavoriteRow({ favorite, pokemon }: { favorite: string; pokemon: Pokemon
             .map((p) => (
               <Chip
                 key={p.id}
-                label={`#${p.dexNumber} ${p.name}`}
+                label={`#${p.dexNumber} ${p.name}${isEvent(p) ? ' ★' : ''}`}
                 size="small"
-                sx={{ height: 20, fontSize: 10 }}
+                sx={{
+                  height: 20,
+                  fontSize: 10,
+                  bgcolor: isEvent(p) ? '#f3e5f5' : undefined,
+                  color: isEvent(p) ? '#7b1fa2' : undefined,
+                }}
               />
             ))}
         </Box>

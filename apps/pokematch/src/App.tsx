@@ -4,8 +4,10 @@ import {
   Chip,
   Container,
   Divider,
+  FormControlLabel,
   Paper,
   Stack,
+  Switch,
   Tab,
   Tabs,
   Typography,
@@ -17,32 +19,77 @@ import { groupScore } from './matching'
 import { habitatColors, habitatEmoji } from './habitatColors'
 import OverviewTab from './OverviewTab'
 
-const allPokemon: Pokemon[] = [
-  ...(rawData.standard as Pokemon[]),
-  ...(rawData.event as Pokemon[]),
-]
+const standardPokemon = rawData.standard as Pokemon[]
+const eventPokemon = rawData.event as Pokemon[]
 
-// Tab index 0 = Overview, 1..N = habitats
 const OVERVIEW_TAB = 0
 
 export default function App() {
-  const habitatGroups = useMemo(() => computeHabitatGroups(allPokemon), [])
+  const [includeEvents, setIncludeEvents] = useState(true)
   const [activeTab, setActiveTab] = useState(0)
 
+  const activePokemon = useMemo(
+    () => (includeEvents ? [...standardPokemon, ...eventPokemon] : standardPokemon),
+    [includeEvents],
+  )
+
+  const habitatGroups = useMemo(() => computeHabitatGroups(activePokemon), [activePokemon])
+
   const isOverview = activeTab === OVERVIEW_TAB
-  const habitatIndex = activeTab - 1
-  const current = isOverview ? null : habitatGroups[habitatIndex]
+  const current = isOverview ? null : habitatGroups[activeTab - 1]
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#fafafa' }}>
       {/* Header */}
-      <Box sx={{ bgcolor: 'white', borderBottom: '1px solid #e0e0e0', px: 3, py: 2 }}>
-        <Typography variant="h5" fontWeight={700} letterSpacing={-0.5}>
-          Pokopia Match-Maker
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {allPokemon.length} Pokémon grouped by ideal habitat &amp; shared favorites
-        </Typography>
+      <Box
+        sx={{
+          bgcolor: 'white',
+          borderBottom: '1px solid #e0e0e0',
+          px: 3,
+          py: 2,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 1,
+        }}
+      >
+        <Box>
+          <Typography variant="h5" fontWeight={700} letterSpacing={-0.5}>
+            Pokopia Match-Maker
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {activePokemon.length} Pokémon grouped by ideal habitat &amp; shared favorites
+          </Typography>
+        </Box>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={includeEvents}
+              onChange={(e) => {
+                setIncludeEvents(e.target.checked)
+                setActiveTab(0)
+              }}
+              size="small"
+            />
+          }
+          label={
+            <Stack direction="row" spacing={0.75} alignItems="center">
+              <Typography variant="body2">Event Pokémon</Typography>
+              <Chip
+                label={eventPokemon.length}
+                size="small"
+                sx={{
+                  height: 18,
+                  fontSize: 11,
+                  bgcolor: includeEvents ? '#f3e5f5' : '#f5f5f5',
+                  color: includeEvents ? '#7b1fa2' : 'text.disabled',
+                }}
+              />
+            </Stack>
+          }
+          sx={{ mr: 0 }}
+        />
       </Box>
 
       {/* Tabs */}
@@ -80,7 +127,7 @@ export default function App() {
       {/* Content */}
       <Container maxWidth="lg" sx={{ py: 3 }}>
         {isOverview ? (
-          <OverviewTab pokemon={allPokemon} />
+          <OverviewTab pokemon={activePokemon} />
         ) : current ? (
           <>
             <Stack direction="row" spacing={1} alignItems="center" mb={2}>
@@ -127,6 +174,8 @@ function GroupCard({
   const sharedFavs = Object.entries(favCounts)
     .filter(([, count]) => count >= 2)
     .sort((a, b) => b[1] - a[1])
+
+  const isEvent = (p: Pokemon) => p.id.startsWith('e')
 
   return (
     <Paper
@@ -189,6 +238,13 @@ function GroupCard({
               <Typography variant="body2" fontWeight={600} noWrap>
                 {pokemon.name}
               </Typography>
+              {isEvent(pokemon) && (
+                <Chip
+                  label="Event"
+                  size="small"
+                  sx={{ height: 16, fontSize: 9, bgcolor: '#f3e5f5', color: '#7b1fa2', ml: 0.5 }}
+                />
+              )}
             </Stack>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {pokemon.favorites.map((fav) => {
