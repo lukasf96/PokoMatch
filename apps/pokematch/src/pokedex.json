@@ -1,0 +1,4666 @@
+{
+  "generatedAt": "2026-03-22T20:37:46.633Z",
+  "standard": [
+    {
+      "id": "001",
+      "dexNumber": "001",
+      "name": "Bulbasaur",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Soft stuff",
+        "Cute stuff",
+        "Lots of water",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "002",
+      "dexNumber": "002",
+      "name": "Ivysaur",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Soft stuff",
+        "Cute stuff",
+        "Pretty flowers",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "003",
+      "dexNumber": "003",
+      "name": "Venusaur",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Soft stuff",
+        "Cute stuff",
+        "Pretty flowers",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "004",
+      "dexNumber": "004",
+      "name": "Charmander",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Wooden stuff",
+        "Hard stuff",
+        "Exercise",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "005",
+      "dexNumber": "005",
+      "name": "Charmeleon",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Wooden stuff",
+        "Hard stuff",
+        "Exercise",
+        "Rides"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "006",
+      "dexNumber": "006",
+      "name": "Charizard",
+      "specialties": ["Burn", "Fly"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Nice breezes",
+        "Wooden stuff",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "007",
+      "dexNumber": "007",
+      "name": "Squirtle",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Healing",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "008",
+      "dexNumber": "008",
+      "name": "Wartortle",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Healing",
+        "Exercise",
+        "Hard stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "009",
+      "dexNumber": "009",
+      "name": "Blastoise",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Healing",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "010",
+      "dexNumber": "010",
+      "name": "Pidgey",
+      "specialties": ["Fly", "Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Watching stuff",
+        "Lots of nature",
+        "Play spaces"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "011",
+      "dexNumber": "011",
+      "name": "Pidgeotto",
+      "specialties": ["Fly", "Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Watching stuff",
+        "Lots of nature",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "012",
+      "dexNumber": "012",
+      "name": "Pidgeot",
+      "specialties": ["Fly", "Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Wooden stuff",
+        "Lots of nature",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "013",
+      "dexNumber": "013",
+      "name": "Oddish",
+      "specialties": ["Grow"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Lots of dirt",
+        "Soft stuff",
+        "Pretty flowers",
+        "Lots of water"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "014",
+      "dexNumber": "014",
+      "name": "Gloom",
+      "specialties": ["Grow"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Lots of dirt",
+        "Soft stuff",
+        "Pretty flowers",
+        "Garbage"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "015",
+      "dexNumber": "015",
+      "name": "Vileplume",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Lots of dirt",
+        "Soft stuff",
+        "Pretty flowers",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "016",
+      "dexNumber": "016",
+      "name": "Bellossom",
+      "specialties": ["Grow", "Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Play spaces",
+        "Cute stuff",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "017",
+      "dexNumber": "017",
+      "name": "Paras",
+      "specialties": ["Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Watching stuff",
+        "Lots of dirt",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "018",
+      "dexNumber": "018",
+      "name": "Parasect",
+      "specialties": ["Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Watching stuff",
+        "Lots of dirt",
+        "Strange stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "019",
+      "dexNumber": "019",
+      "name": "Venonat",
+      "specialties": ["Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Watching stuff",
+        "Complicated stuff",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "020",
+      "dexNumber": "020",
+      "name": "Venomoth",
+      "specialties": ["Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Watching stuff",
+        "Nice breezes",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "021",
+      "dexNumber": "021",
+      "name": "Bellsprout",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of dirt",
+        "Lots of water",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "022",
+      "dexNumber": "022",
+      "name": "Weepinbell",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of dirt",
+        "Colorful stuff",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "023",
+      "dexNumber": "023",
+      "name": "Victreebel",
+      "specialties": ["Grow", "Chop"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of dirt",
+        "Colorful stuff",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "024",
+      "dexNumber": "024",
+      "name": "Slowpoke",
+      "specialties": ["Water", "Yawn"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Strange stuff",
+        "Soft stuff",
+        "Healing"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "025",
+      "dexNumber": "025",
+      "name": "Slowbro",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Strange stuff",
+        "Group Activities",
+        "Healing"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "026",
+      "dexNumber": "026",
+      "name": "Slowking",
+      "specialties": ["Water", "Teleport"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Strange stuff",
+        "Group Activities",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "027",
+      "dexNumber": "027",
+      "name": "Magnemite",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Metal stuff",
+        "Shiny stuff",
+        "Hard stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "028",
+      "dexNumber": "028",
+      "name": "Magneton",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Metal stuff",
+        "Shiny stuff",
+        "Gatherings",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "029",
+      "dexNumber": "029",
+      "name": "Magnezone",
+      "specialties": ["Generate", "Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Metal stuff",
+        "Luxury",
+        "Gatherings",
+        "Hard stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "030",
+      "dexNumber": "030",
+      "name": "Onix",
+      "specialties": ["Crush", "Bulldoze"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Lots of dirt",
+        "Blocky stuff",
+        "Slender objects",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "031",
+      "dexNumber": "031",
+      "name": "Steelix",
+      "specialties": ["Crush", "Bulldoze"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Metal stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Slender objects",
+        "Hard stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "032",
+      "dexNumber": "032",
+      "name": "Cubone",
+      "specialties": ["Build"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of dirt",
+        "Construction",
+        "Exercise",
+        "Slender objects",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "033",
+      "dexNumber": "033",
+      "name": "Marowak",
+      "specialties": ["Build"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of dirt",
+        "Construction",
+        "Exercise",
+        "Slender objects",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "034",
+      "dexNumber": "034",
+      "name": "Tyrogue",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Group Activities",
+        "Fabric",
+        "Stone stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "035",
+      "dexNumber": "035",
+      "name": "Hitmonlee",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Group Activities",
+        "Fabric",
+        "Stone stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "036",
+      "dexNumber": "036",
+      "name": "Hitmonchan",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Group Activities",
+        "Fabric",
+        "Stone stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "037",
+      "dexNumber": "037",
+      "name": "Hitmontop",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Group Activities",
+        "Fabric",
+        "Stone stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "038",
+      "dexNumber": "038",
+      "name": "Koffing",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Gatherings",
+        "Complicated stuff",
+        "Soft stuff",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "039",
+      "dexNumber": "039",
+      "name": "Weezing",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Gatherings",
+        "Complicated stuff",
+        "Soft stuff",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "040",
+      "dexNumber": "040",
+      "name": "Tangela",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Lots of water",
+        "Gatherings",
+        "Pretty flowers",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "041a",
+      "dexNumber": "041",
+      "name": "Professor Tangrowth",
+      "specialties": ["Appraise"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Complicated stuff",
+        "Letters and words",
+        "Strange stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "041b",
+      "dexNumber": "041",
+      "name": "Tangrowth",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Lots of water",
+        "Gatherings",
+        "Pretty flowers",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "042",
+      "dexNumber": "042",
+      "name": "Scyther",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Nice breezes",
+        "Wooden stuff",
+        "Sharp stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "043",
+      "dexNumber": "043",
+      "name": "Scizor",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Metal stuff",
+        "Wooden stuff",
+        "Hard stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "044",
+      "dexNumber": "044",
+      "name": "Pinsir",
+      "specialties": ["Chop", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Pretty flowers",
+        "Sharp stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "045",
+      "dexNumber": "045",
+      "name": "Magikarp",
+      "specialties": ["???"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Group Activities",
+        "Rides",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "046",
+      "dexNumber": "046",
+      "name": "Gyarados",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Nice breezes",
+        "Cleanliness",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "047",
+      "dexNumber": "047",
+      "name": "Ditto",
+      "specialties": ["Transform"],
+      "idealHabitat": "Bright",
+      "favorites": [],
+      "favoriteFlavor": null
+    },
+    {
+      "id": "048",
+      "dexNumber": "048",
+      "name": "Hoothoot",
+      "specialties": ["Trade", "Fly"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Fabric",
+        "Wobbly stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "049",
+      "dexNumber": "049",
+      "name": "Noctowl",
+      "specialties": ["Trade", "Fly"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Letters and words",
+        "Containers",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "050",
+      "dexNumber": "050",
+      "name": "Heracross",
+      "specialties": ["Chop", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Pretty flowers",
+        "Looks like food",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "051",
+      "dexNumber": "051",
+      "name": "Volbeat",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Shiny stuff",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "052",
+      "dexNumber": "052",
+      "name": "Illumise",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Shiny stuff",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "053",
+      "dexNumber": "053",
+      "name": "Gulpin",
+      "specialties": ["Storage"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Cute stuff",
+        "Looks like food",
+        "Round stuff",
+        "Containers",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "054",
+      "dexNumber": "054",
+      "name": "Swalot",
+      "specialties": ["Storage"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Garbage",
+        "Looks like food",
+        "Round stuff",
+        "Containers",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "055",
+      "dexNumber": "055",
+      "name": "Cacnea",
+      "specialties": ["Grow"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Cute stuff",
+        "Round stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "056",
+      "dexNumber": "056",
+      "name": "Cacturne",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of nature",
+        "Nice breezes",
+        "Luxury",
+        "Shiny stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "057",
+      "dexNumber": "057",
+      "name": "Combee",
+      "specialties": ["Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Nice breezes",
+        "Wooden stuff",
+        "Gatherings",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "058",
+      "dexNumber": "058",
+      "name": "Vespiquen",
+      "specialties": ["Gather Honey", "Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Nice breezes",
+        "Wooden stuff",
+        "Gatherings",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "059a",
+      "dexNumber": "059",
+      "name": "Shellos",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Colorful stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "059b",
+      "dexNumber": "059",
+      "name": "Shellos East Sea",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Colorful stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "060a",
+      "dexNumber": "060",
+      "name": "Gastrodon",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Ocean vibes",
+        "Cleanliness",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "060b",
+      "dexNumber": "060",
+      "name": "Gastrodon East Sea",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Ocean vibes",
+        "Cleanliness",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "061",
+      "dexNumber": "061",
+      "name": "Drifloon",
+      "specialties": ["Dream Island"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Nice breezes",
+        "Cute stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "062",
+      "dexNumber": "062",
+      "name": "Drifblim",
+      "specialties": ["Fly", "Gather"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Nice breezes",
+        "Wobbly stuff",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "063",
+      "dexNumber": "063",
+      "name": "Drilbur",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of dirt",
+        "Strange stuff",
+        "Lots of nature",
+        "Watching stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "064",
+      "dexNumber": "064",
+      "name": "Excadrill",
+      "specialties": ["Search", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of dirt",
+        "Metal stuff",
+        "Exercise",
+        "Watching stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "065",
+      "dexNumber": "065",
+      "name": "Timburr",
+      "specialties": ["Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Wooden stuff",
+        "Slender objects",
+        "Blocky stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "066",
+      "dexNumber": "066",
+      "name": "Gurdurr",
+      "specialties": ["Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Metal stuff",
+        "Slender objects",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "067",
+      "dexNumber": "067",
+      "name": "Conkeldurr",
+      "specialties": ["Build", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Stone stuff",
+        "Slender objects",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "068",
+      "dexNumber": "068",
+      "name": "Litwick",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Lots of fire",
+        "Wobbly stuff",
+        "Blocky stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "069",
+      "dexNumber": "069",
+      "name": "Lampent",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Lots of fire",
+        "Wobbly stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "070",
+      "dexNumber": "070",
+      "name": "Chandelure",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Lots of fire",
+        "Wobbly stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "071",
+      "dexNumber": "071",
+      "name": "Axew",
+      "specialties": ["Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of fire",
+        "Luxury",
+        "Lots of dirt",
+        "Hard stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "072",
+      "dexNumber": "072",
+      "name": "Fraxure",
+      "specialties": ["Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of fire",
+        "Luxury",
+        "Lots of dirt",
+        "Exercise",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "073",
+      "dexNumber": "073",
+      "name": "Haxorus",
+      "specialties": ["Chop", "Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of fire",
+        "Luxury",
+        "Lots of dirt",
+        "Exercise",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "074",
+      "dexNumber": "074",
+      "name": "Goomy",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Luxury",
+        "Lots of nature",
+        "Cleanliness",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "075",
+      "dexNumber": "075",
+      "name": "Sliggoo",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Luxury",
+        "Soft stuff",
+        "Cleanliness",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "076",
+      "dexNumber": "076",
+      "name": "Goodra",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Luxury",
+        "Exercise",
+        "Cleanliness",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "077",
+      "dexNumber": "077",
+      "name": "Cramorant",
+      "specialties": ["Fly", "Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Nice breezes",
+        "Lots of water",
+        "Ocean vibes",
+        "Slender objects",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "078",
+      "dexNumber": "078",
+      "name": "Pichu",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Cute stuff",
+        "Pretty flowers",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "079a",
+      "dexNumber": "079",
+      "name": "Peakychu",
+      "specialties": ["Illuminate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Cute stuff",
+        "Healing",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "079b",
+      "dexNumber": "079",
+      "name": "Pikachu",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Group Activities",
+        "Round stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "080",
+      "dexNumber": "080",
+      "name": "Raichu",
+      "specialties": ["Generate", "Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Group Activities",
+        "Round stuff",
+        "Play spaces"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "081",
+      "dexNumber": "081",
+      "name": "Zubat",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Nice breezes",
+        "Wooden stuff",
+        "Noise stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "082",
+      "dexNumber": "082",
+      "name": "Golbat",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Nice breezes",
+        "Wooden stuff",
+        "Noise stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "083",
+      "dexNumber": "083",
+      "name": "Crobat",
+      "specialties": ["Search", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Nice breezes",
+        "Wooden stuff",
+        "Garbage",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "084",
+      "dexNumber": "084",
+      "name": "Meowth",
+      "specialties": ["Trade"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Containers",
+        "Group Activities",
+        "Shiny stuff",
+        "Glass stuff",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "085",
+      "dexNumber": "085",
+      "name": "Persian",
+      "specialties": ["Trade", "Search"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Containers",
+        "Group Activities",
+        "Shiny stuff",
+        "Watching stuff",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "086",
+      "dexNumber": "086",
+      "name": "Psyduck",
+      "specialties": ["Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Strange stuff",
+        "Complicated stuff",
+        "Healing"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "087",
+      "dexNumber": "087",
+      "name": "Golduck",
+      "specialties": ["Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Strange stuff",
+        "Complicated stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "088",
+      "dexNumber": "088",
+      "name": "Growlithe",
+      "specialties": ["Burn", "Search"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Nice breezes",
+        "Letters and words",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "089",
+      "dexNumber": "089",
+      "name": "Arcanine",
+      "specialties": ["Burn", "Search"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Nice breezes",
+        "Watching stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "090",
+      "dexNumber": "090",
+      "name": "Farfetch'd",
+      "specialties": ["Chop", "Build"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Wooden stuff",
+        "Slender objects",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "091",
+      "dexNumber": "091",
+      "name": "Grimer",
+      "specialties": ["Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Spooky stuff",
+        "Gatherings",
+        "Shiny stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "092",
+      "dexNumber": "092",
+      "name": "Muk",
+      "specialties": ["Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Spooky stuff",
+        "Gatherings",
+        "Shiny stuff",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "093",
+      "dexNumber": "093",
+      "name": "Gastly",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Garbage",
+        "Containers",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "094",
+      "dexNumber": "094",
+      "name": "Haunter",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Garbage",
+        "Wobbly stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "095",
+      "dexNumber": "095",
+      "name": "Gengar",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Garbage",
+        "Rides",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "096",
+      "dexNumber": "096",
+      "name": "Voltorb",
+      "specialties": ["Generate", "Explode"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Round stuff",
+        "Colorful stuff",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "097",
+      "dexNumber": "097",
+      "name": "Electrode",
+      "specialties": ["Generate", "Explode"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Round stuff",
+        "Play spaces",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "098",
+      "dexNumber": "098",
+      "name": "Exeggcute",
+      "specialties": ["Grow", "Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Strange stuff",
+        "Gatherings",
+        "Watching stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "099",
+      "dexNumber": "099",
+      "name": "Exeggutor",
+      "specialties": ["Grow", "Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Strange stuff",
+        "Gatherings",
+        "Watching stuff",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "100",
+      "dexNumber": "100",
+      "name": "Happiny",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Healing",
+        "Round stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "101",
+      "dexNumber": "101",
+      "name": "Chansey",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Healing",
+        "Round stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "102",
+      "dexNumber": "102",
+      "name": "Blissey",
+      "specialties": ["Trade", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Healing",
+        "Round stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "103",
+      "dexNumber": "103",
+      "name": "Elekid",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Cute stuff",
+        "Round stuff",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "104",
+      "dexNumber": "104",
+      "name": "Electabuzz",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Lots of fire",
+        "Sharp stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "105",
+      "dexNumber": "105",
+      "name": "Electivire",
+      "specialties": ["Generate", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Lots of fire",
+        "Hard stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "106",
+      "dexNumber": "106",
+      "name": "Lapras",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Watching stuff",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "107",
+      "dexNumber": "107",
+      "name": "Munchlax",
+      "specialties": ["Bulldoze"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Lots of nature",
+        "Looks like food",
+        "Wobbly stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "108a",
+      "dexNumber": "108",
+      "name": "Mosslax",
+      "specialties": ["Eat"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Looks like food",
+        "Watching stuff",
+        "Strange stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "108b",
+      "dexNumber": "108",
+      "name": "Snorlax",
+      "specialties": ["Trade", "Bulldoze"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Looks like food",
+        "Wobbly stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "109",
+      "dexNumber": "109",
+      "name": "Spinarak",
+      "specialties": ["Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Garbage",
+        "Rides",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "110",
+      "dexNumber": "110",
+      "name": "Ariados",
+      "specialties": ["Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Garbage",
+        "Rides",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "111",
+      "dexNumber": "111",
+      "name": "Mareep",
+      "specialties": ["Generate", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Glass stuff",
+        "Cute stuff",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "112",
+      "dexNumber": "112",
+      "name": "Flaaffy",
+      "specialties": ["Generate", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Glass stuff",
+        "Cute stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "113",
+      "dexNumber": "113",
+      "name": "Ampharos",
+      "specialties": ["Generate", "Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Glass stuff",
+        "Cute stuff",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "114",
+      "dexNumber": "114",
+      "name": "Azurill",
+      "specialties": ["Water", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Cleanliness",
+        "Healing",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "115",
+      "dexNumber": "115",
+      "name": "Marill",
+      "specialties": ["Water", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Cleanliness",
+        "Round stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "116",
+      "dexNumber": "116",
+      "name": "Azumarill",
+      "specialties": ["Water", "Build"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Construction",
+        "Wobbly stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "117",
+      "dexNumber": "117",
+      "name": "Paldean Wooper",
+      "specialties": ["Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Garbage",
+        "Lots of dirt",
+        "Stone stuff",
+        "Cleanliness",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "118",
+      "dexNumber": "118",
+      "name": "Clodsire",
+      "specialties": ["Litter", "Bulldoze"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Garbage",
+        "Lots of dirt",
+        "Lots of water",
+        "Cleanliness",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "119",
+      "dexNumber": "119",
+      "name": "Smeargle",
+      "specialties": ["Paint"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Strange stuff",
+        "Colorful stuff",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "120",
+      "dexNumber": "120",
+      "name": "Torchic",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Cute stuff",
+        "Containers",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "121",
+      "dexNumber": "121",
+      "name": "Combusken",
+      "specialties": ["Burn", "Build"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Exercise",
+        "Containers",
+        "Construction"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "122",
+      "dexNumber": "122",
+      "name": "Blaziken",
+      "specialties": ["Burn", "Build"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Luxury",
+        "Exercise",
+        "Containers",
+        "Construction"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "123",
+      "dexNumber": "123",
+      "name": "Wingull",
+      "specialties": ["Water", "Fly"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Nice breezes",
+        "Cleanliness",
+        "Ocean vibes",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "124",
+      "dexNumber": "124",
+      "name": "Pelipper",
+      "specialties": ["Water", "Fly"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Nice breezes",
+        "Cleanliness",
+        "Ocean vibes",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "125",
+      "dexNumber": "125",
+      "name": "Makuhita",
+      "specialties": ["Build", "Bulldoze"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Fabric",
+        "Round stuff",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "126",
+      "dexNumber": "126",
+      "name": "Hariyama",
+      "specialties": ["Build", "Bulldoze"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Fabric",
+        "Round stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "127",
+      "dexNumber": "127",
+      "name": "Absol",
+      "specialties": ["Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Letters and words",
+        "Complicated stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "128",
+      "dexNumber": "128",
+      "name": "Piplup",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Nice breezes",
+        "Cleanliness",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "129",
+      "dexNumber": "129",
+      "name": "Prinplup",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Nice breezes",
+        "Cleanliness",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "130",
+      "dexNumber": "130",
+      "name": "Empoleon",
+      "specialties": ["Water", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Metal stuff",
+        "Cleanliness",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "131",
+      "dexNumber": "131",
+      "name": "Audino",
+      "specialties": ["Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Healing",
+        "Cute stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "132",
+      "dexNumber": "132",
+      "name": "Trubbish",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Garbage",
+        "Construction",
+        "Complicated stuff",
+        "Shiny stuff",
+        "Gatherings"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "133",
+      "dexNumber": "133",
+      "name": "Garbodor",
+      "specialties": ["Recycle", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Garbage",
+        "Containers",
+        "Complicated stuff",
+        "Shiny stuff",
+        "Gatherings"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "134",
+      "dexNumber": "134",
+      "name": "Zorua",
+      "specialties": ["Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Shiny stuff",
+        "Luxury",
+        "Glass stuff",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "135",
+      "dexNumber": "135",
+      "name": "Zoroark",
+      "specialties": ["Trade", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Shiny stuff",
+        "Luxury",
+        "Glass stuff",
+        "Strange stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "136",
+      "dexNumber": "136",
+      "name": "Minccino",
+      "specialties": ["Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Rides",
+        "Cute stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "137",
+      "dexNumber": "137",
+      "name": "Cinccino",
+      "specialties": ["Gather", "Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Fabric",
+        "Rides",
+        "Cute stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "138",
+      "dexNumber": "138",
+      "name": "Grubbin",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Electronics",
+        "Watching stuff",
+        "Lots of dirt",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "139",
+      "dexNumber": "139",
+      "name": "Charjabug",
+      "specialties": ["Generate", "Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Electronics",
+        "Watching stuff",
+        "Glass stuff",
+        "Blocky stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "140",
+      "dexNumber": "140",
+      "name": "Vikavolt",
+      "specialties": ["Generate", "Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Electronics",
+        "Exercise",
+        "Glass stuff",
+        "Nice breezes"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "141",
+      "dexNumber": "141",
+      "name": "Mimikyu",
+      "specialties": ["Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Cute stuff",
+        "Electronics",
+        "Fabric",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "142",
+      "dexNumber": "142",
+      "name": "Pawmi",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Cute stuff",
+        "Glass stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "143",
+      "dexNumber": "143",
+      "name": "Pawmo",
+      "specialties": ["Generate", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Exercise",
+        "Glass stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "144",
+      "dexNumber": "144",
+      "name": "Pawmot",
+      "specialties": ["Generate", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Exercise",
+        "Healing",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "145a",
+      "dexNumber": "145",
+      "name": "Tatsugiri Curly Form",
+      "specialties": ["Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Group Activities",
+        "Slender Objects",
+        "Gatherings"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "145b",
+      "dexNumber": "145",
+      "name": "Tatsugiri Droopy Form",
+      "specialties": ["Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Group Activities",
+        "Spinning stuff",
+        "Blocky stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "145c",
+      "dexNumber": "145",
+      "name": "Tatsugiri Stretchy Form",
+      "specialties": ["Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Group Activities",
+        "Letters and words",
+        "Containers"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "146",
+      "dexNumber": "146",
+      "name": "Ekans",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Watching stuff",
+        "Lots of nature",
+        "Slender objects",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "147",
+      "dexNumber": "147",
+      "name": "Arbok",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Garbage",
+        "Watching stuff",
+        "Lots of nature",
+        "Slender objects",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "148",
+      "dexNumber": "148",
+      "name": "Cleffa",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Cute stuff",
+        "Round stuff",
+        "Colorful stuff",
+        "Healing",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "149",
+      "dexNumber": "149",
+      "name": "Clefairy",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Cute stuff",
+        "Play spaces",
+        "Pretty flowers",
+        "Healing",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "150",
+      "dexNumber": "150",
+      "name": "Clefable",
+      "specialties": ["Hype", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Cute stuff",
+        "Play spaces",
+        "Pretty flowers",
+        "Healing",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "151",
+      "dexNumber": "151",
+      "name": "Igglybuff",
+      "specialties": ["Hype"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Cute stuff",
+        "Play spaces",
+        "Healing",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "152",
+      "dexNumber": "152",
+      "name": "Jigglypuff",
+      "specialties": ["Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Cute stuff",
+        "Play spaces",
+        "Healing",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "153",
+      "dexNumber": "153",
+      "name": "Wigglytuff",
+      "specialties": ["Hype", "Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Cute stuff",
+        "Play spaces",
+        "Healing",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "154",
+      "dexNumber": "154",
+      "name": "Diglett",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of dirt",
+        "Play spaces",
+        "Cute stuff",
+        "Group Activities",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "155",
+      "dexNumber": "155",
+      "name": "Dugtrio",
+      "specialties": ["Hype", "Crush"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of dirt",
+        "Play spaces",
+        "Gatherings",
+        "Group Activities",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "156",
+      "dexNumber": "156",
+      "name": "Machop",
+      "specialties": ["Build", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Stone stuff",
+        "Hard stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "157",
+      "dexNumber": "157",
+      "name": "Machoke",
+      "specialties": ["Build", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Stone stuff",
+        "Hard stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "158",
+      "dexNumber": "158",
+      "name": "Machamp",
+      "specialties": ["Build", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Exercise",
+        "Construction",
+        "Stone stuff",
+        "Hard stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "159",
+      "dexNumber": "159",
+      "name": "Geodude",
+      "specialties": ["Crush"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Spinning stuff",
+        "Round stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "160",
+      "dexNumber": "160",
+      "name": "Graveler",
+      "specialties": ["Crush"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Spinning stuff",
+        "Round stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "161",
+      "dexNumber": "161",
+      "name": "Golem",
+      "specialties": ["Crush", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Spinning stuff",
+        "Round stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "162",
+      "dexNumber": "162",
+      "name": "Magby",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Watching stuff",
+        "Cute stuff",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "163",
+      "dexNumber": "163",
+      "name": "Magmar",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Electronics",
+        "Hard stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "164",
+      "dexNumber": "164",
+      "name": "Magmortar",
+      "specialties": ["Burn", "Crush"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Electronics",
+        "Hard stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "165",
+      "dexNumber": "165",
+      "name": "Bonsly",
+      "specialties": ["Bulldoze"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Lots of nature",
+        "Wooden stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "166",
+      "dexNumber": "166",
+      "name": "Sudowoodo",
+      "specialties": ["Trade"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Lots of nature",
+        "Wooden stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "167",
+      "dexNumber": "167",
+      "name": "Murkrow",
+      "specialties": ["Trade", "Fly"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Shiny stuff",
+        "Nice breezes",
+        "Group Activities",
+        "Luxury",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "168",
+      "dexNumber": "168",
+      "name": "Honchkrow",
+      "specialties": ["Trade", "Fly"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Shiny stuff",
+        "Nice breezes",
+        "Spooky stuff",
+        "Letters and words",
+        "Glass stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "169",
+      "dexNumber": "169",
+      "name": "Larvitar",
+      "specialties": ["Crush", "Bulldoze"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Lots of dirt",
+        "Luxury",
+        "Shiny stuff",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "170",
+      "dexNumber": "170",
+      "name": "Pupitar",
+      "specialties": ["Crush", "Bulldoze"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Luxury",
+        "Shiny stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "171",
+      "dexNumber": "171",
+      "name": "Tyranitar",
+      "specialties": ["Crush", "Bulldoze"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Luxury",
+        "Shiny stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "172",
+      "dexNumber": "172",
+      "name": "Lotad",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of nature",
+        "Cleanliness",
+        "Containers",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "173",
+      "dexNumber": "173",
+      "name": "Lombre",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of nature",
+        "Cleanliness",
+        "Containers",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "174",
+      "dexNumber": "174",
+      "name": "Ludicolo",
+      "specialties": ["Water", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of nature",
+        "Play spaces",
+        "Containers",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "175",
+      "dexNumber": "175",
+      "name": "Mawile",
+      "specialties": ["Trade", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Metal stuff",
+        "Cute stuff",
+        "Colorful stuff",
+        "Looks like food",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "176",
+      "dexNumber": "176",
+      "name": "Torkoal",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Metal stuff",
+        "Hard stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "177",
+      "dexNumber": "177",
+      "name": "Kricketot",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Noisy stuff",
+        "Colorful stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "178",
+      "dexNumber": "178",
+      "name": "Kricketune",
+      "specialties": ["Hype"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Noisy stuff",
+        "Colorful stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "179",
+      "dexNumber": "179",
+      "name": "Chatot",
+      "specialties": ["Hype", "Fly"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Nice breezes",
+        "Fabric",
+        "Slender objects",
+        "Play spaces",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "180",
+      "dexNumber": "180",
+      "name": "Riolu",
+      "specialties": ["Build"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Exercise",
+        "Fabric",
+        "Construction",
+        "Gatherings",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "181",
+      "dexNumber": "181",
+      "name": "Lucario",
+      "specialties": ["Build"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Exercise",
+        "Metal stuff",
+        "Construction",
+        "Complicated stuff",
+        "Healing"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "182",
+      "dexNumber": "182",
+      "name": "Stereo Rotom",
+      "specialties": ["DJ"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Shiny stuff",
+        "Glass stuff",
+        "Noisy stuff",
+        "Group Activities",
+        "Blocky stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "183",
+      "dexNumber": "183",
+      "name": "Larvesta",
+      "specialties": ["Burn"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of nature",
+        "Lots of fire",
+        "Sharp stuff",
+        "Wooden stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "184",
+      "dexNumber": "184",
+      "name": "Volcarona",
+      "specialties": ["Burn", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of nature",
+        "Lots of fire",
+        "Letters and words",
+        "Wooden stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "185",
+      "dexNumber": "185",
+      "name": "Rowlet",
+      "specialties": ["Grow"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Nice breezes",
+        "Containers",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "186",
+      "dexNumber": "186",
+      "name": "Dartrix",
+      "specialties": ["Grow", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Nice breezes",
+        "Slender objects",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "187",
+      "dexNumber": "187",
+      "name": "Decidueye",
+      "specialties": ["Grow", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Spooky stuff",
+        "Wooden stuff",
+        "Nice breezes",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "188",
+      "dexNumber": "188",
+      "name": "Scorbunny",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Soft stuff",
+        "Group Activities",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "189",
+      "dexNumber": "189",
+      "name": "Raboot",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Play spaces",
+        "Group Activities",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "190",
+      "dexNumber": "190",
+      "name": "Cinderace",
+      "specialties": ["Burn", "Hype"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Play spaces",
+        "Group Activities",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "191",
+      "dexNumber": "191",
+      "name": "Skwovet",
+      "specialties": ["Search", "Hype"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Wooden stuff",
+        "Watching stuff",
+        "Looks like food",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "192",
+      "dexNumber": "192",
+      "name": "Greedent",
+      "specialties": ["Party"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Metal stuff",
+        "Group Activities",
+        "Looks like food",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "193",
+      "dexNumber": "193",
+      "name": "Rolycoly",
+      "specialties": ["Burn", "Gather"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Stone stuff",
+        "Lots of fire",
+        "Hard stuff",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "194",
+      "dexNumber": "194",
+      "name": "Carkol",
+      "specialties": ["Burn", "Gather"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Stone stuff",
+        "Lots of fire",
+        "Hard stuff",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "195",
+      "dexNumber": "195",
+      "name": "Coalossal",
+      "specialties": ["Burn", "Gather"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Stone stuff",
+        "Lots of fire",
+        "Hard stuff",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "196",
+      "dexNumber": "196",
+      "name": "Toxel",
+      "specialties": ["Generate"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Noisy stuff",
+        "Glass stuff",
+        "Garbage"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "197a",
+      "dexNumber": "197",
+      "name": "Toxtricity Amped Form",
+      "specialties": ["Generate", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Electronics",
+        "Play spaces",
+        "Noisy stuff",
+        "Slender objects",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "197b",
+      "dexNumber": "197",
+      "name": "Toxtricity Low Key Form",
+      "specialties": ["Generate", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Electronics",
+        "Play spaces",
+        "Noisy stuff",
+        "Slender objects",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "198",
+      "dexNumber": "198",
+      "name": "Fidough",
+      "specialties": ["Search"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Cute stuff",
+        "Watching stuff",
+        "Soft stuff",
+        "Lots of fire",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "199",
+      "dexNumber": "199",
+      "name": "Dachsbun",
+      "specialties": ["Search", "Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Cute stuff",
+        "Watching stuff",
+        "Group Activities",
+        "Lots of fire",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "200",
+      "dexNumber": "200",
+      "name": "Charcadet",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Strange stuff",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "201",
+      "dexNumber": "201",
+      "name": "Armarouge",
+      "specialties": ["Burn", "Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Strange stuff",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "202",
+      "dexNumber": "202",
+      "name": "Ceruledge",
+      "specialties": ["Burn", "Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Spooky stuff",
+        "Strange stuff",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "203",
+      "dexNumber": "203",
+      "name": "Glimmet",
+      "specialties": ["Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Garbage",
+        "Shiny stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "204",
+      "dexNumber": "204",
+      "name": "Glimmora",
+      "specialties": ["Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Garbage",
+        "Shiny stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "205",
+      "dexNumber": "205",
+      "name": "Gimmighoul",
+      "specialties": ["Collect"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Metal stuff",
+        "Strange stuff",
+        "Shiny stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "206",
+      "dexNumber": "206",
+      "name": "Gholdengo",
+      "specialties": ["Collect"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Spooky stuff",
+        "Metal stuff",
+        "Strange stuff",
+        "Shiny stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "207",
+      "dexNumber": "207",
+      "name": "Vulpix",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Soft stuff",
+        "Cute stuff",
+        "Round stuff",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "208",
+      "dexNumber": "208",
+      "name": "Ninetales",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Soft stuff",
+        "Watching stuff",
+        "Luxury",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "209",
+      "dexNumber": "209",
+      "name": "Poliwag",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Round stuff",
+        "Rides",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "210",
+      "dexNumber": "210",
+      "name": "Poliwhirl",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Lots of nature",
+        "Exercise",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "211",
+      "dexNumber": "211",
+      "name": "Poliwrath",
+      "specialties": ["Water", "Build"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Construction",
+        "Exercise",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "212",
+      "dexNumber": "212",
+      "name": "Politoed",
+      "specialties": ["Water", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Play spaces",
+        "Noisy stuff",
+        "Gatherings",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "213",
+      "dexNumber": "213",
+      "name": "Abra",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Strange stuff",
+        "Wobbly stuff",
+        "Metal stuff",
+        "Soft stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "214",
+      "dexNumber": "214",
+      "name": "Kadabra",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Strange stuff",
+        "Wobbly stuff",
+        "Metal stuff",
+        "Containers",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "215",
+      "dexNumber": "215",
+      "name": "Alakazam",
+      "specialties": ["Teleport", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Strange stuff",
+        "Wobbly stuff",
+        "Metal stuff",
+        "Letters and words",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "216",
+      "dexNumber": "216",
+      "name": "Mime Jr.",
+      "specialties": ["Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Cute stuff",
+        "Rides",
+        "Play spaces",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "217",
+      "dexNumber": "217",
+      "name": "Mr. Mime",
+      "specialties": ["Gather", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Cute stuff",
+        "Rides",
+        "Wobbly stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "218",
+      "dexNumber": "218",
+      "name": "Porygon",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Strange stuff",
+        "Blocky stuff",
+        "Construction",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "219",
+      "dexNumber": "219",
+      "name": "Porygon2",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Strange stuff",
+        "Round stuff",
+        "Construction",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "220",
+      "dexNumber": "220",
+      "name": "Porygon-Z",
+      "specialties": ["Rarify"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Strange stuff",
+        "Fabric",
+        "Watching stuff",
+        "Colorful stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "221",
+      "dexNumber": "221",
+      "name": "Dratini",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of fire",
+        "Cleanliness",
+        "Cute stuff",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "222",
+      "dexNumber": "222",
+      "name": "Dragonair",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of fire",
+        "Cleanliness",
+        "Glass stuff",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "223",
+      "dexNumber": "223",
+      "name": "Dragonite",
+      "specialties": ["Water", "Fly"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of fire",
+        "Nice breezes",
+        "Cleanliness",
+        "Symbols",
+        "Pretty flowers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "224",
+      "dexNumber": "224",
+      "name": "Cyndaquil",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Fabric",
+        "Slender objects",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "225",
+      "dexNumber": "225",
+      "name": "Quilava",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Fabric",
+        "Slender objects",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "226",
+      "dexNumber": "226",
+      "name": "Typhlosion",
+      "specialties": ["Burn", "Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Fabric",
+        "Slender objects",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "227",
+      "dexNumber": "227",
+      "name": "Misdreavus",
+      "specialties": ["Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Shiny stuff",
+        "Colorful stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "228",
+      "dexNumber": "228",
+      "name": "Mismagius",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Noisy stuff",
+        "Wobbly stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "229",
+      "dexNumber": "229",
+      "name": "Girafarig",
+      "specialties": ["Gather"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Strange stuff",
+        "Rides",
+        "Watching stuff",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "230",
+      "dexNumber": "230",
+      "name": "Farigiraf",
+      "specialties": ["Gather", "Search"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Strange stuff",
+        "Rides",
+        "Watching stuff",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "231",
+      "dexNumber": "231",
+      "name": "Ralts",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Cute stuff",
+        "Healing",
+        "Watching stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "232",
+      "dexNumber": "232",
+      "name": "Kirlia",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Cute stuff",
+        "Healing",
+        "Watching stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "233",
+      "dexNumber": "233",
+      "name": "Gardevoir",
+      "specialties": ["Teleport", "Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Luxury",
+        "Healing",
+        "Watching stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "234",
+      "dexNumber": "234",
+      "name": "Gallade",
+      "specialties": ["Teleport", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Exercise",
+        "Healing",
+        "Construction",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "235",
+      "dexNumber": "235",
+      "name": "Plusle",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Soft stuff",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "236",
+      "dexNumber": "236",
+      "name": "Minun",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Glass stuff",
+        "Soft stuff",
+        "Cute stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "237",
+      "dexNumber": "237",
+      "name": "Trapinch",
+      "specialties": ["Bulldoze", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of dirt",
+        "Hard stuff",
+        "Strange stuff",
+        "Watching stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "238",
+      "dexNumber": "238",
+      "name": "Vibrava",
+      "specialties": ["Bulldoze", "Fly"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of dirt",
+        "Lots of fire",
+        "Lots of nature",
+        "Luxury",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "239",
+      "dexNumber": "239",
+      "name": "Flygon",
+      "specialties": ["Bulldoze", "Fly"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Lots of dirt",
+        "Lots of fire",
+        "Lots of nature",
+        "Stone stuff",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "240",
+      "dexNumber": "240",
+      "name": "Swablu",
+      "specialties": ["Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Cute stuff",
+        "Watching stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "241",
+      "dexNumber": "241",
+      "name": "Altaria",
+      "specialties": ["Litter", "Fly"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Nice breezes",
+        "Cute stuff",
+        "Watching stuff",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "242",
+      "dexNumber": "242",
+      "name": "Duskull",
+      "specialties": ["Gather"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Rides",
+        "Glass stuff",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "243",
+      "dexNumber": "243",
+      "name": "Dusclops",
+      "specialties": ["Gather"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Rides",
+        "Soft stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "244",
+      "dexNumber": "244",
+      "name": "Dusknoir",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Strange stuff",
+        "Rides",
+        "Group Activities",
+        "Containers"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "245",
+      "dexNumber": "245",
+      "name": "Beldum",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Metal stuff",
+        "Strange stuff",
+        "Hard stuff",
+        "Complicated stuff",
+        "Stone stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "246",
+      "dexNumber": "246",
+      "name": "Metang",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Metal stuff",
+        "Strange stuff",
+        "Hard stuff",
+        "Complicated stuff",
+        "Stone stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "247",
+      "dexNumber": "247",
+      "name": "Metagross",
+      "specialties": ["Recycle", "Crush"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Metal stuff",
+        "Strange stuff",
+        "Hard stuff",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "248",
+      "dexNumber": "248",
+      "name": "Snivy",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of water",
+        "Wobbly stuff",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "249",
+      "dexNumber": "249",
+      "name": "Servine",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of water",
+        "Cleanliness",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "250",
+      "dexNumber": "250",
+      "name": "Serperior",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Lots of water",
+        "Containers",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "251",
+      "dexNumber": "251",
+      "name": "Froakie",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Watching stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "252",
+      "dexNumber": "252",
+      "name": "Frogadier",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Watching stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "253",
+      "dexNumber": "253",
+      "name": "Greninja",
+      "specialties": ["Water", "Chop"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Shiny stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "254",
+      "dexNumber": "254",
+      "name": "Dedenne",
+      "specialties": ["Search"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Cute stuff",
+        "Watching stuff",
+        "Group Activities",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "255",
+      "dexNumber": "255",
+      "name": "Noibat",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Nice breezes",
+        "Lots of fire",
+        "Watching stuff",
+        "Luxury",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "256",
+      "dexNumber": "256",
+      "name": "Noivern",
+      "specialties": ["Search", "Fly"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Nice breezes",
+        "Lots of fire",
+        "Watching stuff",
+        "Play spaces",
+        "Looks like food"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "257",
+      "dexNumber": "257",
+      "name": "Rookidee",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Nice breezes",
+        "Shiny stuff",
+        "Containers",
+        "Slender objects",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "258",
+      "dexNumber": "258",
+      "name": "Corvisquire",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Nice breezes",
+        "Shiny stuff",
+        "Containers",
+        "Slender objects",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "259",
+      "dexNumber": "259",
+      "name": "Corviknight",
+      "specialties": ["Chop", "Fly"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Nice breezes",
+        "Metal stuff",
+        "Shiny stuff",
+        "Containers",
+        "Wooden stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "260",
+      "dexNumber": "260",
+      "name": "Dreepy",
+      "specialties": ["Gather", "Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of fire",
+        "Spooky stuff",
+        "Rides",
+        "Strange stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "261",
+      "dexNumber": "261",
+      "name": "Drakloak",
+      "specialties": ["Gather", "Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of fire",
+        "Spooky stuff",
+        "Rides",
+        "Strange stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "262",
+      "dexNumber": "262",
+      "name": "Dragapult",
+      "specialties": ["Gather", "Trade"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of fire",
+        "Spooky stuff",
+        "Rides",
+        "Strange stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "263",
+      "dexNumber": "263",
+      "name": "Sprigatito",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Containers",
+        "Colorful stuff",
+        "Cute stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "264",
+      "dexNumber": "264",
+      "name": "Floragato",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Sharp stuff",
+        "Colorful stuff",
+        "Cute stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "265",
+      "dexNumber": "265",
+      "name": "Meowscarada",
+      "specialties": ["Grow", "Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Shiny stuff",
+        "Luxury",
+        "Cute stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "266",
+      "dexNumber": "266",
+      "name": "Wattrel",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Nice breezes",
+        "Ocean vibes",
+        "Gatherings",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "267",
+      "dexNumber": "267",
+      "name": "Kilowattrel",
+      "specialties": ["Generate", "Fly"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Nice breezes",
+        "Ocean vibes",
+        "Gatherings",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "268",
+      "dexNumber": "268",
+      "name": "Tinkatink",
+      "specialties": ["Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Cute stuff",
+        "Metal stuff",
+        "Construction",
+        "Looks like food",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "269",
+      "dexNumber": "269",
+      "name": "Tinkatuff",
+      "specialties": ["Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Cute stuff",
+        "Metal stuff",
+        "Construction",
+        "Group Activities",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "270",
+      "dexNumber": "270",
+      "name": "Tinkaton",
+      "specialties": ["Engineer"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Cute stuff",
+        "Metal stuff",
+        "Construction",
+        "Blocky stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "271",
+      "dexNumber": "271",
+      "name": "Aerodactyl",
+      "specialties": ["Fly"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Nice breezes",
+        "Hard stuff",
+        "Shiny stuff",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "272",
+      "dexNumber": "272",
+      "name": "Cranidos",
+      "specialties": ["Crush"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Wobbly stuff",
+        "Group Activities",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "273",
+      "dexNumber": "273",
+      "name": "Rampardos",
+      "specialties": ["Crush", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Metal stuff",
+        "Luxury",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "274",
+      "dexNumber": "274",
+      "name": "Shieldon",
+      "specialties": ["Crush"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Metal stuff",
+        "Luxury",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "275",
+      "dexNumber": "275",
+      "name": "Bastiodon",
+      "specialties": ["Crush", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Metal stuff",
+        "Luxury",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "276",
+      "dexNumber": "276",
+      "name": "Tyrunt",
+      "specialties": ["Crush"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Lots of fire",
+        "Luxury",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "277",
+      "dexNumber": "277",
+      "name": "Tyrantrum",
+      "specialties": ["Crush", "Litter"],
+      "idealHabitat": "Dry",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Lots of fire",
+        "Luxury",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "278",
+      "dexNumber": "278",
+      "name": "Amaura",
+      "specialties": ["Crush"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Shiny stuff",
+        "Group Activities",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "279",
+      "dexNumber": "279",
+      "name": "Aurorus",
+      "specialties": ["Crush", "Litter"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Stone stuff",
+        "Hard stuff",
+        "Shiny stuff",
+        "Noisy stuff",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "280",
+      "dexNumber": "280",
+      "name": "Eevee",
+      "specialties": ["Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Soft stuff",
+        "Stone stuff",
+        "Cute stuff",
+        "Letters and words",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "281",
+      "dexNumber": "281",
+      "name": "Vaporeon",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Cleanliness",
+        "Cute stuff",
+        "Pretty flowers",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "282",
+      "dexNumber": "282",
+      "name": "Jolteon",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Shiny stuff",
+        "Cute stuff",
+        "Glass stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "283",
+      "dexNumber": "283",
+      "name": "Flareon",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Wooden stuff",
+        "Cute stuff",
+        "Metal stuff",
+        "Rides"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "284",
+      "dexNumber": "284",
+      "name": "Espeon",
+      "specialties": ["Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Strange stuff",
+        "Nice breezes",
+        "Cute stuff",
+        "Complicated stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "285",
+      "dexNumber": "285",
+      "name": "Umbreon",
+      "specialties": ["Search"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Shiny stuff",
+        "Luxury",
+        "Cute stuff",
+        "Letters and words",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "286",
+      "dexNumber": "286",
+      "name": "Leafeon",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Pretty flowers",
+        "Cute stuff",
+        "Fabric",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "287",
+      "dexNumber": "287",
+      "name": "Glaceon",
+      "specialties": ["Trade"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Lots of water",
+        "Shiny stuff",
+        "Cute stuff",
+        "Glass stuff",
+        "Group Activities"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "288",
+      "dexNumber": "288",
+      "name": "Sylveon",
+      "specialties": ["Hype"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Cute stuff",
+        "Lots of nature",
+        "Fabric",
+        "Noisy stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "289",
+      "dexNumber": "289",
+      "name": "Kyogre",
+      "specialties": ["???"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Luxury",
+        "Shiny stuff",
+        "Glass stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "290",
+      "dexNumber": "290",
+      "name": "Raikou",
+      "specialties": ["Generate"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Nice breezes",
+        "Shiny stuff",
+        "Glass stuff",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "291",
+      "dexNumber": "291",
+      "name": "Entei",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Stone stuff",
+        "Symbols",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Bitter flavors"
+    },
+    {
+      "id": "292",
+      "dexNumber": "292",
+      "name": "Suicune",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Ocean vibes",
+        "Cleanliness",
+        "Watching stuff",
+        "Healing"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "293",
+      "dexNumber": "293",
+      "name": "Volcanion",
+      "specialties": ["Burn"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Lots of water",
+        "Stone stuff",
+        "Containers",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "294",
+      "dexNumber": "294",
+      "name": "Articuno",
+      "specialties": ["Fly"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Lots of water",
+        "Nice breezes",
+        "Shiny stuff",
+        "Symbols",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    },
+    {
+      "id": "295",
+      "dexNumber": "295",
+      "name": "Zapdos",
+      "specialties": ["Fly"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Electronics",
+        "Nice breezes",
+        "Glass stuff",
+        "Symbols",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "296",
+      "dexNumber": "296",
+      "name": "Moltres",
+      "specialties": ["Fly"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Nice breezes",
+        "Stone stuff",
+        "Symbols",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "297",
+      "dexNumber": "297",
+      "name": "Lugia",
+      "specialties": ["???"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Strange stuff",
+        "Nice breezes",
+        "Lots of water",
+        "Ocean vibes",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "298",
+      "dexNumber": "298",
+      "name": "Ho-Oh",
+      "specialties": ["???"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of fire",
+        "Wooden stuff",
+        "Nice breezes",
+        "Lots of nature",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Spicy flavors"
+    },
+    {
+      "id": "299",
+      "dexNumber": "299",
+      "name": "Mewtwo",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Strange stuff",
+        "Watching stuff",
+        "Letters and words",
+        "Complicated stuff",
+        "Stone stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "300",
+      "dexNumber": "300",
+      "name": "Mew",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Strange stuff",
+        "Watching stuff",
+        "Luxury",
+        "Complicated stuff",
+        "Play spaces"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    }
+  ],
+  "event": [
+    {
+      "id": "001",
+      "dexNumber": "001",
+      "name": "Hoppip",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Lots of nature",
+        "Nice breezes",
+        "Pretty flowers",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors"
+    },
+    {
+      "id": "002",
+      "dexNumber": "002",
+      "name": "Skiploom",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Lots of nature",
+        "Nice breezes",
+        "Pretty flowers",
+        "Spinning stuff"
+      ],
+      "favoriteFlavor": "Dry flavors"
+    },
+    {
+      "id": "003",
+      "dexNumber": "003",
+      "name": "Jumpluff",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Soft stuff",
+        "Lots of nature",
+        "Nice breezes",
+        "Pretty flowers",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sour flavors"
+    }
+  ]
+}
