@@ -9,34 +9,37 @@ import PokedexPage from './PokedexPage'
 type Page = 'matcher' | 'overview' | 'pokedex'
 
 export default function App() {
-  const { mode, includeEvents, unlockedIds } = useStore()
+  const includeEvents = useStore((s) => s.includeEvents)
+
+  const activePokemonCount = useStore((s) => {
+    const base = s.includeEvents ? allPokemon : standardPokemon
+    if (s.mode !== 'custom') return base.length
+    return base.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0)
+  })
+
+  const customUnlockedCount = useStore((s) =>
+    allPokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
+  )
+
   const [page, setPage] = useState<Page>('matcher')
 
-  const activePokemon = useMemo(() => {
-    const base = includeEvents ? allPokemon : standardPokemon
-    if (mode === 'custom') return base.filter((p) => unlockedIds.has(p.id))
-    return base
-  }, [mode, includeEvents, unlockedIds])
-
-  const customUnlockedCount = useMemo(
-    () => allPokemon.filter((p) => unlockedIds.has(p.id)).length,
-    [unlockedIds],
+  const pokedexList = useMemo(
+    () => (includeEvents ? allPokemon : standardPokemon),
+    [includeEvents],
   )
 
   return (
     <Layout
-      activePokemonCount={activePokemon.length}
+      activePokemonCount={activePokemonCount}
       customUnlockedCount={customUnlockedCount}
       page={page}
       onPageChange={setPage}
     >
-      {page === 'matcher' && <MatcherPage activePokemon={activePokemon} />}
+      {page === 'matcher' && <MatcherPage />}
 
       {page === 'overview' && <OverviewPage />}
 
-      {page === 'pokedex' && (
-        <PokedexPage pokemon={includeEvents ? allPokemon : standardPokemon} />
-      )}
+      {page === 'pokedex' && <PokedexPage pokemon={pokedexList} />}
     </Layout>
   )
 }

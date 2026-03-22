@@ -28,7 +28,10 @@ export default function Layout({
   onPageChange,
   children,
 }: Props) {
-  const { mode, setMode, includeEvents, setIncludeEvents } = useStore()
+  const mode = useStore((s) => s.mode)
+  const setMode = useStore((s) => s.setMode)
+  const includeEvents = useStore((s) => s.includeEvents)
+  const setIncludeEvents = useStore((s) => s.setIncludeEvents)
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#fafafa' }}>

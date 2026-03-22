@@ -1,7 +1,40 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, type StateStorage } from 'zustand/middleware'
 import rawData from './pokedex.json'
 import type { Pokemon } from './types'
+
+/** Debounce localStorage writes — full-state JSON on each toggle was blocking the main thread. */
+function createDebouncedJsonStorage(delayMs: number): StateStorage {
+  let timer: ReturnType<typeof setTimeout> | null = null
+  let pending: { name: string; value: string } | null = null
+
+  function flush() {
+    if (pending) {
+      localStorage.setItem(pending.name, pending.value)
+      pending = null
+    }
+    timer = null
+  }
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('beforeunload', flush)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') flush()
+    })
+  }
+
+  return {
+    getItem: (name) => localStorage.getItem(name),
+    setItem: (name, value) => {
+      pending = { name, value }
+      if (timer !== null) clearTimeout(timer)
+      timer = setTimeout(flush, delayMs)
+    },
+    removeItem: (name) => localStorage.removeItem(name),
+  }
+}
+
+const debouncedPersistStorage = createDebouncedJsonStorage(320)
 
 export type AppMode = 'standard' | 'custom'
 
@@ -78,7 +111,7 @@ export const useStore = create<AppState>()(
               unlockedIds: [...(value.state.unlockedIds as Set<string>)],
             },
           }
-          localStorage.setItem(name, JSON.stringify(serializable))
+          debouncedPersistStorage.setItem(name, JSON.stringify(serializable))
         },
         removeItem: (name) => localStorage.removeItem(name),
       },

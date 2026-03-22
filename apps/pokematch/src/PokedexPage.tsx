@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { memo, useMemo, useState } from 'react'
 import {
   Box,
   Button,
@@ -29,25 +29,26 @@ interface Props {
 type Filter = 'all' | 'unlocked' | 'locked'
 
 export default function PokedexPage({ pokemon }: Props) {
-  const { mode, unlockedIds, togglePokemon, unlockAll, lockAll } = useStore()
+  const mode = useStore((s) => s.mode)
+  const togglePokemon = useStore((s) => s.togglePokemon)
+  const unlockAll = useStore((s) => s.unlockAll)
+  const lockAll = useStore((s) => s.lockAll)
+
   const [search, setSearch] = useState('')
   const [habitatFilter, setHabitatFilter] = useState<Habitat | 'all'>('all')
   const [statusFilter, setStatusFilter] = useState<Filter>('all')
 
   const effectiveStatusFilter = mode === 'custom' ? statusFilter : 'all'
 
-  const filtered = useMemo(() => {
+  const baseFiltered = useMemo(() => {
     const q = search.toLowerCase()
     return pokemon.filter((p) => {
       if (q && !p.name.toLowerCase().includes(q) && !p.dexNumber.includes(q)) return false
       if (habitatFilter !== 'all' && p.idealHabitat !== habitatFilter) return false
-      if (effectiveStatusFilter === 'unlocked' && !unlockedIds.has(p.id)) return false
-      if (effectiveStatusFilter === 'locked' && unlockedIds.has(p.id)) return false
       return true
     })
-  }, [pokemon, search, habitatFilter, effectiveStatusFilter, unlockedIds])
+  }, [pokemon, search, habitatFilter])
 
-  const unlockedCount = pokemon.filter((p) => unlockedIds.has(p.id)).length
   const habitats = [...new Set(pokemon.map((p) => p.idealHabitat))].sort() as Habitat[]
 
   const isCustom = mode === 'custom'
@@ -127,21 +128,127 @@ export default function PokedexPage({ pokemon }: Props) {
 
       {/* Count summary */}
       <Stack direction="row" spacing={1} alignItems="center" mb={2}>
-        <Typography variant="body2" color="text.secondary">
-          Showing {filtered.length} of {pokemon.length} Pokémon
-        </Typography>
-        {isCustom && (
-          <Chip
-            label={`${unlockedCount} unlocked`}
-            size="small"
-            color="success"
-            variant="outlined"
-            sx={{ height: 20, fontSize: 11 }}
-          />
-        )}
+        <PokedexShowingCount
+          pokemon={pokemon}
+          baseFiltered={baseFiltered}
+          effectiveStatusFilter={effectiveStatusFilter}
+        />
+        {isCustom && <UnlockedCountChip pokemon={pokemon} />}
       </Stack>
 
-      {/* Grid */}
+      {/* Grid — when status is "all", parents do not subscribe to unlockedIds, so only the toggled card re-renders */}
+      {effectiveStatusFilter === 'all' ? (
+        <PokedexGrid pokemon={baseFiltered} interactive={isCustom} onToggle={togglePokemon} />
+      ) : (
+        <PokedexGridStatusFiltered
+          baseFiltered={baseFiltered}
+          status={effectiveStatusFilter}
+          interactive={isCustom}
+          onToggle={togglePokemon}
+        />
+      )}
+    </Container>
+  )
+}
+
+function UnlockedCountChip({ pokemon }: { pokemon: Pokemon[] }) {
+  const unlockedCount = useStore((s) =>
+    pokemon.reduce((n, p) => n + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
+  )
+
+  return (
+    <Chip
+      label={`${unlockedCount} unlocked`}
+      size="small"
+      color="success"
+      variant="outlined"
+      sx={{ height: 20, fontSize: 11 }}
+    />
+  )
+}
+
+function PokedexShowingCount({
+  pokemon,
+  baseFiltered,
+  effectiveStatusFilter,
+}: {
+  pokemon: Pokemon[]
+  baseFiltered: Pokemon[]
+  effectiveStatusFilter: Filter
+}) {
+  if (effectiveStatusFilter === 'all') {
+    return (
+      <Typography variant="body2" color="text.secondary">
+        Showing {baseFiltered.length} of {pokemon.length} Pokémon
+      </Typography>
+    )
+  }
+
+  return (
+    <PokedexShowingCountWithStatus
+      pokemon={pokemon}
+      baseFiltered={baseFiltered}
+      status={effectiveStatusFilter}
+    />
+  )
+}
+
+function PokedexShowingCountWithStatus({
+  pokemon,
+  baseFiltered,
+  status,
+}: {
+  pokemon: Pokemon[]
+  baseFiltered: Pokemon[]
+  status: 'unlocked' | 'locked'
+}) {
+  const showing = useStore((s) =>
+    baseFiltered.filter((p) =>
+      status === 'unlocked' ? s.unlockedIds.has(p.id) : !s.unlockedIds.has(p.id),
+    ).length,
+  )
+
+  return (
+    <Typography variant="body2" color="text.secondary">
+      Showing {showing} of {pokemon.length} Pokémon
+    </Typography>
+  )
+}
+
+function PokedexGridStatusFiltered({
+  baseFiltered,
+  status,
+  interactive,
+  onToggle,
+}: {
+  baseFiltered: Pokemon[]
+  status: 'unlocked' | 'locked'
+  interactive: boolean
+  onToggle: (id: string) => void
+}) {
+  const unlockedIds = useStore((s) => s.unlockedIds)
+  const filtered = useMemo(
+    () =>
+      baseFiltered.filter((p) =>
+        status === 'unlocked' ? unlockedIds.has(p.id) : !unlockedIds.has(p.id),
+      ),
+    [baseFiltered, status, unlockedIds],
+  )
+
+  return <PokedexGrid pokemon={filtered} interactive={interactive} onToggle={onToggle} />
+}
+
+function PokedexGrid({
+  pokemon,
+  interactive,
+  onToggle,
+}: {
+  pokemon: Pokemon[]
+  interactive: boolean
+  onToggle: (id: string) => void
+}) {
+  return (
+    <>
       <Box
         sx={{
           display: 'grid',
@@ -149,44 +256,37 @@ export default function PokedexPage({ pokemon }: Props) {
           gap: 1,
         }}
       >
-        {filtered.map((p) => (
-          <PokemonCard
-            key={p.id}
-            pokemon={p}
-            unlocked={isCustom ? unlockedIds.has(p.id) : true}
-            interactive={isCustom}
-            onToggle={() => togglePokemon(p.id)}
-          />
+        {pokemon.map((p) => (
+          <PokemonCard key={p.id} pokemon={p} interactive={interactive} onToggle={onToggle} />
         ))}
       </Box>
 
-      {filtered.length === 0 && (
+      {pokemon.length === 0 && (
         <Box sx={{ py: 6, textAlign: 'center' }}>
           <Typography color="text.secondary">No Pokémon match your filters.</Typography>
         </Box>
       )}
-    </Container>
+    </>
   )
 }
 
-function PokemonCard({
+const PokemonCard = memo(function PokemonCard({
   pokemon,
-  unlocked,
   interactive,
   onToggle,
 }: {
   pokemon: Pokemon
-  unlocked: boolean
   interactive: boolean
-  onToggle: () => void
+  onToggle: (id: string) => void
 }) {
+  const unlocked = useStore((s) => s.unlockedIds.has(pokemon.id))
   const colors = habitatColors[pokemon.idealHabitat as Habitat]
   const isEvent = pokemon.id.startsWith('e')
 
   return (
     <Paper
       variant="outlined"
-      onClick={interactive ? onToggle : undefined}
+      onClick={interactive ? () => onToggle(pokemon.id) : undefined}
       sx={{
         borderRadius: 1.5,
         overflow: 'hidden',
@@ -264,4 +364,4 @@ function PokemonCard({
       </Box>
     </Paper>
   )
-}
+})
