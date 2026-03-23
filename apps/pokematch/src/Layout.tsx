@@ -1,28 +1,21 @@
 import { Box, Chip, Stack, Typography } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
+import { appRoutes } from "./router/routes";
 import { allPokemon } from "./services/pokemon";
 import { useStore } from "./store/store";
 
-interface Props {
-  matchMakerPath: string;
-  overviewPath: string;
-  pokedexPath: string;
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-export default function Layout({
-  matchMakerPath,
-  overviewPath,
-  pokedexPath,
-  children,
-}: Props) {
+export default function Layout({ children }: LayoutProps) {
   const unlockedCount = useStore((s) =>
     allPokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
   );
   const { pathname } = useLocation();
-  const isMatchMakerActive = pathname === matchMakerPath;
-  const isOverviewActive = pathname === overviewPath;
-  const isPokedexActive = pathname === pokedexPath;
+  const isMatchMakerActive = pathname === appRoutes.matchmaker;
+  const isOverviewActive = pathname === appRoutes.overview;
+  const isPokedexActive = pathname === appRoutes.pokedex;
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
@@ -67,13 +60,13 @@ export default function Layout({
         }}
       >
         <Stack direction="row" spacing={3}>
-          <NavItem active={isMatchMakerActive} to={matchMakerPath}>
+          <NavItem active={isMatchMakerActive} to={appRoutes.matchmaker}>
             Match-Maker
           </NavItem>
-          <NavItem active={isOverviewActive} to={overviewPath}>
+          <NavItem active={isOverviewActive} to={appRoutes.overview}>
             Overview
           </NavItem>
-          <NavItem active={isPokedexActive} to={pokedexPath}>
+          <NavItem active={isPokedexActive} to={appRoutes.pokedex}>
             Pokédex
             <Chip
               label={`${unlockedCount}/${allPokemon.length}`}
