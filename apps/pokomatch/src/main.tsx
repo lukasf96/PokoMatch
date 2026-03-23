@@ -6,6 +6,7 @@ import App from './App.tsx'
 import { useMemo } from 'react'
 import { createAppTheme } from './theme'
 import { useStore } from './store/store'
+import { AppErrorBoundary } from './components/app-error-boundary/AppErrorBoundary'
 
 function AppThemeProvider() {
   const themeMode = useStore((s) => s.themeMode)
@@ -19,7 +20,9 @@ function AppThemeProvider() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <AppErrorBoundary>
+        <App />
+      </AppErrorBoundary>
     </ThemeProvider>
   )
 }
