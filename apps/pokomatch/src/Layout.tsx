@@ -173,9 +173,10 @@ export default function Layout({ children }: LayoutProps) {
           },
         }}
       >
-        {settingsView === "root" && (
-          <>
-            <MenuItem
+        {settingsView === "root"
+          ? [
+              <MenuItem
+                key="root-language"
               onClick={() => setSettingsView("language")}
               sx={{
                 display: "flex",
@@ -195,8 +196,9 @@ export default function Layout({ children }: LayoutProps) {
                 </Box>
               </Box>
               <ChevronRight fontSize="small" color="action" />
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="root-theme"
               onClick={() => setSettingsView("theme")}
               sx={{
                 display: "flex",
@@ -216,16 +218,21 @@ export default function Layout({ children }: LayoutProps) {
                 </Box>
               </Box>
               <ChevronRight fontSize="small" color="action" />
-            </MenuItem>
-          </>
-        )}
-        {settingsView === "language" && (
-          <>
-            <MenuItem onClick={() => setSettingsView("root")} sx={{ mb: 0.5 }}>
+              </MenuItem>,
+            ]
+          : null}
+        {settingsView === "language"
+          ? [
+              <MenuItem
+                key="language-back"
+                onClick={() => setSettingsView("root")}
+                sx={{ mb: 0.5 }}
+              >
               <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
               Back
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="language-en"
               selected={nameLanguage === "en"}
               onClick={() => handleLanguageChange("en")}
               sx={{
@@ -238,8 +245,9 @@ export default function Layout({ children }: LayoutProps) {
               {nameLanguage === "en" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="language-de"
               selected={nameLanguage === "de"}
               onClick={() => handleLanguageChange("de")}
               sx={{
@@ -252,8 +260,9 @@ export default function Layout({ children }: LayoutProps) {
               {nameLanguage === "de" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="language-fr"
               selected={nameLanguage === "fr"}
               onClick={() => handleLanguageChange("fr")}
               sx={{
@@ -266,16 +275,21 @@ export default function Layout({ children }: LayoutProps) {
               {nameLanguage === "fr" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-          </>
-        )}
-        {settingsView === "theme" && (
-          <>
-            <MenuItem onClick={() => setSettingsView("root")} sx={{ mb: 0.5 }}>
+              </MenuItem>,
+            ]
+          : null}
+        {settingsView === "theme"
+          ? [
+              <MenuItem
+                key="theme-back"
+                onClick={() => setSettingsView("root")}
+                sx={{ mb: 0.5 }}
+              >
               <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
               Back
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="theme-system"
               selected={themeMode === "system"}
               onClick={() => handleThemeModeChange("system")}
               sx={{
@@ -293,8 +307,9 @@ export default function Layout({ children }: LayoutProps) {
               {themeMode === "system" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="theme-light"
               selected={themeMode === "light"}
               onClick={() => handleThemeModeChange("light")}
               sx={{
@@ -312,8 +327,9 @@ export default function Layout({ children }: LayoutProps) {
               {themeMode === "light" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-            <MenuItem
+              </MenuItem>,
+              <MenuItem
+                key="theme-dark"
               selected={themeMode === "dark"}
               onClick={() => handleThemeModeChange("dark")}
               sx={{
@@ -331,9 +347,9 @@ export default function Layout({ children }: LayoutProps) {
               {themeMode === "dark" ? (
                 <Check fontSize="small" color="primary" />
               ) : null}
-            </MenuItem>
-          </>
-        )}
+              </MenuItem>,
+            ]
+          : null}
       </Menu>
 
       {children}
