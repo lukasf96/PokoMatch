@@ -75,18 +75,14 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
   const theme = useTheme();
   const colors = habitatColors[habitat];
 
-  const { favCounts, sharedFavs, score, habitats, conflicts } = useMemo(() => {
+  const { favCounts, score, habitats, conflicts } = useMemo(() => {
     const allFavs = group.flatMap((p) => p.favorites);
     const counts = allFavs.reduce<Record<string, number>>((acc, f) => {
       acc[f] = (acc[f] ?? 0) + 1;
       return acc;
     }, {});
-    const shared = Object.entries(counts)
-      .filter(([, count]) => count >= 2)
-      .sort((a, b) => b[1] - a[1]);
     return {
       favCounts: counts,
-      sharedFavs: shared,
       score: groupScore(group),
       habitats: getGroupHabitats(group),
       conflicts: getGroupConflicts(group),
@@ -148,20 +144,6 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
               sx={{ fontSize: 11, height: 20 }}
             />
           )}
-          {sharedFavs.slice(0, 3).map(([fav, count]) => (
-            <Chip
-              key={fav}
-              label={`${fav} ×${count}`}
-              size="small"
-              sx={{
-                bgcolor: "background.paper",
-                fontSize: 11,
-                height: 20,
-                color: colors.text,
-                border: `1px solid ${colors.border}`,
-              }}
-            />
-          ))}
           <Chip
             label={`Score ${score}`}
             size="small"
