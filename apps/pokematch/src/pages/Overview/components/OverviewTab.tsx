@@ -19,6 +19,20 @@ interface Props {
 }
 
 const isEvent = (p: Pokemon) => p.id.startsWith("e");
+const getDexSortValue = (dexNumber: string) => {
+  const matchedNumber = dexNumber.match(/\d+/);
+  return matchedNumber ? Number(matchedNumber[0]) : Number.MAX_SAFE_INTEGER;
+};
+const sortByDexOrder = (a: Pokemon, b: Pokemon) => {
+  const aIsEvent = isEvent(a);
+  const bIsEvent = isEvent(b);
+  if (aIsEvent !== bIsEvent) return aIsEvent ? 1 : -1;
+
+  const dexDiff = getDexSortValue(a.dexNumber) - getDexSortValue(b.dexNumber);
+  if (dexDiff !== 0) return dexDiff;
+
+  return a.name.localeCompare(b.name);
+};
 
 export default function OverviewTab({ pokemon }: Props) {
   // Habitat counts
@@ -40,7 +54,19 @@ export default function OverviewTab({ pokemon }: Props) {
     }, {});
     return Object.entries(favMap)
       .sort((a, b) => b[1].length - a[1].length)
-      .map(([fav, members]) => [fav, members.slice().sort((a, b) => a.name.localeCompare(b.name))] as const);
+      .map(([fav, members]) => [fav, members.slice().sort(sortByDexOrder)] as const);
+  }, [pokemon]);
+
+  // Favorite flavor counts
+  const flavors = useMemo(() => {
+    const flavorMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
+      if (!p.favoriteFlavor) return acc;
+      (acc[p.favoriteFlavor] ??= []).push(p);
+      return acc;
+    }, {});
+    return Object.entries(flavorMap)
+      .sort((a, b) => b[1].length - a[1].length)
+      .map(([flavor, members]) => [flavor, members.slice().sort(sortByDexOrder)] as const);
   }, [pokemon]);
 
   return (
@@ -63,7 +89,7 @@ export default function OverviewTab({ pokemon }: Props) {
         </Grid>
 
         {/* Favorites */}
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Typography variant="subtitle1" fontWeight={700} mb={1.5}>
             Favorite Preferences
           </Typography>
@@ -72,6 +98,23 @@ export default function OverviewTab({ pokemon }: Props) {
               <FavoriteRow
                 key={fav}
                 favorite={fav}
+                pokemon={members}
+                totalPokemon={pokemon.length}
+              />
+            ))}
+          </Stack>
+        </Grid>
+
+        {/* Flavor breakdown */}
+        <Grid size={{ xs: 12, md: 4 }}>
+          <Typography variant="subtitle1" fontWeight={700} mb={1.5}>
+            Flavor Breakdown
+          </Typography>
+          <Stack spacing={0.75}>
+            {flavors.map(([flavor, members]) => (
+              <FavoriteRow
+                key={flavor}
+                favorite={flavor}
                 pokemon={members}
                 totalPokemon={pokemon.length}
               />
