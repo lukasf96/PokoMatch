@@ -1,5 +1,6 @@
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 import { Box, Chip, Divider, Paper, Stack, Typography } from "@mui/material";
 import { memo } from "react";
 import { habitatColors, habitatIcons } from "../../../services/habitatColors";
@@ -85,19 +86,6 @@ export const PokemonCard = memo(function PokemonCard({
               }}
             />
           )}
-          {isNotHabitable && (
-            <Chip
-              label="Not habitable"
-              size="small"
-              sx={{
-                height: 14,
-                fontSize: 9,
-                bgcolor: "warning.light",
-                color: "warning.dark",
-                flexShrink: 0,
-              }}
-            />
-          )}
         </Stack>
         {interactive &&
           (unlocked ? (
@@ -112,11 +100,42 @@ export const PokemonCard = memo(function PokemonCard({
       <Divider />
 
       <Box sx={{ px: 1.5, py: 0.75 }}>
-        <Stack direction="row" spacing={0.5} alignItems="center" mb={0.5}>
+        <Stack
+          direction="row"
+          spacing={0.5}
+          alignItems="center"
+          useFlexGap
+          mb={0.5}
+          sx={{ flexWrap: "wrap" }}
+        >
           <HabitatIcon sx={{ fontSize: 12, color: "text.secondary" }} />
           <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
             {pokemon.idealHabitat}
           </Typography>
+          {pokemon.favoriteFlavor && (
+            <>
+              <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
+                •
+              </Typography>
+              <RestaurantIcon sx={{ fontSize: 12, color: "text.secondary" }} />
+              <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
+                {pokemon.favoriteFlavor}
+              </Typography>
+            </>
+          )}
+          {isNotHabitable && (
+            <Chip
+              label="Not habitable"
+              size="small"
+              sx={{
+                height: 14,
+                fontSize: 9,
+                bgcolor: "warning.light",
+                color: "warning.dark",
+                flexShrink: 0,
+              }}
+            />
+          )}
         </Stack>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.4 }}>
           {pokemon.favorites.map((fav) => (
