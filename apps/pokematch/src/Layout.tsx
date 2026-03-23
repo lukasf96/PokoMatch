@@ -14,6 +14,7 @@ import {
   DashboardOutlined,
   DarkModeOutlined,
   LightModeOutlined,
+  PaletteOutlined,
   SettingsBrightnessOutlined,
   SettingsOutlined,
   TranslateOutlined,
@@ -176,7 +177,7 @@ export default function Layout({ children }: LayoutProps) {
           sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
         >
           <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
-            <SettingsOutlined fontSize="small" />
+            <PaletteOutlined fontSize="small" />
             Theme
           </Box>
           <ChevronRight fontSize="small" />
@@ -194,7 +195,7 @@ export default function Layout({ children }: LayoutProps) {
         transformOrigin={{ vertical: "top", horizontal: "left" }}
         slotProps={{
           paper: {
-            sx: { minWidth: 160 },
+            sx: { minWidth: 160, ml: 0.75 },
           },
         }}
       >
