@@ -74,14 +74,14 @@ export default function PokedexPage() {
   const totalCount = allPokemon.length;
 
   return (
-    <Container maxWidth="lg" sx={{ py: 3 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3 }, px: { xs: 1.5, sm: 3 } }}>
       {/* Toolbar */}
       <Stack
         direction={{ xs: "column", sm: "row" }}
-        spacing={2}
+        spacing={{ xs: 1, sm: 2 }}
         alignItems={{ xs: "stretch", sm: "center" }}
         mb={2}
-        flexWrap="wrap"
+        flexWrap={{ xs: "nowrap", sm: "wrap" }}
         useFlexGap
       >
         <TextField
@@ -89,7 +89,11 @@ export default function PokedexPage() {
           placeholder="Search by name or #..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          sx={{ minWidth: 200, flex: "1 1 200px" }}
+          fullWidth
+          sx={{
+            minWidth: { xs: 0, sm: 200 },
+            flex: { xs: "0 0 auto", sm: "1 1 240px" },
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -101,31 +105,59 @@ export default function PokedexPage() {
           }}
         />
 
-        <ToggleButtonGroup
-          size="small"
-          exclusive
-          value={habitatFilter}
-          onChange={(_, v) => v !== null && setHabitatFilter(v)}
+        <Box
+          sx={{
+            width: { xs: "100%", sm: "auto" },
+            overflowX: { xs: "visible", sm: "auto" },
+            pb: { xs: 0, sm: 0.25 },
+          }}
         >
-          <ToggleButton value="all">All</ToggleButton>
-          {habitats.map((h) => (
-            <HabitatToggleButton key={h} habitat={h} />
-          ))}
-        </ToggleButtonGroup>
+          <ToggleButtonGroup
+            size="small"
+            exclusive
+            fullWidth
+            value={habitatFilter}
+            onChange={(_, v) => v !== null && setHabitatFilter(v)}
+            sx={{
+              width: { xs: "100%", sm: "auto" },
+              flexWrap: "nowrap",
+              minWidth: { xs: 0, sm: "max-content" },
+            }}
+          >
+            <ToggleButton value="all">All</ToggleButton>
+            {habitats.map((h) => (
+              <HabitatToggleButton key={h} habitat={h} />
+            ))}
+          </ToggleButtonGroup>
+        </Box>
 
-        <ToggleButtonGroup
-          size="small"
-          exclusive
-          value={statusFilter}
-          onChange={(_, v) => v !== null && setStatusFilter(v)}
+        <Box sx={{ width: { xs: "100%", sm: "auto" } }}>
+          <ToggleButtonGroup
+            size="small"
+            exclusive
+            fullWidth
+            value={statusFilter}
+            onChange={(_, v) => v !== null && setStatusFilter(v)}
+          >
+            <ToggleButton value="all">All</ToggleButton>
+            <ToggleButton value="unlocked">Unlocked</ToggleButton>
+            <ToggleButton value="locked">Locked</ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
+
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={1}
+          ml={{ sm: "auto" }}
+          width={{ xs: "100%", sm: "auto" }}
+          sx={{ flexShrink: 0 }}
         >
-          <ToggleButton value="all">All</ToggleButton>
-          <ToggleButton value="unlocked">Unlocked</ToggleButton>
-          <ToggleButton value="locked">Locked</ToggleButton>
-        </ToggleButtonGroup>
-
-        <Stack direction="row" spacing={1} ml={{ sm: "auto" }}>
-          <Button size="small" variant="outlined" onClick={unlockAll}>
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={unlockAll}
+            sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
+          >
             Select all
           </Button>
           <Button
@@ -133,6 +165,7 @@ export default function PokedexPage() {
             variant="outlined"
             color="warning"
             onClick={lockAll}
+            sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
           >
             Deselect all
           </Button>
@@ -356,8 +389,13 @@ function PokedexSectionHeader({
   subtitle: string;
 }) {
   return (
-    <Stack spacing={0.25} mb={1.5}>
-      <Typography variant="h6" component="h2" fontWeight={700}>
+    <Stack spacing={0.25} mb={{ xs: 1, sm: 1.5 }}>
+      <Typography
+        variant="h6"
+        component="h2"
+        fontWeight={700}
+        sx={{ fontSize: { xs: "1rem", sm: "1.25rem" } }}
+      >
         {title}
       </Typography>
       <Typography variant="caption" color="text.secondary">
@@ -402,8 +440,11 @@ function PokedexGrid({
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: 1,
+          gridTemplateColumns: {
+            xs: "repeat(auto-fill, minmax(156px, 1fr))",
+            sm: "repeat(auto-fill, minmax(200px, 1fr))",
+          },
+          gap: { xs: 0.75, sm: 1 },
         }}
       >
         {pokemon.map((p) => (
