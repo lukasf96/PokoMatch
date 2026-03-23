@@ -1,11 +1,13 @@
 import {
   AutoFixHighOutlined,
+  Check,
   CatchingPokemonOutlined,
   ChevronRight,
   DarkModeOutlined,
   DashboardOutlined,
   LightModeOutlined,
   PaletteOutlined,
+  ArrowBackOutlined,
   SettingsBrightnessOutlined,
   SettingsOutlined,
   TranslateOutlined,
@@ -41,34 +43,22 @@ export default function Layout({ children }: LayoutProps) {
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(
     null,
   );
-  const [nestedAnchorEl, setNestedAnchorEl] = useState<null | HTMLElement>(
-    null,
+  const [settingsView, setSettingsView] = useState<"root" | "language" | "theme">(
+    "root",
   );
-  const [activeNestedMenu, setActiveNestedMenu] = useState<
-    "language" | "theme" | null
-  >(null);
   const isMatchMakerActive = pathname === appRoutes.matchmaker;
   const isInsightsActive = pathname === appRoutes.insights;
   const isPokedexActive = pathname === appRoutes.pokedex;
   const isSettingsOpen = Boolean(settingsAnchorEl);
-  const isNestedOpen = Boolean(nestedAnchorEl && activeNestedMenu);
 
   function openSettingsMenu(event: React.MouseEvent<HTMLElement>) {
     setSettingsAnchorEl(event.currentTarget);
+    setSettingsView("root");
   }
 
   function closeSettingsMenu() {
     setSettingsAnchorEl(null);
-    setNestedAnchorEl(null);
-    setActiveNestedMenu(null);
-  }
-
-  function openNestedMenu(
-    event: React.MouseEvent<HTMLElement>,
-    menu: "language" | "theme",
-  ) {
-    setNestedAnchorEl(event.currentTarget);
-    setActiveNestedMenu(menu);
+    setSettingsView("root");
   }
 
   function handleLanguageChange(language: "en" | "de" | "fr") {
@@ -80,6 +70,11 @@ export default function Layout({ children }: LayoutProps) {
     setThemeMode(mode);
     closeSettingsMenu();
   }
+
+  const selectedLanguageLabel =
+    nameLanguage === "en" ? "English" : nameLanguage === "de" ? "Deutsch" : "Français";
+  const selectedThemeLabel =
+    themeMode === "system" ? "System" : themeMode === "light" ? "Light" : "Dark";
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
@@ -158,93 +153,122 @@ export default function Layout({ children }: LayoutProps) {
         transformOrigin={{ vertical: "top", horizontal: "right" }}
         slotProps={{
           paper: {
-            sx: { mt: 0.5, minWidth: 160 },
+            sx: { mt: 0.5, minWidth: 240 },
           },
         }}
       >
-        <MenuItem
-          onClick={(event) => openNestedMenu(event, "language")}
-          selected={activeNestedMenu === "language" && isNestedOpen}
-          sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
-        >
-          <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
-            <TranslateOutlined fontSize="small" />
-            Language
-          </Box>
-          <ChevronRight fontSize="small" />
-        </MenuItem>
-        <MenuItem
-          onClick={(event) => openNestedMenu(event, "theme")}
-          selected={activeNestedMenu === "theme" && isNestedOpen}
-          sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
-        >
-          <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
-            <PaletteOutlined fontSize="small" />
-            Theme
-          </Box>
-          <ChevronRight fontSize="small" />
-        </MenuItem>
-      </Menu>
-      <Menu
-        id="layout-settings-nested-menu"
-        anchorEl={nestedAnchorEl}
-        open={isNestedOpen}
-        onClose={() => {
-          setNestedAnchorEl(null);
-          setActiveNestedMenu(null);
-        }}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "left" }}
-        slotProps={{
-          paper: {
-            sx: { minWidth: 160, ml: 0.75 },
-          },
-        }}
-      >
-        {activeNestedMenu === "language" && (
+        {settingsView === "root" && (
           <>
+            <MenuItem
+              onClick={() => setSettingsView("language")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
+            >
+              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
+                <TranslateOutlined fontSize="small" />
+                <Box>
+                  <Typography variant="body2">Language</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {selectedLanguageLabel}
+                  </Typography>
+                </Box>
+              </Box>
+              <ChevronRight fontSize="small" color="action" />
+            </MenuItem>
+            <MenuItem
+              onClick={() => setSettingsView("theme")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
+            >
+              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
+                <PaletteOutlined fontSize="small" />
+                <Box>
+                  <Typography variant="body2">Theme</Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {selectedThemeLabel}
+                  </Typography>
+                </Box>
+              </Box>
+              <ChevronRight fontSize="small" color="action" />
+            </MenuItem>
+          </>
+        )}
+        {settingsView === "language" && (
+          <>
+            <MenuItem
+              onClick={() => setSettingsView("root")}
+              sx={{ mb: 0.5 }}
+            >
+              <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
+              Back
+            </MenuItem>
             <MenuItem
               selected={nameLanguage === "en"}
               onClick={() => handleLanguageChange("en")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              EN
+              English
+              {nameLanguage === "en" ? <Check fontSize="small" color="primary" /> : null}
             </MenuItem>
             <MenuItem
               selected={nameLanguage === "de"}
               onClick={() => handleLanguageChange("de")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              DE
+              Deutsch
+              {nameLanguage === "de" ? <Check fontSize="small" color="primary" /> : null}
             </MenuItem>
             <MenuItem
               selected={nameLanguage === "fr"}
               onClick={() => handleLanguageChange("fr")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              FR
+              Français
+              {nameLanguage === "fr" ? <Check fontSize="small" color="primary" /> : null}
             </MenuItem>
           </>
         )}
-        {activeNestedMenu === "theme" && (
+        {settingsView === "theme" && (
           <>
+            <MenuItem
+              onClick={() => setSettingsView("root")}
+              sx={{ mb: 0.5 }}
+            >
+              <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
+              Back
+            </MenuItem>
             <MenuItem
               selected={themeMode === "system"}
               onClick={() => handleThemeModeChange("system")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              <SettingsBrightnessOutlined sx={{ mr: 1 }} fontSize="small" />
-              System
+              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
+                <SettingsBrightnessOutlined fontSize="small" />
+                System
+              </Box>
+              {themeMode === "system" ? (
+                <Check fontSize="small" color="primary" />
+              ) : null}
             </MenuItem>
             <MenuItem
               selected={themeMode === "light"}
               onClick={() => handleThemeModeChange("light")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              <LightModeOutlined sx={{ mr: 1 }} fontSize="small" />
-              Light
+              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
+                <LightModeOutlined fontSize="small" />
+                Light
+              </Box>
+              {themeMode === "light" ? <Check fontSize="small" color="primary" /> : null}
             </MenuItem>
             <MenuItem
               selected={themeMode === "dark"}
               onClick={() => handleThemeModeChange("dark")}
+              sx={{ display: "flex", justifyContent: "space-between", gap: 1.5 }}
             >
-              <DarkModeOutlined sx={{ mr: 1 }} fontSize="small" />
-              Dark
+              <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}>
+                <DarkModeOutlined fontSize="small" />
+                Dark
+              </Box>
+              {themeMode === "dark" ? <Check fontSize="small" color="primary" /> : null}
             </MenuItem>
           </>
         )}
