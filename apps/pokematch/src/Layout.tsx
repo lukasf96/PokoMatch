@@ -1,21 +1,27 @@
 import { Box, Chip, Stack, Typography } from "@mui/material";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { allPokemon } from "./services/pokemon";
-
-type Page = "matcher" | "overview" | "pokedex";
 
 interface Props {
   unlockedCount: number;
-  page: Page;
-  onPageChange: (page: Page) => void;
+  matchMakerPath: string;
+  overviewPath: string;
+  pokedexPath: string;
   children: React.ReactNode;
 }
 
 export default function Layout({
   unlockedCount,
-  page,
-  onPageChange,
+  matchMakerPath,
+  overviewPath,
+  pokedexPath,
   children,
 }: Props) {
+  const { pathname } = useLocation();
+  const isMatchMakerActive = pathname === matchMakerPath;
+  const isOverviewActive = pathname === overviewPath;
+  const isPokedexActive = pathname === pokedexPath;
+
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       {/* Header */}
@@ -59,29 +65,20 @@ export default function Layout({
         }}
       >
         <Stack direction="row" spacing={3}>
-          <NavLink
-            active={page === "matcher"}
-            onClick={() => onPageChange("matcher")}
-          >
+          <NavItem active={isMatchMakerActive} to={matchMakerPath}>
             Match-Maker
-          </NavLink>
-          <NavLink
-            active={page === "overview"}
-            onClick={() => onPageChange("overview")}
-          >
+          </NavItem>
+          <NavItem active={isOverviewActive} to={overviewPath}>
             Overview
-          </NavLink>
-          <NavLink
-            active={page === "pokedex"}
-            onClick={() => onPageChange("pokedex")}
-          >
+          </NavItem>
+          <NavItem active={isPokedexActive} to={pokedexPath}>
             Pokédex
             <Chip
               label={`${unlockedCount}/${allPokemon.length}`}
               size="small"
               sx={{ ml: 0.75, height: 16, fontSize: 10 }}
             />
-          </NavLink>
+          </NavItem>
         </Stack>
       </Box>
 
@@ -90,20 +87,21 @@ export default function Layout({
   );
 }
 
-function NavLink({
+function NavItem({
   active,
-  onClick,
+  to,
   children,
 }: {
   active: boolean;
-  onClick: () => void;
+  to: string;
   children: React.ReactNode;
 }) {
   return (
     <Box
-      component="button"
-      onClick={onClick}
+      component={RouterLink}
+      to={to}
       sx={{
+        textDecoration: "none",
         background: "none",
         border: "none",
         cursor: "pointer",
