@@ -14,7 +14,11 @@
         "Lots of water",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Bisasam",
+        "fr": "Bulbizarre"
+      }
     },
     {
       "id": "002",
@@ -29,7 +33,11 @@
         "Pretty flowers",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Bisaknosp",
+        "fr": "Herbizarre"
+      }
     },
     {
       "id": "003",
@@ -44,7 +52,11 @@
         "Pretty flowers",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Bisaflor",
+        "fr": "Florizarre"
+      }
     },
     {
       "id": "004",
@@ -59,7 +71,11 @@
         "Exercise",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Glumanda",
+        "fr": "Salamèche"
+      }
     },
     {
       "id": "005",
@@ -74,7 +90,11 @@
         "Exercise",
         "Rides"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Glutexo",
+        "fr": "Reptincel"
+      }
     },
     {
       "id": "006",
@@ -89,7 +109,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Glurak",
+        "fr": "Dracaufeu"
+      }
     },
     {
       "id": "007",
@@ -104,7 +128,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Schiggy",
+        "fr": "Carapuce"
+      }
     },
     {
       "id": "008",
@@ -119,7 +147,11 @@
         "Exercise",
         "Hard stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Schillok",
+        "fr": "Carabaffe"
+      }
     },
     {
       "id": "009",
@@ -134,7 +166,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Turtok",
+        "fr": "Tortank"
+      }
     },
     {
       "id": "010",
@@ -149,7 +185,11 @@
         "Lots of nature",
         "Play spaces"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Taubsi",
+        "fr": "Roucool"
+      }
     },
     {
       "id": "011",
@@ -164,7 +204,11 @@
         "Lots of nature",
         "Looks like food"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Tauboga",
+        "fr": "Roucoups"
+      }
     },
     {
       "id": "012",
@@ -179,7 +223,11 @@
         "Lots of nature",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Tauboss",
+        "fr": "Roucarnage"
+      }
     },
     {
       "id": "013",
@@ -194,7 +242,11 @@
         "Pretty flowers",
         "Lots of water"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Myrapla",
+        "fr": "Mystherbe"
+      }
     },
     {
       "id": "014",
@@ -209,7 +261,11 @@
         "Pretty flowers",
         "Garbage"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Duflor",
+        "fr": "Ortide"
+      }
     },
     {
       "id": "015",
@@ -224,7 +280,11 @@
         "Pretty flowers",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Giflor",
+        "fr": "Rafflesia"
+      }
     },
     {
       "id": "016",
@@ -239,7 +299,11 @@
         "Cute stuff",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Blubella",
+        "fr": "Joliflor"
+      }
     },
     {
       "id": "017",
@@ -254,7 +318,11 @@
         "Lots of dirt",
         "Looks like food"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Paras",
+        "fr": "Paras"
+      }
     },
     {
       "id": "018",
@@ -269,7 +337,11 @@
         "Lots of dirt",
         "Strange stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Parasek",
+        "fr": "Parasect"
+      }
     },
     {
       "id": "019",
@@ -284,7 +356,11 @@
         "Complicated stuff",
         "Letters and words"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Bluzuk",
+        "fr": "Mimitoss"
+      }
     },
     {
       "id": "020",
@@ -299,7 +375,11 @@
         "Nice breezes",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Omot",
+        "fr": "Aéromite"
+      }
     },
     {
       "id": "021",
@@ -314,7 +394,11 @@
         "Lots of water",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Knofensa",
+        "fr": "Chétiflor"
+      }
     },
     {
       "id": "022",
@@ -329,7 +413,11 @@
         "Colorful stuff",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Ultrigaria",
+        "fr": "Boustiflor"
+      }
     },
     {
       "id": "023",
@@ -344,7 +432,11 @@
         "Colorful stuff",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Sarzenia",
+        "fr": "Empiflor"
+      }
     },
     {
       "id": "024",
@@ -359,7 +451,11 @@
         "Soft stuff",
         "Healing"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Flegmon",
+        "fr": "Ramoloss"
+      }
     },
     {
       "id": "025",
@@ -374,7 +470,11 @@
         "Group Activities",
         "Healing"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Lahmus",
+        "fr": "Flagadoss"
+      }
     },
     {
       "id": "026",
@@ -389,7 +489,11 @@
         "Group Activities",
         "Healing"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Laschoking",
+        "fr": "Roigada"
+      }
     },
     {
       "id": "027",
@@ -404,7 +508,11 @@
         "Hard stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Magnetilo",
+        "fr": "Magnéti"
+      }
     },
     {
       "id": "028",
@@ -419,7 +527,11 @@
         "Gatherings",
         "Group Activities"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Magneton",
+        "fr": "Magnéton"
+      }
     },
     {
       "id": "029",
@@ -434,7 +546,11 @@
         "Gatherings",
         "Hard stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Magnezone",
+        "fr": "Magnézone"
+      }
     },
     {
       "id": "030",
@@ -449,7 +565,11 @@
         "Slender objects",
         "Exercise"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Onix",
+        "fr": "Onix"
+      }
     },
     {
       "id": "031",
@@ -464,7 +584,11 @@
         "Slender objects",
         "Hard stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Stahlos",
+        "fr": "Steelix"
+      }
     },
     {
       "id": "032",
@@ -479,7 +603,11 @@
         "Slender objects",
         "Group Activities"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Tragosso",
+        "fr": "Osselait"
+      }
     },
     {
       "id": "033",
@@ -494,7 +622,11 @@
         "Slender objects",
         "Luxury"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Knogga",
+        "fr": "Ossatueur"
+      }
     },
     {
       "id": "034",
@@ -509,7 +641,11 @@
         "Stone stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Rabauz",
+        "fr": "Debugant"
+      }
     },
     {
       "id": "035",
@@ -524,7 +660,11 @@
         "Stone stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Kicklee",
+        "fr": "Kicklee"
+      }
     },
     {
       "id": "036",
@@ -539,7 +679,11 @@
         "Stone stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Nockchan",
+        "fr": "Tygnon"
+      }
     },
     {
       "id": "037",
@@ -554,7 +698,11 @@
         "Stone stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Kapoera",
+        "fr": "Kapoera"
+      }
     },
     {
       "id": "038",
@@ -569,7 +717,11 @@
         "Soft stuff",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Smogon",
+        "fr": "Smogo"
+      }
     },
     {
       "id": "039",
@@ -584,7 +736,11 @@
         "Soft stuff",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Smogmog",
+        "fr": "Smogogo"
+      }
     },
     {
       "id": "040",
@@ -599,7 +755,11 @@
         "Pretty flowers",
         "Slender objects"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Tangela",
+        "fr": "Saquedeneu"
+      }
     },
     {
       "id": "041a",
@@ -615,7 +775,11 @@
         "Strange stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Tangoloss",
+        "fr": "Bouldeneu"
+      }
     },
     {
       "id": "041b",
@@ -630,7 +794,11 @@
         "Pretty flowers",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Tangoloss",
+        "fr": "Bouldeneu"
+      }
     },
     {
       "id": "042",
@@ -645,7 +813,11 @@
         "Sharp stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Sichlor",
+        "fr": "Insécateur"
+      }
     },
     {
       "id": "043",
@@ -660,7 +832,11 @@
         "Hard stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Scherox",
+        "fr": "Cizayox"
+      }
     },
     {
       "id": "044",
@@ -675,7 +851,11 @@
         "Sharp stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Pinsir",
+        "fr": "Scarabrute"
+      }
     },
     {
       "id": "045",
@@ -690,7 +870,11 @@
         "Rides",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Karpador",
+        "fr": "Magicarpe"
+      }
     },
     {
       "id": "046",
@@ -705,7 +889,11 @@
         "Cleanliness",
         "Slender objects"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Garados",
+        "fr": "Léviator"
+      }
     },
     {
       "id": "047",
@@ -714,7 +902,11 @@
       "specialties": ["Transform"],
       "idealHabitat": "Bright",
       "favorites": [],
-      "favoriteFlavor": null
+      "favoriteFlavor": null,
+      "localizedNames": {
+        "de": "Ditto",
+        "fr": "Métamorph"
+      }
     },
     {
       "id": "048",
@@ -729,7 +921,11 @@
         "Wobbly stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Hoothoot",
+        "fr": "Hoothoot"
+      }
     },
     {
       "id": "049",
@@ -744,7 +940,11 @@
         "Containers",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Noctuh",
+        "fr": "Noarfang"
+      }
     },
     {
       "id": "050",
@@ -759,7 +959,11 @@
         "Looks like food",
         "Exercise"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Skaraborn",
+        "fr": "Scarhino"
+      }
     },
     {
       "id": "051",
@@ -774,7 +978,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Volbeat",
+        "fr": "Muciole"
+      }
     },
     {
       "id": "052",
@@ -789,7 +997,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Illumise",
+        "fr": "Lumivole"
+      }
     },
     {
       "id": "053",
@@ -804,7 +1016,11 @@
         "Containers",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Schluppuck",
+        "fr": "Gloupti"
+      }
     },
     {
       "id": "054",
@@ -819,7 +1035,11 @@
         "Containers",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Schlukwech",
+        "fr": "Avaltout"
+      }
     },
     {
       "id": "055",
@@ -834,7 +1054,11 @@
         "Round stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Tuska",
+        "fr": "Cacnea"
+      }
     },
     {
       "id": "056",
@@ -849,7 +1073,11 @@
         "Shiny stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Noktuska",
+        "fr": "Cacturne"
+      }
     },
     {
       "id": "057",
@@ -864,7 +1092,11 @@
         "Gatherings",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Wadribie",
+        "fr": "Apitrini"
+      }
     },
     {
       "id": "058",
@@ -879,7 +1111,11 @@
         "Gatherings",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Honweisel",
+        "fr": "Apireine"
+      }
     },
     {
       "id": "059a",
@@ -894,7 +1130,11 @@
         "Colorful stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Schalellos",
+        "fr": "Sancoki"
+      }
     },
     {
       "id": "059b",
@@ -909,7 +1149,11 @@
         "Colorful stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Schalellos",
+        "fr": "Sancoki"
+      }
     },
     {
       "id": "060a",
@@ -924,7 +1168,11 @@
         "Cleanliness",
         "Containers"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Gastrodon",
+        "fr": "Tritosor"
+      }
     },
     {
       "id": "060b",
@@ -939,7 +1187,11 @@
         "Cleanliness",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Gastrodon",
+        "fr": "Tritosor"
+      }
     },
     {
       "id": "061",
@@ -954,7 +1206,11 @@
         "Cute stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Driftlon",
+        "fr": "Baudrive"
+      }
     },
     {
       "id": "062",
@@ -969,7 +1225,11 @@
         "Wobbly stuff",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Drifzepeli",
+        "fr": "Grodrive"
+      }
     },
     {
       "id": "063",
@@ -984,7 +1244,11 @@
         "Watching stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Rotomurf",
+        "fr": "Rototaupe"
+      }
     },
     {
       "id": "064",
@@ -999,7 +1263,11 @@
         "Watching stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Stalobor",
+        "fr": "Minotaupe"
+      }
     },
     {
       "id": "065",
@@ -1014,7 +1282,11 @@
         "Slender objects",
         "Blocky stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Praktibalk",
+        "fr": "Charpenti"
+      }
     },
     {
       "id": "066",
@@ -1029,7 +1301,11 @@
         "Slender objects",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Strepoli",
+        "fr": "Ouvrifier"
+      }
     },
     {
       "id": "067",
@@ -1044,7 +1320,11 @@
         "Slender objects",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Meistagrif",
+        "fr": "Bétochef"
+      }
     },
     {
       "id": "068",
@@ -1059,7 +1339,11 @@
         "Wobbly stuff",
         "Blocky stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Lichtel",
+        "fr": "Funécire"
+      }
     },
     {
       "id": "069",
@@ -1074,7 +1358,11 @@
         "Wobbly stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Laternecto",
+        "fr": "Mélancolux"
+      }
     },
     {
       "id": "070",
@@ -1089,7 +1377,11 @@
         "Wobbly stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Skelabra",
+        "fr": "Lugulabre"
+      }
     },
     {
       "id": "071",
@@ -1104,7 +1396,11 @@
         "Hard stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Milza",
+        "fr": "Coupenotte"
+      }
     },
     {
       "id": "072",
@@ -1119,7 +1415,11 @@
         "Exercise",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Sharfax",
+        "fr": "Incisache"
+      }
     },
     {
       "id": "073",
@@ -1134,7 +1434,11 @@
         "Exercise",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Maxax",
+        "fr": "Tranchodon"
+      }
     },
     {
       "id": "074",
@@ -1149,7 +1453,11 @@
         "Cleanliness",
         "Healing"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Viscora",
+        "fr": "Mucuscule"
+      }
     },
     {
       "id": "075",
@@ -1164,7 +1472,11 @@
         "Cleanliness",
         "Healing"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Viscargot",
+        "fr": "Colimucus"
+      }
     },
     {
       "id": "076",
@@ -1179,7 +1491,11 @@
         "Cleanliness",
         "Healing"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Viscogon",
+        "fr": "Muplodocus"
+      }
     },
     {
       "id": "077",
@@ -1194,7 +1510,11 @@
         "Slender objects",
         "Looks like food"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Urgl",
+        "fr": "Nigosier"
+      }
     },
     {
       "id": "078",
@@ -1209,7 +1529,11 @@
         "Pretty flowers",
         "Fabric"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pichu",
+        "fr": "Pichu"
+      }
     },
     {
       "id": "079a",
@@ -1224,7 +1548,11 @@
         "Healing",
         "Letters and words"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pikachu",
+        "fr": "Pikachu"
+      }
     },
     {
       "id": "079b",
@@ -1239,7 +1567,11 @@
         "Round stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Pikachu",
+        "fr": "Pikachu"
+      }
     },
     {
       "id": "080",
@@ -1254,7 +1586,11 @@
         "Round stuff",
         "Play spaces"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Raichu",
+        "fr": "Raichu"
+      }
     },
     {
       "id": "081",
@@ -1269,7 +1605,11 @@
         "Noisy stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Zubat",
+        "fr": "Nosferapti"
+      }
     },
     {
       "id": "082",
@@ -1284,7 +1624,11 @@
         "Noisy stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Golbat",
+        "fr": "Nosferalto"
+      }
     },
     {
       "id": "083",
@@ -1299,7 +1643,11 @@
         "Garbage",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Iksbat",
+        "fr": "Nostenfer"
+      }
     },
     {
       "id": "084",
@@ -1314,7 +1662,11 @@
         "Glass stuff",
         "Luxury"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Mauzi",
+        "fr": "Miaouss"
+      }
     },
     {
       "id": "085",
@@ -1329,7 +1681,11 @@
         "Watching stuff",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Snobilikat",
+        "fr": "Persian"
+      }
     },
     {
       "id": "086",
@@ -1344,7 +1700,11 @@
         "Complicated stuff",
         "Healing"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Enton",
+        "fr": "Psykokwak"
+      }
     },
     {
       "id": "087",
@@ -1359,7 +1719,11 @@
         "Complicated stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Entoron",
+        "fr": "Akwakwak"
+      }
     },
     {
       "id": "088",
@@ -1374,7 +1738,11 @@
         "Letters and words",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Fukano",
+        "fr": "Caninos"
+      }
     },
     {
       "id": "089",
@@ -1389,7 +1757,11 @@
         "Watching stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Arkani",
+        "fr": "Arcanin"
+      }
     },
     {
       "id": "090",
@@ -1404,7 +1776,11 @@
         "Slender objects",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Porenta",
+        "fr": "Canarticho"
+      }
     },
     {
       "id": "091",
@@ -1419,7 +1795,11 @@
         "Shiny stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Sleima",
+        "fr": "Tadmorv"
+      }
     },
     {
       "id": "092",
@@ -1434,7 +1814,11 @@
         "Shiny stuff",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Sleimok",
+        "fr": "Grotadmorv"
+      }
     },
     {
       "id": "093",
@@ -1449,7 +1833,11 @@
         "Containers",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Nebulak",
+        "fr": "Fantominus"
+      }
     },
     {
       "id": "094",
@@ -1464,7 +1852,11 @@
         "Wobbly stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Alpollo",
+        "fr": "Spectrum"
+      }
     },
     {
       "id": "095",
@@ -1479,7 +1871,11 @@
         "Rides",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Gengar",
+        "fr": "Ectoplasma"
+      }
     },
     {
       "id": "096",
@@ -1494,7 +1890,11 @@
         "Colorful stuff",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Voltobal",
+        "fr": "Voltorbe"
+      }
     },
     {
       "id": "097",
@@ -1509,7 +1909,11 @@
         "Play spaces",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Lektrobal",
+        "fr": "Électrode"
+      }
     },
     {
       "id": "098",
@@ -1524,7 +1928,11 @@
         "Watching stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Owei",
+        "fr": "Noeunoeuf"
+      }
     },
     {
       "id": "099",
@@ -1539,7 +1947,11 @@
         "Watching stuff",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kokowei",
+        "fr": "Noadkoko"
+      }
     },
     {
       "id": "100",
@@ -1554,7 +1966,11 @@
         "Round stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Wonneira",
+        "fr": "Ptiravi"
+      }
     },
     {
       "id": "101",
@@ -1569,7 +1985,11 @@
         "Round stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Chaneira",
+        "fr": "Leveinard"
+      }
     },
     {
       "id": "102",
@@ -1584,7 +2004,11 @@
         "Round stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Heiteira",
+        "fr": "Leuphorie"
+      }
     },
     {
       "id": "103",
@@ -1599,7 +2023,11 @@
         "Round stuff",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Elekid",
+        "fr": "Élekid"
+      }
     },
     {
       "id": "104",
@@ -1614,7 +2042,11 @@
         "Sharp stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Elektek",
+        "fr": "Élektek"
+      }
     },
     {
       "id": "105",
@@ -1629,7 +2061,11 @@
         "Hard stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Elevoltek",
+        "fr": "Élekable"
+      }
     },
     {
       "id": "106",
@@ -1644,7 +2080,11 @@
         "Watching stuff",
         "Healing"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Lapras",
+        "fr": "Lokhlass"
+      }
     },
     {
       "id": "107",
@@ -1659,7 +2099,11 @@
         "Wobbly stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Mampfaxo",
+        "fr": "Goinfrex"
+      }
     },
     {
       "id": "108a",
@@ -1674,7 +2118,11 @@
         "Watching stuff",
         "Strange stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Relaxo",
+        "fr": "Ronflex"
+      }
     },
     {
       "id": "108b",
@@ -1689,7 +2137,11 @@
         "Wobbly stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Relaxo",
+        "fr": "Ronflex"
+      }
     },
     {
       "id": "109",
@@ -1704,7 +2156,11 @@
         "Rides",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Webarak",
+        "fr": "Mimigal"
+      }
     },
     {
       "id": "110",
@@ -1719,7 +2175,11 @@
         "Rides",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Ariados",
+        "fr": "Migalos"
+      }
     },
     {
       "id": "111",
@@ -1734,7 +2194,11 @@
         "Cute stuff",
         "Fabric"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Voltilamm",
+        "fr": "Wattouat"
+      }
     },
     {
       "id": "112",
@@ -1749,7 +2213,11 @@
         "Cute stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Waaty",
+        "fr": "Lainergie"
+      }
     },
     {
       "id": "113",
@@ -1764,7 +2232,11 @@
         "Cute stuff",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Ampharos",
+        "fr": "Pharamp"
+      }
     },
     {
       "id": "114",
@@ -1779,7 +2251,11 @@
         "Healing",
         "Rides"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Azurill",
+        "fr": "Azurill"
+      }
     },
     {
       "id": "115",
@@ -1794,7 +2270,11 @@
         "Round stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Marill",
+        "fr": "Marill"
+      }
     },
     {
       "id": "116",
@@ -1809,7 +2289,11 @@
         "Wobbly stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Azumarill",
+        "fr": "Azumarill"
+      }
     },
     {
       "id": "117",
@@ -1824,7 +2308,11 @@
         "Cleanliness",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Felino",
+        "fr": "Axoloto"
+      }
     },
     {
       "id": "118",
@@ -1839,7 +2327,11 @@
         "Cleanliness",
         "Round stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Suelord",
+        "fr": "Terraiste"
+      }
     },
     {
       "id": "119",
@@ -1854,7 +2346,11 @@
         "Colorful stuff",
         "Shiny stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Farbeagle",
+        "fr": "Queulorior"
+      }
     },
     {
       "id": "120",
@@ -1869,7 +2365,11 @@
         "Containers",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Flemmli",
+        "fr": "Poussifeu"
+      }
     },
     {
       "id": "121",
@@ -1884,7 +2384,11 @@
         "Containers",
         "Construction"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Jungglut",
+        "fr": "Galifeu"
+      }
     },
     {
       "id": "122",
@@ -1899,7 +2403,11 @@
         "Containers",
         "Construction"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Lohgock",
+        "fr": "Braségali"
+      }
     },
     {
       "id": "123",
@@ -1914,7 +2422,11 @@
         "Ocean vibes",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Wingull",
+        "fr": "Goélise"
+      }
     },
     {
       "id": "124",
@@ -1929,7 +2441,11 @@
         "Ocean vibes",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pelipper",
+        "fr": "Bekipan"
+      }
     },
     {
       "id": "125",
@@ -1944,7 +2460,11 @@
         "Round stuff",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Makuhita",
+        "fr": "Makuhita"
+      }
     },
     {
       "id": "126",
@@ -1959,7 +2479,11 @@
         "Round stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Hariyama",
+        "fr": "Hariyama"
+      }
     },
     {
       "id": "127",
@@ -1974,7 +2498,11 @@
         "Complicated stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Absol",
+        "fr": "Absol"
+      }
     },
     {
       "id": "128",
@@ -1989,7 +2517,11 @@
         "Cleanliness",
         "Containers"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Plinfa",
+        "fr": "Tiplouf"
+      }
     },
     {
       "id": "129",
@@ -2004,7 +2536,11 @@
         "Cleanliness",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pliprin",
+        "fr": "Prinplouf"
+      }
     },
     {
       "id": "130",
@@ -2019,7 +2555,11 @@
         "Cleanliness",
         "Letters and words"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Impoleon",
+        "fr": "Pingoléon"
+      }
     },
     {
       "id": "131",
@@ -2034,7 +2574,11 @@
         "Cute stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Ohrdoch",
+        "fr": "Nanméouïe"
+      }
     },
     {
       "id": "132",
@@ -2049,7 +2593,11 @@
         "Shiny stuff",
         "Gatherings"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Unratütox",
+        "fr": "Miamiasme"
+      }
     },
     {
       "id": "133",
@@ -2064,7 +2612,11 @@
         "Shiny stuff",
         "Gatherings"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Deponitox",
+        "fr": "Miasmax"
+      }
     },
     {
       "id": "134",
@@ -2079,7 +2631,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Zorua",
+        "fr": "Zorua"
+      }
     },
     {
       "id": "135",
@@ -2094,7 +2650,11 @@
         "Strange stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Zoroark",
+        "fr": "Zoroark"
+      }
     },
     {
       "id": "136",
@@ -2109,7 +2669,11 @@
         "Cute stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Picochilla",
+        "fr": "Chinchidou"
+      }
     },
     {
       "id": "137",
@@ -2124,7 +2688,11 @@
         "Cute stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Chillabell",
+        "fr": "Pashmilla"
+      }
     },
     {
       "id": "138",
@@ -2139,7 +2707,11 @@
         "Lots of dirt",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Mabula",
+        "fr": "Larvibule"
+      }
     },
     {
       "id": "139",
@@ -2154,7 +2726,11 @@
         "Glass stuff",
         "Blocky stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Akkup",
+        "fr": "Chrysapile"
+      }
     },
     {
       "id": "140",
@@ -2169,7 +2745,11 @@
         "Glass stuff",
         "Nice breezes"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Donarion",
+        "fr": "Lucanon"
+      }
     },
     {
       "id": "141",
@@ -2184,7 +2764,11 @@
         "Fabric",
         "Group Activities"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Mimigma",
+        "fr": "Mimiqui"
+      }
     },
     {
       "id": "142",
@@ -2199,7 +2783,11 @@
         "Glass stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pamo",
+        "fr": "Pohm"
+      }
     },
     {
       "id": "143",
@@ -2214,7 +2802,11 @@
         "Glass stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pamamo",
+        "fr": "Pohmotte"
+      }
     },
     {
       "id": "144",
@@ -2229,7 +2821,11 @@
         "Healing",
         "Group Activities"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pamomamo",
+        "fr": "Pohmarmotte"
+      }
     },
     {
       "id": "145a",
@@ -2244,7 +2840,11 @@
         "Slender objects",
         "Gatherings"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Nigiragi",
+        "fr": "Nigirigon"
+      }
     },
     {
       "id": "145b",
@@ -2259,7 +2859,11 @@
         "Spinning stuff",
         "Blocky stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Nigiragi",
+        "fr": "Nigirigon"
+      }
     },
     {
       "id": "145c",
@@ -2274,7 +2878,11 @@
         "Letters and words",
         "Containers"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Nigiragi",
+        "fr": "Nigirigon"
+      }
     },
     {
       "id": "146",
@@ -2289,7 +2897,11 @@
         "Slender objects",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Rettan",
+        "fr": "Abo"
+      }
     },
     {
       "id": "147",
@@ -2304,7 +2916,11 @@
         "Slender objects",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Arbok",
+        "fr": "Arbok"
+      }
     },
     {
       "id": "148",
@@ -2319,7 +2935,11 @@
         "Healing",
         "Rides"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pii",
+        "fr": "Mélo"
+      }
     },
     {
       "id": "149",
@@ -2334,7 +2954,11 @@
         "Healing",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Piepi",
+        "fr": "Mélofée"
+      }
     },
     {
       "id": "150",
@@ -2349,7 +2973,11 @@
         "Healing",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Pixi",
+        "fr": "Mélodelfe"
+      }
     },
     {
       "id": "151",
@@ -2364,7 +2992,11 @@
         "Healing",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Fluffeluff",
+        "fr": "Toudoudou"
+      }
     },
     {
       "id": "152",
@@ -2379,7 +3011,11 @@
         "Healing",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pummeluff",
+        "fr": "Rondoudou"
+      }
     },
     {
       "id": "153",
@@ -2394,7 +3030,11 @@
         "Healing",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Knuddeluff",
+        "fr": "Grodoudou"
+      }
     },
     {
       "id": "154",
@@ -2409,7 +3049,11 @@
         "Group Activities",
         "Slender objects"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Digda",
+        "fr": "Taupiqueur"
+      }
     },
     {
       "id": "155",
@@ -2424,7 +3068,11 @@
         "Group Activities",
         "Slender objects"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Digdri",
+        "fr": "Triopikeur"
+      }
     },
     {
       "id": "156",
@@ -2439,7 +3087,11 @@
         "Hard stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Machollo",
+        "fr": "Machoc"
+      }
     },
     {
       "id": "157",
@@ -2454,7 +3106,11 @@
         "Hard stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Maschock",
+        "fr": "Machopeur"
+      }
     },
     {
       "id": "158",
@@ -2469,7 +3125,11 @@
         "Hard stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Machomei",
+        "fr": "Mackogneur"
+      }
     },
     {
       "id": "159",
@@ -2484,7 +3144,11 @@
         "Round stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kleinstein",
+        "fr": "Racaillou"
+      }
     },
     {
       "id": "160",
@@ -2499,7 +3163,11 @@
         "Round stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Georok",
+        "fr": "Gravalanch"
+      }
     },
     {
       "id": "161",
@@ -2514,7 +3182,11 @@
         "Round stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Geowaz",
+        "fr": "Grolem"
+      }
     },
     {
       "id": "162",
@@ -2529,7 +3201,11 @@
         "Cute stuff",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Magby",
+        "fr": "Magby"
+      }
     },
     {
       "id": "163",
@@ -2544,7 +3220,11 @@
         "Hard stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Magmar",
+        "fr": "Magmar"
+      }
     },
     {
       "id": "164",
@@ -2559,7 +3239,11 @@
         "Hard stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Magbrant",
+        "fr": "Maganon"
+      }
     },
     {
       "id": "165",
@@ -2574,7 +3258,11 @@
         "Wooden stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Mobai",
+        "fr": "Manzaï"
+      }
     },
     {
       "id": "166",
@@ -2589,7 +3277,11 @@
         "Wooden stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Mogelbaum",
+        "fr": "Simularbre"
+      }
     },
     {
       "id": "167",
@@ -2604,7 +3296,11 @@
         "Luxury",
         "Fabric"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Kramurx",
+        "fr": "Cornèbre"
+      }
     },
     {
       "id": "168",
@@ -2619,7 +3315,11 @@
         "Letters and words",
         "Glass stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Kramshef",
+        "fr": "Corboss"
+      }
     },
     {
       "id": "169",
@@ -2634,7 +3334,11 @@
         "Shiny stuff",
         "Looks like food"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Larvitar",
+        "fr": "Embrylex"
+      }
     },
     {
       "id": "170",
@@ -2649,7 +3353,11 @@
         "Shiny stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pupitar",
+        "fr": "Ymphect"
+      }
     },
     {
       "id": "171",
@@ -2664,7 +3372,11 @@
         "Shiny stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Despotar",
+        "fr": "Tyranocif"
+      }
     },
     {
       "id": "172",
@@ -2679,7 +3391,11 @@
         "Containers",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Loturzel",
+        "fr": "Nénupiot"
+      }
     },
     {
       "id": "173",
@@ -2694,7 +3410,11 @@
         "Containers",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Lombrero",
+        "fr": "Lombre"
+      }
     },
     {
       "id": "174",
@@ -2709,7 +3429,11 @@
         "Containers",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kappalores",
+        "fr": "Ludicolo"
+      }
     },
     {
       "id": "175",
@@ -2724,7 +3448,11 @@
         "Looks like food",
         "Group Activities"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Flunkifer",
+        "fr": "Mysdibule"
+      }
     },
     {
       "id": "176",
@@ -2739,7 +3467,11 @@
         "Hard stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Qurtel",
+        "fr": "Chartor"
+      }
     },
     {
       "id": "177",
@@ -2754,7 +3486,11 @@
         "Colorful stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Zirpurze",
+        "fr": "Crikzik"
+      }
     },
     {
       "id": "178",
@@ -2769,7 +3505,11 @@
         "Colorful stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Zirpeise",
+        "fr": "Mélokrik"
+      }
     },
     {
       "id": "179",
@@ -2784,7 +3524,11 @@
         "Play spaces",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Plaudagei",
+        "fr": "Pijako"
+      }
     },
     {
       "id": "180",
@@ -2799,7 +3543,11 @@
         "Gatherings",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Riolu",
+        "fr": "Riolu"
+      }
     },
     {
       "id": "181",
@@ -2814,7 +3562,11 @@
         "Complicated stuff",
         "Healing"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Lucario",
+        "fr": "Lucario"
+      }
     },
     {
       "id": "182",
@@ -2829,7 +3581,11 @@
         "Group Activities",
         "Blocky stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Rotom",
+        "fr": "Motisma"
+      }
     },
     {
       "id": "183",
@@ -2844,7 +3600,11 @@
         "Wooden stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Ignivor",
+        "fr": "Pyronille"
+      }
     },
     {
       "id": "184",
@@ -2859,7 +3619,11 @@
         "Wooden stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Ramoth",
+        "fr": "Pyrax"
+      }
     },
     {
       "id": "185",
@@ -2874,7 +3638,11 @@
         "Containers",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Bauz",
+        "fr": "Brindibou"
+      }
     },
     {
       "id": "186",
@@ -2889,7 +3657,11 @@
         "Slender objects",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Arboretoss",
+        "fr": "Efflèche"
+      }
     },
     {
       "id": "187",
@@ -2904,7 +3676,11 @@
         "Nice breezes",
         "Letters and words"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Silvarro",
+        "fr": "Archéduc"
+      }
     },
     {
       "id": "188",
@@ -2919,7 +3695,11 @@
         "Group Activities",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Hopplo",
+        "fr": "Flambino"
+      }
     },
     {
       "id": "189",
@@ -2934,7 +3714,11 @@
         "Group Activities",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kickerlo",
+        "fr": "Lapyro"
+      }
     },
     {
       "id": "190",
@@ -2949,7 +3733,11 @@
         "Group Activities",
         "Round stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Liberlo",
+        "fr": "Pyrobut"
+      }
     },
     {
       "id": "191",
@@ -2964,7 +3752,11 @@
         "Looks like food",
         "Round stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Raffel",
+        "fr": "Rongourmand"
+      }
     },
     {
       "id": "192",
@@ -2979,7 +3771,11 @@
         "Looks like food",
         "Luxury"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Schlaraffel",
+        "fr": "Rongrigou"
+      }
     },
     {
       "id": "193",
@@ -2994,7 +3790,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Klonkett",
+        "fr": "Charbi"
+      }
     },
     {
       "id": "194",
@@ -3009,7 +3809,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Wagong",
+        "fr": "Wagomine"
+      }
     },
     {
       "id": "195",
@@ -3024,7 +3828,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Montecarbo",
+        "fr": "Monthracite"
+      }
     },
     {
       "id": "196",
@@ -3039,7 +3847,11 @@
         "Glass stuff",
         "Garbage"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Toxel",
+        "fr": "Toxizap"
+      }
     },
     {
       "id": "197a",
@@ -3054,7 +3866,11 @@
         "Slender objects",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Riffex",
+        "fr": "Salarsen"
+      }
     },
     {
       "id": "197b",
@@ -3069,7 +3885,11 @@
         "Slender objects",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Riffex",
+        "fr": "Salarsen"
+      }
     },
     {
       "id": "198",
@@ -3084,7 +3904,11 @@
         "Lots of fire",
         "Letters and words"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Hefel",
+        "fr": "Pâtachiot"
+      }
     },
     {
       "id": "199",
@@ -3099,7 +3923,11 @@
         "Lots of fire",
         "Looks like food"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Backel",
+        "fr": "Briochien"
+      }
     },
     {
       "id": "200",
@@ -3114,7 +3942,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Knarbon",
+        "fr": "Charbambin"
+      }
     },
     {
       "id": "201",
@@ -3129,7 +3961,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Crimanzo",
+        "fr": "Carmadura"
+      }
     },
     {
       "id": "202",
@@ -3144,7 +3980,11 @@
         "Strange stuff",
         "Luxury"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Azugladis",
+        "fr": "Malvalame"
+      }
     },
     {
       "id": "203",
@@ -3159,7 +3999,11 @@
         "Shiny stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Lumispross",
+        "fr": "Germéclat"
+      }
     },
     {
       "id": "204",
@@ -3174,7 +4018,11 @@
         "Shiny stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Lumiflora",
+        "fr": "Floréclat"
+      }
     },
     {
       "id": "205",
@@ -3189,7 +4037,11 @@
         "Shiny stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Gierspenst",
+        "fr": "Mordudor"
+      }
     },
     {
       "id": "206",
@@ -3204,7 +4056,11 @@
         "Shiny stuff",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Monetigo",
+        "fr": "Gromago"
+      }
     },
     {
       "id": "207",
@@ -3219,7 +4075,11 @@
         "Round stuff",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Vulpix",
+        "fr": "Goupix"
+      }
     },
     {
       "id": "208",
@@ -3234,7 +4094,11 @@
         "Luxury",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Vulnona",
+        "fr": "Feunard"
+      }
     },
     {
       "id": "209",
@@ -3249,7 +4113,11 @@
         "Rides",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Quapsel",
+        "fr": "Ptitard"
+      }
     },
     {
       "id": "210",
@@ -3264,7 +4132,11 @@
         "Exercise",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Quaputzi",
+        "fr": "Têtarte"
+      }
     },
     {
       "id": "211",
@@ -3279,7 +4151,11 @@
         "Exercise",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Quappo",
+        "fr": "Tartard"
+      }
     },
     {
       "id": "212",
@@ -3294,7 +4170,11 @@
         "Gatherings",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Quaxo",
+        "fr": "Tarpaud"
+      }
     },
     {
       "id": "213",
@@ -3309,7 +4189,11 @@
         "Soft stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Abra",
+        "fr": "Abra"
+      }
     },
     {
       "id": "214",
@@ -3324,7 +4208,11 @@
         "Containers",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kadabra",
+        "fr": "Kadabra"
+      }
     },
     {
       "id": "215",
@@ -3339,7 +4227,11 @@
         "Letters and words",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Simsala",
+        "fr": "Alakazam"
+      }
     },
     {
       "id": "216",
@@ -3354,7 +4246,11 @@
         "Play spaces",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Pantimimi",
+        "fr": "Mime Jr."
+      }
     },
     {
       "id": "217",
@@ -3369,7 +4265,11 @@
         "Wobbly stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Pantimos",
+        "fr": "M. Mime"
+      }
     },
     {
       "id": "218",
@@ -3384,7 +4284,11 @@
         "Construction",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Porygon",
+        "fr": "Porygon"
+      }
     },
     {
       "id": "219",
@@ -3399,7 +4303,11 @@
         "Construction",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Porygon2",
+        "fr": "Porygon2"
+      }
     },
     {
       "id": "220",
@@ -3414,7 +4322,11 @@
         "Watching stuff",
         "Colorful stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Porygon-Z",
+        "fr": "Porygon-Z"
+      }
     },
     {
       "id": "221",
@@ -3429,7 +4341,11 @@
         "Cute stuff",
         "Slender objects"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Dratini",
+        "fr": "Minidraco"
+      }
     },
     {
       "id": "222",
@@ -3444,7 +4360,11 @@
         "Glass stuff",
         "Slender objects"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Dragonir",
+        "fr": "Draco"
+      }
     },
     {
       "id": "223",
@@ -3459,7 +4379,11 @@
         "Symbols",
         "Pretty flowers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Dragoran",
+        "fr": "Dracolosse"
+      }
     },
     {
       "id": "224",
@@ -3474,7 +4398,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Feurigel",
+        "fr": "Héricendre"
+      }
     },
     {
       "id": "225",
@@ -3489,7 +4417,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Igelavar",
+        "fr": "Feurisson"
+      }
     },
     {
       "id": "226",
@@ -3504,7 +4436,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Tornupto",
+        "fr": "Typhlosion"
+      }
     },
     {
       "id": "227",
@@ -3519,7 +4455,11 @@
         "Colorful stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Traunfugil",
+        "fr": "Feuforêve"
+      }
     },
     {
       "id": "228",
@@ -3534,7 +4474,11 @@
         "Wobbly stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Traunmagil",
+        "fr": "Magirêve"
+      }
     },
     {
       "id": "229",
@@ -3549,7 +4493,11 @@
         "Watching stuff",
         "Slender objects"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Girafarig",
+        "fr": "Girafarig"
+      }
     },
     {
       "id": "230",
@@ -3564,7 +4512,11 @@
         "Watching stuff",
         "Slender objects"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Farigiraf",
+        "fr": "Farigiraf"
+      }
     },
     {
       "id": "231",
@@ -3579,7 +4531,11 @@
         "Watching stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Trasla",
+        "fr": "Tarsal"
+      }
     },
     {
       "id": "232",
@@ -3594,7 +4550,11 @@
         "Watching stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Kirlia",
+        "fr": "Kirlia"
+      }
     },
     {
       "id": "233",
@@ -3609,7 +4569,11 @@
         "Watching stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Guardevoir",
+        "fr": "Gardevoir"
+      }
     },
     {
       "id": "234",
@@ -3624,7 +4588,11 @@
         "Construction",
         "Fabric"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Galagladi",
+        "fr": "Gallame"
+      }
     },
     {
       "id": "235",
@@ -3639,7 +4607,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Plusle",
+        "fr": "Posipi"
+      }
     },
     {
       "id": "236",
@@ -3654,7 +4626,11 @@
         "Cute stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Minun",
+        "fr": "Négapi"
+      }
     },
     {
       "id": "237",
@@ -3669,7 +4645,11 @@
         "Watching stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Knacklion",
+        "fr": "Kraknoix"
+      }
     },
     {
       "id": "238",
@@ -3684,7 +4664,11 @@
         "Luxury",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Vibrava",
+        "fr": "Vibraninf"
+      }
     },
     {
       "id": "239",
@@ -3699,7 +4683,11 @@
         "Stone stuff",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Libelldra",
+        "fr": "Libégon"
+      }
     },
     {
       "id": "240",
@@ -3714,7 +4702,11 @@
         "Watching stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Wablu",
+        "fr": "Tylton"
+      }
     },
     {
       "id": "241",
@@ -3729,7 +4721,11 @@
         "Watching stuff",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Altaria",
+        "fr": "Altaria"
+      }
     },
     {
       "id": "242",
@@ -3744,7 +4740,11 @@
         "Glass stuff",
         "Fabric"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Zwirrlicht",
+        "fr": "Skelénox"
+      }
     },
     {
       "id": "243",
@@ -3759,7 +4759,11 @@
         "Soft stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Zwirrklop",
+        "fr": "Téraclope"
+      }
     },
     {
       "id": "244",
@@ -3774,7 +4778,11 @@
         "Group Activities",
         "Containers"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Zwirrfinst",
+        "fr": "Noctunoir"
+      }
     },
     {
       "id": "245",
@@ -3789,7 +4797,11 @@
         "Complicated stuff",
         "Stone stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Tanhel",
+        "fr": "Terhal"
+      }
     },
     {
       "id": "246",
@@ -3804,7 +4816,11 @@
         "Complicated stuff",
         "Stone stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Metang",
+        "fr": "Métang"
+      }
     },
     {
       "id": "247",
@@ -3819,7 +4835,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Metagross",
+        "fr": "Métalosse"
+      }
     },
     {
       "id": "248",
@@ -3834,7 +4854,11 @@
         "Wobbly stuff",
         "Shiny stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Serpifeu",
+        "fr": "Vipélierre"
+      }
     },
     {
       "id": "249",
@@ -3849,7 +4873,11 @@
         "Cleanliness",
         "Shiny stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Efoserp",
+        "fr": "Lianaja"
+      }
     },
     {
       "id": "250",
@@ -3864,7 +4892,11 @@
         "Containers",
         "Slender objects"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Serpiroyal",
+        "fr": "Majaspic"
+      }
     },
     {
       "id": "251",
@@ -3879,7 +4911,11 @@
         "Watching stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Froxy",
+        "fr": "Grenousse"
+      }
     },
     {
       "id": "252",
@@ -3894,7 +4930,11 @@
         "Watching stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Amphizel",
+        "fr": "Croâporal"
+      }
     },
     {
       "id": "253",
@@ -3909,7 +4949,11 @@
         "Shiny stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Quajutsu",
+        "fr": "Amphinobi"
+      }
     },
     {
       "id": "254",
@@ -3924,7 +4968,11 @@
         "Group Activities",
         "Looks like food"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Dedenne",
+        "fr": "Dedenne"
+      }
     },
     {
       "id": "255",
@@ -3939,7 +4987,11 @@
         "Luxury",
         "Looks like food"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "eF-eM",
+        "fr": "Sonistrelle"
+      }
     },
     {
       "id": "256",
@@ -3954,7 +5006,11 @@
         "Play spaces",
         "Looks like food"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "UHaFnir",
+        "fr": "Bruyverne"
+      }
     },
     {
       "id": "257",
@@ -3969,7 +5025,11 @@
         "Slender objects",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Meikro",
+        "fr": "Minisange"
+      }
     },
     {
       "id": "258",
@@ -3984,7 +5044,11 @@
         "Slender objects",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kranoviz",
+        "fr": "Bleuseille"
+      }
     },
     {
       "id": "259",
@@ -3999,7 +5063,11 @@
         "Containers",
         "Wooden stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Krarmor",
+        "fr": "Corvaillus"
+      }
     },
     {
       "id": "260",
@@ -4014,7 +5082,11 @@
         "Strange stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Grolldra",
+        "fr": "Fantyrm"
+      }
     },
     {
       "id": "261",
@@ -4029,7 +5101,11 @@
         "Strange stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Phandra",
+        "fr": "Dispareptil"
+      }
     },
     {
       "id": "262",
@@ -4044,7 +5120,11 @@
         "Strange stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Katapuldra",
+        "fr": "Lanssorien"
+      }
     },
     {
       "id": "263",
@@ -4059,7 +5139,11 @@
         "Colorful stuff",
         "Cute stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Felori",
+        "fr": "Poussacha"
+      }
     },
     {
       "id": "264",
@@ -4074,7 +5158,11 @@
         "Colorful stuff",
         "Cute stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Feliospa",
+        "fr": "Matourgeon"
+      }
     },
     {
       "id": "265",
@@ -4089,7 +5177,11 @@
         "Luxury",
         "Cute stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Maskagato",
+        "fr": "Miascarade"
+      }
     },
     {
       "id": "266",
@@ -4104,7 +5196,11 @@
         "Gatherings",
         "Complicated stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Voltrel",
+        "fr": "Zapétrel"
+      }
     },
     {
       "id": "267",
@@ -4119,7 +5215,11 @@
         "Gatherings",
         "Slender objects"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Voltrean",
+        "fr": "Fulgulairo"
+      }
     },
     {
       "id": "268",
@@ -4134,7 +5234,11 @@
         "Looks like food",
         "Exercise"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Forgita",
+        "fr": "Forgerette"
+      }
     },
     {
       "id": "269",
@@ -4149,7 +5253,11 @@
         "Group Activities",
         "Exercise"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Tafforgita",
+        "fr": "Forgella"
+      }
     },
     {
       "id": "270",
@@ -4164,7 +5272,11 @@
         "Blocky stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Granforgita",
+        "fr": "Forgelina"
+      }
     },
     {
       "id": "271",
@@ -4179,7 +5291,11 @@
         "Shiny stuff",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Aerodactyl",
+        "fr": "Ptéra"
+      }
     },
     {
       "id": "272",
@@ -4194,7 +5310,11 @@
         "Group Activities",
         "Exercise"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Koknodon",
+        "fr": "Kranidos"
+      }
     },
     {
       "id": "273",
@@ -4209,7 +5329,11 @@
         "Luxury",
         "Exercise"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Rameidon",
+        "fr": "Charkos"
+      }
     },
     {
       "id": "274",
@@ -4224,7 +5348,11 @@
         "Luxury",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Schilterus",
+        "fr": "Dinoclier"
+      }
     },
     {
       "id": "275",
@@ -4239,7 +5367,11 @@
         "Luxury",
         "Exercise"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Bollterus",
+        "fr": "Bastiodon"
+      }
     },
     {
       "id": "276",
@@ -4254,7 +5386,11 @@
         "Luxury",
         "Exercise"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Balgoras",
+        "fr": "Ptyranidur"
+      }
     },
     {
       "id": "277",
@@ -4269,7 +5405,11 @@
         "Luxury",
         "Exercise"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Monargoras",
+        "fr": "Rexillius"
+      }
     },
     {
       "id": "278",
@@ -4284,7 +5424,11 @@
         "Group Activities",
         "Containers"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Amarino",
+        "fr": "Amagara"
+      }
     },
     {
       "id": "279",
@@ -4299,7 +5443,11 @@
         "Noisy stuff",
         "Symbols"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Amagarga",
+        "fr": "Dragmara"
+      }
     },
     {
       "id": "280",
@@ -4314,7 +5462,11 @@
         "Letters and words",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Evoli",
+        "fr": "Évoli"
+      }
     },
     {
       "id": "281",
@@ -4329,7 +5481,11 @@
         "Pretty flowers",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Aquana",
+        "fr": "Aquali"
+      }
     },
     {
       "id": "282",
@@ -4344,7 +5500,11 @@
         "Glass stuff",
         "Sharp stuff"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Blitza",
+        "fr": "Voltali"
+      }
     },
     {
       "id": "283",
@@ -4359,7 +5519,11 @@
         "Metal stuff",
         "Rides"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Flamara",
+        "fr": "Pyroli"
+      }
     },
     {
       "id": "284",
@@ -4374,7 +5538,11 @@
         "Complicated stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Psiana",
+        "fr": "Mentali"
+      }
     },
     {
       "id": "285",
@@ -4389,7 +5557,11 @@
         "Letters and words",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Nachtara",
+        "fr": "Noctali"
+      }
     },
     {
       "id": "286",
@@ -4404,7 +5576,11 @@
         "Fabric",
         "Healing"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Folipurba",
+        "fr": "Phyllali"
+      }
     },
     {
       "id": "287",
@@ -4419,7 +5595,11 @@
         "Glass stuff",
         "Group Activities"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Glaziola",
+        "fr": "Givrali"
+      }
     },
     {
       "id": "288",
@@ -4434,7 +5614,11 @@
         "Noisy stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Feelinara",
+        "fr": "Nymphali"
+      }
     },
     {
       "id": "289",
@@ -4450,7 +5634,11 @@
         "Shiny stuff",
         "Glass stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Kyogre",
+        "fr": "Kyogre"
+      }
     },
     {
       "id": "290",
@@ -4465,7 +5653,11 @@
         "Glass stuff",
         "Luxury"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Raikou",
+        "fr": "Raikou"
+      }
     },
     {
       "id": "291",
@@ -4480,7 +5672,11 @@
         "Exercise",
         "Luxury"
       ],
-      "favoriteFlavor": "Bitter flavors"
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Entei",
+        "fr": "Entei"
+      }
     },
     {
       "id": "292",
@@ -4495,7 +5691,11 @@
         "Watching stuff",
         "Healing"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Suicune",
+        "fr": "Suicune"
+      }
     },
     {
       "id": "293",
@@ -4510,7 +5710,11 @@
         "Containers",
         "Symbols"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Volcanion",
+        "fr": "Volcanion"
+      }
     },
     {
       "id": "294",
@@ -4525,7 +5729,11 @@
         "Symbols",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Arktos",
+        "fr": "Artikodin"
+      }
     },
     {
       "id": "295",
@@ -4540,7 +5748,11 @@
         "Symbols",
         "Luxury"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Zapdos",
+        "fr": "Électhor"
+      }
     },
     {
       "id": "296",
@@ -4555,7 +5767,11 @@
         "Symbols",
         "Luxury"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Lavados",
+        "fr": "Sulfura"
+      }
     },
     {
       "id": "297",
@@ -4571,7 +5787,11 @@
         "Ocean vibes",
         "Symbols"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Lugia",
+        "fr": "Lugia"
+      }
     },
     {
       "id": "298",
@@ -4587,7 +5807,11 @@
         "Lots of nature",
         "Symbols"
       ],
-      "favoriteFlavor": "Spicy flavors"
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Ho-Oh",
+        "fr": "Ho-Oh"
+      }
     },
     {
       "id": "299",
@@ -4602,7 +5826,11 @@
         "Complicated stuff",
         "Stone stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Mewtu",
+        "fr": "Mewtwo"
+      }
     },
     {
       "id": "300",
@@ -4617,7 +5845,11 @@
         "Complicated stuff",
         "Play spaces"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Mew",
+        "fr": "Mew"
+      }
     }
   ],
   "event": [
@@ -4634,7 +5866,11 @@
         "Pretty flowers",
         "Wobbly stuff"
       ],
-      "favoriteFlavor": "Sweet flavors"
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Hoppspross",
+        "fr": "Granivol"
+      }
     },
     {
       "id": "e002",
@@ -4649,7 +5885,11 @@
         "Pretty flowers",
         "Spinning stuff"
       ],
-      "favoriteFlavor": "Dry flavors"
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Hubelupf",
+        "fr": "Floravol"
+      }
     },
     {
       "id": "e003",
@@ -4664,7 +5904,11 @@
         "Pretty flowers",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sour flavors"
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Papungha",
+        "fr": "Cotovol"
+      }
     }
   ]
 }

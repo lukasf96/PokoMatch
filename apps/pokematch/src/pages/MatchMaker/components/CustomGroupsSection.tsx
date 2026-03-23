@@ -14,6 +14,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { getPokemonDisplayName } from "../../../services/pokemon-localization";
+import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
 import GroupCard from "./GroupCard";
 
@@ -64,6 +66,8 @@ export function CustomGroupsSection({
   onAddPokemon,
   onRemovePokemon,
 }: CustomGroupsSectionProps) {
+  const nameLanguage = useStore((state) => state.nameLanguage);
+
   return (
     <Accordion
       defaultExpanded
@@ -150,7 +154,7 @@ export function CustomGroupsSection({
                       group.length >= 4 || groupAvailablePokemon.length === 0
                     }
                     getOptionLabel={(option) =>
-                      `${option.name} (#${option.dexNumber})`
+                      `${getPokemonDisplayName(option, nameLanguage)} (#${option.dexNumber})`
                     }
                     renderInput={(params) => (
                       <TextField {...params} size="small" label="Add Pokemon" />
@@ -174,7 +178,7 @@ export function CustomGroupsSection({
                         {groupSuggestions.map((suggestion) => (
                           <Chip
                             key={`suggest-${gi}-${suggestion.id}`}
-                            label={suggestion.name}
+                            label={getPokemonDisplayName(suggestion, nameLanguage)}
                             size="small"
                             onClick={() => onAddPokemon(gi, suggestion.id)}
                           />
@@ -193,7 +197,7 @@ export function CustomGroupsSection({
                       {group.map((member) => (
                         <Chip
                           key={`member-${gi}-${member.id}`}
-                          label={`Remove ${member.name}`}
+                          label={`Remove ${getPokemonDisplayName(member, nameLanguage)}`}
                           size="small"
                           variant="outlined"
                           onDelete={() => onRemovePokemon(gi, member.id)}

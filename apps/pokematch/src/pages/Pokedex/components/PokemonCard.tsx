@@ -5,6 +5,8 @@ import { Box, Chip, Divider, Paper, Stack, Typography } from "@mui/material";
 import { memo } from "react";
 import { PokemonSpriteAvatar } from "../../../components/pokemon-sprite-avatar/PokemonSpriteAvatar";
 import { habitatColors, habitatIcons } from "../../../services/habitatColors";
+import { getPokemonDisplayName } from "../../../services/pokemon-localization";
+import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
 
 interface PokemonCardProps {
@@ -26,6 +28,8 @@ export const PokemonCard = memo(function PokemonCard({
   const HabitatIcon = habitatIcons[pokemon.idealHabitat as Habitat];
   const isEvent = pokemon.id.startsWith("e");
   const isNotHabitable = pokemon.isHabitable === false;
+  const nameLanguage = useStore((state) => state.nameLanguage);
+  const pokemonDisplayName = getPokemonDisplayName(pokemon, nameLanguage);
 
   return (
     <Paper
@@ -73,7 +77,7 @@ export const PokemonCard = memo(function PokemonCard({
             noWrap
             color={unlocked ? colors.text : "text.secondary"}
           >
-            {pokemon.name}
+            {pokemonDisplayName}
           </Typography>
           {showEventBadge && isEvent && (
             <Chip

@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vendor:sprites": "node ./scripts/vendor-pokemon-sprites.mjs"
+    "vendor:sprites": "node ./scripts/vendor-pokemon-sprites.mjs",
+    "enrich:pokedex:localizations": "node ./scripts/enrich-pokedex-localizations.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

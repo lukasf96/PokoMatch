@@ -14,7 +14,9 @@ import {
   getGroupHabitats,
 } from "../../../services/habitat-conflicts";
 import { habitatColors, habitatIcons } from "../../../services/habitatColors";
+import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { groupScore } from "../../../services/matching.service";
+import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
 
 interface GroupCardProps {
@@ -28,6 +30,9 @@ function isEventPokemon(p: Pokemon): boolean {
 }
 
 function PokemonIdentity({ pokemon }: { pokemon: Pokemon }) {
+  const nameLanguage = useStore((state) => state.nameLanguage);
+  const pokemonDisplayName = getPokemonDisplayName(pokemon, nameLanguage);
+
   return (
     <Stack
       direction="row"
@@ -47,7 +52,7 @@ function PokemonIdentity({ pokemon }: { pokemon: Pokemon }) {
         noWrap
         sx={{ flex: "1 1 auto", minWidth: 0 }}
       >
-        {pokemon.name}
+        {pokemonDisplayName}
       </Typography>
       {isEventPokemon(pokemon) && (
         <Chip

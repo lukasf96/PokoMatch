@@ -38,10 +38,12 @@ const debouncedPersistStorage = createDebouncedJsonStorage(320);
 const allIds = allPokemon.map((pokemon) => pokemon.id);
 
 interface AppState {
+  nameLanguage: "en" | "de" | "fr";
   // Set of Pokemon IDs currently selected by the user
   unlockedIds: Set<string>;
   customGroups: string[][];
 
+  setNameLanguage: (language: "en" | "de" | "fr") => void;
   togglePokemon: (id: string) => void;
   unlockAll: () => void;
   lockAll: () => void;
@@ -53,6 +55,7 @@ interface AppState {
 
 // Zustand persist doesn't handle Set natively — store as array and convert
 interface PersistedState {
+  nameLanguage?: "en" | "de" | "fr";
   unlockedIds: string[];
   customGroups?: string[][];
 }
@@ -60,9 +63,11 @@ interface PersistedState {
 export const useStore = create<AppState>()(
   persist(
     (set) => ({
+      nameLanguage: "en",
       unlockedIds: new Set(allIds),
       customGroups: [],
 
+      setNameLanguage: (language) => set({ nameLanguage: language }),
       togglePokemon: (id) =>
         set((state) => {
           const next = new Set(state.unlockedIds);
@@ -122,6 +127,7 @@ export const useStore = create<AppState>()(
             ...parsed,
             state: {
               ...parsed.state,
+              nameLanguage: parsed.state.nameLanguage ?? "en",
               unlockedIds: new Set(parsed.state.unlockedIds ?? allIds),
               customGroups: parsed.state.customGroups ?? [],
             },

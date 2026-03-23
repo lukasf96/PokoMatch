@@ -1,4 +1,12 @@
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Chip,
+  FormControl,
+  MenuItem,
+  Select,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { appRoutes } from "./router/routes";
 import { allPokemon } from "./services/pokemon";
@@ -12,6 +20,8 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const unlockedCount = useStore((s) => s.unlockedIds.size);
+  const nameLanguage = useStore((s) => s.nameLanguage);
+  const setNameLanguage = useStore((s) => s.setNameLanguage);
   const { pathname } = useLocation();
   const isMatchMakerActive = pathname === appRoutes.matchmaker;
   const isOverviewActive = pathname === appRoutes.overview;
@@ -47,7 +57,25 @@ export default function Layout({ children }: LayoutProps) {
           alignItems="center"
           flexWrap="wrap"
           useFlexGap
-        />
+        >
+          <Typography variant="body2" color="text.secondary">
+            Name language
+          </Typography>
+          <FormControl size="small" sx={{ minWidth: 90 }}>
+            <Select
+              value={nameLanguage}
+              onChange={(event) =>
+                setNameLanguage(event.target.value as "en" | "de" | "fr")
+              }
+              displayEmpty
+              sx={{ fontSize: 12, height: 30 }}
+            >
+              <MenuItem value="en">EN</MenuItem>
+              <MenuItem value="de">DE</MenuItem>
+              <MenuItem value="fr">FR</MenuItem>
+            </Select>
+          </FormControl>
+        </Stack>
       </Box>
 
       {/* Page nav */}
