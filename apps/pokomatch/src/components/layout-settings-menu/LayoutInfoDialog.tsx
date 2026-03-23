@@ -59,6 +59,12 @@ export function LayoutInfoDialog({ isOpen, onClose }: LayoutInfoDialogProps) {
               PokeAPI/sprites
             </Link>
           </Typography>
+          <br></br>
+          <Typography variant="caption" color="text.secondary">
+            PokoMatch is a fan-made project and is not affiliated with,
+            endorsed, sponsored, or specifically approved by Nintendo, GAME
+            FREAK or The Pokemon Company.
+          </Typography>
         </Stack>
       </DialogContent>
       <DialogActions>
