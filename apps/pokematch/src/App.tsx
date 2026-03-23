@@ -9,7 +9,7 @@ import { useStore } from "./store";
 type Page = "matcher" | "overview" | "pokedex";
 
 export default function App() {
-  const customUnlockedCount = useStore((s) =>
+  const unlockedCount = useStore((s) =>
     allPokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
   );
 
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <Layout
-      customUnlockedCount={customUnlockedCount}
+      unlockedCount={unlockedCount}
       page={page}
       onPageChange={setPage}
     >

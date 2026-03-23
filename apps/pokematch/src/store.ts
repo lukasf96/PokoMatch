@@ -35,17 +35,13 @@ function createDebouncedJsonStorage(delayMs: number): StateStorage {
 
 const debouncedPersistStorage = createDebouncedJsonStorage(320)
 
-export type AppMode = 'standard' | 'custom'
-
 const allIds = allPokemon.map((pokemon) => pokemon.id)
 
 interface AppState {
-  mode: AppMode
-  // Set of pokemon IDs the player has unlocked (only relevant in custom mode)
+  // Set of Pokemon IDs currently selected by the user
   unlockedIds: Set<string>
   customGroups: string[][]
 
-  setMode: (mode: AppMode) => void
   togglePokemon: (id: string) => void
   unlockAll: () => void
   lockAll: () => void
@@ -57,7 +53,6 @@ interface AppState {
 
 // Zustand persist doesn't handle Set natively — store as array and convert
 interface PersistedState {
-  mode: AppMode
   unlockedIds: string[]
   customGroups?: string[][]
 }
@@ -65,11 +60,8 @@ interface PersistedState {
 export const useStore = create<AppState>()(
   persist(
     (set) => ({
-      mode: 'standard',
       unlockedIds: new Set(allIds),
       customGroups: [],
-
-      setMode: (mode) => set({ mode }),
 
       togglePokemon: (id) =>
         set((state) => {

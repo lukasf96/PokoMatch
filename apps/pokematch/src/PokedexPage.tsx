@@ -25,7 +25,6 @@ import type { Habitat, Pokemon } from "./types";
 type Filter = "all" | "unlocked" | "locked";
 
 export default function PokedexPage() {
-  const mode = useStore((s) => s.mode);
   const togglePokemon = useStore((s) => s.togglePokemon);
   const unlockAll = useStore((s) => s.unlockAll);
   const lockAll = useStore((s) => s.lockAll);
@@ -34,7 +33,7 @@ export default function PokedexPage() {
   const [habitatFilter, setHabitatFilter] = useState<Habitat | "all">("all");
   const [statusFilter, setStatusFilter] = useState<Filter>("all");
 
-  const effectiveStatusFilter = mode === "custom" ? statusFilter : "all";
+  const effectiveStatusFilter = statusFilter;
 
   const filterList = useMemo(
     () =>
@@ -70,13 +69,12 @@ export default function PokedexPage() {
     [],
   );
 
-  const isCustom = mode === "custom";
   const totalCount = allPokemon.length;
 
   return (
     <Container maxWidth="lg" sx={{ py: 3 }}>
       <Typography variant="subtitle1" fontWeight={700} mb={2}>
-        {isCustom ? "Your Pokédex" : "Pokédex"}
+        Pokédex
       </Typography>
 
       {/* Toolbar */}
@@ -121,34 +119,30 @@ export default function PokedexPage() {
           ))}
         </ToggleButtonGroup>
 
-        {isCustom && (
-          <ToggleButtonGroup
-            size="small"
-            exclusive
-            value={statusFilter}
-            onChange={(_, v) => v !== null && setStatusFilter(v)}
-          >
-            <ToggleButton value="all">All</ToggleButton>
-            <ToggleButton value="unlocked">Unlocked</ToggleButton>
-            <ToggleButton value="locked">Locked</ToggleButton>
-          </ToggleButtonGroup>
-        )}
+        <ToggleButtonGroup
+          size="small"
+          exclusive
+          value={statusFilter}
+          onChange={(_, v) => v !== null && setStatusFilter(v)}
+        >
+          <ToggleButton value="all">All</ToggleButton>
+          <ToggleButton value="unlocked">Unlocked</ToggleButton>
+          <ToggleButton value="locked">Locked</ToggleButton>
+        </ToggleButtonGroup>
 
-        {isCustom && (
-          <Stack direction="row" spacing={1} ml={{ sm: "auto" }}>
-            <Button size="small" variant="outlined" onClick={unlockAll}>
-              Select all
-            </Button>
-            <Button
-              size="small"
-              variant="outlined"
-              color="warning"
-              onClick={lockAll}
-            >
-              Deselect all
-            </Button>
-          </Stack>
-        )}
+        <Stack direction="row" spacing={1} ml={{ sm: "auto" }}>
+          <Button size="small" variant="outlined" onClick={unlockAll}>
+            Select all
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            color="warning"
+            onClick={lockAll}
+          >
+            Deselect all
+          </Button>
+        </Stack>
       </Stack>
 
       {/* Count summary */}
@@ -172,7 +166,7 @@ export default function PokedexPage() {
         <PokedexSections
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
-          interactive={isCustom}
+          interactive
           onToggle={togglePokemon}
         />
       ) : (
@@ -180,7 +174,7 @@ export default function PokedexPage() {
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
           status={effectiveStatusFilter}
-          interactive={isCustom}
+          interactive
           onToggle={togglePokemon}
         />
       )}

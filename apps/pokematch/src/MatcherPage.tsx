@@ -9,7 +9,6 @@ import { useStore } from './store'
 import type { Pokemon } from './types'
 
 export default function MatcherPage() {
-  const mode = useStore((s) => s.mode)
   const unlockedIds = useStore((s) => s.unlockedIds)
   const customGroups = useStore((s) => s.customGroups)
   const addCustomGroup = useStore((s) => s.addCustomGroup)
@@ -18,9 +17,8 @@ export default function MatcherPage() {
   const removePokemonFromCustomGroup = useStore((s) => s.removePokemonFromCustomGroup)
 
   const activePokemon = useMemo(() => {
-    if (mode !== 'custom') return habitablePokemon
     return habitablePokemon.filter((p) => unlockedIds.has(p.id))
-  }, [mode, unlockedIds])
+  }, [unlockedIds])
 
   const pokemonById = useMemo(
     () =>
@@ -60,11 +58,9 @@ export default function MatcherPage() {
         <Typography color="text.secondary" mb={1}>
           No Pokémon available with current settings.
         </Typography>
-        {mode === 'custom' && (
-          <Typography variant="body2" color="text.secondary">
-            Go to Pokédex and unlock some Pokémon first.
-          </Typography>
-        )}
+        <Typography variant="body2" color="text.secondary">
+          Go to Pokédex and unlock some Pokémon first.
+        </Typography>
       </Container>
     )
   }

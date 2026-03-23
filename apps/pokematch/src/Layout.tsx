@@ -2,31 +2,25 @@ import {
   Box,
   Chip,
   Stack,
-  ToggleButton,
-  ToggleButtonGroup,
   Typography,
 } from "@mui/material";
 import { allPokemon } from "./pokemon";
-import { useStore } from "./store";
 
 type Page = "matcher" | "overview" | "pokedex";
 
 interface Props {
-  customUnlockedCount: number;
+  unlockedCount: number;
   page: Page;
   onPageChange: (page: Page) => void;
   children: React.ReactNode;
 }
 
 export default function Layout({
-  customUnlockedCount,
+  unlockedCount,
   page,
   onPageChange,
   children,
 }: Props) {
-  const mode = useStore((s) => s.mode);
-  const setMode = useStore((s) => s.setMode);
-
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       {/* Header */}
@@ -51,23 +45,7 @@ export default function Layout({
           </Typography>
         </Box>
 
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          flexWrap="wrap"
-          useFlexGap
-        >
-          <ToggleButtonGroup
-            size="small"
-            exclusive
-            value={mode}
-            onChange={(_, v) => v && setMode(v)}
-          >
-            <ToggleButton value="standard">Standard</ToggleButton>
-            <ToggleButton value="custom">Custom</ToggleButton>
-          </ToggleButtonGroup>
-        </Stack>
+        <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap />
       </Box>
 
       {/* Page nav */}
@@ -98,11 +76,7 @@ export default function Layout({
           >
             Pokédex
             <Chip
-              label={
-                mode === "custom"
-                  ? `${customUnlockedCount}/${allPokemon.length}`
-                  : `${allPokemon.length}`
-              }
+              label={`${unlockedCount}/${allPokemon.length}`}
               size="small"
               sx={{ ml: 0.75, height: 16, fontSize: 10 }}
             />
