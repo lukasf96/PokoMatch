@@ -1,11 +1,9 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AddIcon from "@mui/icons-material/Add";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Chip,
-  IconButton,
   Stack,
   Typography,
 } from "@mui/material";
@@ -73,22 +71,15 @@ export function AutoGroupsSection({
         <Stack spacing={2}>
           {groups.map((group, index) => (
             <Stack key={groupStableKey(group)} spacing={1}>
-              <Stack direction="row" alignItems="center" spacing={0.5}>
-                <Typography variant="caption" color="text.secondary">
-                  Suggested Group {index + 1}
-                </Typography>
-                <IconButton
-                  size="small"
-                  aria-label={`Quick add suggested group ${index + 1}`}
-                  onClick={() => onQuickAddGroup(group)}
-                >
-                  <AddIcon fontSize="small" />
-                </IconButton>
-              </Stack>
               <GroupCard
                 group={group}
                 groupNumber={index + 1}
                 habitat={getDisplayHabitat(group)}
+                groupAction={{
+                  ariaLabel: `Quick add suggested group ${index + 1}`,
+                  onClick: () => onQuickAddGroup(group),
+                  kind: "add",
+                }}
               />
             </Stack>
           ))}

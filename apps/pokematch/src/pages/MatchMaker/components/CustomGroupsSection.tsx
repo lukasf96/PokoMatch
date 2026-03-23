@@ -1,15 +1,12 @@
 import AddIcon from "@mui/icons-material/Add";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Autocomplete,
-  Box,
   Button,
   Chip,
-  IconButton,
   Stack,
   TextField,
   Typography,
@@ -84,7 +81,7 @@ export function CustomGroupsSection({
           useFlexGap
         >
           <Typography component="span" fontWeight={700}>
-            My groups
+            My Groups
           </Typography>
           <Chip label={`${customGroups.length} groups`} size="small" />
         </Stack>
@@ -98,12 +95,12 @@ export function CustomGroupsSection({
             startIcon={<AddIcon />}
             sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
           >
-            Add empty group
+            Add group
           </Button>
 
           {customGroups.length === 0 && (
             <Typography variant="body2" color="text.secondary">
-              Build your own groups from Pokemon you already caught in-game.
+              Add your habitats you have already setup in-game.
             </Typography>
           )}
 
@@ -114,89 +111,56 @@ export function CustomGroupsSection({
             );
             const groupSuggestions = suggestions[gi] ?? [];
             return (
-              <Box
-                key={`custom-${groupStableKey(group) || gi}`}
-                sx={{
-                  border: "1px dashed",
-                  borderColor: "divider",
-                  borderRadius: 2,
-                  p: 1.5,
-                }}
-              >
-                <Stack spacing={1}>
-                  <Stack
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
+              <Stack key={`custom-${groupStableKey(group) || gi}`} spacing={1}>
+                <GroupCard
+                  group={group}
+                  groupNumber={gi + 1}
+                  habitat={getDisplayHabitat(group)}
+                  onRemovePokemon={(pokemonId) => onRemovePokemon(gi, pokemonId)}
+                  groupAction={{
+                    ariaLabel: `Delete my group ${gi + 1}`,
+                    onClick: () => onDeleteGroup(gi),
+                    kind: "remove",
+                  }}
+                />
+
+                {group.length < 4 && (
+                  <Autocomplete
+                    options={groupAvailablePokemon}
+                    disabled={groupAvailablePokemon.length === 0}
+                    getOptionLabel={(option) =>
+                      `${getPokemonDisplayName(option, nameLanguage)} (#${option.dexNumber})`
+                    }
+                    renderInput={(params) => (
+                      <TextField {...params} size="small" label="Add Pokemon" />
+                    )}
+                    onChange={(_, value) => {
+                      if (value) onAddPokemon(gi, value.id);
+                    }}
+                  />
+                )}
+
+                {group.length > 0 && group.length < 4 && groupSuggestions.length > 0 && (
+                  <Stack spacing={0.5}>
                     <Typography variant="caption" color="text.secondary">
-                      My Group {gi + 1}
+                      Suggested next:
                     </Typography>
-                    <IconButton
-                      aria-label={`Delete my group ${gi + 1}`}
-                      size="small"
-                      onClick={() => onDeleteGroup(gi)}
-                    >
-                      <DeleteOutlineIcon fontSize="small" />
-                    </IconButton>
-                  </Stack>
-
-                  {group.length > 0 && (
-                    <GroupCard
-                      group={group}
-                      groupNumber={gi + 1}
-                      habitat={getDisplayHabitat(group)}
-                      onRemovePokemon={(pokemonId) => onRemovePokemon(gi, pokemonId)}
-                    />
-                  )}
-
-                  {group.length < 4 && (
-                    <Autocomplete
-                      options={groupAvailablePokemon}
-                      disabled={groupAvailablePokemon.length === 0}
-                      getOptionLabel={(option) =>
-                        `${getPokemonDisplayName(option, nameLanguage)} (#${option.dexNumber})`
-                      }
-                      renderInput={(params) => (
-                        <TextField {...params} size="small" label="Add Pokemon" />
-                      )}
-                      onChange={(_, value) => {
-                        if (value) onAddPokemon(gi, value.id);
-                      }}
-                    />
-                  )}
-
-                  {group.length > 0 &&
-                    group.length < 4 &&
-                    groupSuggestions.length > 0 && (
-                    <Stack spacing={0.5}>
-                      <Typography variant="caption" color="text.secondary">
-                        Suggested next:
-                      </Typography>
-                      <Stack
-                        direction="row"
-                        spacing={0.75}
-                        flexWrap="wrap"
-                        useFlexGap
-                      >
-                        {groupSuggestions.map((suggestion) => (
-                          <Chip
-                            key={`suggest-${gi}-${suggestion.pokemon.id}`}
-                            label={`${getPokemonDisplayName(
-                              suggestion.pokemon,
-                              nameLanguage,
-                            )} (+${suggestion.score})`}
-                            size="small"
-                            onClick={() =>
-                              onAddPokemon(gi, suggestion.pokemon.id)
-                            }
-                          />
-                        ))}
-                      </Stack>
+                    <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
+                      {groupSuggestions.map((suggestion) => (
+                        <Chip
+                          key={`suggest-${gi}-${suggestion.pokemon.id}`}
+                          label={`${getPokemonDisplayName(
+                            suggestion.pokemon,
+                            nameLanguage,
+                          )} (+${suggestion.score})`}
+                          size="small"
+                          onClick={() => onAddPokemon(gi, suggestion.pokemon.id)}
+                        />
+                      ))}
                     </Stack>
-                  )}
-                </Stack>
-              </Box>
+                  </Stack>
+                )}
+              </Stack>
             );
           })}
         </Stack>

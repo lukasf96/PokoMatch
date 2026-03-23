@@ -8,7 +8,9 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { memo, useMemo } from "react";
 import { PokemonSpriteAvatar } from "../../../components/pokemon-sprite-avatar/PokemonSpriteAvatar";
 import {
@@ -26,6 +28,11 @@ interface GroupCardProps {
   groupNumber: number;
   habitat: Habitat;
   onRemovePokemon?: (pokemonId: string) => void;
+  groupAction?: {
+    ariaLabel: string;
+    onClick: () => void;
+    kind: "add" | "remove";
+  };
 }
 
 function isEventPokemon(p: Pokemon): boolean {
@@ -94,6 +101,7 @@ function GroupCardComponent({
   groupNumber,
   habitat,
   onRemovePokemon,
+  groupAction,
 }: GroupCardProps) {
   const theme = useTheme();
   const colors = habitatColors[habitat];
@@ -177,6 +185,19 @@ function GroupCardComponent({
               height: 20,
             }}
           />
+          {groupAction && (
+            <IconButton
+              size="small"
+              aria-label={groupAction.ariaLabel}
+              onClick={groupAction.onClick}
+            >
+              {groupAction.kind === "add" ? (
+                <AddIcon fontSize="small" />
+              ) : (
+                <DeleteOutlineIcon fontSize="small" />
+              )}
+            </IconButton>
+          )}
         </Stack>
       </Box>
       <Divider />

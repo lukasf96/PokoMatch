@@ -131,11 +131,11 @@ export default function MatcherPage() {
       <Stack spacing={2.5}>
         <Stack spacing={0.5}>
           <Typography variant="h6" component="h1" fontWeight={700}>
-            Match groups
+            Match-Maker
           </Typography>
           <Typography variant="body2" color="text.secondary" maxWidth="sm">
-            Suggested groups maximize shared favorite activities while enforcing
-            habitat conflicts (Bright/Dark, Humid/Dry, Warm/Cool).
+            Suggested groups maximize shared favorite activities while
+            respecting ideal habitats.
           </Typography>
         </Stack>
 
