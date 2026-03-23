@@ -99,10 +99,18 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
                 bgcolor: "background.paper",
                 color: habitatColors[groupHabitat].text,
                 borderColor: habitatColors[groupHabitat].border,
-                borderStyle: "dashed",
               }}
             />
           ))}
+          {conflicts.length > 0 && (
+            <Chip
+              label={`Conflict: ${conflicts.map(([left, right]) => `${left}/${right}`).join(", ")}`}
+              size="small"
+              color="error"
+              variant="filled"
+              sx={{ fontSize: 11, height: 20 }}
+            />
+          )}
           {sharedFavs.slice(0, 3).map(([fav, count]) => (
             <Chip
               key={fav}
@@ -118,7 +126,7 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
             />
           ))}
           <Chip
-            label={`score ${score}`}
+            label={`Score ${score}`}
             size="small"
             sx={{
               bgcolor: colors.border,
@@ -126,17 +134,6 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
               fontSize: 11,
               height: 20,
             }}
-          />
-          <Chip
-            label={
-              conflicts.length === 0
-                ? "habitat-compatible"
-                : `conflict: ${conflicts.map(([left, right]) => `${left}/${right}`).join(", ")}`
-            }
-            size="small"
-            color={conflicts.length === 0 ? "success" : "error"}
-            variant={conflicts.length === 0 ? "outlined" : "filled"}
-            sx={{ fontSize: 11, height: 20 }}
           />
         </Stack>
       </Box>
@@ -197,7 +194,7 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
             </Stack>
             <Box sx={{ mb: 0.5 }}>
               <Chip
-                label={`Ideal habitat: ${pokemon.idealHabitat}`}
+                label={`${pokemon.idealHabitat}`}
                 size="small"
                 variant="outlined"
                 sx={{
@@ -206,7 +203,6 @@ function GroupCardComponent({ group, groupNumber, habitat }: GroupCardProps) {
                   bgcolor: "transparent",
                   color: "text.secondary",
                   borderColor: habitatColors[pokemon.idealHabitat].border,
-                  borderStyle: "dashed",
                 }}
               />
             </Box>
