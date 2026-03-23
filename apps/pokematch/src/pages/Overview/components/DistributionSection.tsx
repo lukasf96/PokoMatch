@@ -7,7 +7,9 @@ import {
   Paper,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import { useState } from "react";
 import type { Pokemon } from "../../../types/types";
 import { PokemonChip } from "./PokemonChip";
@@ -44,14 +46,28 @@ interface DistributionRowProps {
 }
 
 function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps) {
+  const theme = useTheme();
   const [open, setOpen] = useState(false);
   const percentage = Math.round((pokemon.length / totalPokemon) * 100);
+  const isDark = theme.palette.mode === "dark";
+  const progressTrackColor = isDark
+    ? alpha(theme.palette.common.white, 0.12)
+    : theme.palette.action.hover;
+  const progressFillColor = isDark
+    ? theme.palette.primary.light
+    : theme.palette.primary.main;
 
   return (
     <Paper variant="outlined" sx={{ borderRadius: 1, overflow: "hidden" }}>
       <Box
         onClick={() => setOpen((isOpen) => !isOpen)}
-        sx={{ cursor: "pointer", userSelect: "none" }}
+        sx={{
+          cursor: "pointer",
+          userSelect: "none",
+          "&:hover": {
+            bgcolor: "action.hover",
+          },
+        }}
       >
         <Box
           sx={{
@@ -71,7 +87,7 @@ function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps)
                 width: 80,
                 height: 6,
                 borderRadius: 3,
-                bgcolor: "action.hover",
+                bgcolor: progressTrackColor,
                 overflow: "hidden",
               }}
             >
@@ -79,7 +95,7 @@ function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps)
                 sx={{
                   width: `${percentage}%`,
                   height: "100%",
-                  bgcolor: "secondary.main",
+                  bgcolor: progressFillColor,
                   borderRadius: 3,
                 }}
               />
