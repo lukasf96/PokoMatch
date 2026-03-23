@@ -17,10 +17,14 @@ import {
   Typography,
 } from "@mui/material";
 import { memo, useMemo, useState } from "react";
-import { habitatColors, habitatEmoji } from "./habitatColors";
-import { allPokemon, eventPokemon, standardPokemon } from "./pokemon";
-import { useStore } from "./store";
-import type { Habitat, Pokemon } from "./types";
+import { habitatColors, habitatEmoji } from "../../services/habitatColors";
+import {
+  allPokemon,
+  eventPokemon,
+  standardPokemon,
+} from "../../services/pokemon";
+import { useStore } from "../../store/store";
+import type { Habitat, Pokemon } from "../../types/types";
 
 type Filter = "all" | "unlocked" | "locked";
 
@@ -73,10 +77,6 @@ export default function PokedexPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 3 }}>
-      <Typography variant="subtitle1" fontWeight={700} mb={2}>
-        Pokédex
-      </Typography>
-
       {/* Toolbar */}
       <Stack
         direction={{ xs: "column", sm: "row" }}

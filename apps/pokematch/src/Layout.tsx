@@ -1,10 +1,5 @@
-import {
-  Box,
-  Chip,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { allPokemon } from "./pokemon";
+import { Box, Chip, Stack, Typography } from "@mui/material";
+import { allPokemon } from "./services/pokemon";
 
 type Page = "matcher" | "overview" | "pokedex";
 
@@ -45,7 +40,13 @@ export default function Layout({
           </Typography>
         </Box>
 
-        <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap />
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+          flexWrap="wrap"
+          useFlexGap
+        />
       </Box>
 
       {/* Page nav */}

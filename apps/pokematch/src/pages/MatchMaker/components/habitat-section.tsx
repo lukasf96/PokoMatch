@@ -7,9 +7,9 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import GroupCard from "../GroupCard";
-import { habitatColors, habitatEmoji } from "../habitatColors";
-import type { Habitat, Pokemon } from "../types";
+import { habitatColors, habitatEmoji } from "../../../services/habitatColors";
+import type { Habitat, Pokemon } from "../../../types/types";
+import GroupCard from "./GroupCard";
 
 interface HabitatSectionProps {
   habitat: Habitat;
@@ -40,7 +40,7 @@ export function HabitatSection({
         // Theme already sets a 1px border on Accordion; Paper `outlined` stacked a second
         // border on top and made corners look wrong. Clip children to the same radius.
         borderColor: colors.border,
-        overflow: 'hidden',
+        overflow: "hidden",
         borderRadius: 1,
       }}
     >

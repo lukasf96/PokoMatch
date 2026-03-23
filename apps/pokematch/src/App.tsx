@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Layout from "./Layout";
-import MatcherPage from "./MatcherPage";
-import OverviewPage from "./OverviewPage";
-import PokedexPage from "./PokedexPage";
-import { allPokemon } from "./pokemon";
-import { useStore } from "./store";
+import MatcherPage from "./pages/MatchMaker/MatcherPage";
+import OverviewPage from "./pages/Overview/OverviewPage";
+import PokedexPage from "./pages/Pokedex/PokedexPage";
+import { allPokemon } from "./services/pokemon";
+import { useStore } from "./store/store";
 
 type Page = "matcher" | "overview" | "pokedex";
 
@@ -16,11 +16,7 @@ export default function App() {
   const [page, setPage] = useState<Page>("matcher");
 
   return (
-    <Layout
-      unlockedCount={unlockedCount}
-      page={page}
-      onPageChange={setPage}
-    >
+    <Layout unlockedCount={unlockedCount} page={page} onPageChange={setPage}>
       {page === "matcher" && <MatcherPage />}
 
       {page === "overview" && <OverviewPage />}
