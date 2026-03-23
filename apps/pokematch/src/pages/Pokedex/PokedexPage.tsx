@@ -224,17 +224,22 @@ function PokedexShowingCountWithStatus({
   status: "unlocked" | "locked";
 }) {
   const showing = useStore(
-    (s) =>
-      baseFilteredStandard.filter((p) =>
-        status === "unlocked"
-          ? s.unlockedIds.has(p.id)
-          : !s.unlockedIds.has(p.id),
-      ).length +
-      baseFilteredEvent.filter((p) =>
-        status === "unlocked"
-          ? s.unlockedIds.has(p.id)
-          : !s.unlockedIds.has(p.id),
-      ).length,
+    (s) => {
+      // Avoid allocating filtered arrays on every toggle.
+      let n = 0;
+
+      for (const p of baseFilteredStandard) {
+        const isUnlocked = s.unlockedIds.has(p.id);
+        if (status === "unlocked" ? isUnlocked : !isUnlocked) n += 1;
+      }
+
+      for (const p of baseFilteredEvent) {
+        const isUnlocked = s.unlockedIds.has(p.id);
+        if (status === "unlocked" ? isUnlocked : !isUnlocked) n += 1;
+      }
+
+      return n;
+    },
   );
 
   return (
@@ -303,17 +308,33 @@ function PokedexSectionsStatusFiltered({
 }) {
   const unlockedIds = useStore((s) => s.unlockedIds);
   const filteredStandard = useMemo(
-    () =>
-      baseFilteredStandard.filter((p) =>
-        status === "unlocked" ? unlockedIds.has(p.id) : !unlockedIds.has(p.id),
-      ),
+    () => {
+      const result: Pokemon[] = [];
+
+      for (const p of baseFilteredStandard) {
+        const isUnlocked = unlockedIds.has(p.id);
+        if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+          result.push(p);
+        }
+      }
+
+      return result;
+    },
     [baseFilteredStandard, status, unlockedIds],
   );
   const filteredEvent = useMemo(
-    () =>
-      baseFilteredEvent.filter((p) =>
-        status === "unlocked" ? unlockedIds.has(p.id) : !unlockedIds.has(p.id),
-      ),
+    () => {
+      const result: Pokemon[] = [];
+
+      for (const p of baseFilteredEvent) {
+        const isUnlocked = unlockedIds.has(p.id);
+        if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+          result.push(p);
+        }
+      }
+
+      return result;
+    },
     [baseFilteredEvent, status, unlockedIds],
   );
 
@@ -357,6 +378,8 @@ function PokedexGrid({
   onToggle: (id: string) => void;
   showEventBadge: boolean;
 }) {
+  const unlockedIds = useStore((s) => s.unlockedIds);
+
   return (
     <>
       <Box
@@ -373,6 +396,7 @@ function PokedexGrid({
             interactive={interactive}
             onToggle={onToggle}
             showEventBadge={showEventBadge}
+            unlocked={unlockedIds.has(p.id)}
           />
         ))}
       </Box>
@@ -393,13 +417,14 @@ const PokemonCard = memo(function PokemonCard({
   interactive,
   onToggle,
   showEventBadge,
+  unlocked,
 }: {
   pokemon: Pokemon;
   interactive: boolean;
   onToggle: (id: string) => void;
   showEventBadge: boolean;
+  unlocked: boolean;
 }) {
-  const unlocked = useStore((s) => s.unlockedIds.has(pokemon.id));
   const colors = habitatColors[pokemon.idealHabitat as Habitat];
   const isEvent = pokemon.id.startsWith("e");
   const isNotHabitable = pokemon.isHabitable === false;
