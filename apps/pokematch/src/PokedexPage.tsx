@@ -166,7 +166,6 @@ export default function PokedexPage() {
           baseFilteredEvent={baseFilteredEvent}
           effectiveStatusFilter={effectiveStatusFilter}
         />
-        {isCustom && <UnlockedCountChip />}
       </Stack>
 
       {effectiveStatusFilter === "all" ? (
@@ -186,22 +185,6 @@ export default function PokedexPage() {
         />
       )}
     </Container>
-  );
-}
-
-function UnlockedCountChip() {
-  const unlockedCount = useStore((s) =>
-    allPokemon.reduce((n, p) => n + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
-  );
-
-  return (
-    <Chip
-      label={`${unlockedCount} unlocked`}
-      size="small"
-      color="success"
-      variant="outlined"
-      sx={{ height: 20, fontSize: 11 }}
-    />
   );
 }
 
