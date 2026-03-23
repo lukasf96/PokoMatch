@@ -10,7 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { habitatColors, habitatEmoji } from "../../../services/habitatColors";
 import type { Habitat, Pokemon } from "../../../types/types";
 
@@ -22,24 +22,26 @@ const isEvent = (p: Pokemon) => p.id.startsWith("e");
 
 export default function OverviewTab({ pokemon }: Props) {
   // Habitat counts
-  const habitatMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
-    (acc[p.idealHabitat] ??= []).push(p);
-    return acc;
-  }, {});
-  const habitats = Object.entries(habitatMap).sort((a, b) =>
-    a[0].localeCompare(b[0]),
-  );
+  const habitats = useMemo(() => {
+    const habitatMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
+      (acc[p.idealHabitat] ??= []).push(p);
+      return acc;
+    }, {});
+    return Object.entries(habitatMap).sort((a, b) => a[0].localeCompare(b[0]));
+  }, [pokemon]);
 
   // Favorite counts
-  const favMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
-    for (const fav of p.favorites) {
-      (acc[fav] ??= []).push(p);
-    }
-    return acc;
-  }, {});
-  const favorites = Object.entries(favMap).sort(
-    (a, b) => b[1].length - a[1].length,
-  );
+  const favorites = useMemo(() => {
+    const favMap = pokemon.reduce<Record<string, Pokemon[]>>((acc, p) => {
+      for (const fav of p.favorites) {
+        (acc[fav] ??= []).push(p);
+      }
+      return acc;
+    }, {});
+    return Object.entries(favMap)
+      .sort((a, b) => b[1].length - a[1].length)
+      .map(([fav, members]) => [fav, members.slice().sort((a, b) => a.name.localeCompare(b.name))] as const);
+  }, [pokemon]);
 
   return (
     <Box>
@@ -219,8 +221,6 @@ function FavoriteRow({
           sx={{ px: 1.5, py: 1, display: "flex", flexWrap: "wrap", gap: 0.5 }}
         >
           {pokemon
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name))
             .map((p) => (
               <Chip
                 key={p.id}

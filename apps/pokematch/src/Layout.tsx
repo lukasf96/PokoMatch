@@ -4,14 +4,14 @@ import { appRoutes } from "./router/routes";
 import { allPokemon } from "./services/pokemon";
 import { useStore } from "./store/store";
 
+const TOTAL_POKEMON = allPokemon.length;
+
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const unlockedCount = useStore((s) =>
-    allPokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
-  );
+  const unlockedCount = useStore((s) => s.unlockedIds.size);
   const { pathname } = useLocation();
   const isMatchMakerActive = pathname === appRoutes.matchmaker;
   const isOverviewActive = pathname === appRoutes.overview;
@@ -69,7 +69,7 @@ export default function Layout({ children }: LayoutProps) {
           <NavItem active={isPokedexActive} to={appRoutes.pokedex}>
             Pokédex
             <Chip
-              label={`${unlockedCount}/${allPokemon.length}`}
+              label={`${unlockedCount}/${TOTAL_POKEMON}`}
               size="small"
               sx={{ ml: 0.75, height: 16, fontSize: 10 }}
             />

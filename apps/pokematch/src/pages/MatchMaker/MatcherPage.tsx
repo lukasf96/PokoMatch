@@ -61,6 +61,24 @@ export default function MatcherPage() {
     [autoPokemon],
   );
 
+  const availablePokemon = useMemo(
+    () => activePokemon.filter((p) => !customAssignedIds.has(p.id)),
+    [activePokemon, customAssignedIds],
+  );
+
+  const suggestions = useMemo(
+    () =>
+      resolvedCustomGroups.map((group) =>
+        suggestNextPokemon(
+          group,
+          availablePokemon.filter(
+            (candidate) => !group.some((member) => member.id === candidate.id),
+          ),
+        ),
+      ),
+    [resolvedCustomGroups, availablePokemon],
+  );
+
   if (activePokemon.length === 0) {
     return (
       <Container maxWidth="lg" sx={{ py: 8, textAlign: "center" }}>
@@ -94,19 +112,8 @@ export default function MatcherPage() {
         <Stack spacing={1.5}>
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}
-            suggestions={resolvedCustomGroups.map((group) =>
-              suggestNextPokemon(
-                group,
-                activePokemon.filter(
-                  (candidate) =>
-                    !customAssignedIds.has(candidate.id) &&
-                    !group.some((member) => member.id === candidate.id),
-                ),
-              ),
-            )}
-            availablePokemon={activePokemon.filter(
-              (pokemon) => !customAssignedIds.has(pokemon.id),
-            )}
+            suggestions={suggestions}
+            availablePokemon={availablePokemon}
             onAddGroup={addCustomGroup}
             onDeleteGroup={deleteCustomGroup}
             onAddPokemon={addPokemonToCustomGroup}
