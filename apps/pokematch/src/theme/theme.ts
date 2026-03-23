@@ -1,6 +1,6 @@
 import { alpha, createTheme, type PaletteMode } from '@mui/material/styles'
 
-/** Shadcn-inspired: crisp borders, soft elevation, pill chips — with a vivid primary palette. */
+/** Shadcn-inspired: crisp borders, soft elevation, pill chips — with a neutral blue palette. */
 function getThemeTokens(mode: PaletteMode) {
   const isDark = mode === 'dark'
   const borderSubtle = isDark ? 'hsl(240 6% 26%)' : 'hsl(240 6% 90%)'
@@ -15,8 +15,8 @@ function getThemeTokens(mode: PaletteMode) {
     textPrimary: isDark ? 'hsl(210 20% 96%)' : 'hsl(240 10% 10%)',
     textSecondary: isDark ? 'hsl(215 14% 72%)' : 'hsl(240 4% 46%)',
     textDisabled: isDark ? 'hsl(215 14% 55%)' : 'hsl(240 4% 64%)',
-    actionHover: isDark ? alpha('#818cf8', 0.14) : alpha('#4f46e5', 0.06),
-    actionSelected: isDark ? alpha('#818cf8', 0.2) : alpha('#4f46e5', 0.1),
+    actionHover: isDark ? alpha('#60a5fa', 0.16) : alpha('#2563eb', 0.07),
+    actionSelected: isDark ? alpha('#60a5fa', 0.24) : alpha('#2563eb', 0.12),
     shadowColor: isDark ? '2 6 23' : '15 23 42',
   }
 }
@@ -28,16 +28,16 @@ export function createAppTheme(mode: PaletteMode) {
     cssVariables: true,
     palette: {
       mode,
-    primary: {
-      main: '#4f46e5',
-      light: '#818cf8',
-      dark: '#4338ca',
+      primary: {
+      main: '#2563eb',
+      light: '#60a5fa',
+      dark: '#1d4ed8',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#a855f7',
-      light: '#f3e8ff',
-      dark: '#7e22ce',
+      main: '#0f766e',
+      light: '#ccfbf1',
+      dark: '#115e59',
       contrastText: '#ffffff',
     },
     success: {
@@ -190,11 +190,11 @@ export function createAppTheme(mode: PaletteMode) {
           fontWeight: 600,
           border: `1px solid ${tokens.borderSubtle}`,
           '&.Mui-selected': {
-            backgroundColor: alpha('#4f46e5', tokens.isDark ? 0.3 : 0.12),
-            color: tokens.isDark ? '#a5b4fc' : '#4338ca',
-            borderColor: alpha('#4f46e5', 0.35),
+            backgroundColor: alpha('#2563eb', tokens.isDark ? 0.3 : 0.12),
+            color: tokens.isDark ? '#93c5fd' : '#1d4ed8',
+            borderColor: alpha('#2563eb', 0.35),
             '&:hover': {
-              backgroundColor: alpha('#4f46e5', tokens.isDark ? 0.36 : 0.16),
+              backgroundColor: alpha('#2563eb', tokens.isDark ? 0.36 : 0.16),
             },
           },
         },
