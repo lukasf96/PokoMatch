@@ -12,7 +12,6 @@ import { useStore } from "./store";
 type Page = "matcher" | "overview" | "pokedex";
 
 interface Props {
-  activePokemonCount: number;
   customUnlockedCount: number;
   page: Page;
   onPageChange: (page: Page) => void;
@@ -20,7 +19,6 @@ interface Props {
 }
 
 export default function Layout({
-  activePokemonCount,
   customUnlockedCount,
   page,
   onPageChange,

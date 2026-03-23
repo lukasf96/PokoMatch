@@ -1,37 +1,31 @@
-import { useState } from 'react'
-import { useStore } from './store'
-import { allPokemon, habitablePokemon } from './pokemon'
-import Layout from './Layout'
-import MatcherPage from './MatcherPage'
-import OverviewPage from './OverviewPage'
-import PokedexPage from './PokedexPage'
+import { useState } from "react";
+import Layout from "./Layout";
+import MatcherPage from "./MatcherPage";
+import OverviewPage from "./OverviewPage";
+import PokedexPage from "./PokedexPage";
+import { allPokemon } from "./pokemon";
+import { useStore } from "./store";
 
-type Page = 'matcher' | 'overview' | 'pokedex'
+type Page = "matcher" | "overview" | "pokedex";
 
 export default function App() {
-  const activePokemonCount = useStore((s) => {
-    if (s.mode !== 'custom') return habitablePokemon.length
-    return habitablePokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0)
-  })
-
   const customUnlockedCount = useStore((s) =>
     allPokemon.reduce((acc, p) => acc + (s.unlockedIds.has(p.id) ? 1 : 0), 0),
-  )
+  );
 
-  const [page, setPage] = useState<Page>('matcher')
+  const [page, setPage] = useState<Page>("matcher");
 
   return (
     <Layout
-      activePokemonCount={activePokemonCount}
       customUnlockedCount={customUnlockedCount}
       page={page}
       onPageChange={setPage}
     >
-      {page === 'matcher' && <MatcherPage />}
+      {page === "matcher" && <MatcherPage />}
 
-      {page === 'overview' && <OverviewPage />}
+      {page === "overview" && <OverviewPage />}
 
-      {page === 'pokedex' && <PokedexPage />}
+      {page === "pokedex" && <PokedexPage />}
     </Layout>
-  )
+  );
 }
