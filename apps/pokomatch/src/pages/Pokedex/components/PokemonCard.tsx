@@ -12,11 +12,12 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo, useMemo } from "react";
-import { PokemonSpriteAvatar } from "../../../components/pokemon-sprite-avatar/PokemonSpriteAvatar";
+import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
 import {
   getHabitatColors,
   habitatIcons,
 } from "../../../services/habitatColors";
+import { isEventDexPokemon } from "../../../services/pokemon";
 import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
@@ -40,7 +41,7 @@ export const PokemonCard = memo(function PokemonCard({
   const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
   const colors = habitatColors[pokemon.idealHabitat as Habitat];
   const HabitatIcon = habitatIcons[pokemon.idealHabitat as Habitat];
-  const isEvent = pokemon.id.startsWith("e");
+  const isEvent = isEventDexPokemon(pokemon);
   const isNotHabitable = pokemon.isHabitable === false;
   const nameLanguage = useStore((state) => state.nameLanguage);
   const pokemonDisplayName = getPokemonDisplayName(pokemon, nameLanguage);

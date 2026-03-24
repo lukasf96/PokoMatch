@@ -13,7 +13,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import type { Habitat, Pokemon } from "../../../types/types";
+import type { Pokemon } from "../../../types/types";
+import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
 
 interface AutoGroupsSectionProps {
@@ -21,34 +22,6 @@ interface AutoGroupsSectionProps {
   preferEvolutionLines: boolean;
   onPreferEvolutionLinesChange: (value: boolean) => void;
   onQuickAddGroup: (group: Pokemon[]) => void;
-}
-
-function groupStableKey(group: { id: string }[]): string {
-  return group.map((p) => p.id).join("|");
-}
-
-function getDisplayHabitat(group: Pokemon[]): Habitat {
-  if (group.length === 0) return "Cool";
-  const counts = group.reduce<Record<Habitat, number>>(
-    (acc, pokemon) => {
-      acc[pokemon.idealHabitat] += 1;
-      return acc;
-    },
-    { Bright: 0, Cool: 0, Dark: 0, Dry: 0, Humid: 0, Warm: 0 },
-  );
-  const habitatOrder: Habitat[] = [
-    "Bright",
-    "Cool",
-    "Dark",
-    "Dry",
-    "Humid",
-    "Warm",
-  ];
-  return habitatOrder.reduce(
-    (bestHabitat, habitat) =>
-      counts[habitat] > counts[bestHabitat] ? habitat : bestHabitat,
-    habitatOrder[0],
-  );
 }
 
 export function AutoGroupsSection({
@@ -112,6 +85,7 @@ export function AutoGroupsSection({
                   </Typography>
                   <Tooltip title="When this is on, suggested groups slightly favor keeping evolution families together wherever habitat rules still allow it. Total shared-favorite overlap can dip a little, but the trade-off is usually very small.">
                     <IconButton
+                      component="span"
                       size="small"
                       aria-label="How evolution line grouping works"
                       onClick={(event) => event.stopPropagation()}

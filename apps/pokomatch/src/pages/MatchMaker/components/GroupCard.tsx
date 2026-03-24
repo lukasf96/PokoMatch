@@ -1,7 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -14,8 +14,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { memo, type ReactNode, useMemo } from "react";
-import { PokemonSpriteAvatar } from "../../../components/pokemon-sprite-avatar/PokemonSpriteAvatar";
+import { memo, useMemo, type ReactNode } from "react";
+import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
 import {
   getGroupConflicts,
   getGroupHabitats,
@@ -23,11 +23,13 @@ import {
 import {
   getHabitatColors,
   habitatIcons,
+  type HabitatColorSet,
 } from "../../../services/habitatColors";
 import {
   groupScore,
   groupScoreUpperBound,
 } from "../../../services/matching.service";
+import { isEventDexPokemon } from "../../../services/pokemon";
 import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
@@ -43,16 +45,6 @@ interface GroupCardProps {
     onClick: () => void;
     kind: "add" | "remove";
   };
-}
-
-function isEventPokemon(p: Pokemon): boolean {
-  return p.id.startsWith("e");
-}
-
-interface HabitatAccentColors {
-  bg: string;
-  text: string;
-  border: string;
 }
 
 function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
@@ -74,7 +66,7 @@ function MemberFavoritesList({
   favorites: string[];
   favCounts: Record<string, number>;
   universalFavorites: Set<string>;
-  accent: HabitatAccentColors;
+  accent: HabitatColorSet;
 }) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
@@ -144,9 +136,7 @@ function MemberFavoritesList({
             fontSize: 11,
             fontWeight: 600,
             borderRadius: "6px",
-            bgcolor: isDark
-              ? alpha(accent.bg, 0.55)
-              : alpha("#ffffff", 0.85),
+            bgcolor: isDark ? alpha(accent.bg, 0.55) : alpha("#ffffff", 0.85),
             color: accent.text,
             border: "1px solid",
             borderColor: alpha(accent.border, isDark ? 0.85 : 0.55),
@@ -266,7 +256,7 @@ function PokemonIdentity({
           >
             {pokemonDisplayName}
           </Typography>
-          {isEventPokemon(pokemon) && (
+          {isEventDexPokemon(pokemon) && (
             <Chip
               label="Event"
               size="small"

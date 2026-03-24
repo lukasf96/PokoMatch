@@ -7,9 +7,7 @@ import { Box, Container, Paper, Stack, Typography } from "@mui/material";
 import {
   useCallback,
   useDeferredValue,
-  useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import {
@@ -93,6 +91,10 @@ export default function MatcherPage() {
   const [frozenSuggestedGroups, setFrozenSuggestedGroups] = useState<
     Pokemon[][] | null
   >(null);
+  /** Preference value when `frozenSuggestedGroups` was captured; must match current pref for freeze to apply. */
+  const [freezePreferEvolutionLines, setFreezePreferEvolutionLines] = useState<
+    boolean | null
+  >(null);
   const [adoptedSuggestedGroupKeys, setAdoptedSuggestedGroupKeys] = useState<
     Set<string>
   >(() => new Set());
@@ -117,22 +119,28 @@ export default function MatcherPage() {
 
   const resetSuggestedFreeze = useCallback(() => {
     setFrozenSuggestedGroups(null);
+    setFreezePreferEvolutionLines(null);
     setAdoptedSuggestedGroupKeys(new Set());
   }, []);
 
-  const previousPreferEvolutionLines = useRef(preferEvolutionLines);
-  useEffect(() => {
-    if (previousPreferEvolutionLines.current === preferEvolutionLines) return;
-    previousPreferEvolutionLines.current = preferEvolutionLines;
-    resetSuggestedFreeze();
-  }, [preferEvolutionLines, resetSuggestedFreeze]);
+  const hasActiveSuggestedFreeze = useMemo(
+    () =>
+      frozenSuggestedGroups != null &&
+      freezePreferEvolutionLines === preferEvolutionLines,
+    [frozenSuggestedGroups, freezePreferEvolutionLines, preferEvolutionLines],
+  );
 
   const displayedSuggestedGroups = useMemo(() => {
-    if (!frozenSuggestedGroups) return autoGroups;
+    if (!hasActiveSuggestedFreeze || !frozenSuggestedGroups) return autoGroups;
     return frozenSuggestedGroups.filter(
       (group) => !adoptedSuggestedGroupKeys.has(groupKeyFromPokemon(group)),
     );
-  }, [autoGroups, frozenSuggestedGroups, adoptedSuggestedGroupKeys]);
+  }, [
+    autoGroups,
+    frozenSuggestedGroups,
+    adoptedSuggestedGroupKeys,
+    hasActiveSuggestedFreeze,
+  ]);
 
   if (activePokemon.length === 0) {
     return (
@@ -322,11 +330,13 @@ export default function MatcherPage() {
             preferEvolutionLines={preferEvolutionLines}
             onPreferEvolutionLinesChange={setPreferEvolutionLines}
             onQuickAddGroup={(group) => {
-              if (!frozenSuggestedGroups) {
+              if (!hasActiveSuggestedFreeze) {
                 setFrozenSuggestedGroups(autoGroups);
+                setFreezePreferEvolutionLines(preferEvolutionLines);
               }
               setAdoptedSuggestedGroupKeys((prev) => {
-                const next = new Set(prev);
+                const base = !hasActiveSuggestedFreeze ? new Set<string>() : prev;
+                const next = new Set(base);
                 next.add(groupKeyFromPokemon(group));
                 return next;
               });

@@ -220,6 +220,28 @@ export function createAppTheme(mode: PaletteMode) {
         },
       },
     },
+    MuiSwitch: {
+      defaultProps: {
+        color: 'primary',
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '& .MuiSwitch-switchBase:not(.Mui-checked) .MuiSwitch-thumb': {
+            boxShadow:
+              theme.palette.mode === 'light'
+                ? '0 0 0 1px rgba(15, 23, 42, 0.12)'
+                : undefined,
+          },
+          '& .MuiSwitch-switchBase:not(.Mui-checked) + .MuiSwitch-track': {
+            backgroundColor:
+              theme.palette.mode === 'light'
+                ? theme.palette.grey[400]
+                : theme.palette.grey[700],
+            opacity: 1,
+          },
+        }),
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {

@@ -1,4 +1,5 @@
 import { Chip } from "@mui/material";
+import { isEventDexPokemon } from "../../../services/pokemon";
 import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
 import type { Pokemon } from "../../../types/types";
@@ -7,12 +8,8 @@ interface PokemonChipProps {
   pokemon: Pokemon;
 }
 
-function isEventPokemon(pokemon: Pokemon): boolean {
-  return pokemon.id.startsWith("e");
-}
-
 export function PokemonChip({ pokemon }: PokemonChipProps) {
-  const isEvent = isEventPokemon(pokemon);
+  const isEvent = isEventDexPokemon(pokemon);
   const nameLanguage = useStore((state) => state.nameLanguage);
   const pokemonDisplayName = getPokemonDisplayName(pokemon, nameLanguage);
 

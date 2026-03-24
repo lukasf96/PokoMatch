@@ -14,7 +14,8 @@ import {
 import type { SuggestedPokemon } from "../../../services/matching.service";
 import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
-import type { Habitat, Pokemon } from "../../../types/types";
+import type { Pokemon } from "../../../types/types";
+import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
 
 interface CustomGroupsSectionProps {
@@ -25,34 +26,6 @@ interface CustomGroupsSectionProps {
   onDeleteGroup: (groupIndex: number) => void;
   onAddPokemon: (groupIndex: number, pokemonId: string) => void;
   onRemovePokemon: (groupIndex: number, pokemonId: string) => void;
-}
-
-function groupStableKey(group: { id: string }[]): string {
-  return group.map((p) => p.id).join("|");
-}
-
-function getDisplayHabitat(group: Pokemon[]): Habitat {
-  if (group.length === 0) return "Cool";
-  const counts = group.reduce<Record<Habitat, number>>(
-    (acc, pokemon) => {
-      acc[pokemon.idealHabitat] += 1;
-      return acc;
-    },
-    { Bright: 0, Cool: 0, Dark: 0, Dry: 0, Humid: 0, Warm: 0 },
-  );
-  const habitatOrder: Habitat[] = [
-    "Bright",
-    "Cool",
-    "Dark",
-    "Dry",
-    "Humid",
-    "Warm",
-  ];
-  return habitatOrder.reduce(
-    (bestHabitat, habitat) =>
-      counts[habitat] > counts[bestHabitat] ? habitat : bestHabitat,
-    habitatOrder[0],
-  );
 }
 
 export function CustomGroupsSection({
@@ -105,6 +78,7 @@ export function CustomGroupsSection({
           )}
 
           {customGroups.map((group, gi) => {
+            const groupNumber = gi + 1;
             const groupIds = new Set(group.map((member) => member.id));
             const groupAvailablePokemon = availablePokemon.filter(
               (candidate) => !groupIds.has(candidate.id),
@@ -114,14 +88,14 @@ export function CustomGroupsSection({
               <Stack key={`custom-${groupStableKey(group) || gi}`} spacing={1}>
                 <GroupCard
                   group={group}
-                  groupNumber={gi + 1}
+                  groupNumber={groupNumber}
                   habitat={getDisplayHabitat(group)}
                   onRemovePokemon={(pokemonId) => onRemovePokemon(gi, pokemonId)}
                   footerContent={
                     group.length < 4 ? (
                       <Stack spacing={1}>
                         <Typography variant="caption" color="text.secondary">
-                          Add Pokemon to Group {gi + 1}
+                          Add Pokemon to Group {groupNumber}
                         </Typography>
 
                         <Autocomplete
@@ -162,7 +136,7 @@ export function CustomGroupsSection({
                     ) : null
                   }
                   groupAction={{
-                    ariaLabel: `Delete my group ${gi + 1}`,
+                    ariaLabel: `Delete my group ${groupNumber}`,
                     onClick: () => onDeleteGroup(gi),
                     kind: "remove",
                   }}

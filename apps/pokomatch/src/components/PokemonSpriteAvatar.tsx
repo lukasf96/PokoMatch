@@ -1,8 +1,8 @@
 import { Avatar } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo, useMemo, useState } from "react";
-import { getPokemonSpriteUrl } from "../../services/pokemon-sprites";
-import type { Pokemon } from "../../types/types";
+import { getPokemonSpriteUrl } from "../services/pokemon-sprites";
+import type { Pokemon } from "../types/types";
 
 interface PokemonSpriteAvatarProps {
   pokemon: Pokemon;
@@ -26,11 +26,13 @@ export const PokemonSpriteAvatar = memo(function PokemonSpriteAvatar({
   return (
     <Avatar
       src={shouldShowSprite ? spriteUrl : undefined}
-      imgProps={{
-        loading: "lazy",
-        width: size,
-        height: size,
-        onError: () => setHasSpriteError(true),
+      slotProps={{
+        img: {
+          loading: "lazy",
+          width: size,
+          height: size,
+          onError: () => setHasSpriteError(true),
+        },
       }}
       alt={pokemon.name}
       variant="rounded"

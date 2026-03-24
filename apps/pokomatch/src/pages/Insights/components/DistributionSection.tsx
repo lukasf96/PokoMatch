@@ -1,16 +1,15 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
-  Collapse,
   Divider,
-  IconButton,
-  Paper,
   Stack,
   Typography,
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { useState } from "react";
 import type { Pokemon } from "../../../types/types";
 import { PokemonChip } from "./PokemonChip";
 
@@ -20,34 +19,18 @@ interface DistributionSectionProps {
   totalPokemon: number;
 }
 
-interface ExpandIconProps {
-  open: boolean;
-  color: string;
-}
-
-function ExpandIcon({ open, color }: ExpandIconProps) {
-  return (
-    <IconButton size="small" sx={{ p: 0, color }} tabIndex={-1}>
-      <ExpandMoreIcon
-        sx={{
-          fontSize: 16,
-          transition: "transform 0.2s",
-          transform: open ? "rotate(180deg)" : "rotate(0deg)",
-        }}
-      />
-    </IconButton>
-  );
-}
-
 interface DistributionRowProps {
   label: string;
   pokemon: Pokemon[];
   totalPokemon: number;
 }
 
-function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps) {
+function DistributionRow({
+  label,
+  pokemon,
+  totalPokemon,
+}: DistributionRowProps) {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
   const percentage = Math.round((pokemon.length / totalPokemon) * 100);
   const isDark = theme.palette.mode === "dark";
   const progressTrackColor = isDark
@@ -58,23 +41,27 @@ function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps)
     : theme.palette.primary.main;
 
   return (
-    <Paper variant="outlined" sx={{ borderRadius: 1, overflow: "hidden" }}>
-      <Box
-        onClick={() => setOpen((isOpen) => !isOpen)}
+    <Accordion elevation={0} sx={{ overflow: "hidden" }}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon sx={{ fontSize: 18 }} aria-hidden />}
         sx={{
-          cursor: "pointer",
-          userSelect: "none",
-          "&:hover": {
-            bgcolor: "action.hover",
+          minHeight: 0,
+          px: 1.5,
+          py: 0.75,
+          "&.Mui-expanded": { minHeight: 0 },
+          "& .MuiAccordionSummary-content": {
+            margin: 0,
+            alignItems: "center",
           },
+          "& .MuiAccordionSummary-content.Mui-expanded": { margin: 0 },
         }}
       >
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
-            px: 1.5,
-            py: 0.75,
+            width: "100%",
+            pr: 0.5,
             gap: 1.5,
           }}
         >
@@ -107,11 +94,10 @@ function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps)
             >
               {pokemon.length}
             </Typography>
-            <ExpandIcon open={open} color="text.secondary" />
           </Stack>
         </Box>
-      </Box>
-      <Collapse in={open}>
+      </AccordionSummary>
+      <AccordionDetails sx={{ p: 0 }}>
         <Divider />
         <Box
           sx={{ px: 1.5, py: 1, display: "flex", flexWrap: "wrap", gap: 0.5 }}
@@ -120,8 +106,8 @@ function DistributionRow({ label, pokemon, totalPokemon }: DistributionRowProps)
             <PokemonChip key={member.id} pokemon={member} />
           ))}
         </Box>
-      </Collapse>
-    </Paper>
+      </AccordionDetails>
+    </Accordion>
   );
 }
 
