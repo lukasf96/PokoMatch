@@ -26,11 +26,13 @@ export const PokemonSpriteAvatar = memo(function PokemonSpriteAvatar({
   return (
     <Avatar
       src={shouldShowSprite ? spriteUrl : undefined}
-      imgProps={{
-        loading: "lazy",
-        width: size,
-        height: size,
-        onError: () => setHasSpriteError(true),
+      slotProps={{
+        img: {
+          loading: "lazy",
+          width: size,
+          height: size,
+          onError: () => setHasSpriteError(true),
+        },
       }}
       alt={pokemon.name}
       variant="rounded"
