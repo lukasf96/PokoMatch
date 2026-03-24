@@ -79,74 +79,91 @@ export const PokemonCard = memo(function PokemonCard({
         sx={{
           bgcolor: unlocked ? colors.bg : "grey.100",
           px: 1.5,
-          py: 0.75,
+          py: 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: 1,
           transition: "background-color 0.15s",
         }}
       >
-        <Stack direction="row" spacing={0.75} alignItems="center" minWidth={0}>
-          <PokemonSpriteAvatar pokemon={pokemon} />
-          <Typography
-            variant="body2"
-            color="text.disabled"
-            sx={{ fontSize: 11, flexShrink: 0 }}
+        <Stack
+          direction="row"
+          spacing={1.25}
+          alignItems="center"
+          minWidth={0}
+          sx={{ flex: 1 }}
+        >
+          <PokemonSpriteAvatar pokemon={pokemon} size={56} padding={0.75} />
+          <Stack
+            direction="row"
+            spacing={0.75}
+            alignItems="center"
+            minWidth={0}
+            flexWrap="wrap"
+            useFlexGap
           >
-            #{pokemon.dexNumber}
-          </Typography>
-          <Typography
-            variant="body2"
-            fontWeight={600}
-            noWrap
-            color={unlocked ? colors.text : "text.secondary"}
-          >
-            {pokemonDisplayName}
-          </Typography>
-          {showEventBadge && isEvent && (
-            <Chip
-              label="Event"
-              size="small"
-              sx={{
-                ...metaChipStyles,
-                bgcolor: isDark ? "secondary.dark" : "secondary.light",
-                color: isDark ? "secondary.contrastText" : "secondary.dark",
-              }}
-            />
-          )}
+            <Typography
+              variant="body2"
+              color="text.disabled"
+              sx={{ fontSize: 12, flexShrink: 0, fontWeight: 500 }}
+            >
+              #{pokemon.dexNumber}
+            </Typography>
+            <Typography
+              variant="body2"
+              fontWeight={700}
+              noWrap
+              sx={{ fontSize: 13 }}
+              color={unlocked ? colors.text : "text.secondary"}
+            >
+              {pokemonDisplayName}
+            </Typography>
+            {showEventBadge && isEvent && (
+              <Chip
+                label="Event"
+                size="small"
+                sx={{
+                  ...metaChipStyles,
+                  bgcolor: isDark ? "secondary.dark" : "secondary.light",
+                  color: isDark ? "secondary.contrastText" : "secondary.dark",
+                }}
+              />
+            )}
+          </Stack>
         </Stack>
         {interactive &&
           (unlocked ? (
-            <CheckBoxIcon sx={{ fontSize: 18, color: colors.text, flexShrink: 0 }} />
+            <CheckBoxIcon sx={{ fontSize: 22, color: colors.text, flexShrink: 0 }} />
           ) : (
             <CheckBoxOutlineBlankIcon
-              sx={{ fontSize: 18, color: "text.disabled", flexShrink: 0 }}
+              sx={{ fontSize: 22, color: "text.disabled", flexShrink: 0 }}
             />
           ))}
       </Box>
 
       <Divider />
 
-      <Box sx={{ px: 1.5, py: 0.75 }}>
+      <Box sx={{ px: 1.5, py: 1 }}>
         <Stack
           direction="row"
           spacing={0.5}
           alignItems="center"
           useFlexGap
-          mb={0.5}
+          mb={0.75}
           sx={{ flexWrap: "wrap" }}
         >
-          <HabitatIcon sx={{ fontSize: 12, color: "text.secondary" }} />
-          <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
+          <HabitatIcon sx={{ fontSize: 14, color: "text.secondary" }} />
+          <Typography variant="body2" sx={{ fontSize: 12 }} color="text.secondary">
             {pokemon.idealHabitat}
           </Typography>
           {pokemon.favoriteFlavor && (
             <>
-              <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
+              <Typography variant="body2" sx={{ fontSize: 12 }} color="text.secondary">
                 •
               </Typography>
-              <RestaurantIcon sx={{ fontSize: 12, color: "text.secondary" }} />
-              <Typography variant="body2" sx={{ fontSize: 11 }} color="text.secondary">
+              <RestaurantIcon sx={{ fontSize: 14, color: "text.secondary" }} />
+              <Typography variant="body2" sx={{ fontSize: 12 }} color="text.secondary">
                 {pokemon.favoriteFlavor}
               </Typography>
             </>

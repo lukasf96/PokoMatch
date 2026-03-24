@@ -53,21 +53,25 @@ function PokemonIdentity({
   return (
     <Stack
       direction="row"
-      spacing={1}
+      spacing={1.25}
       alignItems="center"
-      mb={0.5}
+      mb={0.75}
       flexWrap="wrap"
       minWidth={0}
     >
-      <PokemonSpriteAvatar pokemon={pokemon} />
-      <Typography variant="caption" color="text.disabled" sx={{ minWidth: 32 }}>
+      <PokemonSpriteAvatar pokemon={pokemon} size={48} padding={0.5} />
+      <Typography
+        variant="caption"
+        color="text.disabled"
+        sx={{ minWidth: 36, fontSize: 11, fontWeight: 600 }}
+      >
         #{pokemon.dexNumber}
       </Typography>
       <Typography
         variant="body2"
-        fontWeight={600}
+        fontWeight={700}
         noWrap
-        sx={{ flex: "1 1 auto", minWidth: 0 }}
+        sx={{ flex: "1 1 auto", minWidth: 0, fontSize: 13 }}
       >
         {pokemonDisplayName}
       </Typography>
@@ -215,8 +219,8 @@ function GroupCardComponent({
           <Box
             key={pokemon.id}
             sx={{
-              flex: "1 1 220px",
-              p: 1.5,
+              flex: "1 1 260px",
+              p: 1.75,
               borderRight:
                 pi < group.length - 1 ? `1px solid ${dividerColor}` : "none",
               minWidth: 0,
