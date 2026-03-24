@@ -11,9 +11,123 @@ import {
   TranslateOutlined,
 } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import type { ElementType, MouseEvent } from "react";
 import { useState } from "react";
 import { useStore } from "../../store/store";
 import { LayoutInfoDialog } from "./LayoutInfoDialog";
+
+type NameLanguage = "en" | "de" | "fr";
+type ThemeMode = "system" | "light" | "dark";
+type SettingsView = "root" | "language" | "theme";
+
+const LANGUAGE_LABELS: Record<NameLanguage, string> = {
+  en: "English",
+  de: "Deutsch",
+  fr: "Français",
+};
+
+const THEME_LABELS: Record<ThemeMode, string> = {
+  system: "System",
+  light: "Light",
+  dark: "Dark",
+};
+
+const LANGUAGE_CODES: NameLanguage[] = ["en", "de", "fr"];
+
+const THEME_CHOICES: { mode: ThemeMode; icon: ElementType }[] = [
+  { mode: "system", icon: SettingsBrightnessOutlined },
+  { mode: "light", icon: LightModeOutlined },
+  { mode: "dark", icon: DarkModeOutlined },
+];
+
+const menuItemBody2 = { typography: "body2" } as const;
+
+const rowBetweenSx = {
+  ...menuItemBody2,
+  display: "flex",
+  justifyContent: "space-between",
+  gap: 1.5,
+} as const;
+
+const iconRowSx = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 1,
+} as const;
+
+interface NavRootItemProps {
+  icon: ElementType;
+  title: string;
+  detail?: string;
+  onClick: () => void;
+  showChevron?: boolean;
+}
+
+function NavRootItem({
+  icon: Icon,
+  title,
+  detail,
+  onClick,
+  showChevron = true,
+}: NavRootItemProps) {
+  return (
+    <MenuItem onClick={onClick} sx={rowBetweenSx}>
+      <Box sx={iconRowSx}>
+        <Icon fontSize="small" />
+        <Box>
+          <Typography variant="body2">{title}</Typography>
+          {detail ? (
+            <Typography variant="caption" color="text.secondary">
+              {detail}
+            </Typography>
+          ) : null}
+        </Box>
+      </Box>
+      {showChevron ? <ChevronRight fontSize="small" color="action" /> : null}
+    </MenuItem>
+  );
+}
+
+interface BackMenuRowProps {
+  onClick: () => void;
+}
+
+function BackMenuRow({ onClick }: BackMenuRowProps) {
+  return (
+    <MenuItem onClick={onClick} sx={{ ...menuItemBody2, mb: 0.5 }}>
+      <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
+      Back
+    </MenuItem>
+  );
+}
+
+interface SelectableSettingRowProps {
+  label: string;
+  selected: boolean;
+  onClick: () => void;
+  icon?: ElementType;
+}
+
+function SelectableSettingRow({
+  label,
+  selected,
+  onClick,
+  icon: Icon,
+}: SelectableSettingRowProps) {
+  return (
+    <MenuItem selected={selected} onClick={onClick} sx={rowBetweenSx}>
+      {Icon ? (
+        <Box sx={iconRowSx}>
+          <Icon fontSize="small" />
+          {label}
+        </Box>
+      ) : (
+        label
+      )}
+      {selected ? <Check fontSize="small" color="primary" /> : null}
+    </MenuItem>
+  );
+}
 
 export function LayoutSettingsMenu() {
   const nameLanguage = useStore((s) => s.nameLanguage);
@@ -23,13 +137,11 @@ export function LayoutSettingsMenu() {
   const [settingsAnchorEl, setSettingsAnchorEl] = useState<null | HTMLElement>(
     null,
   );
-  const [settingsView, setSettingsView] = useState<
-    "root" | "language" | "theme"
-  >("root");
+  const [settingsView, setSettingsView] = useState<SettingsView>("root");
   const [isInfoDialogOpen, setIsInfoDialogOpen] = useState(false);
   const isSettingsOpen = Boolean(settingsAnchorEl);
 
-  function openSettingsMenu(event: React.MouseEvent<HTMLElement>) {
+  function openSettingsMenu(event: MouseEvent<HTMLElement>) {
     setSettingsAnchorEl(event.currentTarget);
     setSettingsView("root");
   }
@@ -44,30 +156,15 @@ export function LayoutSettingsMenu() {
     closeSettingsMenu();
   }
 
-  function handleLanguageChange(language: "en" | "de" | "fr") {
+  function handleLanguageChange(language: NameLanguage) {
     setNameLanguage(language);
     closeSettingsMenu();
   }
 
-  function handleThemeModeChange(mode: "system" | "light" | "dark") {
+  function handleThemeModeChange(mode: ThemeMode) {
     setThemeMode(mode);
     closeSettingsMenu();
   }
-
-  const selectedLanguageLabel =
-    nameLanguage === "en"
-      ? "English"
-      : nameLanguage === "de"
-        ? "Deutsch"
-        : "Français";
-  const selectedThemeLabel =
-    themeMode === "system"
-      ? "System"
-      : themeMode === "light"
-        ? "Light"
-        : "Dark";
-
-  const menuItemBody2 = { typography: "body2" } as const;
 
   return (
     <>
@@ -96,210 +193,57 @@ export function LayoutSettingsMenu() {
           },
         }}
       >
-        {settingsView === "root"
-          ? [
-              <MenuItem
-                key="root-language"
-                onClick={() => setSettingsView("language")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <TranslateOutlined fontSize="small" />
-                  <Box>
-                    <Typography variant="body2">Pokemon Language</Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      {selectedLanguageLabel}
-                    </Typography>
-                  </Box>
-                </Box>
-                <ChevronRight fontSize="small" color="action" />
-              </MenuItem>,
-              <MenuItem
-                key="root-theme"
-                onClick={() => setSettingsView("theme")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <PaletteOutlined fontSize="small" />
-                  <Box>
-                    <Typography variant="body2">Theme</Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      {selectedThemeLabel}
-                    </Typography>
-                  </Box>
-                </Box>
-                <ChevronRight fontSize="small" color="action" />
-              </MenuItem>,
-              <MenuItem
-                key="root-info"
-                onClick={openInfoDialog}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <InfoOutlined fontSize="small" />
-                  <Box>
-                    <Typography variant="body2">Info</Typography>
-                  </Box>
-                </Box>
-              </MenuItem>,
-            ]
-          : null}
-        {settingsView === "language"
-          ? [
-              <MenuItem
-                key="language-back"
-                onClick={() => setSettingsView("root")}
-                sx={{ ...menuItemBody2, mb: 0.5 }}
-              >
-                <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
-                Back
-              </MenuItem>,
-              <MenuItem
-                key="language-en"
-                selected={nameLanguage === "en"}
-                onClick={() => handleLanguageChange("en")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                English
-                {nameLanguage === "en" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-              <MenuItem
-                key="language-de"
-                selected={nameLanguage === "de"}
-                onClick={() => handleLanguageChange("de")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                Deutsch
-                {nameLanguage === "de" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-              <MenuItem
-                key="language-fr"
-                selected={nameLanguage === "fr"}
-                onClick={() => handleLanguageChange("fr")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                Français
-                {nameLanguage === "fr" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-            ]
-          : null}
-        {settingsView === "theme"
-          ? [
-              <MenuItem
-                key="theme-back"
-                onClick={() => setSettingsView("root")}
-                sx={{ ...menuItemBody2, mb: 0.5 }}
-              >
-                <ArrowBackOutlined sx={{ mr: 1 }} fontSize="small" />
-                Back
-              </MenuItem>,
-              <MenuItem
-                key="theme-system"
-                selected={themeMode === "system"}
-                onClick={() => handleThemeModeChange("system")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <SettingsBrightnessOutlined fontSize="small" />
-                  System
-                </Box>
-                {themeMode === "system" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-              <MenuItem
-                key="theme-light"
-                selected={themeMode === "light"}
-                onClick={() => handleThemeModeChange("light")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <LightModeOutlined fontSize="small" />
-                  Light
-                </Box>
-                {themeMode === "light" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-              <MenuItem
-                key="theme-dark"
-                selected={themeMode === "dark"}
-                onClick={() => handleThemeModeChange("dark")}
-                sx={{
-                  ...menuItemBody2,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  sx={{ display: "inline-flex", alignItems: "center", gap: 1 }}
-                >
-                  <DarkModeOutlined fontSize="small" />
-                  Dark
-                </Box>
-                {themeMode === "dark" ? (
-                  <Check fontSize="small" color="primary" />
-                ) : null}
-              </MenuItem>,
-            ]
-          : null}
+        {settingsView === "root" ? (
+          <>
+            <NavRootItem
+              icon={TranslateOutlined}
+              title="Pokemon Language"
+              detail={LANGUAGE_LABELS[nameLanguage]}
+              onClick={() => setSettingsView("language")}
+            />
+            <NavRootItem
+              icon={PaletteOutlined}
+              title="Theme"
+              detail={THEME_LABELS[themeMode]}
+              onClick={() => setSettingsView("theme")}
+            />
+            <NavRootItem
+              icon={InfoOutlined}
+              title="Info"
+              onClick={openInfoDialog}
+              showChevron={false}
+            />
+          </>
+        ) : null}
+
+        {settingsView === "language" ? (
+          <>
+            <BackMenuRow onClick={() => setSettingsView("root")} />
+            {LANGUAGE_CODES.map((code) => (
+              <SelectableSettingRow
+                key={code}
+                label={LANGUAGE_LABELS[code]}
+                selected={nameLanguage === code}
+                onClick={() => handleLanguageChange(code)}
+              />
+            ))}
+          </>
+        ) : null}
+
+        {settingsView === "theme" ? (
+          <>
+            <BackMenuRow onClick={() => setSettingsView("root")} />
+            {THEME_CHOICES.map(({ mode, icon }) => (
+              <SelectableSettingRow
+                key={mode}
+                label={THEME_LABELS[mode]}
+                icon={icon}
+                selected={themeMode === mode}
+                onClick={() => handleThemeModeChange(mode)}
+              />
+            ))}
+          </>
+        ) : null}
       </Menu>
       <LayoutInfoDialog
         isOpen={isInfoDialogOpen}
