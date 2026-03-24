@@ -8,7 +8,7 @@ import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import type { Theme } from "@mui/material/styles";
 import type { Habitat } from "../types/types";
 
-interface HabitatColorSet {
+export interface HabitatColorSet {
   bg: string;
   text: string;
   border: string;

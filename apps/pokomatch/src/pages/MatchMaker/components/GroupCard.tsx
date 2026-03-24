@@ -14,7 +14,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { memo, type ReactNode, useMemo } from "react";
+import { memo, useMemo, type ReactNode } from "react";
 import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
 import {
   getGroupConflicts,
@@ -23,13 +23,14 @@ import {
 import {
   getHabitatColors,
   habitatIcons,
+  type HabitatColorSet,
 } from "../../../services/habitatColors";
 import {
   groupScore,
   groupScoreUpperBound,
 } from "../../../services/matching.service";
-import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { isEventDexPokemon } from "../../../services/pokemon";
+import { getPokemonDisplayName } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
 
@@ -44,12 +45,6 @@ interface GroupCardProps {
     onClick: () => void;
     kind: "add" | "remove";
   };
-}
-
-interface HabitatAccentColors {
-  bg: string;
-  text: string;
-  border: string;
 }
 
 function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
@@ -71,7 +66,7 @@ function MemberFavoritesList({
   favorites: string[];
   favCounts: Record<string, number>;
   universalFavorites: Set<string>;
-  accent: HabitatAccentColors;
+  accent: HabitatColorSet;
 }) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
