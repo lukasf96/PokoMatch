@@ -1,6 +1,7 @@
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
@@ -54,13 +55,25 @@ interface HabitatAccentColors {
   border: string;
 }
 
+function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
+  if (group.length < 2) return new Set();
+  let intersection = new Set(group[0].favorites);
+  for (let i = 1; i < group.length; i++) {
+    const next = new Set(group[i].favorites);
+    intersection = new Set([...intersection].filter((f) => next.has(f)));
+  }
+  return intersection;
+}
+
 function MemberFavoritesList({
   favorites,
   favCounts,
+  universalFavorites,
   accent,
 }: {
   favorites: string[];
   favCounts: Record<string, number>;
+  universalFavorites: Set<string>;
   accent: HabitatAccentColors;
 }) {
   const theme = useTheme();
@@ -69,13 +82,16 @@ function MemberFavoritesList({
   const sorted = useMemo(() => {
     const copy = [...favorites];
     copy.sort((a, b) => {
+      const ua = universalFavorites.has(a) ? 1 : 0;
+      const ub = universalFavorites.has(b) ? 1 : 0;
+      if (ub !== ua) return ub - ua;
       const sa = (favCounts[a] ?? 0) >= 2 ? 1 : 0;
       const sb = (favCounts[b] ?? 0) >= 2 ? 1 : 0;
       if (sb !== sa) return sb - sa;
       return a.localeCompare(b, undefined, { sensitivity: "base" });
     });
     return copy;
-  }, [favorites, favCounts]);
+  }, [favorites, favCounts, universalFavorites]);
 
   if (favorites.length === 0) {
     return (
@@ -120,44 +136,68 @@ function MemberFavoritesList({
         }}
       >
         {sorted.map((fav) => {
+          const isUniversal = universalFavorites.has(fav);
           const isShared = (favCounts[fav] ?? 0) >= 2;
+
+          const sharedSx = {
+            height: 22,
+            fontSize: 11,
+            fontWeight: 600,
+            borderRadius: "6px",
+            bgcolor: isDark
+              ? alpha(accent.bg, 0.55)
+              : alpha("#ffffff", 0.85),
+            color: accent.text,
+            border: "1px solid",
+            borderColor: alpha(accent.border, isDark ? 0.85 : 0.55),
+            "& .MuiChip-icon": {
+              color: accent.border,
+              ml: 0.35,
+            },
+          } as const;
+
+          const soloSx = {
+            height: 22,
+            fontSize: 11,
+            fontWeight: 500,
+            borderRadius: "6px",
+            bgcolor: isDark
+              ? alpha(theme.palette.common.black, 0.22)
+              : alpha(theme.palette.common.black, 0.04),
+            color: "text.secondary",
+            border: "1px solid",
+            borderColor: isDark
+              ? alpha(theme.palette.divider, 0.6)
+              : theme.palette.divider,
+            "& .MuiChip-icon": {
+              ml: 0.35,
+            },
+          } as const;
+
           return (
             <Chip
               key={fav}
               label={fav}
               size="small"
+              title={
+                isUniversal
+                  ? "Every Pokémon in this group has this favorite"
+                  : undefined
+              }
               icon={
-                isShared ? (
+                isUniversal ? (
+                  <AutoAwesomeIcon
+                    sx={{ fontSize: 14, width: 14, height: 14 }}
+                    aria-hidden
+                  />
+                ) : isShared ? (
                   <FavoriteIcon
                     sx={{ fontSize: 14, width: 14, height: 14 }}
                     aria-hidden
                   />
                 ) : undefined
               }
-              sx={{
-                height: 22,
-                fontSize: 11,
-                fontWeight: isShared ? 600 : 500,
-                borderRadius: "6px",
-                bgcolor: isShared
-                  ? isDark
-                    ? alpha(accent.bg, 0.55)
-                    : alpha("#ffffff", 0.85)
-                  : isDark
-                    ? alpha(theme.palette.common.black, 0.22)
-                    : alpha(theme.palette.common.black, 0.04),
-                color: isShared ? accent.text : "text.secondary",
-                border: "1px solid",
-                borderColor: isShared
-                  ? alpha(accent.border, isDark ? 0.85 : 0.55)
-                  : isDark
-                    ? alpha(theme.palette.divider, 0.6)
-                    : theme.palette.divider,
-                "& .MuiChip-icon": {
-                  color: isShared ? accent.border : undefined,
-                  ml: 0.35,
-                },
-              }}
+              sx={isUniversal || isShared ? sharedSx : soloSx}
             />
           );
         })}
@@ -285,6 +325,11 @@ function GroupCardComponent({
       };
     }, [group]);
 
+  const universalFavorites = useMemo(
+    () => favoritesEveryoneLikes(group),
+    [group],
+  );
+
   const dividerColor = theme.palette.divider;
 
   return (
@@ -400,6 +445,7 @@ function GroupCardComponent({
             <MemberFavoritesList
               favorites={pokemon.favorites}
               favCounts={favCounts}
+              universalFavorites={universalFavorites}
               accent={colors}
             />
           </Box>
