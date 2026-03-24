@@ -112,6 +112,7 @@ export function AutoGroupsSection({
                   </Typography>
                   <Tooltip title="When this is on, suggested groups slightly favor keeping evolution families together wherever habitat rules still allow it. Total shared-favorite overlap can dip a little, but the trade-off is usually very small.">
                     <IconButton
+                      component="span"
                       size="small"
                       aria-label="How evolution line grouping works"
                       onClick={(event) => event.stopPropagation()}
