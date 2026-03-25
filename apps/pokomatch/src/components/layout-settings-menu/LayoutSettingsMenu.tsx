@@ -198,7 +198,7 @@ export function LayoutSettingsMenu() {
               <NavRootItem
                 key="language"
                 icon={TranslateOutlined}
-                title="Pokemon Language"
+                title="Pokémon Language"
                 detail={LANGUAGE_LABELS[nameLanguage]}
                 onClick={() => setSettingsView("language")}
               />,

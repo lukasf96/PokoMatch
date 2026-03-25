@@ -20,7 +20,6 @@ const POKE_API_URL = "https://pokeapi.co/";
 const POKE_API_SPRITES_URL = "https://github.com/PokeAPI/sprites";
 const SEREBII_URL = "https://www.serebii.net/";
 
-
 export function LayoutInfoDialog({ isOpen, onClose }: LayoutInfoDialogProps) {
   return (
     <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth="xs">
@@ -50,19 +49,19 @@ export function LayoutInfoDialog({ isOpen, onClose }: LayoutInfoDialogProps) {
             Credits / Special thanks to:
           </Typography>
           <Typography variant="body2">
-            Pokopia specific Pokemon data:{" "}
+            Pokopia specific Pokémon data:{" "}
             <Link href={SEREBII_URL} target="_blank" rel="noreferrer">
               Serebii.net
             </Link>
           </Typography>
           <Typography variant="body2">
-            Pokemon data and localized species names:{" "}
+            Pokémon data and localized names:{" "}
             <Link href={POKE_API_URL} target="_blank" rel="noreferrer">
               PokeAPI
             </Link>
           </Typography>
           <Typography variant="body2">
-            Sprite source:{" "}
+            Pokémon sprites:{" "}
             <Link href={POKE_API_SPRITES_URL} target="_blank" rel="noreferrer">
               PokeAPI/sprites
             </Link>
@@ -71,7 +70,7 @@ export function LayoutInfoDialog({ isOpen, onClose }: LayoutInfoDialogProps) {
           <Typography variant="caption" color="text.secondary">
             PokoMatch is a fan-made project and is not affiliated with,
             endorsed, sponsored, or specifically approved by Nintendo, GAME
-            FREAK or The Pokemon Company.
+            FREAK or The Pokémon Company.
           </Typography>
         </Stack>
       </DialogContent>

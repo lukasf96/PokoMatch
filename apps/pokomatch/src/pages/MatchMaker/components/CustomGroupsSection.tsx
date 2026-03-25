@@ -64,7 +64,7 @@ export function CustomGroupsSection({
           <Button
             onClick={onAddGroup}
             size="small"
-            variant="outlined"
+            variant="contained"
             startIcon={<AddIcon />}
             sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
           >
@@ -90,12 +90,14 @@ export function CustomGroupsSection({
                   group={group}
                   groupNumber={groupNumber}
                   habitat={getDisplayHabitat(group)}
-                  onRemovePokemon={(pokemonId) => onRemovePokemon(gi, pokemonId)}
+                  onRemovePokemon={(pokemonId) =>
+                    onRemovePokemon(gi, pokemonId)
+                  }
                   footerContent={
                     group.length < 4 ? (
                       <Stack spacing={1}>
                         <Typography variant="caption" color="text.secondary">
-                          Add Pokemon to Group {groupNumber}
+                          Add Pokémon to Group {groupNumber}
                         </Typography>
 
                         <Autocomplete
@@ -105,7 +107,11 @@ export function CustomGroupsSection({
                             `${getPokemonDisplayName(option, nameLanguage)} (#${option.dexNumber})`
                           }
                           renderInput={(params) => (
-                            <TextField {...params} size="small" label="Choose Pokemon" />
+                            <TextField
+                              {...params}
+                              size="small"
+                              label="Choose Pokémon"
+                            />
                           )}
                           onChange={(_, value) => {
                             if (value) onAddPokemon(gi, value.id);
@@ -114,10 +120,18 @@ export function CustomGroupsSection({
 
                         {group.length > 0 && groupSuggestions.length > 0 && (
                           <Stack spacing={0.5}>
-                            <Typography variant="caption" color="text.secondary">
+                            <Typography
+                              variant="caption"
+                              color="text.secondary"
+                            >
                               Suggested next:
                             </Typography>
-                            <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
+                            <Stack
+                              direction="row"
+                              spacing={0.75}
+                              flexWrap="wrap"
+                              useFlexGap
+                            >
                               {groupSuggestions.map((suggestion) => (
                                 <Chip
                                   key={`suggest-${gi}-${suggestion.pokemon.id}`}
@@ -126,7 +140,9 @@ export function CustomGroupsSection({
                                     nameLanguage,
                                   )} (+${suggestion.score})`}
                                   size="small"
-                                  onClick={() => onAddPokemon(gi, suggestion.pokemon.id)}
+                                  onClick={() =>
+                                    onAddPokemon(gi, suggestion.pokemon.id)
+                                  }
                                 />
                               ))}
                             </Stack>

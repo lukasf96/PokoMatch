@@ -74,7 +74,10 @@ export default function PokedexPage() {
   const totalCount = allPokemon.length;
 
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3 }, px: { xs: 1.5, sm: 3 } }}>
+    <Container
+      maxWidth="lg"
+      sx={{ py: { xs: 2, sm: 3 }, px: { xs: 1.5, sm: 3 } }}
+    >
       {/* Toolbar */}
       <Stack
         direction={{ xs: "column", sm: "row" }}
@@ -154,20 +157,20 @@ export default function PokedexPage() {
         >
           <Button
             size="small"
-            variant="outlined"
+            variant="contained"
             onClick={unlockAll}
             sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
           >
-            Select all
+            Unlock all
           </Button>
           <Button
             size="small"
-            variant="outlined"
+            variant="contained"
             color="warning"
             onClick={lockAll}
             sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
           >
-            Deselect all
+            Lock all
           </Button>
         </Stack>
       </Stack>
@@ -339,36 +342,30 @@ function PokedexSectionsStatusFiltered({
   onToggle: (id: string) => void;
   unlockedIds: Set<string>;
 }) {
-  const filteredStandard = useMemo(
-    () => {
-      const result: Pokemon[] = [];
+  const filteredStandard = useMemo(() => {
+    const result: Pokemon[] = [];
 
-      for (const p of baseFilteredStandard) {
-        const isUnlocked = unlockedIds.has(p.id);
-        if (status === "unlocked" ? isUnlocked : !isUnlocked) {
-          result.push(p);
-        }
+    for (const p of baseFilteredStandard) {
+      const isUnlocked = unlockedIds.has(p.id);
+      if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+        result.push(p);
       }
+    }
 
-      return result;
-    },
-    [baseFilteredStandard, status, unlockedIds],
-  );
-  const filteredEvent = useMemo(
-    () => {
-      const result: Pokemon[] = [];
+    return result;
+  }, [baseFilteredStandard, status, unlockedIds]);
+  const filteredEvent = useMemo(() => {
+    const result: Pokemon[] = [];
 
-      for (const p of baseFilteredEvent) {
-        const isUnlocked = unlockedIds.has(p.id);
-        if (status === "unlocked" ? isUnlocked : !isUnlocked) {
-          result.push(p);
-        }
+    for (const p of baseFilteredEvent) {
+      const isUnlocked = unlockedIds.has(p.id);
+      if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+        result.push(p);
       }
+    }
 
-      return result;
-    },
-    [baseFilteredEvent, status, unlockedIds],
-  );
+    return result;
+  }, [baseFilteredEvent, status, unlockedIds]);
 
   return (
     <PokedexSections
@@ -469,4 +466,3 @@ function PokedexGrid({
     </>
   );
 }
-
