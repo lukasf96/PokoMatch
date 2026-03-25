@@ -10,8 +10,8 @@ const SEREBII_ROBOTS_URL = `${SEREBII_BASE}/robots.txt`;
 
 const POKEAPI_BASE = "https://pokeapi.co";
 
-const DEFAULT_REQUEST_GAP_MS = 100;
-const DEFAULT_POKEAPI_GAP_MS = 50;
+const DEFAULT_REQUEST_GAP_MS = 50;
+const DEFAULT_POKEAPI_GAP_MS = 10;
 
 const APP_ROOT = process.cwd();
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "pokedex.json");
@@ -329,14 +329,13 @@ function parseSerebiiDetail(html: string): {
           .find('a[href*="idealhabitat"]')
           .first();
         idealHabitat =
-          idealLink.find("u").first().text().trim() ||
-          idealLink.text().trim();
+          idealLink.find("u").first().text().trim() || idealLink.text().trim();
 
         favoritesRaw = [];
         // Serebii uses separate hrefs for "favorites" vs the final food/flavor line.
         // We must include both while preserving DOM order.
         $(dataCells[2])
-          .find('a[href]')
+          .find("a[href]")
           .each((__, a) => {
             const href = $(a).attr("href") ?? "";
             const isFavorite = href.includes("/pokemonpokopia/favorites/");
@@ -477,50 +476,10 @@ async function collectSerebiiDex(
 
 async function enrichWithLocalizations(
   entries: PokemonEntry[],
-  pokeApiGapMs: number,
+  pokeApiCtx: PokeApiContext,
 ): Promise<PokemonEntry[]> {
   const supportedLanguages: Array<keyof LocalizedNames> = ["de", "fr"];
   const localizedByApiName = new Map<string, LocalizedNames | null>();
-  const speciesNameByApiName = new Map<string, string | null>();
-
-  interface PokeApiPokemon {
-    species?: { name?: string };
-  }
-  interface PokeApiSpecies {
-    names?: Array<{ language?: { name?: string }; name?: string }>;
-  }
-
-  async function resolveSpeciesName(
-    pokemonApiName: string,
-  ): Promise<string | null> {
-    if (speciesNameByApiName.has(pokemonApiName))
-      return speciesNameByApiName.get(pokemonApiName) ?? null;
-
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiPokemon>(
-      `${POKEAPI_BASE}/api/v2/pokemon/${pokemonApiName}`,
-    );
-    const speciesName = data?.species?.name ?? null;
-    speciesNameByApiName.set(pokemonApiName, speciesName);
-    return speciesName;
-  }
-
-  async function fetchLocalizedNames(
-    speciesName: string,
-  ): Promise<LocalizedNames | null> {
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiSpecies>(
-      `${POKEAPI_BASE}/api/v2/pokemon-species/${speciesName}`,
-    );
-    if (!data?.names) return null;
-
-    const out: LocalizedNames = { de: null, fr: null };
-    for (const lang of supportedLanguages) {
-      const entry = data.names.find((n) => n.language?.name === lang);
-      out[lang] = entry?.name ?? null;
-    }
-    return out;
-  }
 
   for (let i = 0; i < entries.length; i++) {
     const pokemon = entries[i]!;
@@ -531,13 +490,25 @@ async function enrichWithLocalizations(
       `\r[localizations ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
     );
 
-    const speciesName = await resolveSpeciesName(apiName);
+    const speciesName =
+      await pokeApiCtx.getSpeciesNameByPokemonApiName(apiName);
     if (!speciesName) {
       localizedByApiName.set(apiName, null);
       continue;
     }
 
-    const localized = await fetchLocalizedNames(speciesName);
+    const speciesData =
+      await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
+    if (!speciesData?.names) {
+      localizedByApiName.set(apiName, null);
+      continue;
+    }
+
+    const localized: LocalizedNames = { de: null, fr: null };
+    for (const lang of supportedLanguages) {
+      const entry = speciesData.names.find((n) => n.language?.name === lang);
+      localized[lang] = entry?.name ?? null;
+    }
     localizedByApiName.set(apiName, localized);
   }
   process.stderr.write("\n");
@@ -553,39 +524,39 @@ async function enrichWithLocalizations(
   });
 }
 
-async function enrichWithEvolutionPeers(
-  entries: PokemonEntry[],
-  pokeApiGapMs: number,
-): Promise<PokemonEntry[]> {
-  interface PokeApiPokemon {
-    species?: { name?: string };
-  }
-  interface PokeApiSpecies {
-    evolution_chain?: { url?: string };
-  }
-  interface PokeApiEvolutionChain {
-    chain?: EvolutionNode;
-  }
-  interface EvolutionNode {
-    species?: { name?: string };
-    evolves_to?: EvolutionNode[];
-  }
+interface PokeApiPokemonData {
+  species?: { name?: string };
+}
 
-  const speciesNameCache = new Map<string, string | null>();
-  async function resolveSpeciesName(
-    pokemonApiName: string,
-  ): Promise<string | null> {
-    if (speciesNameCache.has(pokemonApiName))
-      return speciesNameCache.get(pokemonApiName) ?? null;
+interface PokeApiPokemonSpeciesData {
+  names?: Array<{ language?: { name?: string }; name?: string }>;
+  evolution_chain?: { url?: string };
+}
 
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiPokemon>(
-      `${POKEAPI_BASE}/api/v2/pokemon/${pokemonApiName}`,
-    );
-    const speciesName = data?.species?.name ?? null;
-    speciesNameCache.set(pokemonApiName, speciesName);
-    return speciesName;
-  }
+interface PokeApiEvolutionChainData {
+  chain?: EvolutionNode;
+}
+
+interface EvolutionNode {
+  species?: { name?: string };
+  evolves_to?: EvolutionNode[];
+}
+
+interface PokeApiContext {
+  getSpeciesNameByPokemonApiName(apiName: string): Promise<string | null>;
+  getPokemonSpeciesBySpeciesName(
+    speciesName: string,
+  ): Promise<PokeApiPokemonSpeciesData | null>;
+  getEvolutionChainSpeciesSet(chainUrl: string): Promise<Set<string> | null>;
+}
+
+function createPokeApiContext(pokeApiGapMs: number): PokeApiContext {
+  const speciesNameByApiName = new Map<string, string | null>();
+  const pokemonSpeciesBySpeciesName = new Map<
+    string,
+    PokeApiPokemonSpeciesData | null
+  >();
+  const chainSpeciesByUrl = new Map<string, Set<string> | null>();
 
   function collectSpeciesFromChain(
     node: EvolutionNode | undefined,
@@ -597,45 +568,69 @@ async function enrichWithEvolutionPeers(
       collectSpeciesFromChain(next, out);
   }
 
-  const chainSpeciesByUrl = new Map<string, Set<string> | null>();
-  async function fetchEvolutionChainSpeciesSet(
-    chainUrl: string,
-  ): Promise<Set<string> | null> {
-    if (chainSpeciesByUrl.has(chainUrl))
-      return chainSpeciesByUrl.get(chainUrl) ?? null;
+  async function getSpeciesNameByPokemonApiName(
+    apiName: string,
+  ): Promise<string | null> {
+    if (speciesNameByApiName.has(apiName)) {
+      return speciesNameByApiName.get(apiName) ?? null;
+    }
 
     await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiEvolutionChain>(chainUrl);
+    const data = await fetchJson<PokeApiPokemonData>(
+      `${POKEAPI_BASE}/api/v2/pokemon/${apiName}`,
+    );
+    const speciesName = data?.species?.name ?? null;
+    speciesNameByApiName.set(apiName, speciesName);
+    return speciesName;
+  }
+
+  async function getPokemonSpeciesBySpeciesName(
+    speciesName: string,
+  ): Promise<PokeApiPokemonSpeciesData | null> {
+    if (pokemonSpeciesBySpeciesName.has(speciesName)) {
+      return pokemonSpeciesBySpeciesName.get(speciesName) ?? null;
+    }
+
+    await sleep(pokeApiGapMs);
+    const data = await fetchJson<PokeApiPokemonSpeciesData>(
+      `${POKEAPI_BASE}/api/v2/pokemon-species/${speciesName}`,
+    );
+    pokemonSpeciesBySpeciesName.set(speciesName, data);
+    return data;
+  }
+
+  async function getEvolutionChainSpeciesSet(
+    chainUrl: string,
+  ): Promise<Set<string> | null> {
+    if (chainSpeciesByUrl.has(chainUrl)) {
+      return chainSpeciesByUrl.get(chainUrl) ?? null;
+    }
+
+    await sleep(pokeApiGapMs);
+    const data = await fetchJson<PokeApiEvolutionChainData>(chainUrl);
     if (!data?.chain) {
       chainSpeciesByUrl.set(chainUrl, null);
       return null;
     }
+
     const set = new Set<string>();
     collectSpeciesFromChain(data.chain, set);
     chainSpeciesByUrl.set(chainUrl, set);
     return set;
   }
 
-  const speciesChainCache = new Map<string, Set<string> | null>();
-  async function speciesToEvolutionSpeciesSet(
-    speciesName: string,
-  ): Promise<Set<string> | null> {
-    if (speciesChainCache.has(speciesName))
-      return speciesChainCache.get(speciesName) ?? null;
+  return {
+    getSpeciesNameByPokemonApiName,
+    getPokemonSpeciesBySpeciesName,
+    getEvolutionChainSpeciesSet,
+  };
+}
 
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiSpecies>(
-      `${POKEAPI_BASE}/api/v2/pokemon-species/${speciesName}`,
-    );
-    const chainUrl = data?.evolution_chain?.url ?? null;
-    if (!chainUrl) {
-      speciesChainCache.set(speciesName, null);
-      return null;
-    }
-    const set = await fetchEvolutionChainSpeciesSet(chainUrl);
-    speciesChainCache.set(speciesName, set);
-    return set;
-  }
+async function enrichWithEvolutionPeers(
+  entries: PokemonEntry[],
+  pokeApiCtx: PokeApiContext,
+): Promise<PokemonEntry[]> {
+  const speciesNameByApiName = new Map<string, string | null>();
 
   const idBySpecies = new Map<string, string[]>();
   for (let i = 0; i < entries.length; i++) {
@@ -644,7 +639,9 @@ async function enrichWithEvolutionPeers(
       `\r[evolution species ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
     );
     const apiName = toPokemonApiName(pokemon.name);
-    const speciesName = await resolveSpeciesName(apiName);
+    const speciesName =
+      await pokeApiCtx.getSpeciesNameByPokemonApiName(apiName);
+    speciesNameByApiName.set(apiName, speciesName);
     if (!speciesName) continue;
     const list = idBySpecies.get(speciesName) ?? [];
     list.push(pokemon.id);
@@ -659,16 +656,21 @@ async function enrichWithEvolutionPeers(
     process.stderr.write(
       `\r[evolution chains ${String(i + 1)}/${String(speciesKeys.length)}] ${speciesName}…`,
     );
-    evolutionSetBySpecies.set(
-      speciesName,
-      await speciesToEvolutionSpeciesSet(speciesName),
-    );
+    const speciesData =
+      await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
+    const chainUrl = speciesData?.evolution_chain?.url ?? null;
+    if (!chainUrl) {
+      evolutionSetBySpecies.set(speciesName, null);
+      continue;
+    }
+    const set = await pokeApiCtx.getEvolutionChainSpeciesSet(chainUrl);
+    evolutionSetBySpecies.set(speciesName, set);
   }
   process.stderr.write("\n");
 
   function peerIdsForPokemon(pokemon: PokemonEntry): string[] {
     const apiName = toPokemonApiName(pokemon.name);
-    const speciesName = speciesNameCache.get(apiName) ?? null;
+    const speciesName = speciesNameByApiName.get(apiName) ?? null;
     if (!speciesName) return [];
     const evoSet = evolutionSetBySpecies.get(speciesName) ?? null;
     if (!evoSet) return [];
@@ -699,6 +701,8 @@ async function main(): Promise<void> {
   const { group: robotsGroup, serebiiGapMs } =
     await assertSerebiiAccessAllowed();
 
+  const pokeApiCtx = createPokeApiContext(pokeApiGapMs);
+
   const standard = await collectSerebiiDex(
     SEREBII_LIST_URL,
     "standard",
@@ -722,16 +726,16 @@ async function main(): Promise<void> {
   console.error("Enriching localized names via PokéAPI…");
   standardEnriched = await enrichWithLocalizations(
     standardEnriched,
-    pokeApiGapMs,
+    pokeApiCtx,
   );
-  eventEnriched = await enrichWithLocalizations(eventEnriched, pokeApiGapMs);
+  eventEnriched = await enrichWithLocalizations(eventEnriched, pokeApiCtx);
 
   console.error("Enriching evolution line peers via PokéAPI…");
   const standardCount = standardEnriched.length;
   const allEnrichedForEvoPeers = [...standardEnriched, ...eventEnriched];
   const allEnrichedWithEvoPeers = await enrichWithEvolutionPeers(
     allEnrichedForEvoPeers,
-    pokeApiGapMs,
+    pokeApiCtx,
   );
   standardEnriched = allEnrichedWithEvoPeers.slice(0, standardCount);
   eventEnriched = allEnrichedWithEvoPeers.slice(standardCount);
