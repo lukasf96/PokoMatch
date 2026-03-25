@@ -78,6 +78,18 @@ export default function PokedexPage() {
       maxWidth="lg"
       sx={{ py: { xs: 2, sm: 3 }, px: { xs: 1.5, sm: 3 } }}
     >
+      <Typography
+        component="h1"
+        variant="h6"
+        sx={{
+          fontWeight: 950,
+          lineHeight: 1.1,
+          mb: 1,
+        }}
+      >
+        Pokopia Pokédex
+      </Typography>
+
       {/* Toolbar */}
       <Stack
         direction={{ xs: "column", sm: "row" }}

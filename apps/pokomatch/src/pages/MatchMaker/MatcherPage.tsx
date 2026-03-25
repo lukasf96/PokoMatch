@@ -159,10 +159,17 @@ export default function MatcherPage() {
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3 } }}>
       <Stack spacing={2.5}>
-        <Typography variant="h6" component="h1" fontWeight={700}>
-          Match-Maker
+        <Typography
+          component="h1"
+          variant="h6"
+          sx={{
+            fontWeight: 950,
+            lineHeight: 1.1,
+            mb: 1,
+          }}
+        >
+          Pokopia Match-Maker
         </Typography>
-
         <Paper
           variant="outlined"
           sx={{

@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import { useMemo } from "react";
 import { allPokemon, isEventDexPokemon } from "../../services/pokemon";
 import type { Habitat, Pokemon } from "../../types/types";
@@ -18,6 +18,49 @@ function sortByDexOrder(a: Pokemon, b: Pokemon): number {
   const dexDiff = getDexSortValue(a.dexNumber) - getDexSortValue(b.dexNumber);
   if (dexDiff !== 0) return dexDiff;
   return a.name.localeCompare(b.name);
+}
+
+function StatCard({
+  label,
+  value,
+  subvalue,
+}: {
+  label: string;
+  value: string;
+  subvalue?: string;
+}) {
+  return (
+    <Paper
+      variant="outlined"
+      sx={{
+        p: 2,
+        borderRadius: 2,
+        height: "100%",
+      }}
+    >
+      <Stack spacing={0.5}>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{
+            fontWeight: 800,
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+          }}
+        >
+          {label}
+        </Typography>
+        <Typography variant="h5" sx={{ fontWeight: 900, lineHeight: 1.1 }}>
+          {value}
+        </Typography>
+        {subvalue ? (
+          <Typography variant="body2" color="text.secondary">
+            {subvalue}
+          </Typography>
+        ) : null}
+      </Stack>
+    </Paper>
+  );
 }
 
 export default function InsightsPage() {
@@ -66,33 +109,104 @@ export default function InsightsPage() {
       );
   }, []);
 
+  const dexKindCounts = useMemo(() => {
+    const standardCount = allPokemon.reduce(
+      (count, pokemon) => count + (pokemon.dexKind === "standard" ? 1 : 0),
+      0,
+    );
+    const eventCount = allPokemon.reduce(
+      (count, pokemon) => count + (pokemon.dexKind === "event" ? 1 : 0),
+      0,
+    );
+    return { standardCount, eventCount };
+  }, []);
+
+  const uniqueFavoritesCount = useMemo(() => {
+    const unique = new Set<string>();
+    for (const pokemon of allPokemon) {
+      for (const favorite of pokemon.favorites) unique.add(favorite);
+      // Treat "favoriteFlavor" as a taste/favorite too.
+      if (pokemon.favoriteFlavor) unique.add(pokemon.favoriteFlavor);
+    }
+    return unique.size;
+  }, []);
+
+  const uniqueSpecialitiesCount = useMemo(() => {
+    const unique = new Set<string>();
+    for (const pokemon of allPokemon) {
+      for (const specialty of pokemon.specialties) unique.add(specialty);
+    }
+    return unique.size;
+  }, []);
+
   return (
     <Container maxWidth="lg" sx={{ py: 3 }}>
-      <Box>
-        <Grid container spacing={3}>
+      <Box sx={{ mb: 3 }}>
+        <Typography
+          component="h1"
+          variant="h6"
+          sx={{
+            fontWeight: 950,
+            lineHeight: 1.1,
+            mb: 1,
+          }}
+        >
+          Pokopia Insights
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          A quick look at the dataset behind Pokomatch: habitats, favorites and
+          more.
+        </Typography>
+
+        <Grid container spacing={3} sx={{ mt: 2 }}>
           <Grid size={{ xs: 12, md: 4 }}>
-            <IdealHabitats
-              habitats={
-                habitats as ReadonlyArray<readonly [Habitat, Pokemon[]]>
-              }
+            <StatCard
+              label="Total Pokémon"
+              value={`${allPokemon.length}`}
+              subvalue={`Standard: ${dexKindCounts.standardCount} • Event: ${dexKindCounts.eventCount}`}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <DistributionSection
-              title="Favorites Distribution"
-              items={favorites}
-              totalPokemon={allPokemon.length}
+            <StatCard
+              label="Unique favorites"
+              value={`${uniqueFavoritesCount}`}
+              subvalue="Favorites including flavors"
             />
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
-            <DistributionSection
-              title="Favorite Flavor Distribution"
-              items={flavors}
-              totalPokemon={allPokemon.length}
+            <StatCard
+              label="Unique Specialities"
+              value={`${uniqueSpecialitiesCount}`}
+              subvalue="Distinct specialties"
             />
           </Grid>
         </Grid>
       </Box>
+
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <IdealHabitats
+            habitats={habitats as ReadonlyArray<readonly [Habitat, Pokemon[]]>}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 4 }}>
+          <DistributionSection
+            title="Favorites Distribution"
+            items={favorites}
+            totalPokemon={allPokemon.length}
+            maxVisibleItems={10}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, md: 4 }}>
+          <DistributionSection
+            title="Favorite Flavor Distribution"
+            items={flavors}
+            totalPokemon={allPokemon.length}
+          />
+        </Grid>
+      </Grid>
     </Container>
   );
 }

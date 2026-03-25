@@ -1,15 +1,18 @@
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
+  Button,
   Divider,
   Stack,
   Typography,
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
+import { useMemo, useState } from "react";
 import type { Pokemon } from "../../../types/types";
 import { PokemonChip } from "./PokemonChip";
 
@@ -17,6 +20,7 @@ interface DistributionSectionProps {
   title: string;
   items: ReadonlyArray<readonly [string, Pokemon[]]>;
   totalPokemon: number;
+  maxVisibleItems?: number;
 }
 
 interface DistributionRowProps {
@@ -115,14 +119,25 @@ export function DistributionSection({
   title,
   items,
   totalPokemon,
+  maxVisibleItems,
 }: DistributionSectionProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const { visibleItems, hasMore } = useMemo(() => {
+    if (maxVisibleItems === undefined || maxVisibleItems >= items.length) {
+      return { visibleItems: items, hasMore: false };
+    }
+    const visibleItems = isExpanded ? items : items.slice(0, maxVisibleItems);
+    return { visibleItems, hasMore: !isExpanded };
+  }, [isExpanded, items, maxVisibleItems]);
+
   return (
     <>
       <Typography variant="subtitle1" fontWeight={700} mb={1.5}>
         {title}
       </Typography>
       <Stack spacing={0.75}>
-        {items.map(([label, pokemon]) => (
+        {visibleItems.map(([label, pokemon]) => (
           <DistributionRow
             key={label}
             label={label}
@@ -131,6 +146,28 @@ export function DistributionSection({
           />
         ))}
       </Stack>
+
+      {hasMore ? (
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
+          <Button
+            size="small"
+            onClick={() => setIsExpanded(true)}
+            endIcon={<ExpandMoreIcon sx={{ fontSize: 18 }} aria-hidden />}
+          >
+            Show all
+          </Button>
+        </Box>
+      ) : maxVisibleItems !== undefined && isExpanded ? (
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 1 }}>
+          <Button
+            size="small"
+            onClick={() => setIsExpanded(false)}
+            endIcon={<ExpandLessIcon sx={{ fontSize: 18 }} aria-hidden />}
+          >
+            Show less
+          </Button>
+        </Box>
+      ) : null}
     </>
   );
 }
