@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-22T20:37:46.633Z",
+  "generatedAt": "2026-03-25T09:56:46.287Z",
   "standard": [
     {
       "id": "001",
@@ -805,7 +805,6 @@
       "id": "041a",
       "dexNumber": "041",
       "name": "Professor Tangrowth",
-      "isHabitable": false,
       "specialties": ["Appraise"],
       "idealHabitat": "Humid",
       "favorites": [
@@ -816,6 +815,7 @@
         "Group Activities"
       ],
       "favoriteFlavor": "Dry flavors",
+      "isHabitable": false,
       "localizedNames": {
         "de": "Tangoloss",
         "fr": "Bouldeneu"
@@ -3780,7 +3780,7 @@
       "id": "183",
       "dexNumber": "183",
       "name": "Larvesta",
-      "specialties": ["Burn"],
+      "specialties": ["Burn", "Litter"],
       "idealHabitat": "Dry",
       "favorites": [
         "Lots of nature",
@@ -6001,7 +6001,6 @@
       "id": "289",
       "dexNumber": "289",
       "name": "Kyogre",
-      "isHabitable": false,
       "specialties": ["???"],
       "idealHabitat": "Humid",
       "favorites": [
@@ -6162,7 +6161,6 @@
       "id": "297",
       "dexNumber": "297",
       "name": "Lugia",
-      "isHabitable": false,
       "specialties": ["???"],
       "idealHabitat": "Humid",
       "favorites": [
@@ -6173,6 +6171,7 @@
         "Symbols"
       ],
       "favoriteFlavor": "Dry flavors",
+      "isHabitable": false,
       "localizedNames": {
         "de": "Lugia",
         "fr": "Lugia"
@@ -6183,7 +6182,6 @@
       "id": "298",
       "dexNumber": "298",
       "name": "Ho-Oh",
-      "isHabitable": false,
       "specialties": ["???"],
       "idealHabitat": "Warm",
       "favorites": [
@@ -6194,6 +6192,7 @@
         "Symbols"
       ],
       "favoriteFlavor": "Spicy flavors",
+      "isHabitable": false,
       "localizedNames": {
         "de": "Ho-Oh",
         "fr": "Ho-Oh"

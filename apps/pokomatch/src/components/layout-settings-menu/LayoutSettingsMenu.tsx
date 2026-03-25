@@ -193,57 +193,66 @@ export function LayoutSettingsMenu() {
           },
         }}
       >
-        {settingsView === "root" ? (
-          <>
-            <NavRootItem
-              icon={TranslateOutlined}
-              title="Pokemon Language"
-              detail={LANGUAGE_LABELS[nameLanguage]}
-              onClick={() => setSettingsView("language")}
-            />
-            <NavRootItem
-              icon={PaletteOutlined}
-              title="Theme"
-              detail={THEME_LABELS[themeMode]}
-              onClick={() => setSettingsView("theme")}
-            />
-            <NavRootItem
-              icon={InfoOutlined}
-              title="Info"
-              onClick={openInfoDialog}
-              showChevron={false}
-            />
-          </>
-        ) : null}
+        {settingsView === "root"
+          ? [
+              <NavRootItem
+                key="language"
+                icon={TranslateOutlined}
+                title="Pokemon Language"
+                detail={LANGUAGE_LABELS[nameLanguage]}
+                onClick={() => setSettingsView("language")}
+              />,
+              <NavRootItem
+                key="theme"
+                icon={PaletteOutlined}
+                title="Theme"
+                detail={THEME_LABELS[themeMode]}
+                onClick={() => setSettingsView("theme")}
+              />,
+              <NavRootItem
+                key="info"
+                icon={InfoOutlined}
+                title="Info"
+                onClick={openInfoDialog}
+                showChevron={false}
+              />,
+            ]
+          : null}
 
-        {settingsView === "language" ? (
-          <>
-            <BackMenuRow onClick={() => setSettingsView("root")} />
-            {LANGUAGE_CODES.map((code) => (
-              <SelectableSettingRow
-                key={code}
-                label={LANGUAGE_LABELS[code]}
-                selected={nameLanguage === code}
-                onClick={() => handleLanguageChange(code)}
-              />
-            ))}
-          </>
-        ) : null}
+        {settingsView === "language"
+          ? [
+              <BackMenuRow
+                key="back"
+                onClick={() => setSettingsView("root")}
+              />,
+              ...LANGUAGE_CODES.map((code) => (
+                <SelectableSettingRow
+                  key={code}
+                  label={LANGUAGE_LABELS[code]}
+                  selected={nameLanguage === code}
+                  onClick={() => handleLanguageChange(code)}
+                />
+              )),
+            ]
+          : null}
 
-        {settingsView === "theme" ? (
-          <>
-            <BackMenuRow onClick={() => setSettingsView("root")} />
-            {THEME_CHOICES.map(({ mode, icon }) => (
-              <SelectableSettingRow
-                key={mode}
-                label={THEME_LABELS[mode]}
-                icon={icon}
-                selected={themeMode === mode}
-                onClick={() => handleThemeModeChange(mode)}
-              />
-            ))}
-          </>
-        ) : null}
+        {settingsView === "theme"
+          ? [
+              <BackMenuRow
+                key="back"
+                onClick={() => setSettingsView("root")}
+              />,
+              ...THEME_CHOICES.map(({ mode, icon }) => (
+                <SelectableSettingRow
+                  key={mode}
+                  label={THEME_LABELS[mode]}
+                  icon={icon}
+                  selected={themeMode === mode}
+                  onClick={() => handleThemeModeChange(mode)}
+                />
+              )),
+            ]
+          : null}
       </Menu>
       <LayoutInfoDialog
         isOpen={isInfoDialogOpen}
