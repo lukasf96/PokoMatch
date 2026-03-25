@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "vendor:sprites": "node ./scripts/vendor-pokemon-sprites.mjs",
+    "refresh-dex": "tsx ./scripts/data-collector.ts",
     "enrich:pokedex:localizations": "node ./scripts/enrich-pokedex-localizations.mjs",
     "enrich:pokedex:evolution-lines": "node ./scripts/enrich-pokedex-evolution-lines.mjs"
   },
@@ -33,6 +34,8 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "sharp": "^0.34.5",
+    "tsx": "^4.20.5",
+    "cheerio": "^1.1.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.57.2",
     "vite": "^8.0.2"
