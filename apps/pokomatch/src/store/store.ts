@@ -138,7 +138,7 @@ export const useStore = create<AppState>()(
         })),
     }),
     {
-      name: "pokopia-pokematch",
+      name: "pokomatch",
       // Serialize Set → array and back
       storage: {
         getItem: (name) => {
