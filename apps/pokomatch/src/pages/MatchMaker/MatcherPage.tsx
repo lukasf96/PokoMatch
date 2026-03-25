@@ -4,12 +4,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
 import { Box, Container, Paper, Stack, Typography } from "@mui/material";
-import {
-  useCallback,
-  useDeferredValue,
-  useMemo,
-  useState,
-} from "react";
+import { useCallback, useDeferredValue, useMemo, useState } from "react";
 import {
   computeAutoGroups,
   type SuggestedPokemon,
@@ -40,7 +35,9 @@ export default function MatcherPage() {
   const removePokemonFromCustomGroup = useStore(
     (s) => s.removePokemonFromCustomGroup,
   );
-  const preferEvolutionLines = useStore((s) => s.preferEvolutionLinesInMatching);
+  const preferEvolutionLines = useStore(
+    (s) => s.preferEvolutionLinesInMatching,
+  );
   const setPreferEvolutionLines = useStore(
     (s) => s.setPreferEvolutionLinesInMatching,
   );
@@ -180,16 +177,16 @@ export default function MatcherPage() {
               Roommates who actually click - in Pokopia
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-              Building a happy world in Pokémon Pokopia means filling every
-              habitat with the right roommates. With a huge Pokédex and picky
-              ideal habitats, it is tough to spot who belongs together - let
-              alone a full house of four who share the same likes.
+              Building a thriving world in Pokopia means finding the right
+              roommates. With a growing Pokédex and specific habitat needs,
+              spotting the perfect fit for a full house of four can be a
+              challenge.
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-              PokoMatch is your shortcut: we respect who can room together, then
-              steer you toward groups with overlapping favorites - so you spend
-              less time second-guessing and more time enjoying Pokopia.
-              Everything below updates as your Pokédex or groups change.
+              PokoMatch is your shortcut: we find the Pokémon that love living
+              together so you can spend less time guessing and more time
+              building. Everything below updates instantly as your Pokédex or
+              groups change.
             </Typography>
             <Box
               sx={{
@@ -220,8 +217,8 @@ export default function MatcherPage() {
                       Automated matching
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Finds strong groups quickly using habitat fit and shared
-                      likes.
+                      Find perfect roommate groups based on shared likes and
+                      habitat fit.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -242,10 +239,11 @@ export default function MatcherPage() {
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
-                      In-browser persistence
+                      Always Saved
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Your selections, groups and preferencesstay saved.
+                      Your groups and choices are kept right here locally, no
+                      account needed.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -266,10 +264,10 @@ export default function MatcherPage() {
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
-                      Pokédex controls
+                      Your Collection
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Lock or unlock who is available for matching.
+                      Only matches with Pokémon you've unlocked in your Pokédex.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -290,10 +288,10 @@ export default function MatcherPage() {
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
-                      Smart suggestions
+                      Smart Suggestions
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Get next-pick hints to quickly form groups.
+                      Get smart suggestions on who to add to your groups next.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -335,7 +333,9 @@ export default function MatcherPage() {
                 setFreezePreferEvolutionLines(preferEvolutionLines);
               }
               setAdoptedSuggestedGroupKeys((prev) => {
-                const base = !hasActiveSuggestedFreeze ? new Set<string>() : prev;
+                const base = !hasActiveSuggestedFreeze
+                  ? new Set<string>()
+                  : prev;
                 const next = new Set(base);
                 next.add(groupKeyFromPokemon(group));
                 return next;
