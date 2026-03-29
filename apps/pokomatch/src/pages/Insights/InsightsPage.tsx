@@ -131,7 +131,7 @@ export default function InsightsPage() {
     return unique.size;
   }, []);
 
-  const uniqueSpecialitiesCount = useMemo(() => {
+  const uniqueSpecialtiesCount = useMemo(() => {
     const unique = new Set<string>();
     for (const pokemon of allPokemon) {
       for (const specialty of pokemon.specialties) unique.add(specialty);
@@ -175,8 +175,8 @@ export default function InsightsPage() {
           </Grid>
           <Grid size={{ xs: 12, md: 4 }}>
             <StatCard
-              label="Unique Specialities"
-              value={`${uniqueSpecialitiesCount}`}
+              label="Unique Specialties"
+              value={`${uniqueSpecialtiesCount}`}
               subvalue="Distinct specialties"
             />
           </Grid>
