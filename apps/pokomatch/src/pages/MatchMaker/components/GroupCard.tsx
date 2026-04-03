@@ -1,8 +1,6 @@
 import AddIcon from "@mui/icons-material/Add";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import CloseIcon from "@mui/icons-material/Close";
+import StarsIcon from "@mui/icons-material/Stars";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
   Chip,
@@ -12,10 +10,11 @@ import {
   Stack,
   Typography,
   useTheme,
+  type SxProps,
+  type Theme,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
 import { memo, useMemo, type ReactNode } from "react";
-import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
+import { PokemonCard } from "../../../components/PokemonCard/PokemonCard";
 import {
   getGroupConflicts,
   getGroupHabitats,
@@ -23,15 +22,11 @@ import {
 import {
   getHabitatColors,
   habitatIcons,
-  type HabitatColorSet,
 } from "../../../services/habitatColors";
 import {
   groupScore,
   groupScoreUpperBound,
 } from "../../../services/matching.service";
-import { isEventDexPokemon } from "../../../services/pokemon";
-import { getPokemonDisplayName } from "../../../services/pokemon-localization";
-import { useStore } from "../../../store/store";
 import type { Habitat, Pokemon } from "../../../types/types";
 
 interface GroupCardProps {
@@ -57,231 +52,51 @@ function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
   return intersection;
 }
 
-function MemberFavoritesList({
-  favorites,
-  favCounts,
-  universalFavorites,
-  accent,
-}: {
-  favorites: string[];
-  favCounts: Record<string, number>;
-  universalFavorites: Set<string>;
-  accent: HabitatColorSet;
-}) {
-  const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
-
-  const sorted = useMemo(() => {
-    const copy = [...favorites];
-    copy.sort((a, b) => {
-      const ua = universalFavorites.has(a) ? 1 : 0;
-      const ub = universalFavorites.has(b) ? 1 : 0;
-      if (ub !== ua) return ub - ua;
-      const sa = (favCounts[a] ?? 0) >= 2 ? 1 : 0;
-      const sb = (favCounts[b] ?? 0) >= 2 ? 1 : 0;
-      if (sb !== sa) return sb - sa;
-      return a.localeCompare(b, undefined, { sensitivity: "base" });
-    });
-    return copy;
-  }, [favorites, favCounts, universalFavorites]);
-
-  if (favorites.length === 0) {
-    return (
-      <Typography
-        variant="caption"
-        color="text.disabled"
-        sx={{ fontStyle: "italic" }}
-      >
-        No favorites listed
-      </Typography>
-    );
-  }
-
-  return (
-    <Stack spacing={0.75}>
-      <Typography
-        variant="caption"
-        color="text.secondary"
-        sx={{
-          fontSize: 10,
-          fontWeight: 700,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
-        }}
-      >
-        Favorites
-      </Typography>
-      <Box
-        sx={{
-          p: 1,
-          borderRadius: 1,
-          border: "1px solid",
-          borderColor: isDark
-            ? alpha(accent.border, 0.35)
-            : alpha(accent.border, 0.22),
-          bgcolor: isDark
-            ? alpha(accent.border, 0.12)
-            : alpha(accent.border, 0.06),
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 0.75,
-        }}
-      >
-        {sorted.map((fav) => {
-          const isUniversal = universalFavorites.has(fav);
-          const isShared = (favCounts[fav] ?? 0) >= 2;
-
-          const sharedSx = {
-            height: 22,
-            fontSize: 11,
-            fontWeight: 600,
-            borderRadius: "6px",
-            bgcolor: isDark ? alpha(accent.bg, 0.55) : alpha("#ffffff", 0.85),
-            color: accent.text,
-            border: "1px solid",
-            borderColor: alpha(accent.border, isDark ? 0.85 : 0.55),
-            "& .MuiChip-icon": {
-              color: accent.border,
-              ml: 0.35,
-            },
-          } as const;
-
-          const soloSx = {
-            height: 22,
-            fontSize: 11,
-            fontWeight: 500,
-            borderRadius: "6px",
-            bgcolor: isDark
-              ? alpha(theme.palette.common.black, 0.22)
-              : alpha(theme.palette.common.black, 0.04),
-            color: "text.secondary",
-            border: "1px solid",
-            borderColor: isDark
-              ? alpha(theme.palette.divider, 0.6)
-              : theme.palette.divider,
-            "& .MuiChip-icon": {
-              ml: 0.35,
-            },
-          } as const;
-
-          return (
-            <Chip
-              key={fav}
-              label={fav}
-              size="small"
-              title={
-                isUniversal
-                  ? "Every Pokémon in this group has this favorite"
-                  : undefined
-              }
-              icon={
-                isUniversal ? (
-                  <AutoAwesomeIcon
-                    sx={{ fontSize: 14, width: 14, height: 14 }}
-                    aria-hidden
-                  />
-                ) : isShared ? (
-                  <FavoriteIcon
-                    sx={{ fontSize: 14, width: 14, height: 14 }}
-                    aria-hidden
-                  />
-                ) : undefined
-              }
-              sx={isUniversal || isShared ? sharedSx : soloSx}
-            />
-          );
-        })}
-      </Box>
-    </Stack>
-  );
+function getGroupSpecialties(group: Pokemon[]): string[] {
+  return [...new Set(group.flatMap((p) => p.specialties))].sort();
 }
 
-function PokemonIdentity({
-  pokemon,
-  onRemovePokemon,
-}: {
-  pokemon: Pokemon;
-  onRemovePokemon?: (pokemonId: string) => void;
-}) {
-  const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
-  const nameLanguage = useStore((state) => state.nameLanguage);
-  const pokemonDisplayName = getPokemonDisplayName(pokemon, nameLanguage);
-  const eventChipStyles = {
-    height: 14,
-    fontSize: 9,
-    flexShrink: 0,
+/** Four+ members: one row × four columns from `md` (900px) up; `sm` is 2×2, `xs` single column. */
+function groupMembersGridSx(memberCount: number): SxProps<Theme> {
+  const base: SxProps<Theme> = {
+    display: "grid",
+    width: "100%",
+    minWidth: 0,
   };
 
-  return (
-    <Stack
-      direction="row"
-      spacing={1.25}
-      alignItems="center"
-      mb={0.75}
-      minWidth={0}
-    >
-      <PokemonSpriteAvatar pokemon={pokemon} size={56} padding={0.75} />
-      <Stack
-        direction="column"
-        spacing={0.5}
-        alignItems="flex-start"
-        justifyContent="center"
-        minWidth={0}
-        sx={{ flex: 1 }}
-      >
-        <Typography
-          variant="body2"
-          color="text.disabled"
-          sx={{ fontSize: 12, fontWeight: 500, lineHeight: 1.2 }}
-        >
-          #{pokemon.dexNumber}
-        </Typography>
-        <Stack
-          direction="row"
-          spacing={0.5}
-          alignItems="center"
-          flexWrap="wrap"
-          useFlexGap
-          minWidth={0}
-        >
-          <Typography
-            variant="body2"
-            fontWeight={700}
-            sx={{
-              fontSize: 13,
-              lineHeight: 1.3,
-              color: "text.primary",
-            }}
-          >
-            {pokemonDisplayName}
-          </Typography>
-          {isEventDexPokemon(pokemon) && (
-            <Chip
-              label="Event"
-              size="small"
-              sx={{
-                ...eventChipStyles,
-                bgcolor: isDark ? "secondary.dark" : "secondary.light",
-                color: isDark ? "secondary.contrastText" : "secondary.dark",
-              }}
-            />
-          )}
-        </Stack>
-        <HabitatChip habitat={pokemon.idealHabitat} variant="pokemon" />
-      </Stack>
-      {onRemovePokemon && (
-        <IconButton
-          size="small"
-          aria-label={`Remove ${pokemonDisplayName}`}
-          onClick={() => onRemovePokemon(pokemon.id)}
-          sx={{ flexShrink: 0, ml: -0.5 }}
-        >
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      )}
-    </Stack>
-  );
+  if (memberCount <= 1) {
+    return { ...base, gridTemplateColumns: "minmax(0, 1fr)" };
+  }
+
+  if (memberCount === 2) {
+    return {
+      ...base,
+      gridTemplateColumns: {
+        xs: "minmax(0, 1fr)",
+        sm: "repeat(2, minmax(0, 1fr))",
+      },
+    };
+  }
+
+  if (memberCount === 3) {
+    return {
+      ...base,
+      gridTemplateColumns: {
+        xs: "minmax(0, 1fr)",
+        sm: "repeat(2, minmax(0, 1fr))",
+        md: "repeat(3, minmax(0, 1fr))",
+      },
+    };
+  }
+
+  return {
+    ...base,
+    gridTemplateColumns: {
+      xs: "minmax(0, 1fr)",
+      sm: "repeat(2, minmax(0, 1fr))",
+      md: "repeat(4, minmax(0, 1fr))",
+    },
+  };
 }
 
 function GroupCardComponent({
@@ -296,7 +111,7 @@ function GroupCardComponent({
   const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
   const colors = habitatColors[habitat];
 
-  const { favCounts, score, scoreCap, scorePercent, habitats, conflicts } =
+  const { favCounts, score, scoreCap, scorePercent, habitats, conflicts, specialties } =
     useMemo(() => {
       const allFavs = group.flatMap((p) => p.favorites);
       const counts = allFavs.reduce<Record<string, number>>((acc, f) => {
@@ -312,6 +127,7 @@ function GroupCardComponent({
         scorePercent: cap > 0 ? Math.round((100 * rawScore) / cap) : 0,
         habitats: getGroupHabitats(group),
         conflicts: getGroupConflicts(group),
+        specialties: getGroupSpecialties(group),
       };
     }, [group]);
 
@@ -346,12 +162,36 @@ function GroupCardComponent({
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
-          gap: 1,
+          gap: 1.5,
         }}
       >
-        <Typography variant="subtitle2" fontWeight={700} color={colors.text}>
-          Group {groupNumber}
-        </Typography>
+        <Stack direction="row" spacing={1.5} alignItems="center">
+          <Typography variant="subtitle2" fontWeight={700} color={colors.text}>
+            Group {groupNumber}
+          </Typography>
+          
+          <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
+            {specialties.map((s) => (
+              <Chip
+                key={`group-spec-${s}`}
+                label={s}
+                size="small"
+                icon={<StarsIcon sx={{ fontSize: "12px !important" }} />}
+                sx={{
+                  height: 18,
+                  fontSize: 9,
+                  fontWeight: 600,
+                  bgcolor: "background.paper",
+                  color: "primary.main",
+                  borderColor: "primary.light",
+                  "& .MuiChip-icon": { color: "inherit" },
+                }}
+                variant="outlined"
+              />
+            ))}
+          </Stack>
+        </Stack>
+
         <Stack
           direction="row"
           spacing={1}
@@ -411,32 +251,30 @@ function GroupCardComponent({
       </Box>
       <Divider />
 
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-        }}
-      >
+      <Box sx={groupMembersGridSx(group.length)}>
         {group.map((pokemon, pi) => (
           <Box
             key={pokemon.id}
             sx={{
-              flex: "1 1 260px",
-              p: 1.75,
+              minWidth: 0,
               borderRight:
                 pi < group.length - 1 ? `1px solid ${dividerColor}` : "none",
-              minWidth: 0,
             }}
           >
-            <PokemonIdentity
+            <PokemonCard
               pokemon={pokemon}
-              onRemovePokemon={onRemovePokemon}
-            />
-            <MemberFavoritesList
-              favorites={pokemon.favorites}
-              favCounts={favCounts}
+              onRemove={onRemovePokemon}
+              favoriteCounts={favCounts}
               universalFavorites={universalFavorites}
-              accent={colors}
+              sx={{ 
+                border: "none", 
+                borderRadius: 0,
+                bgcolor: "transparent",
+                "&:hover": {
+                  boxShadow: "none",
+                  transform: "none",
+                }
+              }}
             />
           </Box>
         ))}
