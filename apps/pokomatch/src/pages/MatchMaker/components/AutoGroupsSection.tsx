@@ -13,6 +13,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { memo } from "react";
 import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
@@ -24,7 +25,7 @@ interface AutoGroupsSectionProps {
   onQuickAddGroup: (group: Pokemon[]) => void;
 }
 
-export function AutoGroupsSection({
+function AutoGroupsSectionComponent({
   groups,
   preferEvolutionLines,
   onPreferEvolutionLinesChange,
@@ -128,3 +129,5 @@ export function AutoGroupsSection({
     </Accordion>
   );
 }
+
+export const AutoGroupsSection = memo(AutoGroupsSectionComponent);

@@ -4,19 +4,97 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Autocomplete,
   Button,
   Chip,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
+import { memo, useCallback } from "react";
 import type { SuggestedPokemon } from "../../../services/matching.service";
-import { getPokemonDisplayName } from "../../../services/pokemon-localization";
+import type { PokemonNameLanguage } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
 import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
+import { AddPokemonToGroupAutocomplete } from "./AddPokemonToGroupAutocomplete";
 import GroupCard from "./GroupCard";
+import { SuggestedNextPokemonControls } from "./SuggestedNextPokemonControls";
+
+interface CustomGroupRowProps {
+  group: Pokemon[];
+  groupIndex: number;
+  suggestions: SuggestedPokemon[];
+  availablePokemon: Pokemon[];
+  nameLanguage: PokemonNameLanguage;
+  onDeleteGroup: (groupIndex: number) => void;
+  onAddPokemon: (groupIndex: number, pokemonId: string) => void;
+  onRemovePokemon: (groupIndex: number, pokemonId: string) => void;
+}
+
+const CustomGroupRow = memo(function CustomGroupRow({
+  group,
+  groupIndex,
+  suggestions,
+  availablePokemon,
+  nameLanguage,
+  onDeleteGroup,
+  onAddPokemon,
+  onRemovePokemon,
+}: CustomGroupRowProps) {
+  const groupNumber = groupIndex + 1;
+
+  const handleRemovePokemon = useCallback(
+    (pokemonId: string) => onRemovePokemon(groupIndex, pokemonId),
+    [groupIndex, onRemovePokemon],
+  );
+  const handleSelect = useCallback(
+    (pokemonId: string) => onAddPokemon(groupIndex, pokemonId),
+    [groupIndex, onAddPokemon],
+  );
+  const handleDelete = useCallback(
+    () => onDeleteGroup(groupIndex),
+    [groupIndex, onDeleteGroup],
+  );
+
+  return (
+    <Stack key={`custom-${groupStableKey(group) || groupIndex}`} spacing={1}>
+      <GroupCard
+        group={group}
+        groupNumber={groupNumber}
+        habitat={getDisplayHabitat(group)}
+        onRemovePokemon={handleRemovePokemon}
+        footerContent={
+          group.length < 4 ? (
+            <Stack spacing={1}>
+              <Typography variant="caption" color="text.secondary">
+                Add Pokémon to Group {groupNumber}
+              </Typography>
+
+              <AddPokemonToGroupAutocomplete
+                group={group}
+                availablePokemon={availablePokemon}
+                nameLanguage={nameLanguage}
+                onSelect={handleSelect}
+              />
+
+              {group.length > 0 && suggestions.length > 0 && (
+                <SuggestedNextPokemonControls
+                  suggestions={suggestions}
+                  nameLanguage={nameLanguage}
+                  onPick={handleSelect}
+                />
+              )}
+            </Stack>
+          ) : null
+        }
+        groupAction={{
+          ariaLabel: `Delete my group ${groupNumber}`,
+          onClick: handleDelete,
+          kind: "remove",
+        }}
+      />
+    </Stack>
+  );
+});
 
 interface CustomGroupsSectionProps {
   customGroups: Pokemon[][];
@@ -28,7 +106,7 @@ interface CustomGroupsSectionProps {
   onRemovePokemon: (groupIndex: number, pokemonId: string) => void;
 }
 
-export function CustomGroupsSection({
+function CustomGroupsSectionComponent({
   customGroups,
   suggestions,
   availablePokemon,
@@ -77,91 +155,23 @@ export function CustomGroupsSection({
             </Typography>
           )}
 
-          {customGroups.map((group, gi) => {
-            const groupNumber = gi + 1;
-            const groupIds = new Set(group.map((member) => member.id));
-            const groupAvailablePokemon = availablePokemon.filter(
-              (candidate) => !groupIds.has(candidate.id),
-            );
-            const groupSuggestions = suggestions[gi] ?? [];
-            return (
-              <Stack key={`custom-${groupStableKey(group) || gi}`} spacing={1}>
-                <GroupCard
-                  group={group}
-                  groupNumber={groupNumber}
-                  habitat={getDisplayHabitat(group)}
-                  onRemovePokemon={(pokemonId) =>
-                    onRemovePokemon(gi, pokemonId)
-                  }
-                  footerContent={
-                    group.length < 4 ? (
-                      <Stack spacing={1}>
-                        <Typography variant="caption" color="text.secondary">
-                          Add Pokémon to Group {groupNumber}
-                        </Typography>
-
-                        <Autocomplete
-                          options={groupAvailablePokemon}
-                          disabled={groupAvailablePokemon.length === 0}
-                          getOptionLabel={(option) =>
-                            `${getPokemonDisplayName(option, nameLanguage)} (#${option.dexNumber})`
-                          }
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              size="small"
-                              label="Choose Pokémon"
-                            />
-                          )}
-                          onChange={(_, value) => {
-                            if (value) onAddPokemon(gi, value.id);
-                          }}
-                        />
-
-                        {group.length > 0 && groupSuggestions.length > 0 && (
-                          <Stack spacing={0.5}>
-                            <Typography
-                              variant="caption"
-                              color="text.secondary"
-                            >
-                              Suggested next:
-                            </Typography>
-                            <Stack
-                              direction="row"
-                              spacing={0.75}
-                              flexWrap="wrap"
-                              useFlexGap
-                            >
-                              {groupSuggestions.map((suggestion) => (
-                                <Chip
-                                  key={`suggest-${gi}-${suggestion.pokemon.id}`}
-                                  label={`${getPokemonDisplayName(
-                                    suggestion.pokemon,
-                                    nameLanguage,
-                                  )} (+${suggestion.score})`}
-                                  size="small"
-                                  onClick={() =>
-                                    onAddPokemon(gi, suggestion.pokemon.id)
-                                  }
-                                />
-                              ))}
-                            </Stack>
-                          </Stack>
-                        )}
-                      </Stack>
-                    ) : null
-                  }
-                  groupAction={{
-                    ariaLabel: `Delete my group ${groupNumber}`,
-                    onClick: () => onDeleteGroup(gi),
-                    kind: "remove",
-                  }}
-                />
-              </Stack>
-            );
-          })}
+          {customGroups.map((group, gi) => (
+            <CustomGroupRow
+              key={`custom-${groupStableKey(group) || gi}`}
+              group={group}
+              groupIndex={gi}
+              suggestions={suggestions[gi] ?? []}
+              availablePokemon={availablePokemon}
+              nameLanguage={nameLanguage}
+              onDeleteGroup={onDeleteGroup}
+              onAddPokemon={onAddPokemon}
+              onRemovePokemon={onRemovePokemon}
+            />
+          ))}
         </Stack>
       </AccordionDetails>
     </Accordion>
   );
 }
+
+export const CustomGroupsSection = memo(CustomGroupsSectionComponent);

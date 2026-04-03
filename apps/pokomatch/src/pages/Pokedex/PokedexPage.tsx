@@ -1,10 +1,12 @@
 import SearchIcon from "@mui/icons-material/Search";
+import StarsIcon from "@mui/icons-material/Stars";
 import {
   Box,
   Button,
   Container,
   Divider,
   InputAdornment,
+  MenuItem,
   Stack,
   TextField,
   ToggleButton,
@@ -21,7 +23,7 @@ import {
 } from "../../services/pokemon";
 import { useStore } from "../../store/store";
 import type { Habitat, Pokemon } from "../../types/types";
-import { PokemonCard } from "./components/PokemonCard";
+import { PokemonCard } from "../../components/PokemonCard/PokemonCard";
 
 type Filter = "all" | "unlocked" | "locked";
 
@@ -33,6 +35,7 @@ export default function PokedexPage() {
 
   const [search, setSearch] = useState("");
   const [habitatFilter, setHabitatFilter] = useState<Habitat | "all">("all");
+  const [specialtyFilter, setSpecialtyFilter] = useState<string | "all">("all");
   const [statusFilter, setStatusFilter] = useState<Filter>("all");
 
   const effectiveStatusFilter = statusFilter;
@@ -50,10 +53,15 @@ export default function PokedexPage() {
             return false;
           if (habitatFilter !== "all" && p.idealHabitat !== habitatFilter)
             return false;
+          if (
+            specialtyFilter !== "all" &&
+            !p.specialties.includes(specialtyFilter)
+          )
+            return false;
           return true;
         });
       },
-    [search, habitatFilter],
+    [search, habitatFilter, specialtyFilter],
   );
 
   const baseFilteredStandard = useMemo(
@@ -68,6 +76,12 @@ export default function PokedexPage() {
   const habitats = useMemo(
     () =>
       [...new Set(allPokemon.map((p) => p.idealHabitat))].sort() as Habitat[],
+    [],
+  );
+
+  const specialties = useMemo(
+    () =>
+      [...new Set(allPokemon.flatMap((p) => p.specialties))].sort() as string[],
     [],
   );
 
@@ -159,6 +173,34 @@ export default function PokedexPage() {
             <ToggleButton value="locked">Locked</ToggleButton>
           </ToggleButtonGroup>
         </Box>
+
+        <TextField
+          select
+          size="small"
+          label="Specialty"
+          value={specialtyFilter}
+          onChange={(e) => setSpecialtyFilter(e.target.value)}
+          sx={{
+            minWidth: { xs: "100%", sm: 160 },
+            flexShrink: 0,
+          }}
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  <StarsIcon fontSize="small" />
+                </InputAdornment>
+              ),
+            },
+          }}
+        >
+          <MenuItem value="all">All specialties</MenuItem>
+          {specialties.map((s) => (
+            <MenuItem key={s} value={s}>
+              {s}
+            </MenuItem>
+          ))}
+        </TextField>
 
         <Stack
           direction={{ xs: "column", sm: "row" }}
@@ -315,7 +357,6 @@ function PokedexSections({
           pokemon={baseFilteredStandard}
           interactive={interactive}
           onToggle={onToggle}
-          showEventBadge
           unlockedIds={unlockedIds}
         />
       </Box>
@@ -331,7 +372,6 @@ function PokedexSections({
           pokemon={baseFilteredEvent}
           interactive={interactive}
           onToggle={onToggle}
-          showEventBadge={false}
           unlockedIds={unlockedIds}
         />
       </Box>
@@ -435,13 +475,11 @@ function PokedexGrid({
   pokemon,
   interactive,
   onToggle,
-  showEventBadge,
   unlockedIds,
 }: {
   pokemon: Pokemon[];
   interactive: boolean;
   onToggle: (id: string) => void;
-  showEventBadge: boolean;
   unlockedIds: Set<string>;
 }) {
   return (
@@ -462,7 +500,6 @@ function PokedexGrid({
             pokemon={p}
             interactive={interactive}
             onToggle={onToggle}
-            showEventBadge={showEventBadge}
             unlocked={unlockedIds.has(p.id)}
           />
         ))}

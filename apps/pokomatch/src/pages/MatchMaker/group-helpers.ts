@@ -1,5 +1,12 @@
 import type { Habitat, Pokemon } from "../../types/types";
 
+/** Zero-padded national dex segment for list labels (e.g. `001`). */
+export function formatDexSegment(dexNumber: string): string {
+  const trimmed = dexNumber.trim();
+  if (/^\d+$/.test(trimmed)) return trimmed.padStart(3, "0");
+  return trimmed;
+}
+
 const HABITAT_ORDER: Habitat[] = [
   "Bright",
   "Cool",

@@ -14,12 +14,16 @@ export interface HabitatColorSet {
   border: string;
 }
 
+const habitatColorCache: Partial<Record<"light" | "dark", Record<Habitat, HabitatColorSet>>> = {};
+
 export function getHabitatColors(
   theme: Theme,
 ): Record<Habitat, HabitatColorSet> {
-  const isDark = theme.palette.mode === "dark";
+  const mode = theme.palette.mode === "dark" ? "dark" : "light";
+  if (habitatColorCache[mode]) return habitatColorCache[mode]!;
 
-  return {
+  const isDark = mode === "dark";
+  const colors: Record<Habitat, HabitatColorSet> = {
     Bright: {
       bg: isDark ? "#4a3b14" : "#fffde7",
       text: isDark ? "#ffe082" : "#f57f17",
@@ -51,6 +55,8 @@ export function getHabitatColors(
       border: isDark ? "#ff9800" : "#f57c00",
     },
   };
+  habitatColorCache[mode] = colors;
+  return colors;
 }
 
 export const habitatIcons: Record<Habitat, SvgIconComponent> = {

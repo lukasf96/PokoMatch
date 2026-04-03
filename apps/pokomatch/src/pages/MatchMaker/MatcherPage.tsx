@@ -27,9 +27,7 @@ export default function MatcherPage() {
   const unlockedIds = useStore((s) => s.unlockedIds);
   const customGroups = useStore((s) => s.customGroups);
   const addCustomGroup = useStore((s) => s.addCustomGroup);
-  const addSuggestedGroupToCustomGroups = useStore(
-    (s) => s.addSuggestedGroupToCustomGroups,
-  );
+  const addSuggestedGroupToCustomGroups = useStore((s) => s.addSuggestedGroupToCustomGroups);
   const deleteCustomGroup = useStore((s) => s.deleteCustomGroup);
   const addPokemonToCustomGroup = useStore((s) => s.addPokemonToCustomGroup);
   const removePokemonFromCustomGroup = useStore(
@@ -120,11 +118,63 @@ export default function MatcherPage() {
     setAdoptedSuggestedGroupKeys(new Set());
   }, []);
 
+  // Stable callbacks — defined once; passed to memoized children so their memo never busts
+  const handleAddGroup = useCallback(() => {
+    resetSuggestedFreeze();
+    addCustomGroup();
+  }, [resetSuggestedFreeze, addCustomGroup]);
+
+  const handleDeleteGroup = useCallback(
+    (groupIndex: number) => {
+      resetSuggestedFreeze();
+      deleteCustomGroup(groupIndex);
+    },
+    [resetSuggestedFreeze, deleteCustomGroup],
+  );
+
+  const handleAddPokemon = useCallback(
+    (groupIndex: number, pokemonId: string) => {
+      resetSuggestedFreeze();
+      addPokemonToCustomGroup(groupIndex, pokemonId);
+    },
+    [resetSuggestedFreeze, addPokemonToCustomGroup],
+  );
+
+  const handleRemovePokemon = useCallback(
+    (groupIndex: number, pokemonId: string) => {
+      resetSuggestedFreeze();
+      removePokemonFromCustomGroup(groupIndex, pokemonId);
+    },
+    [resetSuggestedFreeze, removePokemonFromCustomGroup],
+  );
+
   const hasActiveSuggestedFreeze = useMemo(
     () =>
       frozenSuggestedGroups != null &&
       freezePreferEvolutionLines === preferEvolutionLines,
     [frozenSuggestedGroups, freezePreferEvolutionLines, preferEvolutionLines],
+  );
+
+  const handleQuickAddGroup = useCallback(
+    (group: Pokemon[]) => {
+      if (!hasActiveSuggestedFreeze) {
+        setFrozenSuggestedGroups(autoGroups);
+        setFreezePreferEvolutionLines(preferEvolutionLines);
+      }
+      setAdoptedSuggestedGroupKeys((prev) => {
+        const base = !hasActiveSuggestedFreeze ? new Set<string>() : prev;
+        const next = new Set(base);
+        next.add(groupKeyFromPokemon(group));
+        return next;
+      });
+      addSuggestedGroupToCustomGroups(group.map((pokemon) => pokemon.id));
+    },
+    [
+      hasActiveSuggestedFreeze,
+      autoGroups,
+      preferEvolutionLines,
+      addSuggestedGroupToCustomGroups,
+    ],
   );
 
   const displayedSuggestedGroups = useMemo(() => {
@@ -312,45 +362,17 @@ export default function MatcherPage() {
             customGroups={resolvedCustomGroups}
             suggestions={suggestions}
             availablePokemon={availablePokemon}
-            onAddGroup={() => {
-              resetSuggestedFreeze();
-              addCustomGroup();
-            }}
-            onDeleteGroup={(groupIndex) => {
-              resetSuggestedFreeze();
-              deleteCustomGroup(groupIndex);
-            }}
-            onAddPokemon={(groupIndex, pokemonId) => {
-              resetSuggestedFreeze();
-              addPokemonToCustomGroup(groupIndex, pokemonId);
-            }}
-            onRemovePokemon={(groupIndex, pokemonId) => {
-              resetSuggestedFreeze();
-              removePokemonFromCustomGroup(groupIndex, pokemonId);
-            }}
+            onAddGroup={handleAddGroup}
+            onDeleteGroup={handleDeleteGroup}
+            onAddPokemon={handleAddPokemon}
+            onRemovePokemon={handleRemovePokemon}
           />
 
           <AutoGroupsSection
             groups={displayedSuggestedGroups}
             preferEvolutionLines={preferEvolutionLines}
             onPreferEvolutionLinesChange={setPreferEvolutionLines}
-            onQuickAddGroup={(group) => {
-              if (!hasActiveSuggestedFreeze) {
-                setFrozenSuggestedGroups(autoGroups);
-                setFreezePreferEvolutionLines(preferEvolutionLines);
-              }
-              setAdoptedSuggestedGroupKeys((prev) => {
-                const base = !hasActiveSuggestedFreeze
-                  ? new Set<string>()
-                  : prev;
-                const next = new Set(base);
-                next.add(groupKeyFromPokemon(group));
-                return next;
-              });
-              addSuggestedGroupToCustomGroups(
-                group.map((pokemon) => pokemon.id),
-              );
-            }}
+            onQuickAddGroup={handleQuickAddGroup}
           />
         </Stack>
       </Stack>
