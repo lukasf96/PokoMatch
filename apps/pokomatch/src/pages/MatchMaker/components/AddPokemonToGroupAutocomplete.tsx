@@ -1,4 +1,3 @@
-import StarsIcon from "@mui/icons-material/Stars";
 import {
   Autocomplete,
   Box,
@@ -8,8 +7,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { alpha } from "@mui/material/styles";
 import { memo, useCallback, useMemo, type HTMLAttributes, type Key } from "react";
+import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
 import {
   getHabitatColors,
   habitatIcons,
@@ -35,7 +34,6 @@ export const AddPokemonToGroupAutocomplete = memo(function AddPokemonToGroupAuto
   onSelect,
 }: AddPokemonToGroupAutocompleteProps) {
   const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
 
   const options = useMemo(() => {
     const ids = new Set(group.map((m) => m.id));
@@ -43,22 +41,6 @@ export const AddPokemonToGroupAutocomplete = memo(function AddPokemonToGroupAuto
   }, [group, availablePokemon]);
 
   const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
-
-  const specialtyChipSx = useMemo(
-    () => ({
-      height: 20,
-      fontSize: 10,
-      fontWeight: 600,
-      bgcolor: isDark
-        ? alpha(theme.palette.primary.main, 0.15)
-        : alpha(theme.palette.primary.main, 0.08),
-      color: "primary.main",
-      border: "1px solid",
-      borderColor: alpha(theme.palette.primary.main, 0.2),
-      "& .MuiChip-icon": { color: "inherit" },
-    }),
-    [theme, isDark],
-  );
 
   const getOptionLabel = useCallback(
     (option: Pokemon) =>
@@ -117,22 +99,14 @@ export const AddPokemonToGroupAutocomplete = memo(function AddPokemonToGroupAuto
                 }}
               />
               {option.specialties.map((specialty) => (
-                <Chip
-                  key={specialty}
-                  label={specialty}
-                  size="small"
-                  icon={
-                    <StarsIcon sx={{ fontSize: "14px !important" }} />
-                  }
-                  sx={specialtyChipSx}
-                />
+                <SpecialtyChip key={specialty} label={specialty} />
               ))}
             </Stack>
           </Stack>
         </Box>
       );
     },
-    [nameLanguage, habitatColors, specialtyChipSx],
+    [nameLanguage, habitatColors],
   );
 
   return (

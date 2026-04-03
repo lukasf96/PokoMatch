@@ -1,5 +1,4 @@
 import AddIcon from "@mui/icons-material/Add";
-import StarsIcon from "@mui/icons-material/Stars";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import {
   Box,
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 import { memo, useMemo, type ReactNode } from "react";
 import { PokemonCard } from "../../../components/PokemonCard/PokemonCard";
+import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
 import {
   getGroupConflicts,
   getGroupHabitats,
@@ -172,21 +172,12 @@ function GroupCardComponent({
           
           <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
             {specialties.map((s) => (
-              <Chip
+              <SpecialtyChip
                 key={`group-spec-${s}`}
                 label={s}
-                size="small"
-                icon={<StarsIcon sx={{ fontSize: "12px !important" }} />}
-                sx={{
-                  height: 18,
-                  fontSize: 9,
-                  fontWeight: 600,
-                  bgcolor: "background.paper",
-                  color: "primary.main",
-                  borderColor: "primary.light",
-                  "& .MuiChip-icon": { color: "inherit" },
-                }}
-                variant="outlined"
+                surface="onTint"
+                tint={{ text: colors.text, border: colors.border }}
+                density="compact"
               />
             ))}
           </Stack>

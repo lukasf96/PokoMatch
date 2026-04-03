@@ -4,7 +4,6 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-import StarsIcon from "@mui/icons-material/Stars";
 import {
   Box,
   Chip,
@@ -27,6 +26,7 @@ import {
 import { getPokemonDisplayName } from "../../services/pokemon-localization";
 import { useStore } from "../../store/store";
 import type { Habitat, Pokemon } from "../../types/types";
+import { SpecialtyChip } from "../specialty-chip/SpecialtyChip";
 import { PokemonSpriteAvatar } from "../PokemonSpriteAvatar";
 
 export interface PokemonCardProps {
@@ -253,24 +253,7 @@ export const PokemonCard = memo(function PokemonCard({
           {showSpecialties && pokemon.specialties.length > 0 && (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
               {pokemon.specialties.map((specialty) => (
-                <Chip
-                  key={specialty}
-                  label={specialty}
-                  size="small"
-                  icon={<StarsIcon sx={{ fontSize: "14px !important" }} />}
-                  sx={{
-                    height: 20,
-                    fontSize: 10,
-                    fontWeight: 600,
-                    bgcolor: isDark
-                      ? alpha(theme.palette.primary.main, 0.15)
-                      : alpha(theme.palette.primary.main, 0.08),
-                    color: "primary.main",
-                    border: "1px solid",
-                    borderColor: alpha(theme.palette.primary.main, 0.2),
-                    "& .MuiChip-icon": { color: "inherit" },
-                  }}
-                />
+                <SpecialtyChip key={specialty} label={specialty} />
               ))}
             </Box>
           )}

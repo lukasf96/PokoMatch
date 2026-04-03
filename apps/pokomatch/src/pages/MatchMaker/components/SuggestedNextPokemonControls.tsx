@@ -1,8 +1,8 @@
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
-import StarsIcon from "@mui/icons-material/Stars";
 import { Box, Button, Chip, Stack, Typography, useTheme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo, useMemo } from "react";
+import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
 import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
 import {
   getHabitatColors,
@@ -27,23 +27,7 @@ export const SuggestedNextPokemonControls = memo(function SuggestedNextPokemonCo
   onPick,
 }: SuggestedNextPokemonControlsProps) {
   const theme = useTheme();
-  const isDark = theme.palette.mode === "dark";
   const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
-  const specialtyChipSx = useMemo(
-    () => ({
-      height: 20,
-      fontSize: 10,
-      fontWeight: 600,
-      bgcolor: isDark
-        ? alpha(theme.palette.primary.main, 0.15)
-        : alpha(theme.palette.primary.main, 0.08),
-      color: "primary.main",
-      border: "1px solid",
-      borderColor: alpha(theme.palette.primary.main, 0.2),
-      "& .MuiChip-icon": { color: "inherit" },
-    }),
-    [theme, isDark],
-  );
 
   if (suggestions.length === 0) return null;
 
@@ -168,13 +152,7 @@ export const SuggestedNextPokemonControls = memo(function SuggestedNextPokemonCo
                     }}
                   />
                   {pokemon.specialties.map((specialty) => (
-                    <Chip
-                      key={specialty}
-                      label={specialty}
-                      size="small"
-                      icon={<StarsIcon sx={{ fontSize: "14px !important" }} />}
-                      sx={specialtyChipSx}
-                    />
+                    <SpecialtyChip key={specialty} label={specialty} />
                   ))}
                   <Chip
                     label={`+${score} Score`}
