@@ -12,6 +12,7 @@ import {
   type SxProps,
   type Theme,
 } from "@mui/material";
+import { alpha } from "@mui/material/styles";
 import { memo, useMemo, type ReactNode } from "react";
 import { PokemonCard } from "../../../components/PokemonCard/PokemonCard";
 import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
@@ -108,8 +109,13 @@ function GroupCardComponent({
   groupAction,
 }: GroupCardProps) {
   const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
   const colors = habitatColors[habitat];
+  /** In dark mode, neutral `divider` between member cards fights warm/cool habitat headers; tint with group chrome. */
+  const memberDividerColor = isDark
+    ? alpha(colors.border, 0.38)
+    : theme.palette.divider;
 
   const { favCounts, score, scoreCap, scorePercent, habitats, conflicts, specialties } =
     useMemo(() => {
@@ -135,8 +141,6 @@ function GroupCardComponent({
     () => favoritesEveryoneLikes(group),
     [group],
   );
-
-  const dividerColor = theme.palette.divider;
 
   return (
     <Paper
@@ -240,7 +244,7 @@ function GroupCardComponent({
           )}
         </Stack>
       </Box>
-      <Divider />
+      <Divider sx={{ borderColor: memberDividerColor }} />
 
       <Box sx={groupMembersGridSx(group.length)}>
         {group.map((pokemon, pi) => (
@@ -249,7 +253,9 @@ function GroupCardComponent({
             sx={{
               minWidth: 0,
               borderRight:
-                pi < group.length - 1 ? `1px solid ${dividerColor}` : "none",
+                pi < group.length - 1
+                  ? `1px solid ${memberDividerColor}`
+                  : "none",
             }}
           >
             <PokemonCard
@@ -272,7 +278,7 @@ function GroupCardComponent({
       </Box>
       {footerContent && (
         <>
-          <Divider />
+          <Divider sx={{ borderColor: memberDividerColor }} />
           <Box sx={{ px: 1.5, py: 1.25, bgcolor: "action.hover" }}>
             {footerContent}
           </Box>
