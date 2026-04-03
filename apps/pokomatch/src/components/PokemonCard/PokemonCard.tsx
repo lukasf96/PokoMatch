@@ -331,37 +331,31 @@ function FavoriteChip({
 }) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
+  const isEmphasized = Boolean(isUniversal || isShared);
 
-  const getSx = () => {
-    if (isUniversal || isShared) {
-      return {
-        height: 22,
-        fontSize: 11,
-        fontWeight: 600,
-        borderRadius: "6px",
-        bgcolor: isDark ? alpha(accent.bg, 0.55) : alpha("#ffffff", 0.85),
-        color: accent.text,
-        border: "1px solid",
-        borderColor: alpha(accent.border, isDark ? 0.85 : 0.55),
-        "& .MuiChip-icon": {
-          color: accent.border,
-          ml: 0.35,
-        },
-      };
-    }
-
-    return {
-      height: 20,
-      fontSize: 10,
-      fontWeight: 500,
-      borderRadius: "4px",
-      bgcolor: isDark ? alpha(theme.palette.common.white, 0.05) : "grey.50",
-      color: "text.secondary",
-      border: "1px solid",
-      borderColor: isDark
+  const favoriteChipSx: SxProps<Theme> = {
+    height: 22,
+    fontSize: 11,
+    fontWeight: 600,
+    borderRadius: "6px",
+    border: "1px solid",
+    bgcolor: isEmphasized
+      ? isDark
+        ? alpha(accent.bg, 0.55)
+        : alpha("#ffffff", 0.85)
+      : isDark
+        ? alpha(theme.palette.common.white, 0.05)
+        : "grey.50",
+    color: isEmphasized ? accent.text : "text.secondary",
+    borderColor: isEmphasized
+      ? alpha(accent.border, isDark ? 0.85 : 0.55)
+      : isDark
         ? alpha(theme.palette.divider, 0.5)
         : theme.palette.divider,
-    };
+    "& .MuiChip-icon": {
+      color: isEmphasized ? accent.border : "text.secondary",
+      ml: 0.35,
+    },
   };
 
   return (
@@ -375,7 +369,7 @@ function FavoriteChip({
           <FavoriteIcon sx={{ fontSize: 13 }} />
         ) : undefined
       }
-      sx={getSx()}
+      sx={favoriteChipSx}
       title={
         isUniversal
           ? "Every Pokémon in this group has this favorite"

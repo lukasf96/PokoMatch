@@ -56,7 +56,7 @@ function specialtyChipSx(theme: Theme, surface: "neutral" | "onTint", tint?: Pic
 export const SpecialtyChip = memo(function SpecialtyChip(props: SpecialtyChipProps) {
   const { label, density = "default", sx } = props;
   const surface = props.surface ?? "neutral";
-  const tint = surface === "onTint" ? props.tint : undefined;
+  const tint = props.surface === "onTint" ? props.tint : undefined;
 
   const theme = useTheme();
   const base = specialtyChipSx(theme, surface, tint);
@@ -66,13 +66,13 @@ export const SpecialtyChip = memo(function SpecialtyChip(props: SpecialtyChipPro
       label={label}
       size="small"
       icon={<StarsIcon sx={{ fontSize: density === "compact" ? "12px !important" : "14px !important" }} />}
-      sx={{
-        ...(density === "compact"
+      sx={[
+        density === "compact"
           ? { height: 18, fontSize: 9, fontWeight: 600 }
-          : { height: 20, fontSize: 10, fontWeight: 600 }),
-        ...base,
-        ...sx,
-      }}
+          : { height: 20, fontSize: 10, fontWeight: 600 },
+        base,
+        ...(sx != null ? (Array.isArray(sx) ? sx : [sx]) : []),
+      ]}
     />
   );
 });
