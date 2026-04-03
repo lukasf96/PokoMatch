@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useMemo, useState } from "react";
+import { PokemonCard } from "../../components/PokemonCard";
 import { habitatIcons } from "../../services/habitatColors";
 import {
   allPokemon,
@@ -23,7 +24,6 @@ import {
 } from "../../services/pokemon";
 import { useStore } from "../../store/store";
 import type { Habitat, Pokemon } from "../../types/types";
-import { PokemonCard } from "../../components/PokemonCard/PokemonCard";
 
 type Filter = "all" | "unlocked" | "locked";
 

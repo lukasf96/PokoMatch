@@ -2,7 +2,7 @@ import StarsIcon from "@mui/icons-material/Stars";
 import { Chip, useTheme, type SxProps, type Theme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo } from "react";
-import type { HabitatColorSet } from "../../services/habitatColors";
+import type { HabitatColorSet } from "../services/habitatColors";
 
 interface SpecialtyChipBaseProps {
   label: string;
@@ -21,7 +21,11 @@ export type SpecialtyChipProps =
       tint: Pick<HabitatColorSet, "text" | "border">;
     });
 
-function specialtyChipSx(theme: Theme, surface: "neutral" | "onTint", tint?: Pick<HabitatColorSet, "text" | "border">): SxProps<Theme> {
+function specialtyChipSx(
+  theme: Theme,
+  surface: "neutral" | "onTint",
+  tint?: Pick<HabitatColorSet, "text" | "border">,
+): SxProps<Theme> {
   const isDark = theme.palette.mode === "dark";
 
   if (surface === "onTint" && tint) {
@@ -53,7 +57,9 @@ function specialtyChipSx(theme: Theme, surface: "neutral" | "onTint", tint?: Pic
   };
 }
 
-export const SpecialtyChip = memo(function SpecialtyChip(props: SpecialtyChipProps) {
+export const SpecialtyChip = memo(function SpecialtyChip(
+  props: SpecialtyChipProps,
+) {
   const { label, density = "default", sx } = props;
   const surface = props.surface ?? "neutral";
   const tint = props.surface === "onTint" ? props.tint : undefined;
@@ -65,7 +71,14 @@ export const SpecialtyChip = memo(function SpecialtyChip(props: SpecialtyChipPro
     <Chip
       label={label}
       size="small"
-      icon={<StarsIcon sx={{ fontSize: density === "compact" ? "12px !important" : "14px !important" }} />}
+      icon={
+        <StarsIcon
+          sx={{
+            fontSize:
+              density === "compact" ? "12px !important" : "14px !important",
+          }}
+        />
+      }
       sx={[
         density === "compact"
           ? { height: 18, fontSize: 9, fontWeight: 600 }

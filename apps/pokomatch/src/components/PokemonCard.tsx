@@ -22,12 +22,12 @@ import {
   getHabitatColors,
   habitatIcons,
   type HabitatColorSet,
-} from "../../services/habitatColors";
-import { getPokemonDisplayName } from "../../services/pokemon-localization";
-import { useStore } from "../../store/store";
-import type { Habitat, Pokemon } from "../../types/types";
-import { SpecialtyChip } from "../specialty-chip/SpecialtyChip";
-import { PokemonSpriteAvatar } from "../PokemonSpriteAvatar";
+} from "../services/habitatColors";
+import { getPokemonDisplayName } from "../services/pokemon-localization";
+import { useStore } from "../store/store";
+import type { Habitat, Pokemon } from "../types/types";
+import { PokemonSpriteAvatar } from "./PokemonSpriteAvatar";
+import { SpecialtyChip } from "./SpecialtyChip";
 
 export interface PokemonCardProps {
   pokemon: Pokemon;

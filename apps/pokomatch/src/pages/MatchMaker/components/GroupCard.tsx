@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo, useMemo, type ReactNode } from "react";
-import { PokemonCard } from "../../../components/PokemonCard/PokemonCard";
-import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
+import { PokemonCard } from "../../../components/PokemonCard";
+import { SpecialtyChip } from "../../../components/SpecialtyChip";
 import {
   getGroupConflicts,
   getGroupHabitats,
@@ -117,25 +117,32 @@ function GroupCardComponent({
     ? alpha(colors.border, 0.38)
     : theme.palette.divider;
 
-  const { favCounts, score, scoreCap, scorePercent, habitats, conflicts, specialties } =
-    useMemo(() => {
-      const allFavs = group.flatMap((p) => p.favorites);
-      const counts = allFavs.reduce<Record<string, number>>((acc, f) => {
-        acc[f] = (acc[f] ?? 0) + 1;
-        return acc;
-      }, {});
-      const rawScore = groupScore(group);
-      const cap = groupScoreUpperBound(group);
-      return {
-        favCounts: counts,
-        score: rawScore,
-        scoreCap: cap,
-        scorePercent: cap > 0 ? Math.round((100 * rawScore) / cap) : 0,
-        habitats: getGroupHabitats(group),
-        conflicts: getGroupConflicts(group),
-        specialties: getGroupSpecialties(group),
-      };
-    }, [group]);
+  const {
+    favCounts,
+    score,
+    scoreCap,
+    scorePercent,
+    habitats,
+    conflicts,
+    specialties,
+  } = useMemo(() => {
+    const allFavs = group.flatMap((p) => p.favorites);
+    const counts = allFavs.reduce<Record<string, number>>((acc, f) => {
+      acc[f] = (acc[f] ?? 0) + 1;
+      return acc;
+    }, {});
+    const rawScore = groupScore(group);
+    const cap = groupScoreUpperBound(group);
+    return {
+      favCounts: counts,
+      score: rawScore,
+      scoreCap: cap,
+      scorePercent: cap > 0 ? Math.round((100 * rawScore) / cap) : 0,
+      habitats: getGroupHabitats(group),
+      conflicts: getGroupConflicts(group),
+      specialties: getGroupSpecialties(group),
+    };
+  }, [group]);
 
   const universalFavorites = useMemo(
     () => favoritesEveryoneLikes(group),
@@ -173,7 +180,7 @@ function GroupCardComponent({
           <Typography variant="subtitle2" fontWeight={700} color={colors.text}>
             Group {groupNumber}
           </Typography>
-          
+
           <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap>
             {specialties.map((s) => (
               <SpecialtyChip
@@ -263,14 +270,14 @@ function GroupCardComponent({
               onRemove={onRemovePokemon}
               favoriteCounts={favCounts}
               universalFavorites={universalFavorites}
-              sx={{ 
-                border: "none", 
+              sx={{
+                border: "none",
                 borderRadius: 0,
                 bgcolor: "transparent",
                 "&:hover": {
                   boxShadow: "none",
                   transform: "none",
-                }
+                },
               }}
             />
           </Box>

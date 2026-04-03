@@ -7,8 +7,14 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { memo, useCallback, useMemo, type HTMLAttributes, type Key } from "react";
-import { SpecialtyChip } from "../../../components/specialty-chip/SpecialtyChip";
+import {
+  memo,
+  useCallback,
+  useMemo,
+  type HTMLAttributes,
+  type Key,
+} from "react";
+import { SpecialtyChip } from "../../../components/SpecialtyChip";
 import {
   getHabitatColors,
   habitatIcons,
@@ -27,112 +33,117 @@ interface AddPokemonToGroupAutocompleteProps {
   onSelect: (pokemonId: string) => void;
 }
 
-export const AddPokemonToGroupAutocomplete = memo(function AddPokemonToGroupAutocomplete({
-  group,
-  availablePokemon,
-  nameLanguage,
-  onSelect,
-}: AddPokemonToGroupAutocompleteProps) {
-  const theme = useTheme();
+export const AddPokemonToGroupAutocomplete = memo(
+  function AddPokemonToGroupAutocomplete({
+    group,
+    availablePokemon,
+    nameLanguage,
+    onSelect,
+  }: AddPokemonToGroupAutocompleteProps) {
+    const theme = useTheme();
 
-  const options = useMemo(() => {
-    const ids = new Set(group.map((m) => m.id));
-    return availablePokemon.filter((p) => !ids.has(p.id));
-  }, [group, availablePokemon]);
+    const options = useMemo(() => {
+      const ids = new Set(group.map((m) => m.id));
+      return availablePokemon.filter((p) => !ids.has(p.id));
+    }, [group, availablePokemon]);
 
-  const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
+    const habitatColors = useMemo(() => getHabitatColors(theme), [theme]);
 
-  const getOptionLabel = useCallback(
-    (option: Pokemon) =>
-      `#${formatDexSegment(option.dexNumber)} ${getPokemonDisplayName(option, nameLanguage)}`,
-    [nameLanguage],
-  );
+    const getOptionLabel = useCallback(
+      (option: Pokemon) =>
+        `#${formatDexSegment(option.dexNumber)} ${getPokemonDisplayName(option, nameLanguage)}`,
+      [nameLanguage],
+    );
 
-  const renderOption = useCallback(
-    (props: HTMLAttributes<HTMLLIElement> & { key: Key }, option: Pokemon) => {
-      const { key, ...optionProps } = props;
-      const hc = habitatColors[option.idealHabitat];
-      const HabitatIcon = habitatIcons[option.idealHabitat];
+    const renderOption = useCallback(
+      (
+        props: HTMLAttributes<HTMLLIElement> & { key: Key },
+        option: Pokemon,
+      ) => {
+        const { key, ...optionProps } = props;
+        const hc = habitatColors[option.idealHabitat];
+        const HabitatIcon = habitatIcons[option.idealHabitat];
 
-      return (
-        <Box
-          component="li"
-          key={key}
-          {...optionProps}
-          sx={{
-            py: 0.75,
-            alignItems: "flex-start !important",
-            contentVisibility: "auto",
-            containIntrinsicSize: "auto 72px",
-          }}
-        >
-          <Stack spacing={0.75} width="100%">
-            <Typography variant="body2" fontWeight={700}>
-              <Box
-                component="span"
-                sx={{ color: "text.secondary", fontWeight: 600 }}
-              >
-                #{formatDexSegment(option.dexNumber)}
-              </Box>
-              <Box component="span">
-                {" "}
-                {getPokemonDisplayName(option, nameLanguage)}
-              </Box>
-            </Typography>
-            <Stack direction="row" flexWrap="wrap" useFlexGap gap={0.75}>
-              <Chip
-                icon={<HabitatIcon />}
-                label={option.idealHabitat}
-                size="small"
-                variant="outlined"
-                sx={{
-                  height: 18,
-                  fontSize: 10,
-                  bgcolor: "background.paper",
-                  color: hc.text,
-                  borderColor: hc.border,
-                  "& .MuiChip-icon": {
+        return (
+          <Box
+            component="li"
+            key={key}
+            {...optionProps}
+            sx={{
+              py: 0.75,
+              alignItems: "flex-start !important",
+              contentVisibility: "auto",
+              containIntrinsicSize: "auto 72px",
+            }}
+          >
+            <Stack spacing={0.75} width="100%">
+              <Typography variant="body2" fontWeight={700}>
+                <Box
+                  component="span"
+                  sx={{ color: "text.secondary", fontWeight: 600 }}
+                >
+                  #{formatDexSegment(option.dexNumber)}
+                </Box>
+                <Box component="span">
+                  {" "}
+                  {getPokemonDisplayName(option, nameLanguage)}
+                </Box>
+              </Typography>
+              <Stack direction="row" flexWrap="wrap" useFlexGap gap={0.75}>
+                <Chip
+                  icon={<HabitatIcon />}
+                  label={option.idealHabitat}
+                  size="small"
+                  variant="outlined"
+                  sx={{
+                    height: 18,
+                    fontSize: 10,
+                    bgcolor: "background.paper",
                     color: hc.text,
-                    ml: 0.5,
-                    fontSize: 14,
-                  },
-                }}
-              />
-              {option.specialties.map((specialty) => (
-                <SpecialtyChip key={specialty} label={specialty} />
-              ))}
+                    borderColor: hc.border,
+                    "& .MuiChip-icon": {
+                      color: hc.text,
+                      ml: 0.5,
+                      fontSize: 14,
+                    },
+                  }}
+                />
+                {option.specialties.map((specialty) => (
+                  <SpecialtyChip key={specialty} label={specialty} />
+                ))}
+              </Stack>
             </Stack>
-          </Stack>
-        </Box>
-      );
-    },
-    [nameLanguage, habitatColors],
-  );
+          </Box>
+        );
+      },
+      [nameLanguage, habitatColors],
+    );
 
-  return (
-    <Autocomplete
-      options={options}
-      disabled={options.length === 0}
-      getOptionLabel={getOptionLabel}
-      renderOption={renderOption}
-      renderInput={(params) => (
-        <TextField {...params} size="small" label="Choose Pokémon" />
-      )}
-      onChange={(_, value) => {
-        if (value) onSelect(value.id);
-      }}
-      slotProps={{
-        popper: {
-          sx: {
-            "& .MuiPaper-root": {
-              transition: "none",
+    return (
+      <Autocomplete
+        options={options}
+        disabled={options.length === 0}
+        getOptionLabel={getOptionLabel}
+        renderOption={renderOption}
+        renderInput={(params) => (
+          <TextField {...params} size="small" label="Choose Pokémon" />
+        )}
+        onChange={(_, value) => {
+          if (value) onSelect(value.id);
+        }}
+        slotProps={{
+          popper: {
+            sx: {
+              "& .MuiPaper-root": {
+                transition: "none",
+              },
             },
           },
-        },
-        listbox: {
-          sx: { maxHeight: 360 },
-        },
-      }}
-    />
-  );
-});
+          listbox: {
+            sx: { maxHeight: 360 },
+          },
+        }}
+      />
+    );
+  },
+);
