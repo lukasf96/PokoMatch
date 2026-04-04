@@ -1,7 +1,9 @@
 import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
 import CatchingPokemonOutlinedIcon from "@mui/icons-material/CatchingPokemonOutlined";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
+import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import {
   Box,
   Button,
@@ -30,7 +32,7 @@ export default function HomePage() {
             Pokopia Habitat Planner & Match‑Maker
           </Typography>
           <Typography variant="body1" color="text.secondary" maxWidth="sm">
-            Plan Pokopia habitats with roommates who actually click
+            Plan Pokopia habitats with roommates who actually click.
           </Typography>
           <Box sx={{ pt: 0.5 }}>
             <Button
@@ -56,19 +58,19 @@ export default function HomePage() {
           }}
         >
           <Stack spacing={1.5}>
-            <Typography variant="subtitle1" fontWeight={700} component="p">
-              Plan Pokopia habitats with roommates who actually click
+            <Typography variant="subtitle1" fontWeight={700} component="h2">
+              What PokoMatch offers
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
               Habitat planning in Pokopia means finding the right roommates.
               With a growing Pokédex and specific habitat needs, spotting the
               perfect fit for a full house of four can be a challenge.
             </Typography>
+
             <Typography variant="body2" color="text.secondary" component="p">
               PokoMatch is your shortcut: we find the Pokémon that love living
               together so you can spend less time guessing and more time
-              building. Everything updates instantly as your Pokédex or groups
-              change.
+              building.
             </Typography>
             <Box
               sx={{
@@ -89,18 +91,18 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="flex-start">
                   <AutoFixHighOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main" }}
+                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
                       Automated matching
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Find perfect roommate groups based on shared likes and
-                      habitat fit.
+                      Find perfectly-fitting habitat groups from shared
+                      favorites and habitat fit.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -114,18 +116,18 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="flex-start">
                   <SaveOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main" }}
+                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
-                      Always Saved
+                      Always saved
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Your groups and choices are kept right here locally, no
-                      account needed.
+                      Your groups and choices stay on this device — no account
+                      needed.
                     </Typography>
                   </Stack>
                 </Stack>
@@ -139,43 +141,116 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <CatchingPokemonOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main" }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" fontWeight={700}>
-                      Your Collection
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Only matches with Pokémon you've unlocked in your Pokédex.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="flex-start">
                   <TipsAndUpdatesOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main" }}
+                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
-                      Smart Suggestions
+                      Smart suggestions
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                      Get smart suggestions on who to add to your groups next.
+                      See who to add next, plus automated picks for habitat
+                      items that keep everyone happy.
                     </Typography>
                   </Stack>
+                </Stack>
+              </Paper>
+              <Paper
+                variant="outlined"
+                sx={{
+                  p: 1.25,
+                  borderRadius: 1.5,
+                  bgcolor: "background.paper",
+                  borderColor: "divider",
+                }}
+              >
+                <Stack direction="row" spacing={1} alignItems="flex-start">
+                  <TuneOutlinedIcon
+                    fontSize="small"
+                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                  />
+                  <Stack spacing={0.25}>
+                    <Typography variant="body2" fontWeight={700}>
+                      Have it your way
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Choose the language for Pokémon names and set theme mode
+                      from the settings menu.
+                    </Typography>
+                  </Stack>
+                </Stack>
+              </Paper>
+              <Paper
+                variant="outlined"
+                sx={{
+                  p: 1.25,
+                  borderRadius: 1.5,
+                  bgcolor: "background.paper",
+                  borderColor: "divider",
+                }}
+              >
+                <Stack spacing={1.25}>
+                  <Stack direction="row" spacing={1} alignItems="flex-start">
+                    <DashboardOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" fontWeight={700}>
+                        Insights
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        Explore Pokémon and item data and how they connect.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Button
+                    component={RouterLink}
+                    to={appRoutes.insights}
+                    variant="contained"
+                    size="small"
+                    sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
+                  >
+                    Open Insights
+                  </Button>
+                </Stack>
+              </Paper>
+              <Paper
+                variant="outlined"
+                sx={{
+                  p: 1.25,
+                  borderRadius: 1.5,
+                  bgcolor: "background.paper",
+                  borderColor: "divider",
+                }}
+              >
+                <Stack spacing={1.25}>
+                  <Stack direction="row" spacing={1} alignItems="flex-start">
+                    <CatchingPokemonOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" fontWeight={700}>
+                        Your collection
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        Only matches with Pokémon you've unlocked in your
+                        Pokédex.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                  <Button
+                    component={RouterLink}
+                    to={appRoutes.pokedex}
+                    variant="contained"
+                    size="small"
+                    sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
+                  >
+                    Open Pokédex
+                  </Button>
                 </Stack>
               </Paper>
             </Box>
