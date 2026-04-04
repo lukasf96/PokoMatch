@@ -20,10 +20,7 @@
       "name": "Stone",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "leaf",
@@ -44,9 +41,7 @@
       "name": "Vine rope",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Slender objects"]
     },
     {
       "id": "glowing-mushrooms",
@@ -60,18 +55,14 @@
       "name": "Twine",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Slender objects"]
     },
     {
       "id": "sea-glass-fragments",
       "name": "Sea glass fragments",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "seashell",
@@ -85,93 +76,70 @@
       "name": "Nonburnable garbage",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Garbage"
-      ]
+      "favoriteCategories": ["Garbage"]
     },
     {
       "id": "squishy-clay",
       "name": "Squishy clay",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Soft stuff"]
     },
     {
       "id": "fluff",
       "name": "Fluff",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Fabric",
-        "Round stuff",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Round stuff", "Soft stuff"]
     },
     {
       "id": "wastepaper",
       "name": "Wastepaper",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Garbage"
-      ]
+      "favoriteCategories": ["Garbage"]
     },
     {
       "id": "copper-ore",
       "name": "Copper ore",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "iron-ore",
       "name": "Iron ore",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "gold-ore",
       "name": "Gold ore",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "pok-metal-fragment",
       "name": "Pokémetal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "rare-pok-metal-fragment",
       "name": "Rare Pokémetal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "crystal-fragment",
       "name": "Crystal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Glass stuff", "Shiny stuff"]
     },
     {
       "id": "lumber",
@@ -192,37 +160,28 @@
       "name": "Copper ingot",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "iron-ingot",
       "name": "Iron ingot",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "gold-ingot",
       "name": "Gold ingot",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "pok-metal",
       "name": "Pokémetal",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Metal stuff"]
     },
     {
       "id": "rare-pok-metal",
@@ -236,9 +195,7 @@
       "name": "Glass",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "concrete",
@@ -273,90 +230,70 @@
       "name": "Armor fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Strange stuff"]
     },
     {
       "id": "stardust",
       "name": "Stardust",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "red-paint",
       "name": "Red paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "blue-paint",
       "name": "Blue paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "green-paint",
       "name": "Green paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "yellow-paint",
       "name": "Yellow paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "pink-paint",
       "name": "Pink paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "cyan-paint",
       "name": "Cyan paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "white-paint",
       "name": "White paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "black-paint",
       "name": "Black paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff"]
     },
     {
       "id": "mossy-stone",
@@ -426,9 +363,7 @@
       "name": "Cotton Spores",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": [
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Soft stuff"]
     },
     {
       "id": "cotton-spores-outdoor",
@@ -764,53 +699,35 @@
       "name": "Storage box",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Wooden stuff"]
     },
     {
       "id": "wall-storage-box",
       "name": "Wall storage box",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Containers",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Wooden stuff"]
     },
     {
       "id": "big-storage-box",
       "name": "Big storage box",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Wooden stuff"]
     },
     {
       "id": "plain-chest",
       "name": "Plain chest",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Fabric",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
     },
     {
       "id": "office-cabinet",
       "name": "Office cabinet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Metal stuff",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Metal stuff", "Wooden stuff"]
     },
     {
       "id": "gaming-fridge",
@@ -855,43 +772,28 @@
       "name": "Antique chest",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Luxury",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Luxury", "Wooden stuff"]
     },
     {
       "id": "plain-closet",
       "name": "Plain closet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Fabric",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
     },
     {
       "id": "office-locker",
       "name": "Office locker",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Containers", "Metal stuff"]
     },
     {
       "id": "antique-closet",
       "name": "Antique closet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Luxury",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Luxury", "Wooden stuff"]
     },
     {
       "id": "office-shelf",
@@ -923,19 +825,14 @@
       "name": "Straw table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Lots of nature"]
     },
     {
       "id": "log-table",
       "name": "Log table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Lots of nature", "Wooden stuff"]
     },
     {
       "id": "side-table",
@@ -949,9 +846,7 @@
       "name": "Garden table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Lots of nature"]
     },
     {
       "id": "wooden-table",
@@ -1014,11 +909,7 @@
       "name": "Plain stand",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Containers",
-        "Fabric",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
     },
     {
       "id": "iron-stand",
@@ -1037,83 +928,63 @@
       "name": "Food counter",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "plain-table",
       "name": "Plain table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "antique-table",
       "name": "Antique table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Luxury",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Luxury", "Wooden stuff"]
     },
     {
       "id": "industrial-desk",
       "name": "Industrial desk",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "iron-table",
       "name": "Iron table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Metal stuff"]
     },
     {
       "id": "office-desk",
       "name": "Office desk",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "study-desk",
       "name": "Study desk",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "cute-table",
       "name": "Cute table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Cute stuff"
-      ]
+      "favoriteCategories": ["Cute stuff"]
     },
     {
       "id": "iron-rack",
       "name": "Iron rack",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff"
-      ]
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "resort-table",
@@ -1127,18 +998,14 @@
       "name": "Chic table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Luxury"
-      ]
+      "favoriteCategories": ["Luxury"]
     },
     {
       "id": "pop-art-table",
       "name": "Pop art table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Cute stuff"
-      ]
+      "favoriteCategories": ["Cute stuff"]
     },
     {
       "id": "pok-ball-table",
@@ -1152,28 +1019,21 @@
       "name": "Berry table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Looks like food",
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Looks like food", "Lots of nature"]
     },
     {
       "id": "stone-table",
       "name": "Stone table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff"
-      ]
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "luxury-table",
       "name": "Luxury table",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": [
-        "Luxury"
-      ]
+      "favoriteCategories": ["Luxury"]
     },
     {
       "id": "office-table",
@@ -1194,9 +1054,7 @@
       "name": "Straw stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Soft stuff"]
     },
     {
       "id": "berry-chair",
@@ -1215,41 +1073,28 @@
       "name": "Simple cushion",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "log-chair",
       "name": "Log chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Lots of nature",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Lots of nature", "Wooden stuff"]
     },
     {
       "id": "plain-stool",
       "name": "Plain stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "resort-stool",
       "name": "Resort stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Ocean vibes",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
     },
     {
       "id": "stylish-stool",
@@ -1268,18 +1113,14 @@
       "name": "Industrial chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "waterproof-seat",
       "name": "Waterproof seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Cleanliness"
-      ]
+      "favoriteCategories": ["Cleanliness"]
     },
     {
       "id": "wooden-stool",
@@ -1293,156 +1134,105 @@
       "name": "Iron chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "public-seat",
       "name": "Public seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "soft-seat",
       "name": "Soft seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "box-sofa",
       "name": "Box Sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "plain-chair",
       "name": "Plain chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff", "Wooden stuff"]
     },
     {
       "id": "resort-chair",
       "name": "Resort chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Ocean vibes",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
     },
     {
       "id": "chic-chair",
       "name": "Chic chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Luxury",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff"]
     },
     {
       "id": "fancy-chair",
       "name": "Fancy chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Luxury",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff"]
     },
     {
       "id": "antique-chair",
       "name": "Antique Chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric",
-        "Luxury",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric", "Luxury", "Soft stuff"]
     },
     {
       "id": "spectator-chair",
       "name": "Spectator chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "luxury-chair",
       "name": "Luxury chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Luxury",
-        "Metal stuff",
-        "Spooky stuff"
-      ]
+      "favoriteCategories": ["Luxury", "Metal stuff", "Spooky stuff"]
     },
     {
       "id": "garden-chair",
       "name": "Garden chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Lots of nature",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Lots of nature", "Metal stuff"]
     },
     {
       "id": "folding-chair",
       "name": "Folding chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Metal stuff", "Wobbly stuff"]
     },
     {
       "id": "office-chair",
       "name": "Office chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Metal stuff",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Metal stuff", "Soft stuff"]
     },
     {
       "id": "cute-chair",
       "name": "Cute chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "pop-art-chair",
@@ -1475,31 +1265,21 @@
       "name": "Wooden bench",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities"
-      ]
+      "favoriteCategories": ["Group Activities"]
     },
     {
       "id": "stone-bench",
       "name": "Stone bench",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Hard stuff", "Stone stuff"]
     },
     {
       "id": "plain-sofa",
       "name": "Plain sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Group Activities",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Group Activities", "Soft stuff"]
     },
     {
       "id": "resort-sofa",
@@ -1543,20 +1323,14 @@
       "name": "Iron bench",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Metal stuff"]
     },
     {
       "id": "industrial-bench",
       "name": "Industrial bench",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Metal stuff"]
     },
     {
       "id": "luxury-sofa",
@@ -1611,10 +1385,7 @@
       "name": "Poké Ball Sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Metal stuff"]
     },
     {
       "id": "pikachu-sofa",
@@ -1647,62 +1418,42 @@
       "name": "Mini plain bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "resort-bed",
       "name": "Resort bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Ocean vibes",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
     },
     {
       "id": "iron-bed",
       "name": "Iron bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Metal stuff",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Metal stuff", "Soft stuff"]
     },
     {
       "id": "deck-chair",
       "name": "Deck chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Ocean vibes"
-      ]
+      "favoriteCategories": ["Ocean vibes"]
     },
     {
       "id": "beach-chair",
       "name": "Beach chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Ocean vibes",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
     },
     {
       "id": "straw-bed",
       "name": "Straw bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Lots of nature",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Lots of nature", "Soft stuff"]
     },
     {
       "id": "pop-art-bed",
@@ -1721,10 +1472,7 @@
       "name": "Poké Ball bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "berry-bed",
@@ -1744,22 +1492,14 @@
       "name": "Wooden Bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Lots of nature",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Lots of nature", "Soft stuff"]
     },
     {
       "id": "plain-bed",
       "name": "Plain bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Group Activities",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Group Activities", "Soft stuff"]
     },
     {
       "id": "resort-hammock",
@@ -1828,11 +1568,7 @@
       "name": "Cute bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "gaming-bed",
@@ -1852,9 +1588,7 @@
       "name": "Naptime bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Soft stuff"]
     },
     {
       "id": "wall-mirror",
@@ -1873,21 +1607,14 @@
       "name": "Large mirror",
       "category": "Furniture",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Luxury",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Glass stuff", "Luxury", "Strange stuff"]
     },
     {
       "id": "antique-dresser",
       "name": "Antique dresser",
       "category": "Furniture",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Luxury"
-      ]
+      "favoriteCategories": ["Glass stuff", "Luxury"]
     },
     {
       "id": "luxury-dresser",
@@ -1949,9 +1676,7 @@
       "name": "Wooden plate",
       "category": "Misc.",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "plate",
@@ -1979,32 +1704,21 @@
       "name": "Picnic basket",
       "category": "Misc.",
       "tag": "",
-      "favoriteCategories": [
-        "Containers",
-        "Fabric",
-        "Group Activities"
-      ]
+      "favoriteCategories": ["Containers", "Fabric", "Group Activities"]
     },
     {
       "id": "mug",
       "name": "Mug",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Symbols"
-      ]
+      "favoriteCategories": ["Containers", "Symbols"]
     },
     {
       "id": "tea-set",
       "name": "Tea set",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Gatherings",
-        "Group Activities"
-      ]
+      "favoriteCategories": ["Containers", "Gatherings", "Group Activities"]
     },
     {
       "id": "table-setting",
@@ -2023,33 +1737,21 @@
       "name": "Paper Party cups",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Gatherings",
-        "Group Activities",
-        "Lots of water"
-      ]
+      "favoriteCategories": ["Gatherings", "Group Activities", "Lots of water"]
     },
     {
       "id": "pizza",
       "name": "Pizza",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Looks like food",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Looks like food", "Round stuff"]
     },
     {
       "id": "fried-potatoes",
       "name": "Fried potatoes",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Gatherings",
-        "Looks like food"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Gatherings", "Looks like food"]
     },
     {
       "id": "soda-float",
@@ -2091,11 +1793,7 @@
       "name": "Sandwiches",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Gatherings",
-        "Looks like food"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Gatherings", "Looks like food"]
     },
     {
       "id": "shaved-ice",
@@ -2125,11 +1823,7 @@
       "name": "Berry basket",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Looks like food",
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Containers", "Looks like food", "Lots of nature"]
     },
     {
       "id": "small-vase",
@@ -2251,62 +1945,42 @@
       "name": "Pencil holder",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Containers",
-        "Gatherings",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Containers", "Gatherings", "Stone stuff"]
     },
     {
       "id": "fancy-pen",
       "name": "Fancy pen",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Luxury",
-        "Metal stuff",
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Luxury", "Metal stuff", "Slender objects"]
     },
     {
       "id": "letter",
       "name": "Letter",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "notepad",
       "name": "Notepad",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "book",
       "name": "Book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "open-book",
       "name": "Open Book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "book-pile",
@@ -2320,51 +1994,35 @@
       "name": "Papers",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "newspaper",
       "name": "Newspaper",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "photo-frame",
       "name": "Photo frame",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Group Activities",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Containers", "Group Activities", "Watching stuff"]
     },
     {
       "id": "wall-photo-frame",
       "name": "Wall photo frame",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Containers", "Watching stuff"]
     },
     {
       "id": "corkboard",
       "name": "Corkboard",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Gatherings",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Gatherings", "Watching stuff"]
     },
     {
       "id": "cd-rack",
@@ -2461,11 +2119,7 @@
       "name": "Cooking stove",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Lots of fire",
-        "Metal stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Lots of fire", "Metal stuff", "Strange stuff"]
     },
     {
       "id": "microwave-oven",
@@ -2496,11 +2150,7 @@
       "name": "Fan",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Metal stuff",
-        "Nice breezes"
-      ]
+      "favoriteCategories": ["Electronics", "Metal stuff", "Nice breezes"]
     },
     {
       "id": "air-conditioner",
@@ -2519,11 +2169,7 @@
       "name": "Printer",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Strange stuff"]
     },
     {
       "id": "washing-machine",
@@ -2569,11 +2215,7 @@
       "name": "Towel rack",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Cleanliness",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cleanliness", "Fabric", "Soft stuff"]
     },
     {
       "id": "bathtime-set",
@@ -2592,11 +2234,7 @@
       "name": "Cleaning supplies",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cleanliness",
-        "Lots of water",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Cleanliness", "Lots of water", "Shiny stuff"]
     },
     {
       "id": "shower",
@@ -2797,10 +2435,7 @@
       "name": "Game Boy system",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Group Activities"
-      ]
+      "favoriteCategories": ["Electronics", "Group Activities"]
     },
     {
       "id": "humidifier",
@@ -2821,11 +2456,7 @@
       "name": "Funky diffuser",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Lots of water",
-        "Metal stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Lots of water", "Metal stuff", "Strange stuff"]
     },
     {
       "id": "first-aid-kit",
@@ -2895,21 +2526,14 @@
       "name": "CD player",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Group Activities",
-        "Noisy stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Group Activities", "Noisy stuff"]
     },
     {
       "id": "tabletop-mic",
       "name": "Tabletop mic",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Shiny stuff"]
     },
     {
       "id": "standing-mic",
@@ -2928,52 +2552,35 @@
       "name": "Big drum",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Round stuff",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Wobbly stuff"]
     },
     {
       "id": "cool-electric-guitar",
       "name": "Cool electric guitar",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Noisy stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Noisy stuff", "Strange stuff"]
     },
     {
       "id": "cool-bass-guitar",
       "name": "Cool bass guitar",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Noisy stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Noisy stuff", "Strange stuff"]
     },
     {
       "id": "audio-mixer",
       "name": "Audio mixer",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Strange stuff"]
     },
     {
       "id": "speaker",
       "name": "Speaker",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Electronics",
-        "Noisy stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Noisy stuff"]
     },
     {
       "id": "gold-teeth",
@@ -2992,9 +2599,7 @@
       "name": "Repel",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Strange stuff"]
     },
     {
       "id": "big-nugget",
@@ -3065,21 +2670,14 @@
       "name": "Step stool",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Rides"
-      ]
+      "favoriteCategories": ["Metal stuff", "Rides"]
     },
     {
       "id": "cardboard-boxes",
       "name": "Cardboard boxes",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Containers",
-        "Gatherings"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Gatherings"]
     },
     {
       "id": "whiteboard",
@@ -3105,21 +2703,14 @@
       "name": "Auspicious Armor",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Luxury",
-        "Shiny stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Luxury", "Shiny stuff", "Strange stuff"]
     },
     {
       "id": "malicious-armor",
       "name": "Malicious Armor",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Luxury",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Luxury", "Strange stuff"]
     },
     {
       "id": "clear-bell",
@@ -3150,43 +2741,28 @@
       "name": "Ship's Wheel",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Ocean vibes",
-        "Round stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Ocean vibes", "Round stuff", "Strange stuff"]
     },
     {
       "id": "mysterious-statue",
       "name": "Mysterious statue",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Spooky stuff",
-        "Stone stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Spooky stuff", "Stone stuff", "Strange stuff"]
     },
     {
       "id": "fiery-magby-statue",
       "name": "Fiery Magby statue",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Lots of fire",
-        "Stone stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Lots of fire", "Stone stuff", "Strange stuff"]
     },
     {
       "id": "gym-emblem-statue",
       "name": "Gym emblem statue",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Shiny stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff", "Stone stuff"]
     },
     {
       "id": "spacesuit",
@@ -3231,62 +2807,42 @@
       "name": "Wall Calendar",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "wreath",
       "name": "Wreath",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Round stuff",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Wooden stuff"]
     },
     {
       "id": "decorative-bookshelf",
       "name": "Decorative bookshelf",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Gatherings",
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Gatherings", "Letters and words"]
     },
     {
       "id": "decorative-storage-shelf",
       "name": "Decorative storage shelf",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Gatherings",
-        "Stone stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Gatherings", "Stone stuff", "Strange stuff"]
     },
     {
       "id": "decorative-plant-shelf",
       "name": "Decorative plant shelf",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Gatherings",
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Gatherings", "Pretty flowers"]
     },
     {
       "id": "antique-clock",
       "name": "Antique clock",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Luxury",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Glass stuff", "Luxury", "Wooden stuff"]
     },
     {
       "id": "berry-clock",
@@ -3307,41 +2863,28 @@
       "name": "Rowlet clock",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Strange stuff",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Strange stuff", "Watching stuff"]
     },
     {
       "id": "hanging-banner",
       "name": "Hanging banner",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric"]
     },
     {
       "id": "party-bunting",
       "name": "Party bunting",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric"]
     },
     {
       "id": "vine-wall-decoration",
       "name": "Vine wall decoration",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Lots of nature",
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Lots of nature", "Slender objects"]
     },
     {
       "id": "berry-wall-decoration",
@@ -3361,10 +2904,7 @@
       "name": "Hanging scroll",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Letters and words",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Strange stuff"]
     },
     {
       "id": "ceiling-fan",
@@ -3383,133 +2923,91 @@
       "name": "Castform weather charm",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Strange stuff"]
     },
     {
       "id": "eevee-doll",
       "name": "Eevee doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "pikachu-doll",
       "name": "Pikachu doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "clefairy-doll",
       "name": "Clefairy doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "arcanine-doll",
       "name": "Arcanine doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric"]
     },
     {
       "id": "dragonite-doll",
       "name": "Dragonite doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "ditto-doll",
       "name": "Ditto doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "substitute-doll",
       "name": "Substitute doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Fabric",
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "grubby-letter",
       "name": "Grubby letter",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Letters and words"]
     },
     {
       "id": "grubby-notepad",
       "name": "Grubby notepad",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Letters and words"]
     },
     {
       "id": "grubby-book",
       "name": "Grubby book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Letters and words"]
     },
     {
       "id": "grubby-papers",
       "name": "Grubby papers",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Letters and words"]
     },
     {
       "id": "grubby-newspaper",
       "name": "Grubby newspaper",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Letters and words",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Watching stuff"]
     },
     {
       "id": "grubby-tablet",
@@ -3625,20 +3123,14 @@
       "name": "Campfire",
       "category": "Outdoor",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Group Activities",
-        "Lots of fire",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Lots of fire", "Stone stuff"]
     },
     {
       "id": "torch",
       "name": "Torch",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Lots of fire"
-      ]
+      "favoriteCategories": ["Lots of fire"]
     },
     {
       "id": "slender-candle",
@@ -3669,10 +3161,7 @@
       "name": "Wall torch",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Lots of fire",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Lots of fire", "Stone stuff"]
     },
     {
       "id": "firepit",
@@ -3702,11 +3191,7 @@
       "name": "Sandbox",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Group Activities",
-        "Lots of dirt",
-        "Play spaces"
-      ]
+      "favoriteCategories": ["Group Activities", "Lots of dirt", "Play spaces"]
     },
     {
       "id": "tire-toy",
@@ -3725,10 +3210,7 @@
       "name": "Concrete pipe",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Round stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Stone stuff"]
     },
     {
       "id": "punching-bag",
@@ -3747,11 +3229,7 @@
       "name": "Slide",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Group Activities",
-        "Play spaces",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Play spaces", "Wooden stuff"]
     },
     {
       "id": "vending-machine",
@@ -3770,10 +3248,7 @@
       "name": "Wall-mounted flowers",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Pretty flowers"]
     },
     {
       "id": "chansey-plant",
@@ -3792,10 +3267,7 @@
       "name": "Garden ornament",
       "category": "Outdoor",
       "tag": "",
-      "favoriteCategories": [
-        "Gatherings",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Gatherings", "Stone stuff"]
     },
     {
       "id": "bike",
@@ -3821,10 +3293,7 @@
       "name": "Garden flowers",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Pretty flowers"]
     },
     {
       "id": "cart",
@@ -3845,30 +3314,21 @@
       "name": "Wooden birdhouse",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Containers", "Slender objects"]
     },
     {
       "id": "mailbox",
       "name": "Mailbox",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Containers", "Metal stuff"]
     },
     {
       "id": "weather-vane",
       "name": "Weather vane",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Nice breezes"
-      ]
+      "favoriteCategories": ["Metal stuff", "Nice breezes"]
     },
     {
       "id": "gravestone",
@@ -3886,53 +3346,35 @@
       "name": "Blank canvas",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Fabric",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Fabric", "Watching stuff"]
     },
     {
       "id": "painting-landscape",
       "name": "Painting (landscape)",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric", "Watching stuff"]
     },
     {
       "id": "painting-portrait",
       "name": "Painting (portrait)",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric", "Watching stuff"]
     },
     {
       "id": "painting-still-life",
       "name": "Painting (still life)",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Fabric",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Fabric", "Watching stuff"]
     },
     {
       "id": "cannon",
       "name": "Cannon",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Metal stuff", "Strange stuff"]
     },
     {
       "id": "bell",
@@ -3985,10 +3427,7 @@
       "name": "Canoe",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Group Activities",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Round stuff"]
     },
     {
       "id": "inflatable-boat",
@@ -4006,11 +3445,7 @@
       "name": "Beach parasol",
       "category": "Outdoor",
       "tag": "Relaxation",
-      "favoriteCategories": [
-        "Fabric",
-        "Lots of water",
-        "Ocean vibes"
-      ]
+      "favoriteCategories": ["Fabric", "Lots of water", "Ocean vibes"]
     },
     {
       "id": "horsea-fountain",
@@ -4041,31 +3476,21 @@
       "name": "Arrow sign",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Letters and words",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Wooden stuff"]
     },
     {
       "id": "menu-board",
       "name": "Menu board",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Letters and words",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Wooden stuff"]
     },
     {
       "id": "sign",
       "name": "Sign",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Letters and words",
-        "Symbols",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Letters and words", "Symbols", "Wooden stuff"]
     },
     {
       "id": "signpost",
@@ -4122,22 +3547,14 @@
       "name": "Worn wooden crate",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Containers",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Wooden stuff"]
     },
     {
       "id": "wooden-crate",
       "name": "Wooden crate",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Containers",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Wooden stuff"]
     },
     {
       "id": "barrel",
@@ -4156,31 +3573,21 @@
       "name": "Garbage bags",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Garbage",
-        "Gatherings"
-      ]
+      "favoriteCategories": ["Garbage", "Gatherings"]
     },
     {
       "id": "garbage-bin",
       "name": "Garbage bin",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Garbage",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Containers", "Garbage", "Metal stuff"]
     },
     {
       "id": "recycling-bin",
       "name": "Recycling bin",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Containers", "Metal stuff"]
     },
     {
       "id": "grubby-rags",
@@ -4194,9 +3601,7 @@
       "name": "Nonburnable garbage (outdoor)",
       "category": "Outdoor",
       "tag": "",
-      "favoriteCategories": [
-        "Garbage"
-      ]
+      "favoriteCategories": ["Garbage"]
     },
     {
       "id": "traffic-cone",
@@ -4217,11 +3622,7 @@
       "name": "Fire hydrant",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Lots of water",
-        "Metal stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Lots of water", "Metal stuff", "Shiny stuff"]
     },
     {
       "id": "sandbags",
@@ -4240,21 +3641,14 @@
       "name": "Excavation tools",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Metal stuff", "Strange stuff"]
     },
     {
       "id": "tires",
       "name": "Tires",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Gatherings",
-        "Round stuff",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Gatherings", "Round stuff", "Wobbly stuff"]
     },
     {
       "id": "metal-drum",
@@ -4287,11 +3681,7 @@
       "name": "Iron pipes",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Construction",
-        "Gatherings",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Construction", "Gatherings", "Metal stuff"]
     },
     {
       "id": "wheelbarrow",
@@ -4310,11 +3700,7 @@
       "name": "Large ventilation fan",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Nice breezes",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Metal stuff", "Nice breezes", "Strange stuff"]
     },
     {
       "id": "heat-rock",
@@ -4349,9 +3735,7 @@
       "name": "Ditto Flag",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Stone stuff"]
     },
     {
       "id": "workbench",
@@ -4384,9 +3768,7 @@
       "name": "Cutting board",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "frying-pan",
@@ -4428,18 +3810,14 @@
       "name": "Smelting furnace",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of fire"
-      ]
+      "favoriteCategories": ["Lots of fire"]
     },
     {
       "id": "metallic-smelting-furnace",
       "name": "Metallic smelting furnace",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of fire"
-      ]
+      "favoriteCategories": ["Lots of fire"]
     },
     {
       "id": "concrete-mixer",
@@ -4467,9 +3845,7 @@
       "name": "Handcar",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Rides"
-      ]
+      "favoriteCategories": ["Rides"]
     },
     {
       "id": "elevator-platform",
@@ -4490,11 +3866,7 @@
       "name": "Cash register",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Containers",
-        "Metal stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Containers", "Metal stuff", "Strange stuff"]
     },
     {
       "id": "sprinkler",
@@ -4520,27 +3892,21 @@
       "name": "Utility pole",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "wireless-power-transmitter-switch",
       "name": "Wireless power-transmitter switch",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "wireless-power-transmitter",
       "name": "Wireless power transmitter",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "mini-generator",
@@ -4559,18 +3925,14 @@
       "name": "Floor switch",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "wall-switch",
       "name": "Wall switch",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "card-reader",
@@ -4589,29 +3951,21 @@
       "name": "Laser sensor",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "security-camera",
       "name": "Security camera",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Electronics"
-      ]
+      "favoriteCategories": ["Electronics"]
     },
     {
       "id": "mushroom-streetlight",
       "name": "Mushroom streetlight",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Shiny stuff",
-        "Slender objects",
-        "Spooky stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff", "Slender objects", "Spooky stuff"]
     },
     {
       "id": "town-streetlight",
@@ -4668,21 +4022,14 @@
       "name": "Mushroom lamp",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Wooden stuff"]
     },
     {
       "id": "plain-lamp",
       "name": "Plain lamp",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Fabric",
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Fabric", "Glass stuff"]
     },
     {
       "id": "desk-light",
@@ -4727,11 +4074,7 @@
       "name": "Cute lamp",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Electronics",
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Cute stuff", "Electronics", "Glass stuff"]
     },
     {
       "id": "pok-ball-lamp",
@@ -4862,22 +4205,14 @@
       "name": "Garden light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Metal stuff"]
     },
     {
       "id": "lantern",
       "name": "Lantern",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Metal stuff"]
     },
     {
       "id": "seedot-lamp",
@@ -4909,10 +4244,7 @@
       "name": "Wall light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff"]
     },
     {
       "id": "shell-lamp",
@@ -4967,21 +4299,14 @@
       "name": "String lights",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Gatherings",
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Gatherings", "Glass stuff"]
     },
     {
       "id": "pop-art-lamp",
       "name": "Pop art lamp",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff"]
     },
     {
       "id": "berry-hanging-lamp",
@@ -5002,22 +4327,14 @@
       "name": "Surface light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Round stuff"]
     },
     {
       "id": "spotlight",
       "name": "Spotlight",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Glass stuff",
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Metal stuff"]
     },
     {
       "id": "antique-chandelier",
@@ -5132,9 +4449,7 @@
       "name": "Broken streetlight",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": [
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Slender objects"]
     },
     {
       "id": "leppa-seeds",
@@ -5428,73 +4743,56 @@
       "name": "Wildflowers",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "seashore-flowers",
       "name": "Seashore flowers",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "mountain-flowers",
       "name": "Mountain flowers",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "skyland-flowers",
       "name": "Skyland flowers",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "beautiful-flower",
       "name": "Beautiful flower",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "cute-flower",
       "name": "Cute flower",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Cute stuff",
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Cute stuff", "Pretty flowers"]
     },
     {
       "id": "elegant-flower",
       "name": "Elegant flower",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "robust-flower",
       "name": "Robust flower",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "adorable-hedge",
@@ -5627,39 +4925,28 @@
       "name": "Strength rock",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff"
-      ]
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "stone-debris",
       "name": "Stone debris",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "mud",
       "name": "Mud",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of dirt"
-      ]
+      "favoriteCategories": ["Lots of dirt"]
     },
     {
       "id": "metal-debris",
       "name": "Metal Debris",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Metal stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Metal stuff", "Stone stuff"]
     },
     {
       "id": "wood-fragments",
@@ -5673,9 +4960,7 @@
       "name": "Stone fragments",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "worn-lumber",
@@ -5696,9 +4981,7 @@
       "name": "Metal fragments",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "chesto-tree",
@@ -6279,288 +5562,224 @@
       "name": "Wildflowers (orange)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "wildflowers-purple",
       "name": "Wildflowers (purple)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "wildflowers-red",
       "name": "Wildflowers (red)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "wildflowers-blue",
       "name": "Wildflowers (blue)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "seashore-flowers-blue",
       "name": "Seashore flowers (blue)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "seashore-flowers-orange",
       "name": "Seashore flowers (orange)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "seashore-flowers-white",
       "name": "Seashore flowers (white)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "seashore-flowers-yellow",
       "name": "Seashore flowers (yellow)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "mountain-flowers-pink",
       "name": "Mountain flowers (pink)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "mountain-flowers-purple",
       "name": "Mountain flowers (purple)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "mountain-flowers-red",
       "name": "Mountain flowers (red)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "mountain-flowers-white",
       "name": "Mountain flowers (white)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "skyland-flowers-blue",
       "name": "Skyland flowers (blue)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "skyland-flowers-orange",
       "name": "Skyland flowers (orange)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "skyland-flowers-pink",
       "name": "Skyland flowers (pink)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "skyland-flowers-yellow",
       "name": "Skyland flowers (yellow)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "beautiful-flower-pink",
       "name": "Beautiful flower (pink)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "beautiful-flower-purple",
       "name": "Beautiful flower (purple)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "beautiful-flower-white",
       "name": "Beautiful flower (white)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "beautiful-flower-yellow",
       "name": "Beautiful flower (yellow)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "cute-flower-blue",
       "name": "Cute flower (blue)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "cute-flower-pink",
       "name": "Cute flower (pink)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "cute-flower-white",
       "name": "Cute flower (white)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "cute-flower-yellow",
       "name": "Cute flower (yellow)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "elegant-flower-orange",
       "name": "Elegant flower (orange)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "elegant-flower-pink",
       "name": "Elegant flower (pink)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "elegant-flower-red",
       "name": "Elegant flower (red)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "elegant-flower-yellow",
       "name": "Elegant flower (yellow)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "robust-flower-blue",
       "name": "Robust flower (blue)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "robust-flower-orange",
       "name": "Robust flower (orange)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "robust-flower-purple",
       "name": "Robust flower (purple)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "robust-flower-white",
       "name": "Robust flower (white)",
       "category": "Nature",
       "tag": "",
-      "favoriteCategories": [
-        "Pretty flowers"
-      ]
+      "favoriteCategories": ["Pretty flowers"]
     },
     {
       "id": "adorable-hedge-blue",
@@ -6826,10 +6045,7 @@
       "name": "Stone steps",
       "category": "Buildings",
       "tag": "Road",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "concrete-steps",
@@ -6850,9 +6066,7 @@
       "name": "Iron steps",
       "category": "Buildings",
       "tag": "Road",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "wooden-ladder",
@@ -6866,37 +6080,28 @@
       "name": "Iron ladder",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "wire",
       "name": "Wire",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Slender objects"]
     },
     {
       "id": "metal-chain",
       "name": "Metal chain",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Metal stuff", "Slender objects"]
     },
     {
       "id": "rope",
       "name": "Rope",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Slender objects"
-      ]
+      "favoriteCategories": ["Slender objects"]
     },
     {
       "id": "pulley",
@@ -6931,9 +6136,7 @@
       "name": "Modern door",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "stylish-door",
@@ -6954,9 +6157,7 @@
       "name": "Iron door",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "large-wooden-door",
@@ -6998,9 +6199,7 @@
       "name": "Iron gate",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "simple-curtain-left",
@@ -7035,54 +6234,42 @@
       "name": "Glass window",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "window-pane",
       "name": "Window pane",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "stained-glass-window-upper",
       "name": "Stained-glass window (upper)",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "stained-glass-window-middle",
       "name": "Stained-glass window (middle)",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "stained-glass-window-lower",
       "name": "Stained-glass window (lower)",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "sash-window",
       "name": "Sash window",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff"
-      ]
+      "favoriteCategories": ["Glass stuff"]
     },
     {
       "id": "sloped-tiled-roof",
@@ -7131,10 +6318,7 @@
       "name": "Stone hipped roof",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "sloped-stone-roof",
@@ -7155,10 +6339,7 @@
       "name": "Stone roof valley",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "flat-stone-roof",
@@ -7172,10 +6353,7 @@
       "name": "Stone roof decoration",
       "category": "Buildings",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "pitched-brick-roof",
@@ -7259,9 +6437,7 @@
       "name": "Corrugated metal",
       "category": "Buildings",
       "tag": "Road",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "protruding-wall",
@@ -7351,7 +6527,7 @@
       "id": "arched-barrier-leaf-pattern",
       "name": "Arched barrier (leaf pattern)",
       "category": "Buildings",
-      "tag": "Variant when placing stnadard Arched berriers",
+      "tag": "",
       "favoriteCategories": []
     },
     {
@@ -7436,18 +6612,14 @@
       "name": "Iron-scaffold plank",
       "category": "Buildings",
       "tag": "Road",
-      "favoriteCategories": [
-        "Construction"
-      ]
+      "favoriteCategories": ["Construction"]
     },
     {
       "id": "iron-scaffold",
       "name": "Iron scaffold",
       "category": "Buildings",
       "tag": "Road",
-      "favoriteCategories": [
-        "Construction"
-      ]
+      "favoriteCategories": ["Construction"]
     },
     {
       "id": "arch-bridge",
@@ -7615,11 +6787,7 @@
       "name": "Water pillar quarter",
       "category": "Buildings",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Lots of water",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Glass stuff", "Lots of water", "Watching stuff"]
     },
     {
       "id": "roof-support",
@@ -7808,10 +6976,7 @@
       "name": "Stone brick wall",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "aged-stone-wall",
@@ -7867,9 +7032,7 @@
       "name": "Iron wall",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "stylish-iron-wall",
@@ -8023,30 +7186,21 @@
       "name": "Stone pillar (upper)",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "stone-pillar-middle",
       "name": "Stone pillar (middle)",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "stone-pillar-lower",
       "name": "Stone pillar (lower)",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "pop-art-wall-upper",
@@ -8228,10 +7382,7 @@
       "name": "Stone flooring",
       "category": "Blocks",
       "tag": "Road",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "lined-stone-flooring",
@@ -8301,9 +7452,7 @@
       "name": "Iron-plate flooring",
       "category": "Blocks",
       "tag": "Road",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "iron-tiling",
@@ -8338,10 +7487,7 @@
       "name": "Stone tiling",
       "category": "Blocks",
       "tag": "Road",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "square-tiling",
@@ -8565,10 +7711,7 @@
       "name": "Berry print",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Looks like food",
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Looks like food", "Lots of nature"]
     },
     {
       "id": "pok-ball-print",
@@ -8897,9 +8040,7 @@
       "name": "Iron deposit",
       "category": "Blocks",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "gold-deposit",
@@ -9564,244 +8705,175 @@
       "name": "Star Piece",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "paint-balloon-white",
       "name": "Paint balloon (white)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-red",
       "name": "Paint balloon (red)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-yellow",
       "name": "Paint balloon (yellow)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-green",
       "name": "Paint balloon (green)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-rose",
       "name": "Paint balloon (rose)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-pink",
       "name": "Paint balloon (pink)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-orange",
       "name": "Paint balloon (orange)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-purple",
       "name": "Paint balloon (purple)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-brown",
       "name": "Paint balloon (brown)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-beige",
       "name": "Paint balloon (beige)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-black",
       "name": "Paint balloon (black)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-lime",
       "name": "Paint balloon (lime)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-plum",
       "name": "Paint balloon (plum)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-navy",
       "name": "Paint balloon (navy)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-blue",
       "name": "Paint balloon (blue)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-cyan",
       "name": "Paint balloon (cyan)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-gray",
       "name": "Paint balloon (gray)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "paint-balloon-aquamarine",
       "name": "Paint balloon (aquamarine)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Colorful stuff", "Round stuff"]
     },
     {
       "id": "firework-white",
       "name": "Firework (white)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "firework-red",
       "name": "Firework (red)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "firework-green",
       "name": "Firework (green)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "firework-yellow",
       "name": "Firework (yellow)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "firework-blue",
       "name": "Firework (blue)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "stone-tiling-wallpaper",
       "name": "Stone tiling (wallpaper)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "wooden-wall-wallpaper",
@@ -9920,9 +8992,7 @@
       "name": "Iron-plate flooring (wallpaper)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Metal stuff"
-      ]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "shop-tiling-wallpaper",
@@ -9950,10 +9020,7 @@
       "name": "Stone flooring (wallpaper)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "lined-stone-flooring-wallpaper",
@@ -9974,10 +9041,7 @@
       "name": "Stone brick wall (wallpaper)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Stone stuff"]
     },
     {
       "id": "diagonal-wooden-flooring-wallpaper",
@@ -10285,10 +9349,7 @@
       "name": "Berry print (wallpaper)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Looks like food",
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Looks like food", "Lots of nature"]
     },
     {
       "id": "pok-ball-print-wallpaper",
@@ -10386,435 +9447,336 @@
       "name": "Large Lost Relic",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Strange stuff"]
     },
     {
       "id": "small-lost-relic",
       "name": "Small Lost Relic",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Strange stuff"]
     },
     {
       "id": "title-screen",
       "name": "Title Screen",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "pallet-town",
       "name": "Pallet Town",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "oak-s-lab",
       "name": "Oak's Lab",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "road-to-viridian-city",
       "name": "Road to Viridian City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "pewter-city-theme",
       "name": "Pewter City Theme",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "pok-mon-center",
       "name": "Pokémon Center",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "caves-of-mt-moon",
       "name": "Caves of Mt. Moon",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "road-to-cerulean-city",
       "name": "Road to Cerulean City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "fuchsia-city-theme",
       "name": "Fuchsia City Theme",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "pok-mon-gym",
       "name": "Pokémon Gym",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "road-to-bill",
       "name": "Road to Bill",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "vermilion-city-theme",
       "name": "Vermilion City Theme",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "the-s-s-anne",
       "name": "The S.S. Anne",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "rocket-hideout",
       "name": "Rocket Hideout",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "silph-co",
       "name": "Silph Co.",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "battle-gym-leader-battle",
       "name": "Battle! (Gym Leader Battle)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "union-cave",
       "name": "Union Cave",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "ecruteak-city",
       "name": "Ecruteak City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "bell-tower",
       "name": "Bell Tower",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "fortree-city",
       "name": "Fortree City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "sootopolis-city",
       "name": "Sootopolis City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "route-209-day",
       "name": "Route 209 (Day)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "mt-coronet",
       "name": "Mt. Coronet",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "game-corner",
       "name": "Game Corner",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "driftveil-city",
       "name": "Driftveil City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "route-10-unova",
       "name": "Route 10 (Unova)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "dress-up-with-props",
       "name": "Dress Up With Props",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "snowbelle-city",
       "name": "Snowbelle City",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "boutique",
       "name": "Boutique",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "super-training",
       "name": "Super Training!",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "contest-spectacular",
       "name": "Contest Spectacular",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "hau-oli-city-day",
       "name": "Hau'oli City (Day)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "aether-paradise",
       "name": "Aether Paradise",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "ultra-ruin",
       "name": "Ultra Ruin",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "wild-area-north",
       "name": "Wild Area (North)",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "wyndon",
       "name": "Wyndon",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "rose-tower",
       "name": "Rose Tower",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "battle-gym-leader-1",
       "name": "Battle! (Gym Leader) 1",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "jubilife-village",
       "name": "Jubilife Village",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "south-province",
       "name": "South Province",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "the-academy",
       "name": "The Academy",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "area-zero",
       "name": "Area Zero",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "battle-gym-leader-2",
       "name": "Battle! (Gym Leader) 2",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "nugget",
       "name": "Nugget",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Shiny stuff"]
     },
     {
       "id": "silver-bottle-cap",
       "name": "Silver Bottle Cap",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Shiny stuff"]
     },
     {
       "id": "gold-bottle-cap",
       "name": "Gold Bottle Cap",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Round stuff", "Shiny stuff"]
     },
     {
       "id": "rare-bone",
@@ -10828,18 +9790,14 @@
       "name": "Heart Scale",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Cute stuff"
-      ]
+      "favoriteCategories": ["Cute stuff"]
     },
     {
       "id": "miracle-seed",
       "name": "Miracle Seed",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Lots of nature"]
     },
     {
       "id": "hard-stone",
@@ -10853,9 +9811,7 @@
       "name": "Mystic Water",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of water"
-      ]
+      "favoriteCategories": ["Lots of water"]
     },
     {
       "id": "metal-coat",
@@ -10869,18 +9825,14 @@
       "name": "Twisted Spoon",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Strange stuff"]
     },
     {
       "id": "silver-powder",
       "name": "Silver Powder",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Lots of nature"]
     },
     {
       "id": "black-glasses",
@@ -10901,9 +9853,7 @@
       "name": "Silk Scarf",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Fabric"
-      ]
+      "favoriteCategories": ["Fabric"]
     },
     {
       "id": "sharp-beak",
@@ -10931,36 +9881,28 @@
       "name": "Spell Tag",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Spooky stuff"
-      ]
+      "favoriteCategories": ["Spooky stuff"]
     },
     {
       "id": "charcoal",
       "name": "Charcoal",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of fire"
-      ]
+      "favoriteCategories": ["Lots of fire"]
     },
     {
       "id": "soft-sand",
       "name": "Soft Sand",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Soft stuff"
-      ]
+      "favoriteCategories": ["Soft stuff"]
     },
     {
       "id": "fairy-feather",
       "name": "Fairy Feather",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Cute stuff"
-      ]
+      "favoriteCategories": ["Cute stuff"]
     },
     {
       "id": "dragon-fang",
@@ -10974,9 +9916,7 @@
       "name": "Leftovers",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Looks like food"
-      ]
+      "favoriteCategories": ["Looks like food"]
     },
     {
       "id": "black-sludge",
@@ -10990,9 +9930,7 @@
       "name": "Lucky Egg",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "destiny-knot",
@@ -11006,55 +9944,42 @@
       "name": "Life Orb",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "iron-ball",
       "name": "Iron Ball",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Round stuff"]
     },
     {
       "id": "metal-powder",
       "name": "Metal Powder",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "big-root",
       "name": "Big Root",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Lots of nature"
-      ]
+      "favoriteCategories": ["Lots of nature"]
     },
     {
       "id": "adrenaline-orb",
       "name": "Adrenaline Orb",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "weakness-policy",
       "name": "Weakness Policy",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Letters and words"
-      ]
+      "favoriteCategories": ["Letters and words"]
     },
     {
       "id": "terrain-extender",
@@ -11082,10 +10007,7 @@
       "name": "Light Clay",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Soft stuff",
-        "Stone stuff"
-      ]
+      "favoriteCategories": ["Soft stuff", "Stone stuff"]
     },
     {
       "id": "loaded-dice",
@@ -11113,18 +10035,14 @@
       "name": "Lagging Tail",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Hard stuff"
-      ]
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "flame-orb",
       "name": "Flame Orb",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "ability-shield",
@@ -11138,28 +10056,21 @@
       "name": "Room Service",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Fabric"
-      ]
+      "favoriteCategories": ["Fabric"]
     },
     {
       "id": "ring-target",
       "name": "Ring Target",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Round stuff"
-      ]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "clear-amulet",
       "name": "Clear Amulet",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Glass stuff",
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Glass stuff", "Shiny stuff"]
     },
     {
       "id": "zoom-lens",
@@ -11173,18 +10084,14 @@
       "name": "Rainbow Feather",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "silver-feather",
       "name": "Silver Feather",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": [
-        "Shiny stuff"
-      ]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "party-cooking-pot",
@@ -11450,32 +10357,21 @@
       "name": "Town map",
       "category": "Other",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Strange stuff",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Strange stuff", "Watching stuff"]
     },
     {
       "id": "team-rocket-wall-hanging",
       "name": "Team Rocket Wall Hanging",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Metal stuff",
-        "Symbols",
-        "Watching stuff"
-      ]
+      "favoriteCategories": ["Metal stuff", "Symbols", "Watching stuff"]
     },
     {
       "id": "skull-fossil",
       "name": "Skull Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "armor-fossil",
@@ -11494,33 +10390,21 @@
       "name": "Jaw Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "sail-fossil",
       "name": "Sail Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "wing-fossil-head",
       "name": "Wing Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "wing-fossil-right-wing",
@@ -11575,11 +10459,7 @@
       "name": "Headbutt Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "headbutt-fossil-body",
@@ -11610,11 +10490,7 @@
       "name": "Shield Fossil (Head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "shield-fossil-body",
@@ -11645,11 +10521,7 @@
       "name": "Despot Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "despot-fossil-body",
@@ -11692,11 +10564,7 @@
       "name": "Tundra Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Hard stuff",
-        "Lots of dirt",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
     },
     {
       "id": "tundra-fossil-body",
