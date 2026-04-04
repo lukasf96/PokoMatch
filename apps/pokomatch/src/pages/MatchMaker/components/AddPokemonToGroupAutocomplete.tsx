@@ -1,3 +1,4 @@
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   Autocomplete,
@@ -20,12 +21,12 @@ import {
 } from "react";
 import { PokemonSpriteAvatar } from "../../../components/PokemonSpriteAvatar";
 import { SpecialtyChip } from "../../../components/SpecialtyChip";
-import { candidateAddInfoByPokemonId } from "../../../services/matching.service";
-import { comparePokemonByDex } from "../../../services/pokemon";
 import {
   getHabitatColors,
   habitatIcons,
 } from "../../../services/habitatColors";
+import { candidateAddInfoByPokemonId } from "../../../services/matching.service";
+import { comparePokemonByDex } from "../../../services/pokemon";
 import {
   getPokemonDisplayName,
   type PokemonNameLanguage,
@@ -34,18 +35,14 @@ import type { Pokemon } from "../../../types/types";
 import { formatDexSegment } from "../group-helpers";
 
 function normalizeForSearch(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "");
+  return value.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
 }
 
 /** All substrings we match against (accent-insensitive, lowercased). */
 function buildPokemonSearchHaystack(pokemon: Pokemon): string {
   const dex = pokemon.dexNumber.trim();
   const padded = formatDexSegment(dex);
-  const numeric =
-    /^\d+$/.test(dex) ? String(Number.parseInt(dex, 10)) : "";
+  const numeric = /^\d+$/.test(dex) ? String(Number.parseInt(dex, 10)) : "";
 
   const nameParts = [
     pokemon.name,
@@ -103,7 +100,10 @@ function searchTokensFromInput(inputValue: string): string[] {
     .filter((t) => t.length > 0);
 }
 
-function matchRangesInPlainText(text: string, tokens: string[]): [number, number][] {
+function matchRangesInPlainText(
+  text: string,
+  tokens: string[],
+): [number, number][] {
   const ranges: [number, number][] = [];
   for (const token of tokens) {
     let re: RegExp;
@@ -147,13 +147,7 @@ function segmentsFromMatchRanges(
   return segments;
 }
 
-function MatchHighlight({
-  text,
-  query,
-}: {
-  text: string;
-  query: string;
-}) {
+function MatchHighlight({ text, query }: { text: string; query: string }) {
   const theme = useTheme();
   const segments = useMemo(() => {
     const tokens = searchTokensFromInput(query);
@@ -245,17 +239,11 @@ export const AddPokemonToGroupAutocomplete = memo(
     }, [options]);
 
     const filterOptions = useCallback(
-      (
-        opts: Pokemon[],
-        state: { inputValue: string },
-      ): Pokemon[] => {
+      (opts: Pokemon[], state: { inputValue: string }): Pokemon[] => {
         const trimmed = state.inputValue.trim();
         if (!trimmed) return opts;
         return opts.filter((p) =>
-          pokemonMatchesInput(
-            searchHaystackById.get(p.id) ?? "",
-            trimmed,
-          ),
+          pokemonMatchesInput(searchHaystackById.get(p.id) ?? "", trimmed),
         );
       },
       [searchHaystackById],
@@ -281,6 +269,8 @@ export const AddPokemonToGroupAutocomplete = memo(
         const add = addInfoById.get(option.id);
         const showScoreChip =
           group.length > 0 && add?.habitatCompatible === true;
+        const habitatClash =
+          group.length > 0 && Boolean(add) && add!.habitatCompatible === false;
 
         return (
           <Box
@@ -296,13 +286,17 @@ export const AddPokemonToGroupAutocomplete = memo(
               px: 0.5,
               contentVisibility: "auto",
               containIntrinsicSize: "auto 96px",
+              ...(habitatClash
+                ? {
+                    bgcolor: alpha(
+                      theme.palette.error.main,
+                      theme.palette.mode === "dark" ? 0.12 : 0.06,
+                    ),
+                  }
+                : {}),
             }}
           >
-            <PokemonSpriteAvatar
-              pokemon={option}
-              size={40}
-              padding={0.5}
-            />
+            <PokemonSpriteAvatar pokemon={option} size={40} padding={0.5} />
             <Box
               sx={{
                 display: "flex",
@@ -348,9 +342,7 @@ export const AddPokemonToGroupAutocomplete = memo(
                   }}
                 >
                   <Chip
-                    icon={
-                      <HabitatIcon sx={{ fontSize: "14px !important" }} />
-                    }
+                    icon={<HabitatIcon sx={{ fontSize: "14px !important" }} />}
                     label={
                       <MatchHighlight
                         text={option.idealHabitat}
@@ -407,6 +399,38 @@ export const AddPokemonToGroupAutocomplete = memo(
                     }}
                   />
                 </Box>
+              ) : habitatClash ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    flexShrink: 0,
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={0.5}
+                    alignItems="center"
+                    justifyContent="flex-end"
+                  >
+                    <ErrorOutlineIcon
+                      sx={{ fontSize: 18, color: "error.main" }}
+                      aria-hidden
+                    />
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: "error.main",
+                        fontWeight: 800,
+                        lineHeight: 1.2,
+                        textAlign: "right",
+                      }}
+                    >
+                      Habitat conflict
+                    </Typography>
+                  </Stack>
+                </Box>
               ) : null}
             </Box>
           </Box>
@@ -448,15 +472,14 @@ export const AddPokemonToGroupAutocomplete = memo(
             size="small"
             label={embedded ? undefined : "Choose Pokémon"}
             placeholder="Name, #, habitat, specialty…"
-            aria-label={embedded ? "Search for a Pokémon to add to this group" : undefined}
+            aria-label={
+              embedded ? "Search for a Pokémon to add to this group" : undefined
+            }
             InputProps={{
               ...params.InputProps,
               startAdornment: (
                 <>
-                  <InputAdornment
-                    position="start"
-                    sx={{ ml: 0.25, mr: -0.5 }}
-                  >
+                  <InputAdornment position="start" sx={{ ml: 0.25, mr: -0.5 }}>
                     <SearchIcon
                       fontSize="small"
                       sx={{ color: "text.secondary" }}

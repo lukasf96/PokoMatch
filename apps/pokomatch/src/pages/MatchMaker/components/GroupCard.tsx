@@ -1,6 +1,9 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
 import {
+  Alert,
+  AlertTitle,
   Box,
   Chip,
   Divider,
@@ -149,14 +152,19 @@ function GroupCardComponent({
     [group],
   );
 
+  const hasHabitatConflict = conflicts.length > 0;
+
   return (
     <Paper
       variant="outlined"
       sx={{
-        borderColor: colors.border,
+        borderColor: hasHabitatConflict
+          ? theme.palette.error.main
+          : colors.border,
+        borderWidth: hasHabitatConflict ? 2 : 1,
         borderRadius: 2,
         overflow: "hidden",
-        transition: theme.transitions.create(["box-shadow"], {
+        transition: theme.transitions.create(["box-shadow", "border-color"], {
           duration: theme.transitions.duration.shortest,
         }),
         "&:hover": {
@@ -208,15 +216,6 @@ function GroupCardComponent({
               variant="group"
             />
           ))}
-          {conflicts.length > 0 && (
-            <Chip
-              label={`Conflict: ${conflicts.map(([left, right]) => `${left}/${right}`).join(", ")}`}
-              size="small"
-              color="error"
-              variant="filled"
-              sx={{ fontSize: 11, height: 20 }}
-            />
-          )}
           <Chip
             label={
               scoreCap > 0
@@ -251,6 +250,48 @@ function GroupCardComponent({
           )}
         </Stack>
       </Box>
+      {hasHabitatConflict ? (
+        <Alert
+          severity="error"
+          variant="outlined"
+          icon={<ReportProblemOutlinedIcon fontSize="inherit" />}
+          sx={{
+            borderRadius: 0,
+            borderLeft: "none",
+            borderRight: "none",
+            borderTop: "none",
+            py: 1.25,
+            px: 2,
+            alignItems: "flex-start",
+            bgcolor: alpha(theme.palette.error.main, isDark ? 0.14 : 0.08),
+            "& .MuiAlert-icon": {
+              color: "error.main",
+              mt: 0.15,
+            },
+            "& .MuiAlert-message": { width: "100%", pt: 0 },
+          }}
+        >
+          <AlertTitle sx={{ fontWeight: 800, mb: 0.25, fontSize: "0.95rem" }}>
+            Habitat conflict
+          </AlertTitle>
+          <Typography variant="body2" color="text.primary" sx={{ mb: 0.5 }}>
+            Opposite habitat needs are mixed in this group. Someone will not be
+            happy here.
+          </Typography>
+          <Stack direction="row" flexWrap="wrap" useFlexGap gap={0.75}>
+            {conflicts.map(([left, right]) => (
+              <Chip
+                key={`${left}-${right}`}
+                label={`${left} ↔ ${right}`}
+                size="small"
+                color="error"
+                variant="filled"
+                sx={{ fontWeight: 700, fontSize: 11 }}
+              />
+            ))}
+          </Stack>
+        </Alert>
+      ) : null}
       <Divider sx={{ borderColor: memberDividerColor }} />
 
       <Box sx={groupMembersGridSx(group.length)}>
