@@ -1,20 +1,15 @@
-import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
-import CatchingPokemonOutlinedIcon from "@mui/icons-material/CatchingPokemonOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
-import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
-import { Box, Container, Paper, Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { useCallback, useDeferredValue, useMemo, useState } from "react";
+import { suggestItemsForGroup } from "../../services/items";
 import {
   computeAutoGroups,
   type SuggestedPokemon,
   suggestNextPokemon,
 } from "../../services/matching.service";
 import { habitablePokemon } from "../../services/pokemon";
-import { suggestItemsForGroup } from "../../services/items";
-import type { SuggestedItem } from "../../types/types";
 import { useStore } from "../../store/store";
-import type { Pokemon } from "../../types/types";
+import type { Pokemon, SuggestedItem } from "../../types/types";
 import { AutoGroupsSection } from "./components/AutoGroupsSection";
 import { CustomGroupsSection } from "./components/CustomGroupsSection";
 
@@ -222,154 +217,14 @@ export default function MatcherPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3 } }}>
-      <Stack spacing={2.5}>
+      <Stack spacing={2}>
         <Typography
           component="h1"
-          variant="h6"
-          sx={{
-            fontWeight: 950,
-            lineHeight: 1.1,
-            mb: 1,
-          }}
+          variant="h5"
+          sx={{ fontWeight: 800, lineHeight: 1.2 }}
         >
           Pokopia Habitat Planner & Match‑Maker
         </Typography>
-        <Paper
-          variant="outlined"
-          sx={{
-            p: { xs: 1.75, sm: 2 },
-            borderRadius: 2,
-            bgcolor: "action.hover",
-            borderColor: "divider",
-          }}
-        >
-          <Stack spacing={1.5}>
-            <Typography variant="subtitle1" fontWeight={700} component="p">
-              Plan Pokopia habitats with roommates who actually click
-            </Typography>
-            <Typography variant="body2" color="text.secondary" component="p">
-              Habitat planning in Pokopia means finding the right roommates.
-              With a growing Pokédex and specific habitat needs, spotting the
-              perfect fit for a full house of four can be a challenge.
-            </Typography>
-            <Typography variant="body2" color="text.secondary" component="p">
-              PokoMatch is your shortcut: we find the Pokémon that love living
-              together so you can spend less time guessing and more time
-              building. Everything below updates instantly as your Pokédex or
-              groups change.
-            </Typography>
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "1fr",
-                  sm: "repeat(2, minmax(0, 1fr))",
-                },
-                gap: 1,
-              }}
-            >
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <AutoFixHighOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main" }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" fontWeight={700}>
-                      Automated matching
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Find perfect roommate groups based on shared likes and
-                      habitat fit.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <SaveOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main" }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" fontWeight={700}>
-                      Always Saved
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Your groups and choices are kept right here locally, no
-                      account needed.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <CatchingPokemonOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main" }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" fontWeight={700}>
-                      Your Collection
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Only matches with Pokémon you've unlocked in your Pokédex.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <TipsAndUpdatesOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main" }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" fontWeight={700}>
-                      Smart Suggestions
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary">
-                      Get smart suggestions on who to add to your groups next.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-            </Box>
-          </Stack>
-        </Paper>
-
         <Stack spacing={1.5}>
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}

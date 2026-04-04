@@ -2,8 +2,9 @@ import {
   AutoFixHighOutlined,
   CatchingPokemonOutlined,
   DashboardOutlined,
+  HomeOutlined,
 } from "@mui/icons-material";
-import { Box, Chip, Stack } from "@mui/material";
+import { Box, Chip } from "@mui/material";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { LayoutSettingsMenu } from "./components/layout-settings-menu/LayoutSettingsMenu";
 import { appRoutes } from "./router/routes";
@@ -19,6 +20,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const unlockedCount = useStore((s) => s.unlockedIds.size);
   const { pathname } = useLocation();
+  const isHomeActive = pathname === appRoutes.home;
   const isMatchMakerActive = pathname === appRoutes.matchmaker;
   const isInsightsActive = pathname === appRoutes.insights;
   const isPokedexActive = pathname === appRoutes.pokedex;
@@ -43,7 +45,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <Box
           component={RouterLink}
-          to={appRoutes.matchmaker}
+          to={appRoutes.home}
           sx={{
             display: "block",
             lineHeight: 0,
@@ -63,22 +65,27 @@ export default function Layout({ children }: LayoutProps) {
           />
         </Box>
 
-        <Stack
-          direction="row"
-          spacing={0.75}
-          alignItems="center"
+        <Box
           sx={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: { xs: "wrap", sm: "nowrap" },
+            alignItems: "center",
+            justifyContent: { xs: "center", sm: "flex-start" },
+            gap: { xs: 0.5, sm: 0.75 },
             minWidth: 0,
             width: { xs: "100%", sm: "auto" },
-            overflowX: "auto",
-            pb: { xs: 0, sm: 0.25 },
             ml: { xs: 0, sm: "auto" },
-            flexWrap: "nowrap",
-            rowGap: 0.75,
-            columnGap: 0.5,
-            justifyContent: { xs: "center", sm: "flex-start" },
+            pb: { xs: 0, sm: 0.25 },
           }}
         >
+          <NavItem
+            active={isHomeActive}
+            to={appRoutes.home}
+            icon={<HomeOutlined fontSize="inherit" />}
+          >
+            Home
+          </NavItem>
           <NavItem
             active={isMatchMakerActive}
             to={appRoutes.matchmaker}
@@ -106,7 +113,7 @@ export default function Layout({ children }: LayoutProps) {
             />
           </NavItem>
           <LayoutSettingsMenu />
-        </Stack>
+        </Box>
       </Box>
 
       {children}
@@ -132,8 +139,8 @@ function NavItem({
       sx={{
         textDecoration: "none",
         cursor: "pointer",
-        py: { xs: 0.75, sm: 0.5 },
-        px: { xs: 1.25, sm: 1 },
+        py: { xs: 0.5, sm: 0.5 },
+        px: { xs: 0.65, sm: 1 },
         fontSize: { xs: 12, sm: 13 },
         fontWeight: active ? 600 : 500,
         color: active ? "text.primary" : "text.secondary",
