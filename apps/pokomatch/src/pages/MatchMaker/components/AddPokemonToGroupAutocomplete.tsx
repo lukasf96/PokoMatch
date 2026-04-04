@@ -345,7 +345,6 @@ export const AddPokemonToGroupAutocomplete = memo(
                     height: 20,
                     fontSize: 9,
                     fontWeight: 700,
-                    textTransform: "uppercase",
                     letterSpacing: "0.02em",
                     bgcolor: alpha(
                       hc.bg,

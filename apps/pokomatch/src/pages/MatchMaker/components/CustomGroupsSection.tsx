@@ -71,91 +71,77 @@ const CustomGroupRow = memo(function CustomGroupRow({
         onRemovePokemon={handleRemovePokemon}
         footerContent={
           group.length < 4 ? (
-            <Box
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: isDark
-                  ? alpha(theme.palette.common.white, 0.14)
-                  : alpha(theme.palette.primary.main, 0.22),
-                bgcolor: isDark
-                  ? alpha(theme.palette.common.white, 0.04)
-                  : alpha(theme.palette.primary.main, 0.04),
-                p: { xs: 1.5, sm: 2 },
-              }}
-            >
-              <Stack spacing={2}>
-                <Stack
-                  direction="row"
-                  spacing={1.5}
-                  alignItems="stretch"
-                  useFlexGap
+            <Stack spacing={2}>
+              <Stack
+                direction="row"
+                spacing={1.5}
+                alignItems="stretch"
+                useFlexGap
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                  aria-hidden
                 >
                   <Box
                     sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: 2,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      flexShrink: 0,
+                      bgcolor: isDark
+                        ? alpha(theme.palette.common.white, 0.08)
+                        : alpha(theme.palette.primary.main, 0.14),
+                      color: isDark
+                        ? "text.secondary"
+                        : "primary.main",
                     }}
-                    aria-hidden
                   >
-                    <Box
-                      sx={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 2,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        bgcolor: isDark
-                          ? alpha(theme.palette.common.white, 0.08)
-                          : alpha(theme.palette.primary.main, 0.14),
-                        color: isDark
-                          ? "text.secondary"
-                          : "primary.main",
-                      }}
-                    >
-                      <GroupAddOutlinedIcon sx={{ fontSize: 26 }} />
-                    </Box>
+                    <GroupAddOutlinedIcon sx={{ fontSize: 26 }} />
                   </Box>
-                  <Stack spacing={1.25} flex={1} minWidth={0}>
-                    <Typography
-                      variant="subtitle2"
-                      fontWeight={800}
-                      sx={{ letterSpacing: "0.01em" }}
-                    >
-                      Add Pokémon · Group {groupNumber}
-                    </Typography>
+                </Box>
+                <Stack spacing={1.25} flex={1} minWidth={0}>
+                  <Typography
+                    variant="subtitle2"
+                    fontWeight={800}
+                    sx={{ letterSpacing: "0.01em" }}
+                  >
+                    Add Pokémon · Group {groupNumber}
+                  </Typography>
 
-                    <AddPokemonToGroupAutocomplete
-                      embedded
-                      group={group}
-                      availablePokemon={availablePokemon}
-                      nameLanguage={nameLanguage}
-                      onSelect={handleSelect}
-                    />
-                  </Stack>
+                  <AddPokemonToGroupAutocomplete
+                    embedded
+                    group={group}
+                    availablePokemon={availablePokemon}
+                    nameLanguage={nameLanguage}
+                    onSelect={handleSelect}
+                  />
                 </Stack>
-
-                {group.length > 0 && suggestions.length > 0 ? (
-                  <>
-                    <Divider
-                      flexItem
-                      sx={{
-                        borderStyle: "dashed",
-                        borderColor: alpha(theme.palette.divider, 0.3),
-                      }}
-                    />
-                    <SuggestedNextPokemonControls
-                      suggestions={suggestions}
-                      nameLanguage={nameLanguage}
-                      onPick={handleSelect}
-                    />
-                  </>
-                ) : null}
               </Stack>
-            </Box>
+
+              {group.length > 0 && suggestions.length > 0 ? (
+                <>
+                  <Divider
+                    flexItem
+                    sx={{
+                      borderStyle: "dashed",
+                      borderColor: alpha(theme.palette.divider, 0.3),
+                    }}
+                  />
+                  <SuggestedNextPokemonControls
+                    suggestions={suggestions}
+                    nameLanguage={nameLanguage}
+                    onPick={handleSelect}
+                  />
+                </>
+              ) : null}
+            </Stack>
           ) : null
         }
         groupAction={{
