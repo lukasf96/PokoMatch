@@ -14,7 +14,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 import type { SuggestedPokemon } from "../../../services/matching.service";
 import type { PokemonNameLanguage } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
@@ -63,6 +63,11 @@ const CustomGroupRow = memo(function CustomGroupRow({
   const handleDelete = useCallback(
     () => onDeleteGroup(groupIndex),
     [groupIndex, onDeleteGroup],
+  );
+
+  const groupFavorites = useMemo(
+    () => new Set(group.flatMap((p) => p.favorites)),
+    [group],
   );
 
   return (
@@ -149,14 +154,16 @@ const CustomGroupRow = memo(function CustomGroupRow({
 
               {itemSuggestions.length > 0 ? (
                 <>
-                  <Divider
-                    flexItem
-                    sx={{
-                      borderStyle: "dashed",
-                      borderColor: alpha(theme.palette.divider, 0.3),
-                    }}
-                  />
-                  <SuggestedItemsPanel suggestions={itemSuggestions} />
+                  {group.length < 4 && (
+                    <Divider
+                      flexItem
+                      sx={{
+                        borderStyle: "dashed",
+                        borderColor: alpha(theme.palette.divider, 0.3),
+                      }}
+                    />
+                  )}
+                  <SuggestedItemsPanel suggestions={itemSuggestions} groupFavorites={groupFavorites} />
                 </>
               ) : null}
             </Stack>

@@ -108,15 +108,18 @@ function AutoGroupsSectionComponent({
       </AccordionSummary>
       <AccordionDetails sx={{ p: 2 }}>
         <Stack spacing={2}>
-          {groups.map((group, index) => (
+          {groups.map((group, index) => {
+            const suggestions = itemSuggestions[index] ?? [];
+            const groupFavorites = new Set(group.flatMap((p) => p.favorites));
+            return (
             <Stack key={groupStableKey(group)} spacing={1}>
               <GroupCard
                 group={group}
                 groupNumber={index + 1}
                 habitat={getDisplayHabitat(group)}
                 footerContent={
-                  (itemSuggestions[index]?.length ?? 0) > 0 ? (
-                    <SuggestedItemsPanel suggestions={itemSuggestions[index] ?? []} />
+                  suggestions.length > 0 ? (
+                    <SuggestedItemsPanel suggestions={suggestions} groupFavorites={groupFavorites} />
                   ) : undefined
                 }
                 groupAction={{
@@ -126,7 +129,8 @@ function AutoGroupsSectionComponent({
                 }}
               />
             </Stack>
-          ))}
+            );
+          })}
           {groups.length === 0 && (
             <Typography variant="body2" color="text.secondary">
               No suggested groups left from the remaining pool.
