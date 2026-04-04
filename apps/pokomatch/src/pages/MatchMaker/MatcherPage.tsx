@@ -11,6 +11,8 @@ import {
   suggestNextPokemon,
 } from "../../services/matching.service";
 import { habitablePokemon } from "../../services/pokemon";
+import { suggestItemsForGroup } from "../../services/items";
+import type { SuggestedItem } from "../../types/types";
 import { useStore } from "../../store/store";
 import type { Pokemon } from "../../types/types";
 import { AutoGroupsSection } from "./components/AutoGroupsSection";
@@ -191,6 +193,16 @@ export default function MatcherPage() {
     hasActiveSuggestedFreeze,
   ]);
 
+  const customGroupItemSuggestions = useMemo<SuggestedItem[][]>(
+    () => resolvedCustomGroups.map((group) => suggestItemsForGroup(group)),
+    [resolvedCustomGroups],
+  );
+
+  const autoGroupItemSuggestions = useMemo<SuggestedItem[][]>(
+    () => displayedSuggestedGroups.map((group) => suggestItemsForGroup(group)),
+    [displayedSuggestedGroups],
+  );
+
   if (activePokemon.length === 0) {
     return (
       <Container maxWidth="lg" sx={{ py: 8, textAlign: "center" }}>
@@ -362,6 +374,7 @@ export default function MatcherPage() {
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}
             suggestions={suggestions}
+            itemSuggestions={customGroupItemSuggestions}
             availablePokemon={availablePokemon}
             onAddGroup={handleAddGroup}
             onDeleteGroup={handleDeleteGroup}
@@ -371,6 +384,7 @@ export default function MatcherPage() {
 
           <AutoGroupsSection
             groups={displayedSuggestedGroups}
+            itemSuggestions={autoGroupItemSuggestions}
             preferEvolutionLines={preferEvolutionLines}
             onPreferEvolutionLinesChange={setPreferEvolutionLines}
             onQuickAddGroup={handleQuickAddGroup}

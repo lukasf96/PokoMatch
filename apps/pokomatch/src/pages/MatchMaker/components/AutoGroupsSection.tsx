@@ -14,12 +14,14 @@ import {
   Typography,
 } from "@mui/material";
 import { memo } from "react";
-import type { Pokemon } from "../../../types/types";
+import type { Pokemon, SuggestedItem } from "../../../types/types";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
+import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
 
 interface AutoGroupsSectionProps {
   groups: Pokemon[][];
+  itemSuggestions: SuggestedItem[][];
   preferEvolutionLines: boolean;
   onPreferEvolutionLinesChange: (value: boolean) => void;
   onQuickAddGroup: (group: Pokemon[]) => void;
@@ -27,6 +29,7 @@ interface AutoGroupsSectionProps {
 
 function AutoGroupsSectionComponent({
   groups,
+  itemSuggestions,
   preferEvolutionLines,
   onPreferEvolutionLinesChange,
   onQuickAddGroup,
@@ -111,6 +114,11 @@ function AutoGroupsSectionComponent({
                 group={group}
                 groupNumber={index + 1}
                 habitat={getDisplayHabitat(group)}
+                footerContent={
+                  (itemSuggestions[index]?.length ?? 0) > 0 ? (
+                    <SuggestedItemsPanel suggestions={itemSuggestions[index] ?? []} />
+                  ) : undefined
+                }
                 groupAction={{
                   ariaLabel: `Quick add suggested group ${index + 1}`,
                   onClick: () => onQuickAddGroup(group),
