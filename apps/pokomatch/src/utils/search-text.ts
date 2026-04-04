@@ -97,6 +97,10 @@ export function computeHighlightSegments(
   query: string,
 ): HighlightSegment[] {
   const tokens = searchTokensFromInput(query);
+  if (tokens.length === 0) {
+    if (!text) return [];
+    return [{ highlight: false, text }];
+  }
   const ranges = matchRangesInPlainText(text, tokens);
   return segmentsFromMatchRanges(text, ranges);
 }

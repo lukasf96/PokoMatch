@@ -17,7 +17,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import { memo, useDeferredValue, useMemo, useState } from "react";
 import type { Item } from "../../../types/types";
 import { MatchHighlight } from "../../../utils/MatchHighlight";
 import {
@@ -128,6 +128,58 @@ function CellDash({
   );
 }
 
+const ItemCatalogRow = memo(function ItemCatalogRow({
+  item,
+  highlightQuery,
+}: {
+  item: Item;
+  highlightQuery: string;
+}) {
+  const favText = item.favoriteCategories.join(" · ");
+  return (
+    <TableRow hover>
+      <TableCell
+        sx={{
+          fontWeight: 600,
+          verticalAlign: "top",
+          borderRight: 1,
+          borderColor: "divider",
+        }}
+      >
+        <Typography variant="body2" component="span">
+          <MatchHighlight text={item.name} query={highlightQuery} />
+        </Typography>
+      </TableCell>
+      <TableCell sx={{ verticalAlign: "top" }}>
+        <CellDash query={highlightQuery}>{item.category}</CellDash>
+      </TableCell>
+      <TableCell sx={{ verticalAlign: "top" }}>
+        <CellDash query={highlightQuery}>{item.tag}</CellDash>
+      </TableCell>
+      <TableCell sx={{ verticalAlign: "top", py: 1.25 }}>
+        {item.favoriteCategories.length === 0 ? (
+          <Typography
+            variant="body2"
+            color="text.disabled"
+            fontStyle="italic"
+            component="span"
+          >
+            —
+          </Typography>
+        ) : (
+          <Typography
+            variant="body2"
+            component="p"
+            sx={{ m: 0, lineHeight: 1.6 }}
+          >
+            <MatchHighlight text={favText} query={highlightQuery} />
+          </Typography>
+        )}
+      </TableCell>
+    </TableRow>
+  );
+});
+
 export function ItemsCatalogSection({ items }: ItemsCatalogSectionProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterCategory, setFilterCategory] = useState(FILTER_ALL);
@@ -143,6 +195,8 @@ export function ItemsCatalogSection({ items }: ItemsCatalogSectionProps) {
     }
     return map;
   }, [items]);
+
+  const deferredSearchQuery = useDeferredValue(searchQuery);
 
   const { categoryOptions, tagOptions, hasUntagged, favoriteOptions, hasNoFav } =
     useMemo(() => {
@@ -167,30 +221,25 @@ export function ItemsCatalogSection({ items }: ItemsCatalogSectionProps) {
       };
     }, [items]);
 
+  const dropdownFilteredItems = useMemo(
+    () =>
+      items.filter((item) =>
+        itemPassesDropdowns(item, filterCategory, filterTag, filterFavorite),
+      ),
+    [items, filterCategory, filterTag, filterFavorite],
+  );
+
   const visibleRows = useMemo(() => {
-    const filtered = items.filter((item) => {
-      if (
-        !itemPassesDropdowns(
-          item,
-          filterCategory,
-          filterTag,
-          filterFavorite,
-        )
-      ) {
-        return false;
-      }
-      return normalizedHaystackMatchesQuery(
+    const filtered = dropdownFilteredItems.filter((item) =>
+      normalizedHaystackMatchesQuery(
         haystackById.get(item.id) ?? "",
-        searchQuery,
-      );
-    });
+        deferredSearchQuery,
+      ),
+    );
     return filtered.slice().sort((a, b) => compareItems(a, b, orderBy, order));
   }, [
-    items,
-    filterCategory,
-    filterTag,
-    filterFavorite,
-    searchQuery,
+    dropdownFilteredItems,
+    deferredSearchQuery,
     haystackById,
     orderBy,
     order,
@@ -388,51 +437,13 @@ export function ItemsCatalogSection({ items }: ItemsCatalogSectionProps) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {visibleRows.map((item) => {
-              const favText = item.favoriteCategories.join(" · ");
-              return (
-                <TableRow key={item.id} hover>
-                  <TableCell
-                    sx={{
-                      fontWeight: 600,
-                      verticalAlign: "top",
-                      borderRight: 1,
-                      borderColor: "divider",
-                    }}
-                  >
-                    <Typography variant="body2" component="span">
-                      <MatchHighlight text={item.name} query={searchQuery} />
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ verticalAlign: "top" }}>
-                    <CellDash query={searchQuery}>{item.category}</CellDash>
-                  </TableCell>
-                  <TableCell sx={{ verticalAlign: "top" }}>
-                    <CellDash query={searchQuery}>{item.tag}</CellDash>
-                  </TableCell>
-                  <TableCell sx={{ verticalAlign: "top", py: 1.25 }}>
-                    {item.favoriteCategories.length === 0 ? (
-                      <Typography
-                        variant="body2"
-                        color="text.disabled"
-                        fontStyle="italic"
-                        component="span"
-                      >
-                        —
-                      </Typography>
-                    ) : (
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        sx={{ m: 0, lineHeight: 1.6 }}
-                      >
-                        <MatchHighlight text={favText} query={searchQuery} />
-                      </Typography>
-                    )}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {visibleRows.map((item) => (
+              <ItemCatalogRow
+                key={item.id}
+                item={item}
+                highlightQuery={deferredSearchQuery}
+              />
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

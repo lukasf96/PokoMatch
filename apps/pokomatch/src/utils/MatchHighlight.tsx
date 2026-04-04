@@ -1,14 +1,23 @@
 import { Box, useTheme } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { useMemo } from "react";
-import { computeHighlightSegments } from "./search-text";
+import {
+  computeHighlightSegments,
+  searchTokensFromInput,
+} from "./search-text";
 
 export function MatchHighlight({ text, query }: { text: string; query: string }) {
   const theme = useTheme();
-  const segments = useMemo(
-    () => computeHighlightSegments(text, query),
-    [text, query],
-  );
+  const segments = useMemo(() => {
+    if (searchTokensFromInput(query).length === 0) {
+      return null;
+    }
+    return computeHighlightSegments(text, query);
+  }, [text, query]);
+
+  if (segments === null) {
+    return text;
+  }
 
   return (
     <>
