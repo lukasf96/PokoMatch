@@ -198,6 +198,8 @@ interface AddPokemonToGroupAutocompleteProps {
   availablePokemon: Pokemon[];
   nameLanguage: PokemonNameLanguage;
   onSelect: (pokemonId: string) => void;
+  /** Omit the field label when a parent section already provides a heading. */
+  embedded?: boolean;
 }
 
 export const AddPokemonToGroupAutocomplete = memo(
@@ -206,6 +208,7 @@ export const AddPokemonToGroupAutocomplete = memo(
     availablePokemon,
     nameLanguage,
     onSelect,
+    embedded = false,
   }: AddPokemonToGroupAutocompleteProps) {
     const theme = useTheme();
     const [inputValue, setInputValue] = useState("");
@@ -394,6 +397,7 @@ export const AddPokemonToGroupAutocomplete = memo(
 
     return (
       <Autocomplete
+        fullWidth
         options={options}
         disabled={options.length === 0}
         value={null}
@@ -415,8 +419,9 @@ export const AddPokemonToGroupAutocomplete = memo(
           <TextField
             {...params}
             size="small"
-            label="Choose Pokémon"
+            label={embedded ? undefined : "Choose Pokémon"}
             placeholder="Name, #, habitat, specialty…"
+            aria-label={embedded ? "Search for a Pokémon to add to this group" : undefined}
             InputProps={{
               ...params.InputProps,
               startAdornment: (
