@@ -10,7 +10,10 @@ export interface Item {
 
 export interface SuggestedItem {
   item: Item;
+  /** Number of the item's favoriteCategories that overlap with the group's favorites union. */
   score: number;
+  /** Number of Pokémon in the group that have at least one favorite satisfied by this item. */
+  pokemonCoverage: number;
 }
 
 /** National dex entries vs. separate event dex listing in data. */

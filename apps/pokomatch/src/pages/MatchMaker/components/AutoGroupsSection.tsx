@@ -119,7 +119,7 @@ function AutoGroupsSectionComponent({
                 habitat={getDisplayHabitat(group)}
                 footerContent={
                   suggestions.length > 0 ? (
-                    <SuggestedItemsPanel suggestions={suggestions} groupFavorites={groupFavorites} />
+                    <SuggestedItemsPanel suggestions={suggestions} groupFavorites={groupFavorites} groupSize={group.length} />
                   ) : undefined
                 }
                 groupAction={{

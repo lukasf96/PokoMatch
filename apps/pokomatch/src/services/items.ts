@@ -6,11 +6,24 @@ type ItemJson = Item;
 export const allItems: Item[] = rawData.items as ItemJson[];
 
 /**
- * Suggest items for a group of Pokémon, ranked by the number of
- * `favoriteCategories` that overlap with the union of the group's `favorites`.
+ * Suggest items for a group of Pokémon.
  *
- * Items with score 0 (no overlap) are excluded. Returns all matches — callers
- * slice to the desired display limit.
+ * Scoring:
+ *   - `pokemonCoverage`: how many Pokémon in the group have ≥1 favorite
+ *     satisfied by this item. Primary sort key — directly measures how many
+ *     teammates the item makes happy.
+ *   - `score`: how many of the item's favoriteCategories overlap with the
+ *     group's favorites union. Secondary tiebreaker.
+ *
+ * Filtering:
+ *   - Items with `score === 0` (no overlap at all) are always excluded.
+ *   - Items with `score === 1` are excluded unless their single matched
+ *     favorite is not covered by any item with score ≥ 2. This prevents
+ *     flooding the list with near-useless suggestions while preserving
+ *     items that are the only way to address a particular group favorite.
+ *
+ * Returns all qualifying matches sorted by (pokemonCoverage DESC, score DESC,
+ * name ASC). Callers slice to their desired display limit.
  */
 export function suggestItemsForGroup(
   group: Pokemon[],
@@ -21,17 +34,39 @@ export function suggestItemsForGroup(
   const groupFavorites = new Set(group.flatMap((p) => p.favorites));
   if (groupFavorites.size === 0) return [];
 
-  return items
-    .map((item) => {
-      const score = item.favoriteCategories.filter((fc) =>
-        groupFavorites.has(fc),
-      ).length;
-      return { item, score };
+  // Score every item.
+  const scored = items.map((item) => {
+    const matchedFavs = item.favoriteCategories.filter((fc) =>
+      groupFavorites.has(fc),
+    );
+    const pokemonCoverage = group.filter((p) =>
+      p.favorites.some((f) => matchedFavs.includes(f)),
+    ).length;
+    return { item, score: matchedFavs.length, pokemonCoverage, matchedFavs };
+  });
+
+  // Collect favorites already covered by score ≥ 2 items.
+  const wellCoveredFavs = new Set<string>();
+  for (const s of scored) {
+    if (s.score >= 2) {
+      for (const f of s.matchedFavs) wellCoveredFavs.add(f);
+    }
+  }
+
+  return scored
+    .filter((s) => {
+      if (s.score === 0) return false;
+      // Keep score-1 items only when their single matched fav isn't already
+      // covered by a higher-scoring item.
+      if (s.score === 1) return !wellCoveredFavs.has(s.matchedFavs[0]!);
+      return true;
     })
-    .filter((s) => s.score > 0)
+    .map(({ item, score, pokemonCoverage }) => ({ item, score, pokemonCoverage }))
     .sort((a, b) => {
-      const d = b.score - a.score;
-      if (d !== 0) return d;
+      const dc = b.pokemonCoverage - a.pokemonCoverage;
+      if (dc !== 0) return dc;
+      const ds = b.score - a.score;
+      if (ds !== 0) return ds;
       return a.item.name.localeCompare(b.item.name);
     });
 }

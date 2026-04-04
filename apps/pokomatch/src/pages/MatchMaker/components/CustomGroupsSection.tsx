@@ -163,7 +163,7 @@ const CustomGroupRow = memo(function CustomGroupRow({
                       }}
                     />
                   )}
-                  <SuggestedItemsPanel suggestions={itemSuggestions} groupFavorites={groupFavorites} />
+                  <SuggestedItemsPanel suggestions={itemSuggestions} groupFavorites={groupFavorites} groupSize={group.length} />
                 </>
               ) : null}
             </Stack>
