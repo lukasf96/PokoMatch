@@ -91,10 +91,10 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack direction="row" spacing={1} alignItems="center">
                   <AutoFixHighOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    sx={{ color: "primary.main", flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
@@ -116,10 +116,10 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack direction="row" spacing={1} alignItems="center">
                   <SaveOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    sx={{ color: "primary.main", flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
@@ -141,10 +141,10 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack direction="row" spacing={1} alignItems="center">
                   <TipsAndUpdatesOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    sx={{ color: "primary.main", flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
@@ -166,10 +166,10 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack direction="row" spacing={1} alignItems="center">
                   <TuneOutlinedIcon
                     fontSize="small"
-                    sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                    sx={{ color: "primary.main", flexShrink: 0 }}
                   />
                   <Stack spacing={0.25}>
                     <Typography variant="body2" fontWeight={700}>
@@ -191,13 +191,23 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack spacing={1.25}>
-                  <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
+                  spacing={{ xs: 1.25, sm: 1.5 }}
+                  sx={{ width: "100%" }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    sx={{ flex: 1, minWidth: 0 }}
+                  >
                     <DashboardOutlinedIcon
                       fontSize="small"
-                      sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                      sx={{ color: "primary.main", flexShrink: 0 }}
                     />
-                    <Stack spacing={0.25}>
+                    <Stack spacing={0.25} sx={{ minWidth: 0 }}>
                       <Typography variant="body2" fontWeight={700}>
                         Insights
                       </Typography>
@@ -211,7 +221,11 @@ export default function HomePage() {
                     to={appRoutes.insights}
                     variant="contained"
                     size="small"
-                    sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
+                    sx={{
+                      flexShrink: 0,
+                      alignSelf: { xs: "stretch", sm: "auto" },
+                      width: { xs: "100%", sm: "auto" },
+                    }}
                   >
                     Open Insights
                   </Button>
@@ -226,13 +240,23 @@ export default function HomePage() {
                   borderColor: "divider",
                 }}
               >
-                <Stack spacing={1.25}>
-                  <Stack direction="row" spacing={1} alignItems="flex-start">
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
+                  spacing={{ xs: 1.25, sm: 1.5 }}
+                  sx={{ width: "100%" }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    sx={{ flex: 1, minWidth: 0 }}
+                  >
                     <CatchingPokemonOutlinedIcon
                       fontSize="small"
-                      sx={{ color: "primary.main", mt: 0.25, flexShrink: 0 }}
+                      sx={{ color: "primary.main", flexShrink: 0 }}
                     />
-                    <Stack spacing={0.25}>
+                    <Stack spacing={0.25} sx={{ minWidth: 0 }}>
                       <Typography variant="body2" fontWeight={700}>
                         Your collection
                       </Typography>
@@ -247,7 +271,11 @@ export default function HomePage() {
                     to={appRoutes.pokedex}
                     variant="contained"
                     size="small"
-                    sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
+                    sx={{
+                      flexShrink: 0,
+                      alignSelf: { xs: "stretch", sm: "auto" },
+                      width: { xs: "100%", sm: "auto" },
+                    }}
                   >
                     Open Pokédex
                   </Button>
