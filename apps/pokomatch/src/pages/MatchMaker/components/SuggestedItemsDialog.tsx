@@ -30,11 +30,19 @@ function FavoriteChip({ label, matched }: { label: string; matched: boolean }) {
         fontSize: 10,
         fontWeight: matched ? 700 : 400,
         bgcolor: matched
-          ? alpha(theme.palette.primary.main, isDark ? 0.18 : 0.08)
+          ? isDark
+            ? theme.palette.action.selected
+            : alpha(theme.palette.primary.main, 0.08)
           : "transparent",
-        color: matched ? "primary.main" : "text.disabled",
+        color: matched
+          ? isDark
+            ? "primary.light"
+            : "primary.main"
+          : "text.disabled",
         borderColor: matched
-          ? alpha(theme.palette.primary.main, 0.35)
+          ? isDark
+            ? "hsl(240 6% 32%)"
+            : alpha(theme.palette.primary.main, 0.35)
           : alpha(theme.palette.divider, 0.5),
         "& .MuiChip-label": { px: 0.75 },
       }}
@@ -50,6 +58,7 @@ function ItemRow({
   groupSize,
 }: SuggestedItem & { groupFavorites: Set<string>; groupSize: number }) {
   const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
   return (
     <Box
       sx={{
@@ -89,11 +98,10 @@ function ItemRow({
             fontSize: 10,
             fontWeight: 700,
             flexShrink: 0,
-            bgcolor: alpha(
-              theme.palette.primary.main,
-              theme.palette.mode === "dark" ? 0.18 : 0.08,
-            ),
-            color: "primary.main",
+            bgcolor: isDark
+              ? theme.palette.action.selected
+              : alpha(theme.palette.primary.main, 0.08),
+            color: isDark ? "primary.light" : "primary.main",
             border: "none",
           }}
         />

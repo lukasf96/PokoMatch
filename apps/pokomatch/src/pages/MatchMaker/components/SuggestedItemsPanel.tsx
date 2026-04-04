@@ -54,11 +54,19 @@ function ItemTooltipContent({
                 fontSize: 10,
                 fontWeight: matched ? 700 : 400,
                 bgcolor: matched
-                  ? alpha(theme.palette.primary.main, isDark ? 0.18 : 0.08)
+                  ? isDark
+                    ? theme.palette.action.selected
+                    : alpha(theme.palette.primary.main, 0.08)
                   : "transparent",
-                color: matched ? "primary.main" : "text.disabled",
+                color: matched
+                  ? isDark
+                    ? "primary.light"
+                    : "primary.main"
+                  : "text.disabled",
                 borderColor: matched
-                  ? alpha(theme.palette.primary.main, 0.35)
+                  ? isDark
+                    ? "hsl(240 6% 32%)"
+                    : alpha(theme.palette.primary.main, 0.35)
                   : alpha(theme.palette.divider, 0.5),
                 "& .MuiChip-label": { px: 0.75 },
               }}
@@ -80,6 +88,7 @@ function ItemChip({
   groupFavorites,
 }: SuggestedItem & { groupFavorites: Set<string> }) {
   const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const [open, setOpen] = useState(false);
 
   const handleToggle = () => setOpen((v) => !v);
@@ -136,8 +145,10 @@ function ItemChip({
                     px: 0.5,
                     py: 0.1,
                     borderRadius: 0.5,
-                    bgcolor: alpha(theme.palette.primary.main, 0.15),
-                    color: "primary.main",
+                    bgcolor: isDark
+                      ? theme.palette.action.selected
+                      : alpha(theme.palette.primary.main, 0.15),
+                    color: isDark ? "primary.light" : "primary.main",
                     lineHeight: 1.4,
                   }}
                 >
@@ -154,12 +165,21 @@ function ItemChip({
               fontSize: 12,
               fontWeight: 600,
               cursor: "pointer",
-              borderColor: open
-                ? alpha(theme.palette.primary.main, 0.5)
-                : alpha(theme.palette.primary.main, 0.3),
-              bgcolor: open
-                ? alpha(theme.palette.primary.main, 0.08)
-                : alpha(theme.palette.primary.main, 0.04),
+              borderColor: isDark
+                ? open
+                  ? alpha(theme.palette.primary.light, 0.45)
+                  : "hsl(240 6% 28%)"
+                : open
+                  ? alpha(theme.palette.primary.main, 0.5)
+                  : alpha(theme.palette.primary.main, 0.3),
+              bgcolor: isDark
+                ? open
+                  ? theme.palette.action.selected
+                  : alpha(theme.palette.common.white, 0.04)
+                : open
+                  ? alpha(theme.palette.primary.main, 0.08)
+                  : alpha(theme.palette.primary.main, 0.04),
+              color: isDark ? "text.primary" : undefined,
               "& .MuiChip-label": { px: 1 },
             }}
           />
@@ -174,6 +194,8 @@ export const SuggestedItemsPanel = memo(function SuggestedItemsPanel({
   groupFavorites,
   groupSize,
 }: SuggestedItemsPanelProps) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
   const [dialogOpen, setDialogOpen] = useState(false);
 
   if (suggestions.length === 0) return null;
@@ -193,7 +215,10 @@ export const SuggestedItemsPanel = memo(function SuggestedItemsPanel({
         sx={{ mb: 1 }}
       >
         <CategoryOutlinedIcon
-          sx={{ fontSize: 16, color: "primary.main" }}
+          sx={{
+            fontSize: 16,
+            color: isDark ? "primary.light" : "primary.main",
+          }}
           aria-hidden
         />
         <Typography
@@ -217,13 +242,16 @@ export const SuggestedItemsPanel = memo(function SuggestedItemsPanel({
             sx={{
               fontSize: 11,
               fontWeight: 700,
-              color: "primary.main",
+              color: isDark ? "primary.light" : "primary.main",
               px: 0.75,
               py: 0,
               minHeight: 0,
               minWidth: 0,
               lineHeight: 1.8,
               textTransform: "none",
+              "&:hover": isDark
+                ? { bgcolor: alpha(theme.palette.primary.main, 0.12) }
+                : undefined,
             }}
           >
             Show all {suggestions.length} →
