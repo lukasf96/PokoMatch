@@ -398,6 +398,7 @@ interface ComputeAutoGroupsOptions {
 /**
  * Partition pokemon into groups of up to 4, maximising shared favorites
  * while respecting habitat conflicts.
+ * Members within each group are ordered by {@link comparePokemonByDex} (same as dropdowns / next-Pokémon suggestions).
  */
 export function computeAutoGroups(
   pokemon: Pokemon[],
@@ -442,7 +443,11 @@ export function computeAutoGroups(
     }
   }
 
-  return best.map((g) => Array.from(g).map((i) => pokemon[i]));
+  return best.map((g) =>
+    Array.from(g)
+      .map((i) => pokemon[i])
+      .sort(comparePokemonByDex),
+  );
 }
 
 export interface SuggestedPokemon {
