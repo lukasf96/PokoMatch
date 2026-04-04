@@ -1,11 +1,30 @@
+import { Box, CircularProgress } from "@mui/material";
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import MatcherPage from "../pages/MatchMaker/MatcherPage";
-import InsightsPage from "../pages/Insights/InsightsPage";
-import PokedexPage from "../pages/Pokedex/PokedexPage";
 import { appRoutes } from "./routes";
+
+const MatcherPage = lazy(() => import("../pages/MatchMaker/MatcherPage"));
+const InsightsPage = lazy(() => import("../pages/Insights/InsightsPage"));
+const PokedexPage = lazy(() => import("../pages/Pokedex/PokedexPage"));
+
+function RouteFallback() {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "50vh",
+      }}
+    >
+      <CircularProgress aria-label="Loading page" />
+    </Box>
+  );
+}
 
 export default function AppRouter() {
   return (
+    <Suspense fallback={<RouteFallback />}>
     <Routes>
       <Route
         path="/"
@@ -19,5 +38,6 @@ export default function AppRouter() {
         element={<Navigate to={appRoutes.matchmaker} replace />}
       />
     </Routes>
+    </Suspense>
   );
 }
