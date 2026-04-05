@@ -175,7 +175,7 @@ export function LayoutSettingsMenu() {
         aria-controls={isSettingsOpen ? "layout-settings-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={isSettingsOpen ? "true" : undefined}
-        sx={{ ml: { xs: 0, sm: 0.5 } }}
+        sx={{ ml: { xs: 0, md: 0.5 } }}
       >
         <SettingsOutlined fontSize="small" />
       </IconButton>

@@ -34,49 +34,80 @@ export default function Layout({ children }: LayoutProps) {
           borderBottom: 1,
           borderColor: "divider",
           boxShadow: "0 1px 0 0 rgb(15 23 42 / 0.04)",
-          px: { xs: 1.5, sm: 3 },
-          py: { xs: 1, sm: 1.5 },
+          px: { xs: 1.5, md: 3 },
+          py: { xs: 1, md: 1.5 },
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "stretch", sm: "center" },
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "stretch", md: "center" },
           justifyContent: "space-between",
-          gap: { xs: 1, sm: 1.5 },
+          gap: { xs: 1, md: 1.5 },
         }}
       >
         <Box
-          component={RouterLink}
-          to={appRoutes.home}
           sx={{
-            display: "block",
-            lineHeight: 0,
+            display: "flex",
+            alignItems: "center",
+            width: { xs: "100%", md: "auto" },
             flexShrink: 0,
-            alignSelf: { xs: "center", sm: "flex-start" },
+            alignSelf: { xs: "stretch", md: "flex-start" },
           }}
         >
           <Box
-            component="img"
-            src="/logo/logo.png"
-            alt="PokoMatch logo"
+            aria-hidden
             sx={{
-              height: { xs: 32, sm: 40 },
-              width: "auto",
-              display: "block",
+              width: 48,
+              minWidth: 48,
+              flexShrink: 0,
+              display: { xs: "block", md: "none" },
             }}
           />
+          <Box
+            component={RouterLink}
+            to={appRoutes.home}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              lineHeight: 0,
+              flex: { xs: 1, md: "none" },
+              minWidth: 0,
+            }}
+          >
+            <Box
+              component="img"
+              src="/logo/logo.png"
+              alt="PokoMatch logo"
+              sx={{
+                height: { xs: 32, md: 40 },
+                width: "auto",
+                display: "block",
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              display: { xs: "flex", md: "none" },
+              width: 48,
+              minWidth: 48,
+              flexShrink: 0,
+              justifyContent: "flex-end",
+            }}
+          >
+            <LayoutSettingsMenu />
+          </Box>
         </Box>
 
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
-            flexWrap: { xs: "wrap", sm: "nowrap" },
+            flexWrap: { xs: "wrap", md: "nowrap" },
             alignItems: "center",
-            justifyContent: { xs: "center", sm: "flex-start" },
-            gap: { xs: 0.5, sm: 0.75 },
+            justifyContent: { xs: "center", md: "flex-start" },
+            gap: { xs: 0.3, md: 0.75 },
             minWidth: 0,
-            width: { xs: "100%", sm: "auto" },
-            ml: { xs: 0, sm: "auto" },
-            pb: { xs: 0, sm: 0.25 },
+            width: { xs: "100%", md: "auto" },
+            ml: { xs: 0, md: "auto" },
+            pb: { xs: 0, md: 0.25 },
           }}
         >
           <NavItem
@@ -109,10 +140,12 @@ export default function Layout({ children }: LayoutProps) {
             <Chip
               label={`${unlockedCount}/${TOTAL_POKEMON}`}
               size="small"
-              sx={{ ml: 0.75, height: 16, fontSize: 10 }}
+              sx={{ ml: 0.2, height: 16, fontSize: 10 }}
             />
           </NavItem>
-          <LayoutSettingsMenu />
+          <Box sx={{ display: { xs: "none", md: "contents" } }}>
+            <LayoutSettingsMenu />
+          </Box>
         </Box>
       </Box>
 
@@ -139,9 +172,9 @@ function NavItem({
       sx={{
         textDecoration: "none",
         cursor: "pointer",
-        py: { xs: 0.5, sm: 0.5 },
-        px: { xs: 0.65, sm: 1 },
-        fontSize: { xs: 12, sm: 13 },
+        py: 0.5,
+        px: { xs: 0.65, md: 1 },
+        fontSize: { xs: 12, md: 13 },
         fontWeight: active ? 600 : 500,
         color: active ? "text.primary" : "text.secondary",
         borderRadius: 1,
