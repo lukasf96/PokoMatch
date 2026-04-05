@@ -3,6 +3,8 @@ import type { Item, Pokemon, SuggestedItem } from "../types/types";
 
 type ItemJson = Item;
 
+export const itemsCatalogGeneratedAt: string = rawData.generatedAt;
+
 export const allItems: Item[] = rawData.items as ItemJson[];
 
 /**

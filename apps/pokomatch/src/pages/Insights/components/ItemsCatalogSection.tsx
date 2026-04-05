@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import { alpha, type Theme } from "@mui/material/styles";
 import { memo, useDeferredValue, useMemo, useState } from "react";
+import { itemsCatalogGeneratedAt } from "../../../services/items";
 import type { Item } from "../../../types/types";
 import { MatchHighlight } from "../../../utils/MatchHighlight";
 import {
@@ -101,6 +102,16 @@ function zebraRowBg(theme: Theme): string {
   return theme.palette.mode === "dark"
     ? alpha(theme.palette.common.white, 0.035)
     : alpha(theme.palette.common.black, 0.028);
+}
+
+function formatItemsCatalogDateOnly(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return new Intl.DateTimeFormat(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(d);
 }
 
 function buildItemNormalizedHaystack(item: Item): string {
@@ -371,10 +382,16 @@ export function ItemsCatalogSection({ items }: ItemsCatalogSectionProps) {
       <Typography variant="subtitle1" fontWeight={700} mb={0.5}>
         Items
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-        Item data is work in progress, the list may be incomplete and is subject
-        to change.
-      </Typography>
+      <Stack spacing={0.5} sx={{ mb: 2 }}>
+        <Typography variant="body2" color="text.secondary">
+          Item data is work in progress, the list may be incomplete and is
+          subject to change.
+        </Typography>
+        <Typography variant="caption" color="text.secondary" component="p" sx={{ m: 0 }}>
+          Data last refreshed on:{" "}
+          {formatItemsCatalogDateOnly(itemsCatalogGeneratedAt)}
+        </Typography>
+      </Stack>
 
       <Stack spacing={2} sx={{ mb: 2 }}>
         <TextField
