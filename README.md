@@ -1,6 +1,8 @@
-# Pokopia — Pokomatch
+# PokoMatch - Pokopia Habitat Planner
 
-Web companion for planning Pokémon habitats in _Pokémon Pokopia_: it groups Pokémon that can live together without clashing habitats, while pushing shared favorites so cohabiting groups are as aligned as possible.
+**[pokomatch.com](https://pokomatch.com)** — Web companion for planning Pokémon habitats in _Pokémon Pokopia_: it groups Pokémon that can live together without clashing habitats, while pushing shared favorites so cohabiting groups are as aligned as possible.
+
+![Pokomatch screenshot](PokoMatch_Screenshot.png)
 
 ## What the app does
 
@@ -43,6 +45,7 @@ For a partial group, candidates are **filtered** by the same habitat rules, then
 The **sum of pairwise shared favorites** within one group — the same quantity the auto-grouper tries to maximize across all groups.
 
 ## Credits
+
 - Pokopia specific Pokemon data: [Serebii](https://www.serebii.net/)
 - Pokémon data and localized species names: [PokeAPI](https://pokeapi.co/)
 - Sprite repository source: [PokeAPI/sprites](https://github.com/PokeAPI/sprites)
