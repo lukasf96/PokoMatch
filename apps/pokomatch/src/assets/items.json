@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T15:45:43.044Z",
+  "generatedAt": "2026-04-05T15:24:55.196Z",
   "items": [
     {
       "id": "honey",
@@ -244,56 +244,56 @@
       "name": "Red paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "blue-paint",
       "name": "Blue paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "green-paint",
       "name": "Green paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "yellow-paint",
       "name": "Yellow paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "pink-paint",
       "name": "Pink paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "cyan-paint",
       "name": "Cyan paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "white-paint",
       "name": "White paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "black-paint",
       "name": "Black paint",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff"]
+      "favoriteCategories": ["Colorful stuff", "Lots of dirt"]
     },
     {
       "id": "mossy-stone",
@@ -699,7 +699,7 @@
       "name": "Storage box",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": ["Blocky stuff", "Wooden stuff"]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "wall-storage-box",
@@ -713,21 +713,31 @@
       "name": "Big storage box",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": ["Blocky stuff", "Wooden stuff"]
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "plain-chest",
       "name": "Plain chest",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Fabric",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "office-cabinet",
       "name": "Office cabinet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Metal stuff", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Metal stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "gaming-fridge",
@@ -772,28 +782,43 @@
       "name": "Antique chest",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Luxury", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Luxury",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "plain-closet",
       "name": "Plain closet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Fabric",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "office-locker",
       "name": "Office locker",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Metal stuff"]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Metal stuff"]
     },
     {
       "id": "antique-closet",
       "name": "Antique closet",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Luxury", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Luxury",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "office-shelf",
@@ -801,6 +826,7 @@
       "category": "Furniture",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Containers",
         "Gatherings",
         "Glass stuff",
@@ -813,12 +839,7 @@
       "name": "Polygonal Shelf",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Containers",
-        "Cute stuff",
-        "Strange stuff"
-      ]
+      "favoriteCategories": ["Containers", "Cute stuff", "Strange stuff"]
     },
     {
       "id": "straw-table",
@@ -909,7 +930,12 @@
       "name": "Plain stand",
       "category": "Furniture",
       "tag": "",
-      "favoriteCategories": ["Containers", "Fabric", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Fabric",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "iron-stand",
@@ -917,6 +943,7 @@
       "category": "Furniture",
       "tag": "",
       "favoriteCategories": [
+        "Blocky stuff",
         "Containers",
         "Hard stuff",
         "Metal stuff",
@@ -1127,35 +1154,35 @@
       "name": "Wooden stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": []
+      "favoriteCategories": ["Blocky stuff"]
     },
     {
       "id": "iron-chair",
       "name": "Iron chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Metal stuff"]
+      "favoriteCategories": ["Blocky stuff", "Metal stuff"]
     },
     {
       "id": "public-seat",
       "name": "Public seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Metal stuff"]
+      "favoriteCategories": ["Blocky stuff", "Metal stuff"]
     },
     {
       "id": "soft-seat",
       "name": "Soft seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": ["Blocky stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "box-sofa",
       "name": "Box Sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": ["Blocky stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "plain-chair",
@@ -1183,7 +1210,7 @@
       "name": "Fancy chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff"]
+      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff", "Spinning stuff"]
     },
     {
       "id": "antique-chair",
@@ -1225,7 +1252,12 @@
       "name": "Office chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Metal stuff", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Metal stuff",
+        "Soft stuff",
+        "Spinning stuff"
+      ]
     },
     {
       "id": "cute-chair",
@@ -1257,7 +1289,8 @@
         "Fabric",
         "Luxury",
         "Shiny stuff",
-        "Soft stuff"
+        "Soft stuff",
+        "Spinning stuff"
       ]
     },
     {
@@ -1406,6 +1439,7 @@
       "category": "Furniture",
       "tag": "Relaxation",
       "favoriteCategories": [
+        "Blocky stuff",
         "Colorful stuff",
         "Fabric",
         "Lots of nature",
@@ -1418,7 +1452,7 @@
       "name": "Mini plain bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": ["Blocky stuff", "Fabric", "Soft stuff"]
     },
     {
       "id": "resort-bed",
@@ -1596,6 +1630,7 @@
       "category": "Furniture",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Glass stuff",
         "Luxury",
         "Strange stuff",
@@ -1607,7 +1642,12 @@
       "name": "Large mirror",
       "category": "Furniture",
       "tag": "Toy",
-      "favoriteCategories": ["Glass stuff", "Luxury", "Strange stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Glass stuff",
+        "Luxury",
+        "Strange stuff"
+      ]
     },
     {
       "id": "antique-dresser",
@@ -1793,7 +1833,12 @@
       "name": "Sandwiches",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Colorful stuff", "Gatherings", "Looks like food"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Colorful stuff",
+        "Gatherings",
+        "Looks like food"
+      ]
     },
     {
       "id": "shaved-ice",
@@ -1823,7 +1868,12 @@
       "name": "Berry basket",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Looks like food", "Lots of nature"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Looks like food",
+        "Lots of nature"
+      ]
     },
     {
       "id": "small-vase",
@@ -1959,28 +2009,44 @@
       "name": "Letter",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "notepad",
       "name": "Notepad",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "book",
       "name": "Book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "open-book",
       "name": "Open Book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "book-pile",
@@ -1994,35 +2060,48 @@
       "name": "Papers",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "newspaper",
       "name": "Newspaper",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "photo-frame",
       "name": "Photo frame",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Group Activities", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Group Activities",
+        "Watching stuff"
+      ]
     },
     {
       "id": "wall-photo-frame",
       "name": "Wall photo frame",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Watching stuff"]
+      "favoriteCategories": ["Blocky stuff", "Containers", "Watching stuff"]
     },
     {
       "id": "corkboard",
       "name": "Corkboard",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Gatherings", "Watching stuff"]
+      "favoriteCategories": ["Blocky stuff", "Gatherings", "Watching stuff"]
     },
     {
       "id": "cd-rack",
@@ -2059,6 +2138,7 @@
       "category": "Misc.",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Colorful stuff",
         "Containers",
         "Watching stuff",
@@ -2071,6 +2151,7 @@
       "category": "Misc.",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Colorful stuff",
         "Containers",
         "Watching stuff",
@@ -2083,6 +2164,7 @@
       "category": "Misc.",
       "tag": "Relaxation",
       "favoriteCategories": [
+        "Blocky stuff",
         "Colorful stuff",
         "Hard stuff",
         "Luxury",
@@ -2108,6 +2190,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Cleanliness",
         "Lots of water",
         "Metal stuff",
@@ -2119,7 +2202,12 @@
       "name": "Cooking stove",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Lots of fire", "Metal stuff", "Strange stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Lots of fire",
+        "Metal stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "microwave-oven",
@@ -2127,6 +2215,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -2139,6 +2228,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Containers",
         "Electronics",
         "Metal stuff",
@@ -2150,7 +2240,12 @@
       "name": "Fan",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Metal stuff", "Nice breezes"]
+      "favoriteCategories": [
+        "Electronics",
+        "Metal stuff",
+        "Nice breezes",
+        "Spinning stuff"
+      ]
     },
     {
       "id": "air-conditioner",
@@ -2177,6 +2272,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Cleanliness",
         "Containers",
         "Electronics",
@@ -2204,6 +2300,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Cleanliness",
         "Lots of water",
         "Stone stuff",
@@ -2279,6 +2376,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -2291,6 +2389,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -2303,6 +2402,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -2340,6 +2440,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Group Activities",
@@ -2355,6 +2456,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Group Activities",
@@ -2370,6 +2472,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Glass stuff",
         "Group Activities",
@@ -2394,12 +2497,7 @@
       "name": "Toy blocks",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Gatherings",
-        "Play spaces",
-        "Wooden stuff"
-      ]
+      "favoriteCategories": ["Gatherings", "Play spaces", "Wooden stuff"]
     },
     {
       "id": "pinwheels",
@@ -2435,7 +2533,7 @@
       "name": "Game Boy system",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Group Activities"]
+      "favoriteCategories": ["Blocky stuff", "Electronics", "Group Activities"]
     },
     {
       "id": "humidifier",
@@ -2580,7 +2678,7 @@
       "name": "Speaker",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Noisy stuff"]
+      "favoriteCategories": ["Blocky stuff", "Electronics", "Noisy stuff"]
     },
     {
       "id": "gold-teeth",
@@ -2644,6 +2742,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Containers",
         "Group Activities",
         "Play spaces",
@@ -2685,6 +2784,7 @@
       "category": "Misc.",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Gatherings",
         "Group Activities",
         "Letters and words",
@@ -2696,7 +2796,7 @@
       "name": "Control unit",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": []
+      "favoriteCategories": ["Blocky stuff"]
     },
     {
       "id": "auspicious-armor",
@@ -2741,7 +2841,7 @@
       "name": "Ship's Wheel",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Ocean vibes", "Round stuff", "Strange stuff"]
+      "favoriteCategories": ["Ocean vibes", "Round stuff"]
     },
     {
       "id": "mysterious-statue",
@@ -2807,7 +2907,11 @@
       "name": "Wall Calendar",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "wreath",
@@ -2904,7 +3008,11 @@
       "name": "Hanging scroll",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Letters and words", "Strange stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Strange stuff"
+      ]
     },
     {
       "id": "ceiling-fan",
@@ -2914,6 +3022,7 @@
       "favoriteCategories": [
         "Electronics",
         "Nice breezes",
+        "Spinning stuff",
         "Strange stuff",
         "Wobbly stuff"
       ]
@@ -2923,7 +3032,12 @@
       "name": "Castform weather charm",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Strange stuff"]
+      "favoriteCategories": [
+        "Cute stuff",
+        "Fabric",
+        "Spinning stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "eevee-doll",
@@ -2979,49 +3093,49 @@
       "name": "Grubby letter",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words"]
+      "favoriteCategories": ["Garbage", "Letters and words"]
     },
     {
       "id": "grubby-notepad",
       "name": "Grubby notepad",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words"]
+      "favoriteCategories": ["Garbage", "Letters and words"]
     },
     {
       "id": "grubby-book",
       "name": "Grubby book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words"]
+      "favoriteCategories": ["Garbage", "Letters and words"]
     },
     {
       "id": "grubby-papers",
       "name": "Grubby papers",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words"]
+      "favoriteCategories": ["Garbage", "Letters and words"]
     },
     {
       "id": "grubby-newspaper",
       "name": "Grubby newspaper",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words", "Watching stuff"]
+      "favoriteCategories": ["Garbage", "Letters and words", "Watching stuff"]
     },
     {
       "id": "grubby-tablet",
       "name": "Grubby tablet",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": []
+      "favoriteCategories": ["Garbage"]
     },
     {
       "id": "grubby-cell-phone",
       "name": "Grubby cell phone",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": []
+      "favoriteCategories": ["Garbage"]
     },
     {
       "id": "broken-bookcase",
@@ -3191,7 +3305,12 @@
       "name": "Sandbox",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": ["Group Activities", "Lots of dirt", "Play spaces"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Group Activities",
+        "Lots of dirt",
+        "Play spaces"
+      ]
     },
     {
       "id": "tire-toy",
@@ -3237,6 +3356,7 @@
       "category": "Outdoor",
       "tag": "Toy",
       "favoriteCategories": [
+        "Blocky stuff",
         "Glass stuff",
         "Group Activities",
         "Metal stuff",
@@ -3256,6 +3376,7 @@
       "category": "Outdoor",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Cute stuff",
         "Luxury",
         "Pretty flowers",
@@ -3328,7 +3449,7 @@
       "name": "Weather vane",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": ["Metal stuff", "Nice breezes"]
+      "favoriteCategories": ["Metal stuff", "Nice breezes", "Spinning stuff"]
     },
     {
       "id": "gravestone",
@@ -3435,6 +3556,7 @@
       "category": "Outdoor",
       "tag": "Relaxation",
       "favoriteCategories": [
+        "Blocky stuff",
         "Group Activities",
         "Lots of water",
         "Wobbly stuff"
@@ -3483,7 +3605,11 @@
       "name": "Menu board",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": ["Letters and words", "Wooden stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Letters and words",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "sign",
@@ -3587,7 +3713,7 @@
       "name": "Recycling bin",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Metal stuff"]
+      "favoriteCategories": ["Containers", "Garbage", "Metal stuff"]
     },
     {
       "id": "grubby-rags",
@@ -3700,7 +3826,13 @@
       "name": "Large ventilation fan",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": ["Metal stuff", "Nice breezes", "Strange stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Metal stuff",
+        "Nice breezes",
+        "Spinning stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "heat-rock",
@@ -3757,6 +3889,7 @@
       "category": "Utilities",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Containers",
         "Letters and words",
         "Watching stuff",
@@ -3914,6 +4047,7 @@
       "category": "Utilities",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Blocky stuff",
         "Electronics",
         "Metal stuff",
         "Shiny stuff",
@@ -4099,7 +4233,8 @@
         "Cute stuff",
         "Electronics",
         "Metal stuff",
-        "Round stuff"
+        "Round stuff",
+        "Spinning stuff"
       ]
     },
     {
@@ -4244,7 +4379,7 @@
       "name": "Wall light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Electronics", "Glass stuff"]
+      "favoriteCategories": ["Blocky stuff", "Electronics", "Glass stuff"]
     },
     {
       "id": "shell-lamp",
@@ -10357,14 +10492,19 @@
       "name": "Town map",
       "category": "Other",
       "tag": "Toy",
-      "favoriteCategories": ["Strange stuff", "Watching stuff"]
+      "favoriteCategories": ["Blocky stuff", "Strange stuff", "Watching stuff"]
     },
     {
       "id": "team-rocket-wall-hanging",
       "name": "Team Rocket Wall Hanging",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Metal stuff", "Symbols", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Metal stuff",
+        "Symbols",
+        "Watching stuff"
+      ]
     },
     {
       "id": "skull-fossil",
