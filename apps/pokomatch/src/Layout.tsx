@@ -140,7 +140,12 @@ export default function Layout({ children }: LayoutProps) {
             <Chip
               label={`${unlockedCount}/${TOTAL_POKEMON}`}
               size="small"
-              sx={{ ml: 0.2, height: 16, fontSize: 10 }}
+              sx={{
+                ml: 0.2,
+                height: 16,
+                fontSize: 10,
+                "& .MuiChip-label": { px: 0.5, py: 0 },
+              }}
             />
           </NavItem>
           <Box sx={{ display: { xs: "none", md: "contents" } }}>
