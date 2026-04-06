@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-05T15:24:55.196Z",
+  "generatedAt": "2026-04-06T20:54:51.262Z",
   "items": [
     {
       "id": "honey",
@@ -1744,7 +1744,12 @@
       "name": "Picnic basket",
       "category": "Misc.",
       "tag": "",
-      "favoriteCategories": ["Containers", "Fabric", "Group Activities"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Fabric",
+        "Group Activities"
+      ]
     },
     {
       "id": "mug",
@@ -1995,7 +2000,12 @@
       "name": "Pencil holder",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Containers", "Gatherings", "Stone stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Containers",
+        "Gatherings",
+        "Stone stuff"
+      ]
     },
     {
       "id": "fancy-pen",
@@ -2011,6 +2021,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2022,6 +2033,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2033,6 +2045,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2044,6 +2057,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2052,7 +2066,7 @@
       "id": "book-pile",
       "name": "Book pile",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "",
       "favoriteCategories": []
     },
     {
@@ -2062,6 +2076,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2073,6 +2088,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -2350,7 +2366,7 @@
       "id": "bathtub",
       "name": "Bathtub",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Cleanliness",
         "Lots of water",
@@ -2362,7 +2378,7 @@
       "id": "bouncy-blue-bathtub",
       "name": "Bouncy blue bathtub",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Cleanliness",
         "Cute stuff",
@@ -2415,6 +2431,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -2587,6 +2604,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Glass stuff",
         "Metal stuff",
         "Strange stuff",
@@ -2599,6 +2617,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Gatherings",
         "Glass stuff",
         "Letters and words",
@@ -2611,6 +2630,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Containers",
         "Electronics",
         "Garbage",
@@ -2671,7 +2691,11 @@
       "name": "Audio mixer",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Strange stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Electronics",
+        "Strange stuff"
+      ]
     },
     {
       "id": "speaker",
@@ -2703,7 +2727,7 @@
       "id": "big-nugget",
       "name": "Big Nugget",
       "category": "Misc.",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": [
         "Metal stuff",
         "Round stuff",
@@ -2796,20 +2820,20 @@
       "name": "Control unit",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Blocky stuff"]
+      "favoriteCategories": ["Blocky stuff", "Complicated stuff"]
     },
     {
       "id": "auspicious-armor",
       "name": "Auspicious Armor",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "Decoration",
       "favoriteCategories": ["Luxury", "Shiny stuff", "Strange stuff"]
     },
     {
       "id": "malicious-armor",
       "name": "Malicious Armor",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "Decoration",
       "favoriteCategories": ["Luxury", "Strange stuff"]
     },
     {
@@ -2870,6 +2894,7 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Glass stuff",
         "Metal stuff",
         "Shiny stuff",
@@ -2946,7 +2971,12 @@
       "name": "Antique clock",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Glass stuff", "Luxury", "Wooden stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Glass stuff",
+        "Luxury",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "berry-clock",
@@ -3093,35 +3123,56 @@
       "name": "Grubby letter",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage", "Letters and words"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Garbage",
+        "Letters and words"
+      ]
     },
     {
       "id": "grubby-notepad",
       "name": "Grubby notepad",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage", "Letters and words"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Garbage",
+        "Letters and words"
+      ]
     },
     {
       "id": "grubby-book",
       "name": "Grubby book",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage", "Letters and words"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Garbage",
+        "Letters and words"
+      ]
     },
     {
       "id": "grubby-papers",
       "name": "Grubby papers",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage", "Letters and words"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Garbage",
+        "Letters and words"
+      ]
     },
     {
       "id": "grubby-newspaper",
       "name": "Grubby newspaper",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage", "Letters and words", "Watching stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Garbage",
+        "Letters and words",
+        "Watching stuff"
+      ]
     },
     {
       "id": "grubby-tablet",
@@ -3387,15 +3438,16 @@
       "id": "garden-ornament",
       "name": "Garden ornament",
       "category": "Outdoor",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": ["Gatherings", "Stone stuff"]
     },
     {
       "id": "bike",
       "name": "Bike",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": [
+        "Complicated stuff",
         "Exercise",
         "Metal stuff",
         "Rides",
@@ -3501,7 +3553,7 @@
       "id": "bell",
       "name": "Bell",
       "category": "Outdoor",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Metal stuff",
         "Shiny stuff",
@@ -3573,7 +3625,7 @@
       "id": "horsea-fountain",
       "name": "Horsea fountain",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": [
         "Lots of water",
         "Ocean vibes",
@@ -3585,7 +3637,7 @@
       "id": "fishing-rod",
       "name": "Fishing rod",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": [
         "Metal stuff",
         "Ocean vibes",
@@ -3659,7 +3711,7 @@
       "id": "photo-cutout-board",
       "name": "Photo cutout board",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": [
         "Colorful stuff",
         "Cute stuff",
@@ -3999,13 +4051,18 @@
       "name": "Cash register",
       "category": "Utilities",
       "tag": "",
-      "favoriteCategories": ["Containers", "Metal stuff", "Strange stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Containers",
+        "Metal stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "sprinkler",
       "name": "Sprinkler",
       "category": "Utilities",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Lots of water",
         "Metal stuff",
@@ -10492,7 +10549,12 @@
       "name": "Town map",
       "category": "Other",
       "tag": "Toy",
-      "favoriteCategories": ["Blocky stuff", "Strange stuff", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Complicated stuff",
+        "Strange stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "team-rocket-wall-hanging",
