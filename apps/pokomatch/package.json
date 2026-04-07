@@ -8,10 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "refresh-dex": "tsx ./scripts/pokemon-data-collector.ts",
     "refresh-sprites": "tsx ./scripts/pokemon-sprite-collector.ts",
-    "refresh-dex": "tsx ./scripts/data-collector.ts",
     "refresh-items": "tsx ./scripts/item-data-collector.ts",
-    "validate-items": "tsx ./scripts/validate-items.ts"
+    "validate-items": "tsx ./scripts/validate-items.ts",
+    "refresh-all": "pnpm run refresh-dex && pnpm run refresh-sprites && pnpm run refresh-items && pnpm run validate-items"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
