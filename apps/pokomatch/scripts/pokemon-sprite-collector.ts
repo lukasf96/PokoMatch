@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
+import { writeTerminalProgressLine } from "./write-terminal-progress-line";
 
 const APP_ROOT = process.cwd();
 const tempDir = path.join(os.tmpdir(), "pokopia-pokeapi-sprites");
@@ -69,8 +70,14 @@ async function ensureSpritesRepo(): Promise<void> {
     .then(() => true)
     .catch(() => false);
 
-  if (hasRepo) return;
+  if (hasRepo) {
+    console.error(
+      `Using existing PokeAPI/sprites checkout at ${spritesRepoDir} (remove that folder to clone again).`,
+    );
+    return;
+  }
 
+  console.error(`Cloning PokeAPI/sprites (shallow) into ${spritesRepoDir}…`);
   const cloneResponse = await fetch(
     "https://github.com/PokeAPI/sprites.git/info/refs?service=git-upload-pack",
   );
@@ -90,6 +97,7 @@ async function ensureSpritesRepo(): Promise<void> {
         : reject(new Error(`git clone failed with code ${String(code)}`)),
     );
   });
+  console.error("Sprites repository ready.");
 }
 
 /** PokeAPI `pokemon` resource id (matches sprite filenames in the sprites repo). */
@@ -187,13 +195,21 @@ async function assertAllOutputsUnderBudget(): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  console.error(`Reading Pokédex: ${pokedexPath}`);
   await ensureSpritesRepo();
   const pokedexJson = JSON.parse(await readFile(pokedexPath, "utf8")) as PokedexJson;
   const allPokemon = [...pokedexJson.standard, ...pokedexJson.event];
+  console.error(`Entries to process: ${String(allPokemon.length)}.`);
 
   const cachedResourceIdByApiName = new Map<string, number>();
 
-  for (const pokemon of allPokemon) {
+  console.error("Resolving PokéAPI Pokémon ids…");
+  for (let i = 0; i < allPokemon.length; i++) {
+    const pokemon = allPokemon[i]!;
+    writeTerminalProgressLine(
+      process.stderr,
+      `[pokeapi ${String(i + 1)}/${String(allPokemon.length)}] ${pokemon.name}…`,
+    );
     const pokemonApiName = toPokemonApiName(pokemon.name);
     if (!cachedResourceIdByApiName.has(pokemonApiName)) {
       const resourceId = await fetchPokemonResourceId(pokemonApiName);
@@ -203,10 +219,17 @@ async function main(): Promise<void> {
       cachedResourceIdByApiName.set(pokemonApiName, resourceId);
     }
   }
+  process.stderr.write("\n");
 
+  console.error(`Encoding WebP to ${outputSpritesDir}…`);
   await rm(outputSpritesDir, { recursive: true, force: true });
   await mkdir(outputSpritesDir, { recursive: true });
-  for (const pokemon of allPokemon) {
+  for (let i = 0; i < allPokemon.length; i++) {
+    const pokemon = allPokemon[i]!;
+    writeTerminalProgressLine(
+      process.stderr,
+      `[webp ${String(i + 1)}/${String(allPokemon.length)}] ${pokemon.name}…`,
+    );
     const pokemonApiName = toPokemonApiName(pokemon.name);
     const pokemonResourceId = cachedResourceIdByApiName.get(pokemonApiName);
     if (pokemonResourceId === undefined) {
@@ -220,6 +243,7 @@ async function main(): Promise<void> {
     );
     await writeWebpUnderByteBudget({ sourcePath, variantDir, targetPath });
   }
+  process.stderr.write("\n");
 
   await assertAllOutputsUnderBudget();
   console.log(
