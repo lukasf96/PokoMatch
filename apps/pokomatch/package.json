@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "vendor:sprites": "node ./scripts/vendor-pokemon-sprites.mjs",
+    "refresh-sprites": "tsx ./scripts/pokemon-sprite-collector.ts",
     "refresh-dex": "tsx ./scripts/data-collector.ts",
     "refresh-items": "tsx ./scripts/item-data-collector.ts",
     "validate-items": "tsx ./scripts/validate-items.ts"

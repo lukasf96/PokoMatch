@@ -1,10 +1,11 @@
+import { spawn } from "node:child_process";
 import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
 
-const appRoot = process.cwd();
+const APP_ROOT = process.cwd();
 const tempDir = path.join(os.tmpdir(), "pokopia-pokeapi-sprites");
 const spritesRepoDir = path.join(tempDir, "sprites");
 /** Prefer HOME (modern renders), then official artwork, then legacy Gen-style sprites. */
@@ -13,10 +14,10 @@ const sourceSpriteVariantDirs = [
   path.join(spritesRepoDir, "sprites", "pokemon", "other", "official-artwork"),
   path.join(spritesRepoDir, "sprites", "pokemon"),
 ];
-const outputSpritesDir = path.join(appRoot, "public", "sprites", "pokemon");
-const pokedexPath = path.join(appRoot, "src", "assets", "pokedex.json");
+const outputSpritesDir = path.join(APP_ROOT, "public", "sprites", "pokemon");
+const pokedexPath = path.join(APP_ROOT, "src", "assets", "pokedex.json");
 
-const nameAliasMap = new Map([
+const nameAliasMap = new Map<string, string>([
   ["professor tangrowth", "tangrowth"],
   ["peakychu", "pikachu"],
   ["mosslax", "snorlax"],
@@ -37,7 +38,17 @@ const NORMALIZED_SPRITE_SIZE = 128;
 const MAX_WEBP_FILE_BYTES = 10 * 1024;
 const SPRITE_OUTPUT_EXT = ".webp";
 
-function normalizePokemonName(name) {
+interface PokedexPokemonRef {
+  id: string;
+  name: string;
+}
+
+interface PokedexJson {
+  standard: PokedexPokemonRef[];
+  event: PokedexPokemonRef[];
+}
+
+function normalizePokemonName(name: string): string {
   return name
     .toLowerCase()
     .replaceAll(".", "")
@@ -47,12 +58,12 @@ function normalizePokemonName(name) {
     .trim();
 }
 
-function toPokemonApiName(name) {
+function toPokemonApiName(name: string): string {
   const normalized = normalizePokemonName(name);
   return (nameAliasMap.get(normalized) ?? normalized).replaceAll(" ", "-");
 }
 
-async function ensureSpritesRepo() {
+async function ensureSpritesRepo(): Promise<void> {
   await mkdir(tempDir, { recursive: true });
   const hasRepo = await stat(path.join(spritesRepoDir, ".git"))
     .then(() => true)
@@ -60,13 +71,14 @@ async function ensureSpritesRepo() {
 
   if (hasRepo) return;
 
-  const cloneResponse = await fetch("https://github.com/PokeAPI/sprites.git/info/refs?service=git-upload-pack");
+  const cloneResponse = await fetch(
+    "https://github.com/PokeAPI/sprites.git/info/refs?service=git-upload-pack",
+  );
   if (!cloneResponse.ok) {
     throw new Error("Cannot reach GitHub to clone sprites repository.");
   }
 
-  const { spawn } = await import("node:child_process");
-  await new Promise((resolve, reject) => {
+  await new Promise<void>((resolve, reject) => {
     const git = spawn(
       "git",
       ["clone", "--depth", "1", "https://github.com/PokeAPI/sprites.git", spritesRepoDir],
@@ -81,14 +93,19 @@ async function ensureSpritesRepo() {
 }
 
 /** PokeAPI `pokemon` resource id (matches sprite filenames in the sprites repo). */
-async function fetchPokemonResourceId(pokemonApiName) {
+async function fetchPokemonResourceId(pokemonApiName: string): Promise<number | null> {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonApiName}`);
   if (!response.ok) return null;
-  const data = await response.json();
-  return typeof data.id === "number" ? data.id : null;
+  const data: unknown = await response.json();
+  if (typeof data !== "object" || data === null) return null;
+  const id = (data as { id?: unknown }).id;
+  return typeof id === "number" ? id : null;
 }
 
-async function resolveSourceSpritePath(pokemonResourceId) {
+async function resolveSourceSpritePath(pokemonResourceId: number): Promise<{
+  fullPath: string;
+  variantDir: string;
+}> {
   const fileName = `${String(pokemonResourceId)}.png`;
   for (const dir of sourceSpriteVariantDirs) {
     const fullPath = path.join(dir, fileName);
@@ -102,15 +119,16 @@ async function resolveSourceSpritePath(pokemonResourceId) {
   );
 }
 
-function isLegacyPixelSpriteDir(variantDir) {
+function isLegacyPixelSpriteDir(variantDir: string): boolean {
   return variantDir === path.join(spritesRepoDir, "sprites", "pokemon");
 }
 
-async function writeWebpUnderByteBudget({
-  sourcePath,
-  variantDir,
-  targetPath,
-}) {
+async function writeWebpUnderByteBudget(params: {
+  sourcePath: string;
+  variantDir: string;
+  targetPath: string;
+}): Promise<void> {
+  const { sourcePath, variantDir, targetPath } = params;
   const resizeKernel = isLegacyPixelSpriteDir(variantDir)
     ? sharp.kernel.nearest
     : sharp.kernel.lanczos3;
@@ -155,7 +173,7 @@ async function writeWebpUnderByteBudget({
   );
 }
 
-async function assertAllOutputsUnderBudget() {
+async function assertAllOutputsUnderBudget(): Promise<void> {
   const names = await readdir(outputSpritesDir);
   const webpNames = names.filter((n) => n.endsWith(SPRITE_OUTPUT_EXT));
   for (const name of webpNames) {
@@ -168,12 +186,12 @@ async function assertAllOutputsUnderBudget() {
   }
 }
 
-async function run() {
+async function main(): Promise<void> {
   await ensureSpritesRepo();
-  const pokedexJson = JSON.parse(await readFile(pokedexPath, "utf8"));
+  const pokedexJson = JSON.parse(await readFile(pokedexPath, "utf8")) as PokedexJson;
   const allPokemon = [...pokedexJson.standard, ...pokedexJson.event];
 
-  const cachedResourceIdByApiName = new Map();
+  const cachedResourceIdByApiName = new Map<string, number>();
 
   for (const pokemon of allPokemon) {
     const pokemonApiName = toPokemonApiName(pokemon.name);
@@ -184,7 +202,6 @@ async function run() {
       }
       cachedResourceIdByApiName.set(pokemonApiName, resourceId);
     }
-
   }
 
   await rm(outputSpritesDir, { recursive: true, force: true });
@@ -192,7 +209,11 @@ async function run() {
   for (const pokemon of allPokemon) {
     const pokemonApiName = toPokemonApiName(pokemon.name);
     const pokemonResourceId = cachedResourceIdByApiName.get(pokemonApiName);
-    const { fullPath: sourcePath, variantDir } = await resolveSourceSpritePath(pokemonResourceId);
+    if (pokemonResourceId === undefined) {
+      throw new Error(`Missing cached id for ${pokemonApiName}`);
+    }
+    const { fullPath: sourcePath, variantDir } =
+      await resolveSourceSpritePath(pokemonResourceId);
     const targetPath = path.join(
       outputSpritesDir,
       `${pokemon.id}${SPRITE_OUTPUT_EXT}`,
@@ -206,7 +227,7 @@ async function run() {
   );
 }
 
-run().catch((error) => {
+main().catch((error: unknown) => {
   console.error(error);
   process.exit(1);
 });
