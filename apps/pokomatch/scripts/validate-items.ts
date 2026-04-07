@@ -5,12 +5,10 @@
  * Exits non-zero and prints offenders if any unknown strings are found.
  */
 import { readFile } from "node:fs/promises";
-import path from "node:path";
-import process from "node:process";
+import { resolveAppAssetPath } from "./script-utils";
 
-const APP_ROOT = process.cwd();
-const POKEDEX_PATH = path.join(APP_ROOT, "src", "assets", "pokedex.json");
-const ITEMS_PATH = path.join(APP_ROOT, "src", "assets", "items.json");
+const POKEDEX_PATH = resolveAppAssetPath("pokedex.json");
+const ITEMS_PATH = resolveAppAssetPath("items.json");
 
 interface PokedexEntry {
   favorites: string[];

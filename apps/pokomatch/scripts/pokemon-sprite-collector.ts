@@ -4,9 +4,13 @@ import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import sharp from "sharp";
-import { writeTerminalProgressLine } from "./write-terminal-progress-line";
+import {
+  APP_ROOT,
+  fetchPokemonResourceIdByApiName,
+  toPokemonApiName,
+  writeTerminalProgressLine,
+} from "./script-utils";
 
-const APP_ROOT = process.cwd();
 const tempDir = path.join(os.tmpdir(), "pokopia-pokeapi-sprites");
 const spritesRepoDir = path.join(tempDir, "sprites");
 /** Prefer HOME (modern renders), then official artwork, then legacy Gen-style sprites. */
@@ -17,22 +21,6 @@ const sourceSpriteVariantDirs = [
 ];
 const outputSpritesDir = path.join(APP_ROOT, "public", "sprites", "pokemon");
 const pokedexPath = path.join(APP_ROOT, "src", "assets", "pokedex.json");
-
-const nameAliasMap = new Map<string, string>([
-  ["professor tangrowth", "tangrowth"],
-  ["peakychu", "pikachu"],
-  ["mosslax", "snorlax"],
-  ["paldean wooper", "wooper-paldea"],
-  ["stereo rotom", "rotom"],
-  ["mimikyu", "mimikyu-disguised"],
-  ["shellos east sea", "shellos"],
-  ["gastrodon east sea", "gastrodon"],
-  ["tatsugiri curly form", "tatsugiri-curly"],
-  ["tatsugiri droopy form", "tatsugiri-droopy"],
-  ["tatsugiri stretchy form", "tatsugiri-stretchy"],
-  ["toxtricity amped form", "toxtricity-amped"],
-  ["toxtricity low key form", "toxtricity-low-key"],
-]);
 
 const NORMALIZED_SPRITE_SIZE = 128;
 /** Strict upper bound: every output must be smaller than this (10 KiB). */
@@ -47,21 +35,6 @@ interface PokedexPokemonRef {
 interface PokedexJson {
   standard: PokedexPokemonRef[];
   event: PokedexPokemonRef[];
-}
-
-function normalizePokemonName(name: string): string {
-  return name
-    .toLowerCase()
-    .replaceAll(".", "")
-    .replaceAll("'", "")
-    .replaceAll(":", "")
-    .replaceAll(/\s+/g, " ")
-    .trim();
-}
-
-function toPokemonApiName(name: string): string {
-  const normalized = normalizePokemonName(name);
-  return (nameAliasMap.get(normalized) ?? normalized).replaceAll(" ", "-");
 }
 
 async function ensureSpritesRepo(): Promise<void> {
@@ -98,16 +71,6 @@ async function ensureSpritesRepo(): Promise<void> {
     );
   });
   console.error("Sprites repository ready.");
-}
-
-/** PokeAPI `pokemon` resource id (matches sprite filenames in the sprites repo). */
-async function fetchPokemonResourceId(pokemonApiName: string): Promise<number | null> {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonApiName}`);
-  if (!response.ok) return null;
-  const data: unknown = await response.json();
-  if (typeof data !== "object" || data === null) return null;
-  const id = (data as { id?: unknown }).id;
-  return typeof id === "number" ? id : null;
 }
 
 async function resolveSourceSpritePath(pokemonResourceId: number): Promise<{
@@ -212,7 +175,7 @@ async function main(): Promise<void> {
     );
     const pokemonApiName = toPokemonApiName(pokemon.name);
     if (!cachedResourceIdByApiName.has(pokemonApiName)) {
-      const resourceId = await fetchPokemonResourceId(pokemonApiName);
+      const resourceId = await fetchPokemonResourceIdByApiName(pokemonApiName);
       if (resourceId === null) {
         throw new Error(`No PokéAPI id found for "${pokemon.name}" (${pokemonApiName}).`);
       }

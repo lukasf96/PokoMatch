@@ -2,25 +2,26 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { writeTerminalProgressLine } from "./write-terminal-progress-line";
+import {
+  APP_ROOT,
+  DEFAULT_POKEAPI_GAP_MS,
+  POKEAPI_BASE,
+  SEREBII_ROBOTS_URL,
+  SEREBII_URLS,
+  absolutizeSerebiiHrefFromSite,
+  assertSerebiiRobotsAndGap,
+  fetchJson,
+  fetchText,
+  isPathAllowedByRobots,
+  parseOutPathCli,
+  readNumberEnv,
+  sleep,
+  toPokemonApiName,
+  type RobotsGroup,
+  writeTerminalProgressLine,
+} from "./script-utils";
 
-const SEREBII_BASE = "https://www.serebii.net";
-const SEREBII_LIST_URL = `${SEREBII_BASE}/pokemonpokopia/availablepokemon.shtml`;
-const SEREBII_EVENT_LIST_URL = `${SEREBII_BASE}/pokemonpokopia/eventpokedex.shtml`;
-const SEREBII_ROBOTS_URL = `${SEREBII_BASE}/robots.txt`;
-
-const POKEAPI_BASE = "https://pokeapi.co";
-
-const DEFAULT_REQUEST_GAP_MS = 10;
-const DEFAULT_POKEAPI_GAP_MS = 10;
-
-const APP_ROOT = process.cwd();
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "pokedex.json");
-
-/**
- * We identify as a data collector and honor robots.txt for Serebii.
- */
-const USER_AGENT = "Pokopia Data Collector/1.0";
 
 interface ListRow {
   dexNumber: string;
@@ -65,200 +66,6 @@ export interface PokedexJson {
   generatedAt: string;
   standard: PokemonEntry[];
   event: PokemonEntry[];
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function readNumberEnv(name: string): number | undefined {
-  const raw = process.env[name];
-  if (!raw) return undefined;
-  const n = Number(raw);
-  if (!Number.isFinite(n) || n < 0) return undefined;
-  return Math.floor(n);
-}
-
-function absolutizeSerebiiPath(href: string): string {
-  if (href.startsWith("http")) return href;
-  return `${SEREBII_BASE}${href.startsWith("/") ? "" : "/"}${href}`;
-}
-
-function normalizePokemonName(name: string): string {
-  return name
-    .toLowerCase()
-    .replaceAll(".", "")
-    .replaceAll("'", "")
-    .replaceAll(":", "")
-    .replaceAll(/\s+/g, " ")
-    .trim();
-}
-
-const nameAliasMap = new Map<string, string>([
-  ["professor tangrowth", "tangrowth"],
-  ["peakychu", "pikachu"],
-  ["mosslax", "snorlax"],
-  ["paldean wooper", "wooper-paldea"],
-  ["stereo rotom", "rotom"],
-  ["mimikyu", "mimikyu-disguised"],
-  ["shellos east sea", "shellos"],
-  ["gastrodon east sea", "gastrodon"],
-  ["tatsugiri curly form", "tatsugiri-curly"],
-  ["tatsugiri droopy form", "tatsugiri-droopy"],
-  ["tatsugiri stretchy form", "tatsugiri-stretchy"],
-  ["toxtricity amped form", "toxtricity-amped"],
-  ["toxtricity low key form", "toxtricity-low-key"],
-]);
-
-function toPokemonApiName(name: string): string {
-  const normalized = normalizePokemonName(name);
-  return (nameAliasMap.get(normalized) ?? normalized).replaceAll(" ", "-");
-}
-
-function parseOutPathFromArgs(argv: string[]): string | undefined {
-  const idx = argv.findIndex((a) => a === "--out");
-  if (idx < 0) return undefined;
-  const p = argv[idx + 1];
-  if (!p) return undefined;
-  return path.isAbsolute(p) ? p : path.join(APP_ROOT, p);
-}
-
-async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": USER_AGENT,
-      Accept: "text/html,text/plain;q=0.9,*/*;q=0.8",
-    },
-  });
-  if (!response.ok) throw new Error(`GET ${url} -> ${String(response.status)}`);
-  return response.text();
-}
-
-async function fetchJson<T>(url: string): Promise<T | null> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": USER_AGENT,
-      Accept: "application/json",
-    },
-  });
-  if (!response.ok) return null;
-  return (await response.json()) as T;
-}
-
-interface RobotsGroup {
-  userAgents: string[];
-  disallow: string[];
-  allow: string[];
-  crawlDelaySeconds?: number;
-}
-
-function parseRobotsTxt(content: string): RobotsGroup[] {
-  const lines = content
-    .split(/\r?\n/g)
-    .map((l) => l.replace(/#.*$/, "").trim())
-    .filter(Boolean);
-
-  const groups: RobotsGroup[] = [];
-  let current: RobotsGroup | null = null;
-
-  for (const line of lines) {
-    const match = /^([a-zA-Z-]+)\s*:\s*(.*)$/.exec(line);
-    if (!match) continue;
-    const key = match[1]!.toLowerCase();
-    const value = match[2]!.trim();
-
-    if (key === "user-agent") {
-      if (
-        !current ||
-        (current.userAgents.length > 0 &&
-          current.disallow.length + current.allow.length > 0)
-      ) {
-        current = { userAgents: [], disallow: [], allow: [] };
-        groups.push(current);
-      }
-      current.userAgents.push(value);
-      continue;
-    }
-
-    if (!current) continue;
-
-    if (key === "disallow") current.disallow.push(value);
-    else if (key === "allow") current.allow.push(value);
-    else if (key === "crawl-delay") {
-      const n = Number(value);
-      if (Number.isFinite(n) && n >= 0) current.crawlDelaySeconds = n;
-    }
-  }
-
-  return groups.filter((g) => g.userAgents.length > 0);
-}
-
-function pickRobotsGroup(
-  groups: RobotsGroup[],
-  userAgent: string,
-): RobotsGroup | null {
-  const ua = userAgent.toLowerCase();
-  const exact = groups.find((g) =>
-    g.userAgents.some((x) => x.toLowerCase() === ua),
-  );
-  if (exact) return exact;
-  const star = groups.find((g) => g.userAgents.some((x) => x === "*"));
-  return star ?? null;
-}
-
-function isPathAllowedByRobots(
-  group: RobotsGroup | null,
-  urlPath: string,
-): boolean {
-  if (!group) return true;
-
-  const allowRules = group.allow
-    .filter((p) => p !== "")
-    .sort((a, b) => b.length - a.length);
-  const disallowRules = group.disallow
-    .filter((p) => p !== "")
-    .sort((a, b) => b.length - a.length);
-
-  const bestAllow = allowRules.find((p) => urlPath.startsWith(p));
-  const bestDisallow = disallowRules.find((p) => urlPath.startsWith(p));
-
-  if (bestAllow && bestDisallow) return bestAllow.length >= bestDisallow.length;
-  if (bestDisallow) return false;
-  return true;
-}
-
-async function assertSerebiiAccessAllowed(): Promise<{
-  group: RobotsGroup | null;
-  serebiiGapMs: number;
-}> {
-  const robotsTxt = await fetchText(SEREBII_ROBOTS_URL);
-  const groups = parseRobotsTxt(robotsTxt);
-  const group = pickRobotsGroup(groups, USER_AGENT);
-
-  const mustCheck = [
-    SEREBII_LIST_URL,
-    SEREBII_EVENT_LIST_URL,
-    SEREBII_ROBOTS_URL,
-  ];
-  for (const url of mustCheck) {
-    const u = new URL(url);
-    if (!isPathAllowedByRobots(group, u.pathname)) {
-      throw new Error(
-        `robots.txt disallows collecting ${u.pathname} for our User-Agent. Aborting.`,
-      );
-    }
-  }
-
-  const crawlDelayMs =
-    group?.crawlDelaySeconds !== undefined
-      ? Math.ceil(group.crawlDelaySeconds * 1000)
-      : 0;
-  const serebiiGapMs = Math.max(
-    readNumberEnv("SEREBII_GAP_MS") ?? DEFAULT_REQUEST_GAP_MS,
-    crawlDelayMs,
-  );
-
-  return { group, serebiiGapMs };
 }
 
 function parseSerebiiList(html: string): ListRow[] {
@@ -446,7 +253,7 @@ async function collectSerebiiDex(
 
   for (let i = 0; i < toCollect.length; i++) {
     const row = toCollect[i]!;
-    const url = absolutizeSerebiiPath(row.detailPath);
+    const url = absolutizeSerebiiHrefFromSite(row.detailPath);
     const urlObj = new URL(url);
 
     writeTerminalProgressLine(
@@ -698,18 +505,23 @@ async function enrichWithEvolutionPeers(
 async function main(): Promise<void> {
   const argv = process.argv.slice(2);
 
-  const outPath = parseOutPathFromArgs(argv) ?? DEFAULT_OUT_PATH;
+  const outPath = parseOutPathCli(argv) ?? DEFAULT_OUT_PATH;
 
   const pokeApiGapMs =
     readNumberEnv("POKEAPI_GAP_MS") ?? DEFAULT_POKEAPI_GAP_MS;
 
-  const { group: robotsGroup, serebiiGapMs } =
-    await assertSerebiiAccessAllowed();
+  const { group: robotsGroup, serebiiGapMs } = await assertSerebiiRobotsAndGap({
+    mustCheckUrls: [
+      SEREBII_URLS.availablePokemon,
+      SEREBII_URLS.eventPokedex,
+      SEREBII_ROBOTS_URL,
+    ],
+  });
 
   const pokeApiCtx = createPokeApiContext(pokeApiGapMs);
 
   const standard = await collectSerebiiDex(
-    SEREBII_LIST_URL,
+    SEREBII_URLS.availablePokemon,
     "standard",
     robotsGroup,
     serebiiGapMs,
@@ -717,7 +529,7 @@ async function main(): Promise<void> {
     undefined,
   );
   const event = await collectSerebiiDex(
-    SEREBII_EVENT_LIST_URL,
+    SEREBII_URLS.eventPokedex,
     "event",
     robotsGroup,
     serebiiGapMs,
