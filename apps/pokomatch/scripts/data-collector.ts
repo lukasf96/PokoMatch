@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { writeTerminalProgressLine } from "./write-terminal-progress-line";
 
 const SEREBII_BASE = "https://www.serebii.net";
 const SEREBII_LIST_URL = `${SEREBII_BASE}/pokemonpokopia/availablepokemon.shtml`;
@@ -448,8 +449,9 @@ async function collectSerebiiDex(
     const url = absolutizeSerebiiPath(row.detailPath);
     const urlObj = new URL(url);
 
-    process.stderr.write(
-      `\r[${label} ${String(i + 1)}/${String(toCollect.length)}] ${row.name}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[${label} ${String(i + 1)}/${String(toCollect.length)}] ${row.name}…`,
     );
     await sleep(serebiiGapMs);
 
@@ -486,8 +488,9 @@ async function enrichWithLocalizations(
     const apiName = toPokemonApiName(pokemon.name);
     if (localizedByApiName.has(apiName)) continue;
 
-    process.stderr.write(
-      `\r[localizations ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[localizations ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
     );
 
     const speciesName =
@@ -635,8 +638,9 @@ async function enrichWithEvolutionPeers(
   const idBySpecies = new Map<string, string[]>();
   for (let i = 0; i < entries.length; i++) {
     const pokemon = entries[i]!;
-    process.stderr.write(
-      `\r[evolution species ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[evolution species ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
     );
     const apiName = toPokemonApiName(pokemon.name);
     const speciesName =
@@ -653,8 +657,9 @@ async function enrichWithEvolutionPeers(
   const speciesKeys = [...idBySpecies.keys()];
   for (let i = 0; i < speciesKeys.length; i++) {
     const speciesName = speciesKeys[i]!;
-    process.stderr.write(
-      `\r[evolution chains ${String(i + 1)}/${String(speciesKeys.length)}] ${speciesName}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[evolution chains ${String(i + 1)}/${String(speciesKeys.length)}] ${speciesName}…`,
     );
     const speciesData =
       await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);

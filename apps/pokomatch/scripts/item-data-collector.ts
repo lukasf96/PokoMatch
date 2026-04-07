@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { writeTerminalProgressLine } from "./write-terminal-progress-line";
 
 const SEREBII_BASE = "https://www.serebii.net";
 const SEREBII_ITEMS_URL = `${SEREBII_BASE}/pokemonpokopia/items.shtml`;
@@ -345,8 +346,9 @@ async function main(): Promise<void> {
     const row = listRows[i]!;
     const urlObj = new URL(row.detailUrl);
 
-    process.stderr.write(
-      `\r[items ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[items ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
     );
     await sleep(serebiiGapMs);
 
