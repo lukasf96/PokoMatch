@@ -1,4 +1,3 @@
-import { spawn } from "node:child_process";
 import {
   mkdir,
   readFile,
@@ -20,12 +19,6 @@ import {
 
 const tempDir = path.join(os.tmpdir(), "pokopia-pokeapi-sprites");
 const spritesRepoDir = path.join(tempDir, "sprites");
-/** Prefer HOME (modern renders), then official artwork, then legacy Gen-style sprites. */
-const sourceSpriteVariantDirs = [
-  path.join(spritesRepoDir, "sprites", "pokemon", "other", "home"),
-  path.join(spritesRepoDir, "sprites", "pokemon", "other", "official-artwork"),
-  path.join(spritesRepoDir, "sprites", "pokemon"),
-];
 const outputSpritesDir = path.join(APP_ROOT, "public", "sprites", "pokemon");
 const pokedexPath = path.join(APP_ROOT, "src", "assets", "pokedex.json");
 
@@ -33,6 +26,28 @@ const NORMALIZED_SPRITE_SIZE = 128;
 /** Strict upper bound: every output must be smaller than this (10 KiB). */
 const MAX_WEBP_FILE_BYTES = 10 * 1024;
 const SPRITE_OUTPUT_EXT = ".webp";
+const RAW_SPRITES_BASE_URL =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master";
+const SOURCE_SPRITE_VARIANTS = [
+  {
+    variantDir: path.join(spritesRepoDir, "sprites", "pokemon", "other", "home"),
+    remoteSubPath: "sprites/pokemon/other/home",
+  },
+  {
+    variantDir: path.join(
+      spritesRepoDir,
+      "sprites",
+      "pokemon",
+      "other",
+      "official-artwork",
+    ),
+    remoteSubPath: "sprites/pokemon/other/official-artwork",
+  },
+  {
+    variantDir: path.join(spritesRepoDir, "sprites", "pokemon"),
+    remoteSubPath: "sprites/pokemon",
+  },
+] as const;
 
 interface PokedexPokemonRef {
   id: string;
@@ -45,45 +60,34 @@ interface PokedexJson {
 }
 
 async function ensureSpritesRepo(): Promise<void> {
+  await rm(tempDir, { recursive: true, force: true });
   await mkdir(tempDir, { recursive: true });
-  const hasRepo = await stat(path.join(spritesRepoDir, ".git"))
-    .then(() => true)
-    .catch(() => false);
+  console.error(`Cleaned local sprite temp directory at ${tempDir}.`);
+}
 
-  if (hasRepo) {
-    console.error(
-      `Using existing PokeAPI/sprites checkout at ${spritesRepoDir} (remove that folder to clone again).`,
-    );
-    return;
+function isRetryableStatusCode(status: number): boolean {
+  return status === 408 || status === 429 || status >= 500;
+}
+
+async function fetchWithRetry(url: string, retries: number): Promise<Response> {
+  let lastError: unknown = null;
+
+  for (let attempt = 1; attempt <= retries + 1; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) return response;
+      if (response.status === 404) return response;
+      if (!isRetryableStatusCode(response.status) || attempt > retries) {
+        return response;
+      }
+      lastError = new Error(`HTTP ${String(response.status)} for ${url}`);
+    } catch (error: unknown) {
+      lastError = error;
+      if (attempt > retries) throw error;
+    }
   }
 
-  console.error(`Cloning PokeAPI/sprites (shallow) into ${spritesRepoDir}…`);
-  const cloneResponse = await fetch(
-    "https://github.com/PokeAPI/sprites.git/info/refs?service=git-upload-pack",
-  );
-  if (!cloneResponse.ok) {
-    throw new Error("Cannot reach GitHub to clone sprites repository.");
-  }
-
-  await new Promise<void>((resolve, reject) => {
-    const git = spawn(
-      "git",
-      [
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/PokeAPI/sprites.git",
-        spritesRepoDir,
-      ],
-      { stdio: "inherit" },
-    );
-    git.on("exit", (code) =>
-      code === 0
-        ? resolve()
-        : reject(new Error(`git clone failed with code ${String(code)}`)),
-    );
-  });
-  console.error("Sprites repository ready.");
+  throw new Error(`Failed to fetch ${url}: ${String(lastError)}`);
 }
 
 async function resolveSourceSpritePath(spriteRepoStem: string): Promise<{
@@ -91,15 +95,26 @@ async function resolveSourceSpritePath(spriteRepoStem: string): Promise<{
   variantDir: string;
 }> {
   const fileName = `${spriteRepoStem}.png`;
-  for (const dir of sourceSpriteVariantDirs) {
-    const fullPath = path.join(dir, fileName);
-    const exists = await stat(fullPath)
-      .then(() => true)
-      .catch(() => false);
-    if (exists) return { fullPath, variantDir: dir };
+
+  for (const variant of SOURCE_SPRITE_VARIANTS) {
+    const fullPath = path.join(variant.variantDir, fileName);
+    await mkdir(variant.variantDir, { recursive: true });
+    const spriteUrl = `${RAW_SPRITES_BASE_URL}/${variant.remoteSubPath}/${fileName}`;
+    const response = await fetchWithRetry(spriteUrl, 2);
+    if (response.ok) {
+      const arrayBuffer = await response.arrayBuffer();
+      await writeFile(fullPath, Buffer.from(arrayBuffer));
+      return { fullPath, variantDir: variant.variantDir };
+    }
+    if (response.status !== 404) {
+      throw new Error(
+        `Failed to fetch ${spriteUrl}: HTTP ${String(response.status)}.`,
+      );
+    }
   }
+
   throw new Error(
-    `No sprite file ${fileName} in: ${sourceSpriteVariantDirs.join(", ")}`,
+    `No sprite file ${fileName} in remote variants: ${SOURCE_SPRITE_VARIANTS.map((variant) => variant.remoteSubPath).join(", ")}`,
   );
 }
 
