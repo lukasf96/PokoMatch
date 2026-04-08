@@ -2,20 +2,20 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import {
+  APP_ROOT,
+  SEREBII_ROBOTS_URL,
+  SEREBII_URLS,
+  absolutizeSerebiiHrefFromPage,
+  assertSerebiiRobotsAndGap,
+  fetchText,
+  isPathAllowedByRobots,
+  parseOutPathCli,
+  sleep,
+  writeTerminalProgressLine,
+} from "./utility/script-utils";
 
-const SEREBII_BASE = "https://www.serebii.net";
-const SEREBII_ITEMS_URL = `${SEREBII_BASE}/pokemonpokopia/items.shtml`;
-const SEREBII_ROBOTS_URL = `${SEREBII_BASE}/robots.txt`;
-
-const DEFAULT_REQUEST_GAP_MS = 10;
-
-const APP_ROOT = process.cwd();
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "items.json");
-
-/**
- * We identify as a data collector and honor robots.txt for Serebii.
- */
-const USER_AGENT = "Pokopia Data Collector/1.0";
 
 export interface ItemEntry {
   id: string;
@@ -30,154 +30,11 @@ export interface ItemsJson {
   items: ItemEntry[];
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function readNumberEnv(name: string): number | undefined {
-  const raw = process.env[name];
-  if (!raw) return undefined;
-  const n = Number(raw);
-  if (!Number.isFinite(n) || n < 0) return undefined;
-  return Math.floor(n);
-}
-
-function absolutizeSerebiiPath(href: string, base: string): string {
-  if (href.startsWith("http")) return href;
-  if (href.startsWith("/")) return `${SEREBII_BASE}${href}`;
-  // relative to the base URL directory
-  const baseDir = base.replace(/\/[^/]*$/, "/");
-  return `${baseDir}${href}`;
-}
-
 function toItemId(name: string): string {
   return name
     .toLowerCase()
     .replaceAll(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-}
-
-async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": USER_AGENT,
-      Accept: "text/html,text/plain;q=0.9,*/*;q=0.8",
-    },
-  });
-  if (!response.ok) throw new Error(`GET ${url} -> ${String(response.status)}`);
-  return response.text();
-}
-
-interface RobotsGroup {
-  userAgents: string[];
-  disallow: string[];
-  allow: string[];
-  crawlDelaySeconds?: number;
-}
-
-function parseRobotsTxt(content: string): RobotsGroup[] {
-  const lines = content
-    .split(/\r?\n/g)
-    .map((l) => l.replace(/#.*$/, "").trim())
-    .filter(Boolean);
-
-  const groups: RobotsGroup[] = [];
-  let current: RobotsGroup | null = null;
-
-  for (const line of lines) {
-    const match = /^([a-zA-Z-]+)\s*:\s*(.*)$/.exec(line);
-    if (!match) continue;
-    const key = match[1]!.toLowerCase();
-    const value = match[2]!.trim();
-
-    if (key === "user-agent") {
-      if (
-        !current ||
-        (current.userAgents.length > 0 &&
-          current.disallow.length + current.allow.length > 0)
-      ) {
-        current = { userAgents: [], disallow: [], allow: [] };
-        groups.push(current);
-      }
-      current.userAgents.push(value);
-      continue;
-    }
-
-    if (!current) continue;
-
-    if (key === "disallow") current.disallow.push(value);
-    else if (key === "allow") current.allow.push(value);
-    else if (key === "crawl-delay") {
-      const n = Number(value);
-      if (Number.isFinite(n) && n >= 0) current.crawlDelaySeconds = n;
-    }
-  }
-
-  return groups.filter((g) => g.userAgents.length > 0);
-}
-
-function pickRobotsGroup(
-  groups: RobotsGroup[],
-  userAgent: string,
-): RobotsGroup | null {
-  const ua = userAgent.toLowerCase();
-  const exact = groups.find((g) =>
-    g.userAgents.some((x) => x.toLowerCase() === ua),
-  );
-  if (exact) return exact;
-  const star = groups.find((g) => g.userAgents.some((x) => x === "*"));
-  return star ?? null;
-}
-
-function isPathAllowedByRobots(
-  group: RobotsGroup | null,
-  urlPath: string,
-): boolean {
-  if (!group) return true;
-
-  const allowRules = group.allow
-    .filter((p) => p !== "")
-    .sort((a, b) => b.length - a.length);
-  const disallowRules = group.disallow
-    .filter((p) => p !== "")
-    .sort((a, b) => b.length - a.length);
-
-  const bestAllow = allowRules.find((p) => urlPath.startsWith(p));
-  const bestDisallow = disallowRules.find((p) => urlPath.startsWith(p));
-
-  if (bestAllow && bestDisallow) return bestAllow.length >= bestDisallow.length;
-  if (bestDisallow) return false;
-  return true;
-}
-
-async function assertSerebiiAccessAllowed(): Promise<{
-  group: RobotsGroup | null;
-  serebiiGapMs: number;
-}> {
-  const robotsTxt = await fetchText(SEREBII_ROBOTS_URL);
-  const groups = parseRobotsTxt(robotsTxt);
-  const group = pickRobotsGroup(groups, USER_AGENT);
-
-  const mustCheck = [SEREBII_ITEMS_URL, SEREBII_ROBOTS_URL];
-  for (const url of mustCheck) {
-    const u = new URL(url);
-    if (!isPathAllowedByRobots(group, u.pathname)) {
-      throw new Error(
-        `robots.txt disallows collecting ${u.pathname} for our User-Agent. Aborting.`,
-      );
-    }
-  }
-
-  const crawlDelayMs =
-    group?.crawlDelaySeconds !== undefined
-      ? Math.ceil(group.crawlDelaySeconds * 1000)
-      : 0;
-  const serebiiGapMs = Math.max(
-    readNumberEnv("SEREBII_GAP_MS") ?? DEFAULT_REQUEST_GAP_MS,
-    crawlDelayMs,
-  );
-
-  return { group, serebiiGapMs };
 }
 
 interface ItemListRow {
@@ -250,7 +107,10 @@ function parseItemsOverview(html: string): ItemListRow[] {
         // 4th cell: tag (fooinfo, may be &nbsp;)
         const tag = $(tds[3]).text().replace(/\xa0/g, "").replace(/\s+/g, " ").trim();
 
-        const detailUrl = absolutizeSerebiiPath(href, SEREBII_ITEMS_URL);
+        const detailUrl = absolutizeSerebiiHrefFromPage(
+          href,
+          SEREBII_URLS.itemsOverview,
+        );
 
         rows.push({ name, category: currentCategory, tag, detailUrl });
       });
@@ -318,24 +178,17 @@ function parseItemDetail(html: string): { favoriteCategories: string[] } {
   return { favoriteCategories };
 }
 
-function parseOutPathFromArgs(argv: string[]): string | undefined {
-  const idx = argv.findIndex((a) => a === "--out");
-  if (idx < 0) return undefined;
-  const p = argv[idx + 1];
-  if (!p) return undefined;
-  return path.isAbsolute(p) ? p : path.join(APP_ROOT, p);
-}
-
 async function main(): Promise<void> {
   const argv = process.argv.slice(2);
-  const outPath = parseOutPathFromArgs(argv) ?? DEFAULT_OUT_PATH;
+  const outPath = parseOutPathCli(argv) ?? DEFAULT_OUT_PATH;
 
-  const { group: robotsGroup, serebiiGapMs } =
-    await assertSerebiiAccessAllowed();
+  const { group: robotsGroup, serebiiGapMs } = await assertSerebiiRobotsAndGap({
+    mustCheckUrls: [SEREBII_URLS.itemsOverview, SEREBII_ROBOTS_URL],
+  });
 
-  console.error(`Reading items overview: ${SEREBII_ITEMS_URL}`);
+  console.error(`Reading items overview: ${SEREBII_URLS.itemsOverview}`);
   await sleep(serebiiGapMs);
-  const overviewHtml = await fetchText(SEREBII_ITEMS_URL);
+  const overviewHtml = await fetchText(SEREBII_URLS.itemsOverview);
   const listRows = parseItemsOverview(overviewHtml);
   console.error(`Found ${String(listRows.length)} items in overview.`);
 
@@ -345,8 +198,9 @@ async function main(): Promise<void> {
     const row = listRows[i]!;
     const urlObj = new URL(row.detailUrl);
 
-    process.stderr.write(
-      `\r[items ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
+    writeTerminalProgressLine(
+      process.stderr,
+      `[items ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
     );
     await sleep(serebiiGapMs);
 
