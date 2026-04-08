@@ -13,7 +13,7 @@ import {
   parseOutPathCli,
   sleep,
   writeTerminalProgressLine,
-} from "./script-utils";
+} from "./utility/script-utils";
 
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "items.json");
 

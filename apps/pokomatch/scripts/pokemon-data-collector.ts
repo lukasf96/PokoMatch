@@ -18,9 +18,9 @@ import {
   resolvePokeApiPokemonByApiName,
   sleep,
   toPokemonApiName,
-  type RobotsGroup,
   writeTerminalProgressLine,
-} from "./script-utils";
+  type RobotsGroup,
+} from "./utility/script-utils";
 
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "pokedex.json");
 

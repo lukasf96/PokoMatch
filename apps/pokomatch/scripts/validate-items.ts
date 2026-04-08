@@ -5,7 +5,7 @@
  * Exits non-zero and prints offenders if any unknown strings are found.
  */
 import { readFile } from "node:fs/promises";
-import { resolveAppAssetPath } from "./script-utils";
+import { resolveAppAssetPath } from "./utility/script-utils";
 
 const POKEDEX_PATH = resolveAppAssetPath("pokedex.json");
 const ITEMS_PATH = resolveAppAssetPath("items.json");
@@ -62,7 +62,9 @@ async function main(): Promise<void> {
     `\nERROR: ${String(offenders.length)} item(s) have unknown favoriteCategories:\n`,
   );
   for (const { item, unknown } of offenders) {
-    console.error(`  ${item}: ${unknown.map((s) => JSON.stringify(s)).join(", ")}`);
+    console.error(
+      `  ${item}: ${unknown.map((s) => JSON.stringify(s)).join(", ")}`,
+    );
   }
   process.exit(1);
 }

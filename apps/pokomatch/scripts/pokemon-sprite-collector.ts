@@ -1,5 +1,12 @@
 import { spawn } from "node:child_process";
-import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
+import {
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  stat,
+  writeFile,
+} from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
@@ -9,7 +16,7 @@ import {
   fetchPokemonSpriteRepoStemByApiName,
   toPokemonApiName,
   writeTerminalProgressLine,
-} from "./script-utils";
+} from "./utility/script-utils";
 
 const tempDir = path.join(os.tmpdir(), "pokopia-pokeapi-sprites");
 const spritesRepoDir = path.join(tempDir, "sprites");
@@ -61,7 +68,13 @@ async function ensureSpritesRepo(): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     const git = spawn(
       "git",
-      ["clone", "--depth", "1", "https://github.com/PokeAPI/sprites.git", spritesRepoDir],
+      [
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/PokeAPI/sprites.git",
+        spritesRepoDir,
+      ],
       { stdio: "inherit" },
     );
     git.on("exit", (code) =>
@@ -160,7 +173,9 @@ async function assertAllOutputsUnderBudget(): Promise<void> {
 async function main(): Promise<void> {
   console.error(`Reading Pokédex: ${pokedexPath}`);
   await ensureSpritesRepo();
-  const pokedexJson = JSON.parse(await readFile(pokedexPath, "utf8")) as PokedexJson;
+  const pokedexJson = JSON.parse(
+    await readFile(pokedexPath, "utf8"),
+  ) as PokedexJson;
   const allPokemon = [...pokedexJson.standard, ...pokedexJson.event];
   console.error(`Entries to process: ${String(allPokemon.length)}.`);
 
@@ -177,7 +192,9 @@ async function main(): Promise<void> {
     if (!cachedSpriteStemByApiName.has(pokemonApiName)) {
       const stem = await fetchPokemonSpriteRepoStemByApiName(pokemonApiName);
       if (stem === null) {
-        throw new Error(`No PokéAPI sprite stem found for "${pokemon.name}" (${pokemonApiName}).`);
+        throw new Error(
+          `No PokéAPI sprite stem found for "${pokemon.name}" (${pokemonApiName}).`,
+        );
       }
       cachedSpriteStemByApiName.set(pokemonApiName, stem);
     }
