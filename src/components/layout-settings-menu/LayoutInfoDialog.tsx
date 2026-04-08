@@ -15,7 +15,7 @@ interface LayoutInfoDialogProps {
   onClose: () => void;
 }
 
-const REPOSITORY_URL = "https://github.com/lukasf96/pokopia";
+const REPOSITORY_URL = "https://github.com/lukasf96/pokomatch";
 const POKE_API_URL = "https://pokeapi.co/";
 const POKE_API_SPRITES_URL = "https://github.com/PokeAPI/sprites";
 const SEREBII_URL = "https://www.serebii.net/";
