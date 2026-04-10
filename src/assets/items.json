@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T20:54:51.262Z",
+  "generatedAt": "2026-04-10T09:17:24.416Z",
   "items": [
     {
       "id": "honey",
@@ -705,7 +705,7 @@
       "id": "wall-storage-box",
       "name": "Wall storage box",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": ["Blocky stuff", "Containers", "Wooden stuff"]
     },
     {
@@ -929,7 +929,7 @@
       "id": "plain-stand",
       "name": "Plain stand",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
         "Containers",
@@ -941,7 +941,7 @@
       "id": "iron-stand",
       "name": "Iron stand",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
         "Containers",
@@ -954,7 +954,7 @@
       "id": "food-counter",
       "name": "Food counter",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": ["Wooden stuff"]
     },
     {
@@ -2011,8 +2011,13 @@
       "id": "fancy-pen",
       "name": "Fancy pen",
       "category": "Misc.",
-      "tag": "Toy",
-      "favoriteCategories": ["Luxury", "Metal stuff", "Slender objects"]
+      "tag": "Decoration",
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Luxury",
+        "Metal stuff",
+        "Slender objects"
+      ]
     },
     {
       "id": "letter",
@@ -2156,6 +2161,7 @@
       "favoriteCategories": [
         "Blocky stuff",
         "Colorful stuff",
+        "Complicated stuff",
         "Containers",
         "Watching stuff",
         "Wooden stuff"
@@ -2169,6 +2175,7 @@
       "favoriteCategories": [
         "Blocky stuff",
         "Colorful stuff",
+        "Complicated stuff",
         "Containers",
         "Watching stuff",
         "Wooden stuff"
@@ -2280,7 +2287,12 @@
       "name": "Printer",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Electronics", "Glass stuff", "Strange stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Electronics",
+        "Glass stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "washing-machine",
@@ -2556,7 +2568,7 @@
       "id": "humidifier",
       "name": "Humidifier",
       "category": "Misc.",
-      "tag": "Toy",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Electronics",
         "Glass stuff",
@@ -2809,6 +2821,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Gatherings",
         "Group Activities",
         "Letters and words",
@@ -2934,6 +2947,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Watching stuff"
       ]
@@ -3199,7 +3213,7 @@
       "id": "flowery-table-setting",
       "name": "Flowery table setting",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Colorful stuff",
         "Cute stuff",
@@ -3213,7 +3227,7 @@
       "id": "lunch-box",
       "name": "Lunch box",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Colorful stuff",
         "Cute stuff",
@@ -3225,7 +3239,7 @@
       "id": "hoppip-water-bottle",
       "name": "Hoppip water bottle",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Colorful stuff",
         "Containers",
@@ -3237,7 +3251,7 @@
       "id": "juice-trio",
       "name": "Juice trio",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Colorful stuff",
         "Containers",
@@ -3250,7 +3264,7 @@
       "id": "flower-garland",
       "name": "Flower garland",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Colorful stuff",
         "Gatherings",
@@ -3294,7 +3308,7 @@
       "id": "torch",
       "name": "Torch",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Relaxation",
       "favoriteCategories": ["Lots of fire"]
     },
     {
@@ -3659,6 +3673,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Letters and words",
         "Wooden stuff"
       ]
@@ -3676,6 +3691,7 @@
       "category": "Outdoor",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Complicated stuff",
         "Letters and words",
         "Metal stuff",
         "Shiny stuff",
@@ -3689,6 +3705,7 @@
       "category": "Outdoor",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Complicated stuff",
         "Letters and words",
         "Metal stuff",
         "Shiny stuff",
@@ -4105,6 +4122,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Electronics",
         "Metal stuff",
         "Shiny stuff",
@@ -4131,6 +4149,7 @@
       "category": "Utilities",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Complicated stuff",
         "Electronics",
         "Glass stuff",
         "Metal stuff",
@@ -10563,6 +10582,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
+        "Complicated stuff",
         "Metal stuff",
         "Symbols",
         "Watching stuff"
