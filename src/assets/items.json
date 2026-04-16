@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T09:17:24.416Z",
+  "generatedAt": "2026-04-16T10:47:21.000Z",
   "items": [
     {
       "id": "honey",
@@ -368,6 +368,13 @@
     {
       "id": "cotton-spores-outdoor",
       "name": "Cotton spores (outdoor)",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "red-crystal-fragment",
+      "name": "Red crystal fragment",
       "category": "Materials",
       "tag": "",
       "favoriteCategories": []
@@ -1712,6 +1719,20 @@
       ]
     },
     {
+      "id": "camping-chair",
+      "name": "Camping chair",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": ["Fabric", "Metal stuff", "Soft stuff"]
+    },
+    {
+      "id": "sleeping-bag",
+      "name": "Sleeping bag",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": ["Fabric", "Soft stuff"]
+    },
+    {
       "id": "wooden-plate",
       "name": "Wooden plate",
       "category": "Misc.",
@@ -1774,7 +1795,8 @@
         "Fabric",
         "Gatherings",
         "Group Activities",
-        "Looks like food"
+        "Looks like food",
+        "Lots of water"
       ]
     },
     {
@@ -3298,6 +3320,51 @@
       ]
     },
     {
+      "id": "digital-camera",
+      "name": "Digital camera",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Metal stuff",
+        "Strange stuff"
+      ]
+    },
+    {
+      "id": "jewel-wall-decoration",
+      "name": "Jewel wall decoration",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": ["Colorful stuff", "Luxury", "Stone stuff"]
+    },
+    {
+      "id": "adventure-kit",
+      "name": "Adventure kit",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": ["Fabric", "Soft stuff"]
+    },
+    {
+      "id": "map-and-compass",
+      "name": "Map and compass",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": ["Letters and words"]
+    },
+    {
+      "id": "treasure",
+      "name": "Treasure",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Group Activities",
+        "Luxury",
+        "Metal stuff",
+        "Stone stuff"
+      ]
+    },
+    {
       "id": "campfire",
       "name": "Campfire",
       "category": "Outdoor",
@@ -4661,6 +4728,20 @@
       "category": "Utilities",
       "tag": "",
       "favoriteCategories": ["Slender objects"]
+    },
+    {
+      "id": "camping-cooking-pot",
+      "name": "Camping cooking pot",
+      "category": "Utilities",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "oil-lantern",
+      "name": "Oil lantern",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": ["Lots of fire", "Metal stuff"]
     },
     {
       "id": "leppa-seeds",
@@ -6233,6 +6314,13 @@
     {
       "id": "dandy-flowers",
       "name": "Dandy flowers",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "red-crystal-cluster",
+      "name": "Red crystal cluster",
       "category": "Nature",
       "tag": "",
       "favoriteCategories": []
@@ -8823,6 +8911,13 @@
     {
       "id": "mysterious-mural-kit",
       "name": "Mysterious mural kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "tent-kit",
+      "name": "Tent kit",
       "category": "Kits",
       "tag": "",
       "favoriteCategories": []
