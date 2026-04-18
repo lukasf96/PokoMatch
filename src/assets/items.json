@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-16T10:47:21.000Z",
+  "generatedAt": "2026-04-18T21:24:12.896Z",
   "items": [
     {
       "id": "honey",
@@ -2038,6 +2038,7 @@
         "Complicated stuff",
         "Luxury",
         "Metal stuff",
+        "Sharp stuff",
         "Slender objects"
       ]
     },
@@ -3335,21 +3336,26 @@
       "name": "Jewel wall decoration",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Colorful stuff", "Luxury", "Stone stuff"]
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Luxury",
+        "Stone stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "adventure-kit",
       "name": "Adventure kit",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": ["Containers", "Fabric", "Soft stuff"]
     },
     {
       "id": "map-and-compass",
       "name": "Map and compass",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Letters and words"]
+      "favoriteCategories": ["Group Activities", "Letters and words"]
     },
     {
       "id": "treasure",
@@ -4741,7 +4747,7 @@
       "name": "Oil lantern",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Lots of fire", "Metal stuff"]
+      "favoriteCategories": ["Containers", "Lots of fire", "Metal stuff"]
     },
     {
       "id": "leppa-seeds",
