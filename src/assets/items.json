@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-18T21:24:12.896Z",
+  "generatedAt": "2026-05-07T07:33:09.082Z",
   "items": [
     {
       "id": "honey",
@@ -377,7 +377,7 @@
       "name": "Red crystal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Glass stuff", "Shiny stuff"]
     },
     {
       "id": "leppa-berry",
@@ -3034,7 +3034,12 @@
       "name": "Rowlet clock",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Strange stuff", "Watching stuff"]
+      "favoriteCategories": [
+        "Complicated stuff",
+        "Cute stuff",
+        "Strange stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "hanging-banner",
@@ -3327,7 +3332,9 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Complicated stuff",
+        "Glass stuff",
         "Metal stuff",
+        "Shiny stuff",
         "Strange stuff"
       ]
     },
@@ -4034,6 +4041,7 @@
         "Blocky stuff",
         "Containers",
         "Letters and words",
+        "Sharp stuff",
         "Watching stuff",
         "Wooden stuff"
       ]
@@ -4528,7 +4536,12 @@
       "name": "Wall light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Blocky stuff", "Electronics", "Glass stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Electronics",
+        "Glass stuff",
+        "Sharp stuff"
+      ]
     },
     {
       "id": "shell-lamp",
@@ -4747,7 +4760,12 @@
       "name": "Oil lantern",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Lots of fire", "Metal stuff"]
+      "favoriteCategories": [
+        "Containers",
+        "Glass stuff",
+        "Lots of fire",
+        "Metal stuff"
+      ]
     },
     {
       "id": "leppa-seeds",
@@ -8917,6 +8935,13 @@
     {
       "id": "mysterious-mural-kit",
       "name": "Mysterious mural kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "relocation-kit-reconstruct",
+      "name": "Relocation kit (reconstruct)",
       "category": "Kits",
       "tag": "",
       "favoriteCategories": []
