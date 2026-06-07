@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-07T07:33:09.082Z",
+  "generatedAt": "2026-06-07T12:17:48.447Z",
   "items": [
     {
       "id": "honey",
@@ -13,7 +13,7 @@
       "name": "Sturdy stick",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "stone",
@@ -34,7 +34,7 @@
       "name": "Small log",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "vine-rope",
@@ -69,7 +69,7 @@
       "name": "Seashell",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "nonburnable-garbage",
@@ -146,14 +146,14 @@
       "name": "Lumber",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Wooden stuff"]
     },
     {
       "id": "brick",
       "name": "Brick",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "copper-ingot",
@@ -181,14 +181,14 @@
       "name": "Pokémetal",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Colorful stuff", "Metal stuff"]
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "rare-pok-metal",
       "name": "Rare Pokémetal",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Metal stuff"]
     },
     {
       "id": "glass",
@@ -202,21 +202,21 @@
       "name": "Concrete",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "paper",
       "name": "Paper",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Blocky stuff"]
     },
     {
       "id": "tinkagear",
       "name": "Tinkagear",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Hard stuff"]
     },
     {
       "id": "strange-strings",
@@ -768,8 +768,7 @@
         "Containers",
         "Cute stuff",
         "Metal stuff",
-        "Round stuff",
-        "Shiny stuff"
+        "Round stuff"
       ]
     },
     {
@@ -837,6 +836,7 @@
         "Containers",
         "Gatherings",
         "Glass stuff",
+        "Group Activities",
         "Letters and words",
         "Metal stuff"
       ]
@@ -846,7 +846,12 @@
       "name": "Polygonal Shelf",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Cute stuff", "Strange stuff"]
+      "favoriteCategories": [
+        "Containers",
+        "Cute stuff",
+        "Hard stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "straw-table",
@@ -953,8 +958,7 @@
         "Blocky stuff",
         "Containers",
         "Hard stuff",
-        "Metal stuff",
-        "Shiny stuff"
+        "Metal stuff"
       ]
     },
     {
@@ -1088,7 +1092,7 @@
       "name": "Straw stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Soft stuff"]
+      "favoriteCategories": ["Round stuff", "Soft stuff"]
     },
     {
       "id": "berry-chair",
@@ -1099,6 +1103,7 @@
         "Cute stuff",
         "Looks like food",
         "Lots of nature",
+        "Round stuff",
         "Soft stuff"
       ]
     },
@@ -1114,21 +1119,32 @@
       "name": "Log chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Lots of nature", "Wooden stuff"]
+      "favoriteCategories": ["Lots of nature", "Round stuff", "Wooden stuff"]
     },
     {
       "id": "plain-stool",
       "name": "Plain stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Round stuff",
+        "Soft stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "resort-stool",
       "name": "Resort stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Ocean vibes",
+        "Round stuff",
+        "Soft stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "stylish-stool",
@@ -1139,7 +1155,9 @@
         "Colorful stuff",
         "Cute stuff",
         "Fabric",
-        "Soft stuff"
+        "Round stuff",
+        "Soft stuff",
+        "Wooden stuff"
       ]
     },
     {
@@ -1147,7 +1165,7 @@
       "name": "Industrial chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Metal stuff"]
+      "favoriteCategories": ["Hard stuff", "Metal stuff"]
     },
     {
       "id": "waterproof-seat",
@@ -1161,21 +1179,21 @@
       "name": "Wooden stool",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Blocky stuff"]
+      "favoriteCategories": ["Blocky stuff", "Wooden stuff"]
     },
     {
       "id": "iron-chair",
       "name": "Iron chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Blocky stuff", "Metal stuff"]
+      "favoriteCategories": ["Blocky stuff", "Hard stuff", "Metal stuff"]
     },
     {
       "id": "public-seat",
       "name": "Public seat",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Blocky stuff", "Metal stuff"]
+      "favoriteCategories": ["Blocky stuff", "Hard stuff", "Metal stuff"]
     },
     {
       "id": "soft-seat",
@@ -1203,14 +1221,19 @@
       "name": "Resort chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Ocean vibes", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Ocean vibes",
+        "Soft stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "chic-chair",
       "name": "Chic chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff"]
+      "favoriteCategories": ["Fabric", "Luxury", "Soft stuff", "Wooden stuff"]
     },
     {
       "id": "fancy-chair",
@@ -1221,7 +1244,7 @@
     },
     {
       "id": "antique-chair",
-      "name": "Antique Chair",
+      "name": "Antique chair",
       "category": "Furniture",
       "tag": "Relaxation",
       "favoriteCategories": ["Colorful stuff", "Fabric", "Luxury", "Soft stuff"]
@@ -1231,14 +1254,20 @@
       "name": "Spectator chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Metal stuff"]
+      "favoriteCategories": ["Hard stuff", "Metal stuff"]
     },
     {
       "id": "luxury-chair",
       "name": "Luxury chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Luxury", "Metal stuff", "Spooky stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Hard stuff",
+        "Luxury",
+        "Metal stuff",
+        "Spooky stuff"
+      ]
     },
     {
       "id": "garden-chair",
@@ -1295,6 +1324,7 @@
         "Electronics",
         "Fabric",
         "Luxury",
+        "Metal stuff",
         "Shiny stuff",
         "Soft stuff",
         "Spinning stuff"
@@ -1319,7 +1349,12 @@
       "name": "Plain sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Group Activities", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Group Activities",
+        "Soft stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "resort-sofa",
@@ -1330,7 +1365,8 @@
         "Fabric",
         "Group Activities",
         "Ocean vibes",
-        "Soft stuff"
+        "Soft stuff",
+        "Wooden stuff"
       ]
     },
     {
@@ -1342,7 +1378,8 @@
         "Fabric",
         "Group Activities",
         "Luxury",
-        "Soft stuff"
+        "Soft stuff",
+        "Wooden stuff"
       ]
     },
     {
@@ -1355,7 +1392,8 @@
         "Fabric",
         "Group Activities",
         "Luxury",
-        "Soft stuff"
+        "Soft stuff",
+        "Wooden stuff"
       ]
     },
     {
@@ -1363,7 +1401,7 @@
       "name": "Iron bench",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Group Activities", "Metal stuff"]
+      "favoriteCategories": ["Group Activities", "Hard stuff", "Metal stuff"]
     },
     {
       "id": "industrial-bench",
@@ -1425,7 +1463,7 @@
       "name": "Poké Ball Sofa",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Group Activities", "Metal stuff"]
+      "favoriteCategories": ["Group Activities", "Metal stuff", "Round stuff"]
     },
     {
       "id": "pikachu-sofa",
@@ -1459,7 +1497,12 @@
       "name": "Mini plain bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Blocky stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Fabric",
+        "Soft stuff",
+        "Wooden stuff"
+      ]
     },
     {
       "id": "resort-bed",
@@ -1920,12 +1963,7 @@
       "name": "Leafy plant",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Containers",
-        "Pretty flowers",
-        "Watching stuff",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Containers", "Pretty flowers", "Watching stuff"]
     },
     {
       "id": "pitcher-plant-pot",
@@ -1936,8 +1974,7 @@
         "Containers",
         "Spooky stuff",
         "Stone stuff",
-        "Watching stuff",
-        "Wobbly stuff"
+        "Watching stuff"
       ]
     },
     {
@@ -1949,8 +1986,7 @@
         "Containers",
         "Pretty flowers",
         "Stone stuff",
-        "Watching stuff",
-        "Wobbly stuff"
+        "Watching stuff"
       ]
     },
     {
@@ -2705,7 +2741,7 @@
       "name": "Big drum",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Round stuff", "Wobbly stuff"]
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "cool-electric-guitar",
@@ -2847,8 +2883,7 @@
         "Complicated stuff",
         "Gatherings",
         "Group Activities",
-        "Letters and words",
-        "Shiny stuff"
+        "Letters and words"
       ]
     },
     {
@@ -3022,11 +3057,9 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Cute stuff",
-        "Fabric",
         "Looks like food",
         "Lots of nature",
-        "Round stuff",
-        "Wobbly stuff"
+        "Round stuff"
       ]
     },
     {
@@ -3095,8 +3128,7 @@
         "Electronics",
         "Nice breezes",
         "Spinning stuff",
-        "Strange stuff",
-        "Wobbly stuff"
+        "Strange stuff"
       ]
     },
     {
@@ -3462,12 +3494,7 @@
       "name": "Tire toy",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": [
-        "Group Activities",
-        "Play spaces",
-        "Round stuff",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Group Activities", "Play spaces", "Round stuff"]
     },
     {
       "id": "concrete-pipe",
@@ -3704,8 +3731,7 @@
       "favoriteCategories": [
         "Blocky stuff",
         "Group Activities",
-        "Lots of water",
-        "Wobbly stuff"
+        "Lots of water"
       ]
     },
     {
@@ -3923,7 +3949,7 @@
       "name": "Tires",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": ["Gatherings", "Round stuff", "Wobbly stuff"]
+      "favoriteCategories": ["Gatherings", "Round stuff"]
     },
     {
       "id": "metal-drum",
@@ -4584,12 +4610,7 @@
       "name": "Resort light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Electronics",
-        "Metal stuff",
-        "Ocean vibes",
-        "Wobbly stuff"
-      ]
+      "favoriteCategories": ["Electronics", "Ocean vibes"]
     },
     {
       "id": "string-lights",
@@ -6324,6 +6345,13 @@
     {
       "id": "dry-blue-green-shoots",
       "name": "Dry blue-green shoots",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "broken-timber",
+      "name": "Broken timber",
       "category": "Nature",
       "tag": "",
       "favoriteCategories": []
@@ -8597,6 +8625,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "damaged-stone-tiling",
+      "name": "Damaged stone tiling",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "leaf-den-kit",
       "name": "Leaf den kit",
       "category": "Kits",
@@ -10190,7 +10225,7 @@
       "name": "Silk Scarf",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": ["Fabric"]
+      "favoriteCategories": ["Wobbly stuff"]
     },
     {
       "id": "sharp-beak",
@@ -10372,7 +10407,7 @@
       "name": "Lagging Tail",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": ["Hard stuff"]
+      "favoriteCategories": ["Wobbly stuff"]
     },
     {
       "id": "flame-orb",

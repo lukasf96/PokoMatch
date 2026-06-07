@@ -133,8 +133,8 @@ function parseItemsOverview(html: string): ItemListRow[] {
  * Structure (inside table.tab):
  *   Row: fooevo headers "Category | Tag | Paintable | Requirements"
  *   Row: cen data      [category] [tag] [paintable] [requirements]
- *   Row: fooevo headers "Trade Value (colspan=2) | Favorite Categories (colspan=2)"
- *   Row: cen data      [trade value] [favorite categories — links to /pokemonpokopia/favorites/…]
+ *   Row: fooevo headers "Trade Value | 3D Print Cost | Favorite Categories (colspan=2)"
+ *   Row: cen data      [trade value] [3D print cost] [favorite categories — links to /pokemonpokopia/favorites/…]
  */
 function parseItemDetail(html: string): { favoriteCategories: string[] } {
   const $ = cheerio.load(html);
@@ -158,11 +158,9 @@ function parseItemDetail(html: string): { favoriteCategories: string[] } {
     const dataRow = $(tr).next("tr");
     const dataCells = dataRow.children("td");
 
-    // Favorite categories cell is at the same relative position among data cells.
-    // Header has [Trade Value colspan=2] [Favorite Categories colspan=2].
-    // Data has [trade-value td colspan=2] [favorites td colspan=2].
-    // So favorites data cell is index 1.
-    const favCell = $(dataCells[1]);
+    // Favorite categories cell aligns with the header column index (currently 2
+    // after Serebii added a "3D Print Cost" column between trade value and favorites).
+    const favCell = $(dataCells[favHeaderIdx]);
 
     favCell.find("a[href]").each((__, a) => {
       const href = $(a).attr("href") ?? "";
