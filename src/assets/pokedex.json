@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-07T12:03:18.272Z",
+  "generatedAt": "2026-06-27T18:29:15.642Z",
   "standard": [
     {
       "id": "001",
@@ -2724,7 +2724,7 @@
       "idealHabitat": "Humid",
       "favorites": [
         "Garbage",
-        "Construction",
+        "Containers",
         "Complicated stuff",
         "Shiny stuff",
         "Gatherings"
@@ -6318,6 +6318,26 @@
       "localizedNames": {
         "de": "Zobiris",
         "fr": "Ténéfix"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "e005",
+      "dexNumber": "005",
+      "name": "Jirachi",
+      "specialties": ["Litter"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Metal stuff",
+        "Strange stuff",
+        "Shiny stuff",
+        "Watching stuff",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Jirachi",
+        "fr": "Jirachi"
       },
       "evolutionLinePeerIds": []
     }

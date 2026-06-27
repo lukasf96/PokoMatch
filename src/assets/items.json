@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-07T12:17:48.447Z",
+  "generatedAt": "2026-06-27T18:31:59.393Z",
   "items": [
     {
       "id": "honey",
@@ -20,7 +20,7 @@
       "name": "Stone",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Hard stuff", "Stone stuff"]
+      "favoriteCategories": ["Stone stuff"]
     },
     {
       "id": "leaf",
@@ -90,7 +90,7 @@
       "name": "Fluff",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Fabric", "Round stuff", "Soft stuff"]
+      "favoriteCategories": ["Fabric", "Soft stuff"]
     },
     {
       "id": "wastepaper",
@@ -139,7 +139,7 @@
       "name": "Crystal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Glass stuff", "Shiny stuff"]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "lumber",
@@ -377,7 +377,7 @@
       "name": "Red crystal fragment",
       "category": "Materials",
       "tag": "",
-      "favoriteCategories": ["Glass stuff", "Shiny stuff"]
+      "favoriteCategories": ["Shiny stuff"]
     },
     {
       "id": "leppa-berry",
@@ -1556,7 +1556,12 @@
       "name": "Poké Ball bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Fabric", "Soft stuff"]
+      "favoriteCategories": [
+        "Fabric",
+        "Metal stuff",
+        "Round stuff",
+        "Soft stuff"
+      ]
     },
     {
       "id": "berry-bed",
@@ -1672,7 +1677,12 @@
       "name": "Naptime bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Soft stuff"]
+      "favoriteCategories": [
+        "Cute stuff",
+        "Fabric",
+        "Group Activities",
+        "Soft stuff"
+      ]
     },
     {
       "id": "wall-mirror",
@@ -1774,6 +1784,54 @@
       "category": "Furniture",
       "tag": "Relaxation",
       "favoriteCategories": ["Fabric", "Soft stuff"]
+    },
+    {
+      "id": "star-closet",
+      "name": "Star closet",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Cute stuff",
+        "Hard stuff",
+        "Shiny stuff",
+        "Wooden stuff"
+      ]
+    },
+    {
+      "id": "cloud-table",
+      "name": "Cloud table",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "starry-sky-bed",
+      "name": "Starry-sky bed",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Cute stuff",
+        "Fabric",
+        "Group Activities",
+        "Shiny stuff",
+        "Soft stuff"
+      ]
+    },
+    {
+      "id": "star-shaped-dresser",
+      "name": "Star-shaped dresser",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": [
+        "Containers",
+        "Cute stuff",
+        "Glass stuff",
+        "Shiny stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "wooden-plate",
@@ -3410,6 +3468,45 @@
       ]
     },
     {
+      "id": "telescope",
+      "name": "Telescope",
+      "category": "Misc.",
+      "tag": "",
+      "favoriteCategories": [
+        "Glass stuff",
+        "Metal stuff",
+        "Shiny stuff",
+        "Slender objects",
+        "Strange stuff",
+        "Watching stuff"
+      ]
+    },
+    {
+      "id": "moon-clock",
+      "name": "Moon clock",
+      "category": "Misc.",
+      "tag": "",
+      "favoriteCategories": [
+        "Cute stuff",
+        "Round stuff",
+        "Watching stuff",
+        "Wobbly stuff"
+      ]
+    },
+    {
+      "id": "star-wall-decoration",
+      "name": "Star wall decoration",
+      "category": "Misc.",
+      "tag": "",
+      "favoriteCategories": [
+        "Cute stuff",
+        "Glass stuff",
+        "Hard stuff",
+        "Shiny stuff",
+        "Watching stuff"
+      ]
+    },
+    {
       "id": "campfire",
       "name": "Campfire",
       "category": "Outdoor",
@@ -3486,6 +3583,7 @@
         "Blocky stuff",
         "Group Activities",
         "Lots of dirt",
+        "Ocean vibes",
         "Play spaces"
       ]
     },
@@ -4036,6 +4134,13 @@
       "category": "Outdoor",
       "tag": "",
       "favoriteCategories": []
+    },
+    {
+      "id": "cloud-cannon",
+      "name": "Cloud cannon",
+      "category": "Outdoor",
+      "tag": "",
+      "favoriteCategories": ["Metal stuff", "Noisy stuff", "Strange stuff"]
     },
     {
       "id": "ditto-flag",
@@ -4786,6 +4891,19 @@
         "Glass stuff",
         "Lots of fire",
         "Metal stuff"
+      ]
+    },
+    {
+      "id": "jirachi-lamp",
+      "name": "Jirachi lamp",
+      "category": "Utilities",
+      "tag": "",
+      "favoriteCategories": [
+        "Cute stuff",
+        "Electronics",
+        "Glass stuff",
+        "Hard stuff",
+        "Shiny stuff"
       ]
     },
     {
@@ -8632,6 +8750,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "dynamic-ditto-print",
+      "name": "Dynamic Ditto print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "leaf-den-kit",
       "name": "Leaf den kit",
       "category": "Kits",
@@ -11177,6 +11302,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "dynamic-ditto-print-wallpaper",
+      "name": "Dynamic Ditto print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "picnic-blanket",
       "name": "Picnic blanket",
       "category": "Other",
@@ -11188,6 +11320,27 @@
       "name": "Jump rope trophy",
       "category": "Other",
       "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wish-note",
+      "name": "Wish note",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "shining-wish-note",
+      "name": "Shining wish note",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "star-mat",
+      "name": "Star mat",
+      "category": "Other",
+      "tag": "",
       "favoriteCategories": []
     }
   ]
