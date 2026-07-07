@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-27T18:31:59.393Z",
+  "generatedAt": "2026-07-07T10:57:12.254Z",
   "items": [
     {
       "id": "honey",
@@ -1789,7 +1789,7 @@
       "id": "star-closet",
       "name": "Star closet",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Blocky stuff",
         "Containers",
@@ -1810,7 +1810,7 @@
       "id": "starry-sky-bed",
       "name": "Starry-sky bed",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Relaxation",
       "favoriteCategories": [
         "Blocky stuff",
         "Cute stuff",
@@ -1822,9 +1822,9 @@
     },
     {
       "id": "star-shaped-dresser",
-      "name": "Star-shaped dresser",
+      "name": "Star-shaped Dresser",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Containers",
         "Cute stuff",
@@ -3471,11 +3471,10 @@
       "id": "telescope",
       "name": "Telescope",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Glass stuff",
         "Metal stuff",
-        "Shiny stuff",
         "Slender objects",
         "Strange stuff",
         "Watching stuff"
@@ -3485,7 +3484,7 @@
       "id": "moon-clock",
       "name": "Moon clock",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Cute stuff",
         "Round stuff",
@@ -3497,7 +3496,7 @@
       "id": "star-wall-decoration",
       "name": "Star wall decoration",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Cute stuff",
         "Glass stuff",
@@ -4139,7 +4138,7 @@
       "id": "cloud-cannon",
       "name": "Cloud cannon",
       "category": "Outdoor",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": ["Metal stuff", "Noisy stuff", "Strange stuff"]
     },
     {
@@ -4897,7 +4896,7 @@
       "id": "jirachi-lamp",
       "name": "Jirachi lamp",
       "category": "Utilities",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Cute stuff",
         "Electronics",
