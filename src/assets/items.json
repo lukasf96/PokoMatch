@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T10:57:12.254Z",
+  "generatedAt": "2026-07-24T13:47:36.950Z",
   "items": [
     {
       "id": "honey",
@@ -765,6 +765,7 @@
       "category": "Furniture",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Colorful stuff",
         "Containers",
         "Cute stuff",
         "Metal stuff",
@@ -957,6 +958,7 @@
       "favoriteCategories": [
         "Blocky stuff",
         "Containers",
+        "Glass stuff",
         "Hard stuff",
         "Metal stuff"
       ]
@@ -1165,7 +1167,7 @@
       "name": "Industrial chair",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Hard stuff", "Metal stuff"]
+      "favoriteCategories": ["Hard stuff", "Metal stuff", "Round stuff"]
     },
     {
       "id": "waterproof-seat",
@@ -1725,6 +1727,7 @@
         "Containers",
         "Glass stuff",
         "Luxury",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -1748,6 +1751,7 @@
       "favoriteCategories": [
         "Cute stuff",
         "Glass stuff",
+        "Hard stuff",
         "Strange stuff",
         "Watching stuff"
       ]
@@ -1756,14 +1760,14 @@
       "id": "flower-table",
       "name": "Flower table",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": []
     },
     {
       "id": "flower-cushion",
       "name": "Flower cushion",
       "category": "Furniture",
-      "tag": "",
+      "tag": "Relaxation",
       "favoriteCategories": [
         "Cute stuff",
         "Group Activities",
@@ -1878,7 +1882,7 @@
       "name": "Mug",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Symbols"]
+      "favoriteCategories": ["Containers", "Stone stuff", "Symbols"]
     },
     {
       "id": "tea-set",
@@ -2021,7 +2025,12 @@
       "name": "Leafy plant",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Containers", "Pretty flowers", "Watching stuff"]
+      "favoriteCategories": [
+        "Containers",
+        "Pretty flowers",
+        "Stone stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "pitcher-plant-pot",
@@ -2032,6 +2041,7 @@
         "Containers",
         "Spooky stuff",
         "Stone stuff",
+        "Strange stuff",
         "Watching stuff"
       ]
     },
@@ -2071,6 +2081,7 @@
         "Lots of nature",
         "Pretty flowers",
         "Slender objects",
+        "Stone stuff",
         "Watching stuff"
       ]
     },
@@ -2239,7 +2250,12 @@
       "name": "Corkboard",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Blocky stuff", "Gatherings", "Watching stuff"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Colorful stuff",
+        "Gatherings",
+        "Watching stuff"
+      ]
     },
     {
       "id": "cd-rack",
@@ -2294,6 +2310,7 @@
         "Colorful stuff",
         "Complicated stuff",
         "Containers",
+        "Letters and words",
         "Watching stuff",
         "Wooden stuff"
       ]
@@ -2384,6 +2401,7 @@
         "Electronics",
         "Metal stuff",
         "Nice breezes",
+        "Round stuff",
         "Spinning stuff"
       ]
     },
@@ -2466,8 +2484,11 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Cleanliness",
+        "Colorful stuff",
+        "Construction",
         "Cute stuff",
         "Lots of water",
+        "Play spaces",
         "Shiny stuff"
       ]
     },
@@ -2512,6 +2533,7 @@
         "Cleanliness",
         "Cute stuff",
         "Lots of water",
+        "Round stuff",
         "Strange stuff"
       ]
     },
@@ -2551,7 +2573,8 @@
         "Electronics",
         "Glass stuff",
         "Metal stuff",
-        "Shiny stuff"
+        "Shiny stuff",
+        "Strange stuff"
       ]
     },
     {
@@ -2564,7 +2587,8 @@
         "Electronics",
         "Glass stuff",
         "Metal stuff",
-        "Shiny stuff"
+        "Shiny stuff",
+        "Strange stuff"
       ]
     },
     {
@@ -2773,14 +2797,19 @@
       "name": "CD player",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Group Activities", "Noisy stuff"]
+      "favoriteCategories": [
+        "Containers",
+        "Electronics",
+        "Group Activities",
+        "Noisy stuff"
+      ]
     },
     {
       "id": "tabletop-mic",
       "name": "Tabletop mic",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Electronics", "Shiny stuff"]
+      "favoriteCategories": ["Electronics", "Metal stuff", "Shiny stuff"]
     },
     {
       "id": "standing-mic",
@@ -2790,6 +2819,7 @@
       "favoriteCategories": [
         "Electronics",
         "Group Activities",
+        "Noisy stuff",
         "Shiny stuff",
         "Strange stuff"
       ]
@@ -2850,7 +2880,7 @@
       "name": "Repel",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Strange stuff"]
+      "favoriteCategories": ["Hard stuff", "Strange stuff"]
     },
     {
       "id": "big-nugget",
@@ -2858,10 +2888,12 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": [
+        "Luxury",
         "Metal stuff",
         "Round stuff",
         "Shiny stuff",
-        "Stone stuff"
+        "Stone stuff",
+        "Symbols"
       ]
     },
     {
@@ -2886,6 +2918,7 @@
         "Colorful stuff",
         "Exercise",
         "Play spaces",
+        "Strange stuff",
         "Wobbly stuff"
       ]
     },
@@ -2897,6 +2930,7 @@
       "favoriteCategories": [
         "Blocky stuff",
         "Containers",
+        "Cute stuff",
         "Group Activities",
         "Play spaces",
         "Spooky stuff",
@@ -2949,7 +2983,7 @@
       "name": "Control unit",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Blocky stuff", "Complicated stuff"]
+      "favoriteCategories": ["Blocky stuff", "Complicated stuff", "Metal stuff"]
     },
     {
       "id": "auspicious-armor",
@@ -3015,7 +3049,7 @@
       "name": "Gym emblem statue",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Shiny stuff", "Stone stuff"]
+      "favoriteCategories": ["Shiny stuff", "Stone stuff", "Symbols"]
     },
     {
       "id": "spacesuit",
@@ -3040,7 +3074,8 @@
         "Nice breezes",
         "Rides",
         "Shiny stuff",
-        "Stone stuff"
+        "Stone stuff",
+        "Strange stuff"
       ]
     },
     {
@@ -3073,7 +3108,7 @@
       "name": "Wreath",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Round stuff", "Wooden stuff"]
+      "favoriteCategories": ["Round stuff", "Symbols", "Wooden stuff"]
     },
     {
       "id": "decorative-bookshelf",
@@ -3105,6 +3140,7 @@
         "Complicated stuff",
         "Glass stuff",
         "Luxury",
+        "Noisy stuff",
         "Wooden stuff"
       ]
     },
@@ -3137,7 +3173,7 @@
       "name": "Hanging banner",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Colorful stuff", "Fabric"]
+      "favoriteCategories": ["Colorful stuff", "Fabric", "Symbols"]
     },
     {
       "id": "party-bunting",
@@ -3206,49 +3242,49 @@
       "name": "Eevee doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "pikachu-doll",
       "name": "Pikachu doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "clefairy-doll",
       "name": "Clefairy doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "arcanine-doll",
       "name": "Arcanine doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Symbols"]
     },
     {
       "id": "dragonite-doll",
       "name": "Dragonite doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "ditto-doll",
       "name": "Ditto doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "substitute-doll",
       "name": "Substitute doll",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff", "Symbols"]
     },
     {
       "id": "grubby-letter",
@@ -3269,7 +3305,8 @@
       "favoriteCategories": [
         "Complicated stuff",
         "Garbage",
-        "Letters and words"
+        "Letters and words",
+        "Watching stuff"
       ]
     },
     {
@@ -3280,7 +3317,8 @@
       "favoriteCategories": [
         "Complicated stuff",
         "Garbage",
-        "Letters and words"
+        "Letters and words",
+        "Watching stuff"
       ]
     },
     {
@@ -3291,7 +3329,8 @@
       "favoriteCategories": [
         "Complicated stuff",
         "Garbage",
-        "Letters and words"
+        "Letters and words",
+        "Watching stuff"
       ]
     },
     {
@@ -3311,14 +3350,14 @@
       "name": "Grubby tablet",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage"]
+      "favoriteCategories": ["Garbage", "Metal stuff", "Strange stuff"]
     },
     {
       "id": "grubby-cell-phone",
       "name": "Grubby cell phone",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Garbage"]
+      "favoriteCategories": ["Garbage", "Strange stuff"]
     },
     {
       "id": "broken-bookcase",
@@ -3452,7 +3491,7 @@
       "name": "Map and compass",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Group Activities", "Letters and words"]
+      "favoriteCategories": ["Group Activities", "Letters and words", "Symbols"]
     },
     {
       "id": "treasure",
@@ -3526,6 +3565,7 @@
       "tag": "Decoration",
       "favoriteCategories": [
         "Lots of fire",
+        "Luxury",
         "Slender objects",
         "Spooky stuff",
         "Stone stuff"
@@ -3548,7 +3588,7 @@
       "name": "Wall torch",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": ["Lots of fire", "Stone stuff"]
+      "favoriteCategories": ["Lots of fire", "Metal stuff", "Stone stuff"]
     },
     {
       "id": "firepit",
@@ -3729,6 +3769,7 @@
       "favoriteCategories": [
         "Letters and words",
         "Spooky stuff",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -3773,6 +3814,7 @@
       "category": "Outdoor",
       "tag": "Toy",
       "favoriteCategories": [
+        "Luxury",
         "Metal stuff",
         "Shiny stuff",
         "Strange stuff",
@@ -3899,6 +3941,7 @@
         "Metal stuff",
         "Shiny stuff",
         "Stone stuff",
+        "Strange stuff",
         "Symbols"
       ]
     },
@@ -3913,6 +3956,7 @@
         "Metal stuff",
         "Shiny stuff",
         "Stone stuff",
+        "Strange stuff",
         "Symbols"
       ]
     },
@@ -3924,7 +3968,8 @@
       "favoriteCategories": [
         "Colorful stuff",
         "Glass stuff",
-        "Letters and words"
+        "Letters and words",
+        "Symbols"
       ]
     },
     {
@@ -4020,7 +4065,12 @@
       "name": "Fire hydrant",
       "category": "Outdoor",
       "tag": "Decoration",
-      "favoriteCategories": ["Lots of water", "Metal stuff", "Shiny stuff"]
+      "favoriteCategories": [
+        "Lots of water",
+        "Metal stuff",
+        "Shiny stuff",
+        "Symbols"
+      ]
     },
     {
       "id": "sandbags",
@@ -4278,7 +4328,7 @@
       "id": "cash-register",
       "name": "Cash register",
       "category": "Utilities",
-      "tag": "",
+      "tag": "Toy",
       "favoriteCategories": [
         "Complicated stuff",
         "Containers",
@@ -4335,6 +4385,7 @@
         "Blocky stuff",
         "Complicated stuff",
         "Electronics",
+        "Glass stuff",
         "Metal stuff",
         "Shiny stuff",
         "Strange stuff"
@@ -4386,7 +4437,12 @@
       "name": "Mushroom streetlight",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Shiny stuff", "Slender objects", "Spooky stuff"]
+      "favoriteCategories": [
+        "Round stuff",
+        "Shiny stuff",
+        "Slender objects",
+        "Spooky stuff"
+      ]
     },
     {
       "id": "town-streetlight",
@@ -4658,7 +4714,8 @@
         "Glass stuff",
         "Metal stuff",
         "Round stuff",
-        "Shiny stuff"
+        "Shiny stuff",
+        "Symbols"
       ]
     },
     {
@@ -4721,14 +4778,20 @@
       "name": "String lights",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Electronics", "Gatherings", "Glass stuff"]
+      "favoriteCategories": [
+        "Electronics",
+        "Gatherings",
+        "Glass stuff",
+        "Round stuff",
+        "Shiny stuff"
+      ]
     },
     {
       "id": "pop-art-lamp",
       "name": "Pop art lamp",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": ["Electronics", "Glass stuff"]
+      "favoriteCategories": ["Electronics", "Glass stuff", "Metal stuff"]
     },
     {
       "id": "berry-hanging-lamp",
@@ -4776,6 +4839,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4788,6 +4852,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4800,6 +4865,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4812,6 +4878,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4824,6 +4891,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4836,6 +4904,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4848,6 +4917,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -4860,6 +4930,7 @@
       "category": "Utilities",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Noisy stuff",
         "Play spaces",
         "Shiny stuff",
@@ -10580,14 +10651,14 @@
       "name": "Rainbow Feather",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": ["Shiny stuff"]
+      "favoriteCategories": ["Luxury", "Shiny stuff"]
     },
     {
       "id": "silver-feather",
       "name": "Silver Feather",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": ["Shiny stuff"]
+      "favoriteCategories": ["Luxury", "Shiny stuff"]
     },
     {
       "id": "party-cooking-pot",
@@ -10869,6 +10940,7 @@
         "Blocky stuff",
         "Complicated stuff",
         "Metal stuff",
+        "Strange stuff",
         "Symbols",
         "Watching stuff"
       ]
@@ -10878,7 +10950,12 @@
       "name": "Skull Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "armor-fossil",
@@ -10889,6 +10966,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Round stuff",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10897,21 +10975,36 @@
       "name": "Jaw Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "sail-fossil",
       "name": "Sail Fossil",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "wing-fossil-head",
       "name": "Wing Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "wing-fossil-right-wing",
@@ -10922,6 +11015,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10934,6 +11028,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10946,6 +11041,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10958,6 +11054,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10966,7 +11063,12 @@
       "name": "Headbutt Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "headbutt-fossil-body",
@@ -10977,6 +11079,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10989,6 +11092,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -10997,7 +11101,12 @@
       "name": "Shield Fossil (Head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "shield-fossil-body",
@@ -11008,6 +11117,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11020,6 +11130,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11028,7 +11139,12 @@
       "name": "Despot Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "despot-fossil-body",
@@ -11039,6 +11155,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11051,6 +11168,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11063,6 +11181,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11071,7 +11190,12 @@
       "name": "Tundra Fossil (head)",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": ["Hard stuff", "Lots of dirt", "Strange stuff"]
+      "favoriteCategories": [
+        "Hard stuff",
+        "Lots of dirt",
+        "Stone stuff",
+        "Strange stuff"
+      ]
     },
     {
       "id": "tundra-fossil-body",
@@ -11082,6 +11206,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11094,6 +11219,7 @@
         "Hard stuff",
         "Lots of dirt",
         "Slender objects",
+        "Stone stuff",
         "Strange stuff"
       ]
     },
@@ -11290,7 +11416,7 @@
       "id": "professor-s-treasure-trove",
       "name": "Professor's treasure trove",
       "category": "Other",
-      "tag": "Decoration",
+      "tag": "",
       "favoriteCategories": []
     },
     {
@@ -11319,7 +11445,12 @@
       "name": "Jump rope trophy",
       "category": "Other",
       "tag": "Decoration",
-      "favoriteCategories": []
+      "favoriteCategories": [
+        "Hard stuff",
+        "Luxury",
+        "Metal stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "wish-note",
@@ -11341,6 +11472,18 @@
       "category": "Other",
       "tag": "",
       "favoriteCategories": []
+    },
+    {
+      "id": "hide-and-sneak-trophy",
+      "name": "Hide-and-sneak trophy",
+      "category": "Other",
+      "tag": "Decoration",
+      "favoriteCategories": [
+        "Hard stuff",
+        "Luxury",
+        "Metal stuff",
+        "Watching stuff"
+      ]
     }
   ]
 }
