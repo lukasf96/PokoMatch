@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T13:47:36.950Z",
+  "generatedAt": "2026-08-05T19:55:21.618Z",
   "items": [
     {
       "id": "honey",
@@ -380,6 +380,34 @@
       "favoriteCategories": ["Shiny stuff"]
     },
     {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "grubby-pearl",
+      "name": "Grubby pearl",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "shiny-pearl",
+      "name": "Shiny pearl",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "buried-pearl",
+      "name": "Buried pearl",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "leppa-berry",
       "name": "Leppa Berry",
       "category": "Food",
@@ -699,6 +727,83 @@
       "name": "Chili sauce",
       "category": "Food",
       "tag": "Food",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-slice",
+      "name": "Watermelon slice",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sea-grapes",
+      "name": "Sea grapes",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "popping-salad",
+      "name": "Popping salad",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "popping-soup",
+      "name": "Popping soup",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-bread",
+      "name": "Watermelon bread",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-smoothie",
+      "name": "Watermelon smoothie",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sea-grape-smoothie",
+      "name": "Sea grape smoothie",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "leppa-smoothie",
+      "name": "Leppa smoothie",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "red-hot-smoothie",
+      "name": "Red-hot smoothie",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "refreshing-soda-smoothie",
+      "name": "Refreshing soda smoothie",
+      "category": "Food",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "coffee-parfait-smoothie",
+      "name": "Coffee parfait smoothie",
+      "category": "Food",
+      "tag": "",
       "favoriteCategories": []
     },
     {
@@ -1268,7 +1373,8 @@
         "Hard stuff",
         "Luxury",
         "Metal stuff",
-        "Spooky stuff"
+        "Spooky stuff",
+        "Stone stuff"
       ]
     },
     {
@@ -1659,7 +1765,7 @@
       "name": "Cute bed",
       "category": "Furniture",
       "tag": "Relaxation",
-      "favoriteCategories": ["Cute stuff", "Fabric", "Soft stuff"]
+      "favoriteCategories": ["Cute stuff", "Fabric", "Luxury", "Soft stuff"]
     },
     {
       "id": "gaming-bed",
@@ -1836,6 +1942,125 @@
         "Shiny stuff",
         "Strange stuff"
       ]
+    },
+    {
+      "id": "portal-pod",
+      "name": "Portal pod",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "safe",
+      "name": "Safe",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-pok-ball",
+      "name": "Decorative Poké Ball",
+      "category": "Furniture",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "big-treasure-chest",
+      "name": "Big treasure chest",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-chest",
+      "name": "Marine chest",
+      "category": "Furniture",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-closet",
+      "name": "Marine closet",
+      "category": "Furniture",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-table",
+      "name": "Marine table",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-stand",
+      "name": "Ornate stand",
+      "category": "Furniture",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-table",
+      "name": "Ornate table",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seashell-seat",
+      "name": "Seashell seat",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-chair",
+      "name": "Marine chair",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-chair",
+      "name": "Ornate chair",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-sofa",
+      "name": "Marine sofa",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-bed",
+      "name": "Ornate bed",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "cushion-bed",
+      "name": "Cushion bed",
+      "category": "Furniture",
+      "tag": "Relaxation",
+      "favoriteCategories": []
+    },
+    {
+      "id": "marine-dresser",
+      "name": "Marine dresser",
+      "category": "Furniture",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "worn-treasure-chest",
+      "name": "Worn treasure chest",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
     },
     {
       "id": "wooden-plate",
@@ -2586,6 +2811,7 @@
         "Complicated stuff",
         "Electronics",
         "Glass stuff",
+        "Group Activities",
         "Metal stuff",
         "Shiny stuff",
         "Strange stuff"
@@ -2773,6 +2999,7 @@
         "Complicated stuff",
         "Gatherings",
         "Glass stuff",
+        "Group Activities",
         "Letters and words",
         "Metal stuff"
       ]
@@ -3173,7 +3400,12 @@
       "name": "Hanging banner",
       "category": "Misc.",
       "tag": "Decoration",
-      "favoriteCategories": ["Colorful stuff", "Fabric", "Symbols"]
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Fabric",
+        "Symbols",
+        "Wobbly stuff"
+      ]
     },
     {
       "id": "party-bunting",
@@ -3545,6 +3777,202 @@
       ]
     },
     {
+      "id": "teaware-set",
+      "name": "Teaware set",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-plates",
+      "name": "Decorative plates",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "book-stack",
+      "name": "Book stack",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "shop-display-case",
+      "name": "Shop display case",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "shop-shelf",
+      "name": "Shop shelf",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "shop-fridge",
+      "name": "Shop fridge",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-decorative-shelf",
+      "name": "Ornate decorative shelf",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "bottled-ship",
+      "name": "Bottled ship",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sparkling-jewelry",
+      "name": "Sparkling jewelry",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "metronome",
+      "name": "Metronome",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "music-box",
+      "name": "Music box",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "harp",
+      "name": "Harp",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-great-ball",
+      "name": "Decorative Great Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-heal-ball",
+      "name": "Decorative Heal Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-quick-ball",
+      "name": "Decorative Quick Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-dive-ball",
+      "name": "Decorative Dive Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-net-ball",
+      "name": "Decorative Net Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-lure-ball",
+      "name": "Decorative Lure Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "windup-inkay",
+      "name": "Windup Inkay",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "toolbox",
+      "name": "Toolbox",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "servers",
+      "name": "Servers",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-shop-shelf",
+      "name": "Decorative shop shelf",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wall-clock",
+      "name": "Wall clock",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wall-plant",
+      "name": "Wall plant",
+      "category": "Misc.",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wall-mounted-tools",
+      "name": "Wall-mounted tools",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "chimecho-wind-chim",
+      "name": "Chimecho wind chim",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "party-ball",
+      "name": "Party ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "starmie-doll",
+      "name": "Starmie Doll",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
       "id": "campfire",
       "name": "Campfire",
       "category": "Outdoor",
@@ -3648,6 +4076,7 @@
       "favoriteCategories": [
         "Exercise",
         "Fabric",
+        "Group Activities",
         "Lots of dirt",
         "Wobbly stuff"
       ]
@@ -3860,7 +4289,12 @@
       "name": "Canoe",
       "category": "Outdoor",
       "tag": "Toy",
-      "favoriteCategories": ["Group Activities", "Round stuff"]
+      "favoriteCategories": [
+        "Group Activities",
+        "Lots of water",
+        "Rides",
+        "Round stuff"
+      ]
     },
     {
       "id": "inflatable-boat",
@@ -4190,6 +4624,90 @@
       "category": "Outdoor",
       "tag": "Toy",
       "favoriteCategories": ["Metal stuff", "Noisy stuff", "Strange stuff"]
+    },
+    {
+      "id": "sandpile",
+      "name": "Sandpile",
+      "category": "Outdoor",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sand-toys",
+      "name": "Sand toys",
+      "category": "Outdoor",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wavy-pattern-planter",
+      "name": "Wavy-pattern planter",
+      "category": "Outdoor",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "gyarados-fountain",
+      "name": "Gyarados fountain",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "primarina-statue",
+      "name": "Primarina statue",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "arrow-sign-left",
+      "name": "Arrow sign (left)",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "arrow-sign-right",
+      "name": "Arrow sign (right)",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "hanging-sign",
+      "name": "Hanging sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stone-sign",
+      "name": "Stone sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "slim-information-board",
+      "name": "Slim information board",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "cycle-shop-sign",
+      "name": "Cycle shop sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "supermarket-sign",
+      "name": "Supermarket sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
     },
     {
       "id": "ditto-flag",
@@ -4975,6 +5493,76 @@
         "Hard stuff",
         "Shiny stuff"
       ]
+    },
+    {
+      "id": "standing-frame",
+      "name": "Standing frame",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "category": "Utilities",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "bubble-machine",
+      "name": "Bubble machine",
+      "category": "Utilities",
+      "tag": "Toy",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wireless-power-transmitter-post",
+      "name": "Wireless power-transmitter post",
+      "category": "Utilities",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wireless-power-transmitter-switch-post",
+      "name": "Wireless power-transmitter switch post",
+      "category": "Utilities",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "dangling-streetlight",
+      "name": "Dangling streetlight",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pearl-streetlight",
+      "name": "Pearl streetlight",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "lampion",
+      "name": "Lampion",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "cursola-light",
+      "name": "Cursola light",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "chain-lamp",
+      "name": "Chain lamp",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
     },
     {
       "id": "leppa-seeds",
@@ -6566,6 +7154,174 @@
       "favoriteCategories": []
     },
     {
+      "id": "seabed-flower-seeds",
+      "name": "Seabed flower seeds",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-seeds",
+      "name": "Watermelon seeds",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-sprout",
+      "name": "Watermelon sprout",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "blooming-watermelon-plant",
+      "name": "Blooming watermelon plant",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ripe-watermelon-plant",
+      "name": "Ripe watermelon plant",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "watermelon-sprout-grow",
+      "name": "Watermelon sprout (Grow)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "blooming-watermelon-plant-grow",
+      "name": "Blooming watermelon plant (Grow)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ripe-watermelon-plant-grow",
+      "name": "Ripe watermelon plant (Grow)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seagrape-stalk",
+      "name": "Seagrape stalk",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-shoots",
+      "name": "Seabed shoots",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sea-moss",
+      "name": "Sea moss",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "lush-seaweed",
+      "name": "Lush seaweed",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-flowers",
+      "name": "Seabed flowers",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-flowers-purple",
+      "name": "Seabed flowers (Purple)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "white-driftwood",
+      "name": "White driftwood",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "mossy-ocean-boulder",
+      "name": "Mossy ocean boulder",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "chimney-rocks",
+      "name": "Chimney rocks",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "small-coral",
+      "name": "Small coral",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "small-coral-red",
+      "name": "Small coral (Red)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "small-coral-green",
+      "name": "Small coral (Green)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "tall-coral",
+      "name": "Tall coral",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "tall-coral-purple",
+      "name": "Tall coral (Purple)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-corals",
+      "name": "Colorful corals",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "twisty-waterweed",
+      "name": "Twisty waterweed",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "wooden-steps",
       "name": "Wooden steps",
       "category": "Buildings",
@@ -7422,6 +8178,314 @@
     {
       "id": "broken-iron-steps",
       "name": "Broken iron steps",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "window-pane-horizontal",
+      "name": "Window pane (horizontal)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "window-pane-sloped",
+      "name": "Window pane (sloped)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "glass-pane",
+      "name": "Glass pane",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "glass-pane-horizontal",
+      "name": "Glass pane (horizontal)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "glass-pane-sloped",
+      "name": "Glass pane (sloped)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "house-partition-small",
+      "name": "House partition (small)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "house-partition-medium",
+      "name": "House partition (medium)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wooden-beam",
+      "name": "Wooden beam",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wooden-support",
+      "name": "Wooden support",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "iron-support",
+      "name": "Iron support",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sleek-steps",
+      "name": "Sleek steps",
+      "category": "Buildings",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "interior-door",
+      "name": "Interior door",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "submarine-door",
+      "name": "Submarine door",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-door",
+      "name": "Ornate door",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ocean-door",
+      "name": "Ocean door",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "decorative-cloth",
+      "name": "Decorative cloth",
+      "category": "Buildings",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "submarine-window",
+      "name": "Submarine window",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "hatch",
+      "name": "Hatch",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-window",
+      "name": "Ornate window",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sloped-scale-roof",
+      "name": "Sloped scale roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "scale-hipped-roof",
+      "name": "Scale hipped roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "scale-roof-valley",
+      "name": "Scale roof valley",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "flat-scale-roof",
+      "name": "Flat scale roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "scale-roof-decoration",
+      "name": "Scale roof decoration",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "scale-awning",
+      "name": "Scale awning",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sloped-wavy-roof",
+      "name": "Sloped wavy roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wavy-hipped-roof",
+      "name": "Wavy hipped roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wavy-roof-valley",
+      "name": "Wavy roof valley",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "flat-wavy-roof",
+      "name": "Flat wavy roof",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wavy-roof-decoration",
+      "name": "Wavy roof decoration",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "fancy-wavy-roof-decoration",
+      "name": "Fancy wavy roof decoration",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "iron-frame",
+      "name": "Iron frame",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pointed-wooden-fencing",
+      "name": "Pointed wooden fencing",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seashell-fencing",
+      "name": "Seashell fencing",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "arched-fencing",
+      "name": "Arched fencing",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-partition",
+      "name": "Ornate partition",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "netting",
+      "name": "Netting",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "floating-logs",
+      "name": "Floating logs",
+      "category": "Buildings",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pathway-light-line",
+      "name": "Pathway light (line)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pathway-light-single",
+      "name": "Pathway light (single)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pathway-light-corner",
+      "name": "Pathway light (corner)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "twisty-pillar-upper",
+      "name": "Twisty pillar (upper)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "twisty-pillar-middle",
+      "name": "Twisty pillar (middle)",
+      "category": "Buildings",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "twisty-pillar-lower",
+      "name": "Twisty pillar (lower)",
       "category": "Buildings",
       "tag": "",
       "favoriteCategories": []
@@ -8827,6 +9891,216 @@
       "favoriteCategories": []
     },
     {
+      "id": "ditto-transform-print",
+      "name": "Ditto transform print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "lacquered-wall",
+      "name": "Lacquered wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-wall",
+      "name": "Ornate wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "metal-wall",
+      "name": "Metal wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "buoyant-block",
+      "name": "Buoyant block",
+      "category": "Blocks",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stone-accent-wall",
+      "name": "Stone-accent wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stately-wall-upper-lower",
+      "name": "Stately wall (upper lower)",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stately-wall-middle",
+      "name": "Stately wall (middle)",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "two-tone-wall",
+      "name": "Two-tone wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "gradient-wall-upper",
+      "name": "Gradient wall (upper)",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "gradient-wall-lower",
+      "name": "Gradient wall (lower)",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stately-flooring",
+      "name": "Stately flooring",
+      "category": "Blocks",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "rectangle-tiling",
+      "name": "Rectangle tiling",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "glossy-tiling",
+      "name": "Glossy tiling",
+      "category": "Blocks",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "vibrant-glossy-tiling",
+      "name": "Vibrant glossy tiling",
+      "category": "Blocks",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-fish-scale-tiling",
+      "name": "Colorful fish-scale tiling",
+      "category": "Blocks",
+      "tag": "Road",
+      "favoriteCategories": []
+    },
+    {
+      "id": "overlapping-waves-print",
+      "name": "Overlapping waves print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "squiggly-print",
+      "name": "Squiggly print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "fanned-out-ditto-print",
+      "name": "Fanned-out Ditto print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "chic-anchor-print",
+      "name": "Chic anchor print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-anchor-print",
+      "name": "Colorful anchor print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "clustered-corals-print",
+      "name": "Clustered corals print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-corals-print",
+      "name": "Colorful corals print",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seafloor-algae",
+      "name": "Seafloor algae",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "blue-rock",
+      "name": "Blue rock",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "blue-cave-rock",
+      "name": "Blue cave rock",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "carved-blue-rock",
+      "name": "Carved blue rock",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "mossy-ocean-soil",
+      "name": "Mossy ocean soil",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "star-spotted-rock",
+      "name": "Star-spotted rock",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "damaged-glossy-tiling",
+      "name": "Damaged glossy tiling",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "leaf-den-kit",
       "name": "Leaf den kit",
       "category": "Kits",
@@ -9179,6 +10453,62 @@
     {
       "id": "tent-kit",
       "name": "Tent kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "imperial-cottage-kit",
+      "name": "Imperial cottage kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "imperial-house-kit",
+      "name": "Imperial house kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "submarine-kit",
+      "name": "Submarine kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "basic-pok-mon-center-kit",
+      "name": "Basic Pokémon Center kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "clock-tower-kit",
+      "name": "Clock tower kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "aqua-cottage-kit",
+      "name": "Aqua cottage kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "supermarket-kit",
+      "name": "Supermarket kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "laboratory-kit",
+      "name": "Laboratory kit",
       "category": "Kits",
       "tag": "",
       "favoriteCategories": []
@@ -11484,6 +12814,321 @@
         "Metal stuff",
         "Watching stuff"
       ]
+    },
+    {
+      "id": "antique-wall-wallpaper",
+      "name": "Antique wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "light-antique-wall-wallpaper",
+      "name": "Light antique wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pok-mon-center-wall-wallpaper",
+      "name": "Pokémon Center wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "pop-art-wall-wallpaper",
+      "name": "Pop art wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "confectionery-wall-wallpaper",
+      "name": "Confectionery wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "cushy-wall-wallpaper",
+      "name": "Cushy wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stylish-wall-wallpaper",
+      "name": "Stylish wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stylish-brick-wall-wallpaper",
+      "name": "Stylish brick wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wooden-pillar-wallpaper",
+      "name": "Wooden pillar (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stone-pillar-wallpaper",
+      "name": "Stone pillar (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "guest-room-wall-wallpaper",
+      "name": "Guest-room wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ditto-transform-print-wallpaper",
+      "name": "Ditto transform print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "gradient-wall-wallpaper",
+      "name": "Gradient wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ornate-wall-wallpaper",
+      "name": "Ornate wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "glossy-tiling-wallpaper",
+      "name": "Glossy tiling (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "vibrant-glossy-tiling-wallpaper",
+      "name": "Vibrant glossy tiling (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-fish-scale-tiling-wallpaper",
+      "name": "Colorful fish-scale tiling (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stately-flooring-wallpaper",
+      "name": "Stately flooring (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "digital-wall-wallpaper",
+      "name": "Digital wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "squiggly-print-wallpaper",
+      "name": "Squiggly print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "colorful-corals-print-wallpaper",
+      "name": "Colorful corals print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "fanned-out-ditto-print-wallpaper",
+      "name": "Fanned-out-Ditto print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "large-lost-sunken-relic",
+      "name": "Large lost sunken relic",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "the-sea",
+      "name": "The Sea",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "violet-city",
+      "name": "Violet City",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "dive",
+      "name": "Dive",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "canalave-city",
+      "name": "Canalave City",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "undella-town-summer",
+      "name": "Undella Town (Summer)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "po-town",
+      "name": "Po Town",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "stow-on-side",
+      "name": "Stow-on-Side",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "hotel-z",
+      "name": "Hotel Z",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "ocean-pals-rug",
+      "name": "Ocean pals rug",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wig-wug-rug",
+      "name": "Wig-Wug rug",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "battle-poster",
+      "name": "Battle poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "thunder-wave-poster",
+      "name": "Thunder Wave poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "beach-poster",
+      "name": "Beach poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "surprise-poster",
+      "name": "Surprise poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "security-poster",
+      "name": "Security poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "safari-poster",
+      "name": "Safari poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "sunset-poster",
+      "name": "Sunset poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "wild-poster",
+      "name": "Wild poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "fighting-poster",
+      "name": "Fighting poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "raging-sea-poster",
+      "name": "Raging sea poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "roaring-flame-poster",
+      "name": "Roaring flame poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "bike-poster",
+      "name": "Bike poster",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
     }
   ]
 }
