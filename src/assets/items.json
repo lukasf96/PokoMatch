@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T19:55:21.618Z",
+  "generatedAt": "2026-08-06T14:29:15.082Z",
   "items": [
     {
       "id": "honey",
@@ -733,77 +733,84 @@
       "id": "watermelon-slice",
       "name": "Watermelon slice",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "sea-grapes",
       "name": "Sea grapes",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "popping-salad",
       "name": "Popping salad",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "popping-soup",
       "name": "Popping soup",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "watermelon-bread",
       "name": "Watermelon bread",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
+      "favoriteCategories": []
+    },
+    {
+      "id": "explosive-hamburger-steak",
+      "name": "Explosive hamburger steak",
+      "category": "Food",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "watermelon-smoothie",
       "name": "Watermelon smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "sea-grape-smoothie",
       "name": "Sea grape smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "leppa-smoothie",
       "name": "Leppa smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "red-hot-smoothie",
       "name": "Red-hot smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "refreshing-soda-smoothie",
       "name": "Refreshing soda smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
       "id": "coffee-parfait-smoothie",
       "name": "Coffee parfait smoothie",
       "category": "Food",
-      "tag": "",
+      "tag": "Food",
       "favoriteCategories": []
     },
     {
@@ -3952,8 +3959,8 @@
       "favoriteCategories": []
     },
     {
-      "id": "chimecho-wind-chim",
-      "name": "Chimecho wind chim",
+      "id": "chimecho-wind-chime",
+      "name": "Chimecho wind chime",
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": []
@@ -3963,6 +3970,13 @@
       "name": "Party ball",
       "category": "Misc.",
       "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "running-shoes",
+      "name": "Running shoes",
+      "category": "Misc.",
+      "tag": "",
       "favoriteCategories": []
     },
     {
@@ -4650,14 +4664,14 @@
       "id": "gyarados-fountain",
       "name": "Gyarados fountain",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": []
     },
     {
       "id": "primarina-statue",
       "name": "Primarina statue",
       "category": "Outdoor",
-      "tag": "Decoration",
+      "tag": "Toy",
       "favoriteCategories": []
     },
     {
@@ -4705,6 +4719,27 @@
     {
       "id": "supermarket-sign",
       "name": "Supermarket sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "caf-sign",
+      "name": "Café sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "restaurant-sign",
+      "name": "Restaurant sign",
+      "category": "Outdoor",
+      "tag": "Decoration",
+      "favoriteCategories": []
+    },
+    {
+      "id": "gift-shop-sign",
+      "name": "Gift shop sign",
       "category": "Outdoor",
       "tag": "Decoration",
       "favoriteCategories": []
@@ -7217,6 +7252,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "seabed-tall-grass",
+      "name": "Seabed tall grass",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "seabed-shoots",
       "name": "Seabed shoots",
       "category": "Nature",
@@ -7240,6 +7282,27 @@
     {
       "id": "seabed-flowers",
       "name": "Seabed flowers",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-flowers-red",
+      "name": "Seabed flowers (Red)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-flowers-pink",
+      "name": "Seabed flowers (Pink)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seabed-flowers-yellow",
+      "name": "Seabed flowers (Yellow)",
       "category": "Nature",
       "tag": "",
       "favoriteCategories": []
@@ -9912,6 +9975,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "digital-wall",
+      "name": "Digital wall",
+      "category": "Blocks",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "metal-wall",
       "name": "Metal wall",
       "category": "Blocks",
@@ -10479,8 +10549,8 @@
       "favoriteCategories": []
     },
     {
-      "id": "basic-pok-mon-center-kit",
-      "name": "Basic Pokémon Center kit",
+      "id": "basin-pok-mon-center-kit",
+      "name": "Basin Pokémon Center kit",
       "category": "Kits",
       "tag": "",
       "favoriteCategories": []
@@ -12900,6 +12970,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "stately-wall-wallpaper",
+      "name": "Stately wall (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "gradient-wall-wallpaper",
       "name": "Gradient wall (wallpaper)",
       "category": "Other",
@@ -12956,6 +13033,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "clustered-corals-print-wallpaper",
+      "name": "Clustered corals print (wallpaper)",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "colorful-corals-print-wallpaper",
       "name": "Colorful corals print (wallpaper)",
       "category": "Other",
@@ -12964,7 +13048,7 @@
     },
     {
       "id": "fanned-out-ditto-print-wallpaper",
-      "name": "Fanned-out-Ditto print (wallpaper)",
+      "name": "Fanned-out Ditto print (wallpaper)",
       "category": "Other",
       "tag": "",
       "favoriteCategories": []
@@ -13026,8 +13110,22 @@
       "favoriteCategories": []
     },
     {
+      "id": "cascarrafa",
+      "name": "Cascarrafa",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "hotel-z",
       "name": "Hotel Z",
+      "category": "Other",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "swampert-squad-rug",
+      "name": "Swampert squad rug",
       "category": "Other",
       "tag": "",
       "favoriteCategories": []
