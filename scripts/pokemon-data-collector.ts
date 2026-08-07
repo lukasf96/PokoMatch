@@ -120,7 +120,7 @@ function parseSerebiiDetail(html: string): {
   $("tr").each((_, tr) => {
     const trSel = $(tr);
     const cells = trSel.children("td.foo");
-    if (cells.length !== 3) return;
+    if (cells.length < 3) return;
 
     const labels = cells
       .map((__, td) => $(td).text().replace(/\s+/g, " ").trim())
