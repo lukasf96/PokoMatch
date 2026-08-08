@@ -19,6 +19,7 @@ import { PokemonCard } from "../../components/PokemonCard";
 import { habitatIcons } from "../../services/habitatColors";
 import {
   allPokemon,
+  basinPokemon,
   eventPokemon,
   standardPokemon,
 } from "../../services/pokemon";
@@ -70,6 +71,10 @@ export default function PokedexPage() {
   );
   const baseFilteredEvent = useMemo(
     () => filterList(eventPokemon),
+    [filterList],
+  );
+  const baseFilteredBasin = useMemo(
+    () => filterList(basinPokemon),
     [filterList],
   );
 
@@ -246,6 +251,7 @@ export default function PokedexPage() {
           totalCount={totalCount}
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           effectiveStatusFilter={effectiveStatusFilter}
           unlockedIds={unlockedIds}
         />
@@ -254,6 +260,7 @@ export default function PokedexPage() {
         <PokedexSections
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           interactive
           onToggle={togglePokemon}
           unlockedIds={unlockedIds}
@@ -262,6 +269,7 @@ export default function PokedexPage() {
         <PokedexSectionsStatusFiltered
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           status={effectiveStatusFilter}
           interactive
           onToggle={togglePokemon}
@@ -276,17 +284,22 @@ function PokedexShowingCount({
   totalCount,
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   effectiveStatusFilter,
   unlockedIds,
 }: {
   totalCount: number;
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   effectiveStatusFilter: Filter;
   unlockedIds: Set<string>;
 }) {
   if (effectiveStatusFilter === "all") {
-    const n = baseFilteredStandard.length + baseFilteredEvent.length;
+    const n =
+      baseFilteredStandard.length +
+      baseFilteredEvent.length +
+      baseFilteredBasin.length;
     return (
       <Typography
         variant="body2"
@@ -304,6 +317,7 @@ function PokedexShowingCount({
       totalCount={totalCount}
       baseFilteredStandard={baseFilteredStandard}
       baseFilteredEvent={baseFilteredEvent}
+      baseFilteredBasin={baseFilteredBasin}
       status={effectiveStatusFilter}
       unlockedIds={unlockedIds}
     />
@@ -314,12 +328,14 @@ function PokedexShowingCountWithStatus({
   totalCount,
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   status,
   unlockedIds,
 }: {
   totalCount: number;
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   status: "unlocked" | "locked";
   unlockedIds: Set<string>;
 }) {
@@ -333,6 +349,10 @@ function PokedexShowingCountWithStatus({
     const isUnlocked = unlockedIds.has(p.id);
     if (status === "unlocked" ? isUnlocked : !isUnlocked) showing += 1;
   }
+  for (const p of baseFilteredBasin) {
+    const isUnlocked = unlockedIds.has(p.id);
+    if (status === "unlocked" ? isUnlocked : !isUnlocked) showing += 1;
+  }
 
   return (
     <Typography
@@ -341,7 +361,7 @@ function PokedexShowingCountWithStatus({
         color: "text.secondary",
       }}
     >
-      Showing {showing}of {totalCount}Pokémon
+      Showing {showing} of {totalCount} Pokémon
     </Typography>
   );
 }
@@ -349,12 +369,14 @@ function PokedexShowingCountWithStatus({
 function PokedexSections({
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   interactive,
   onToggle,
   unlockedIds,
 }: {
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   interactive: boolean;
   onToggle: (id: string) => void;
   unlockedIds: Set<string>;
@@ -388,6 +410,21 @@ function PokedexSections({
           unlockedIds={unlockedIds}
         />
       </Box>
+
+      <Divider />
+
+      <Box>
+        <PokedexSectionHeader
+          title="Basin Pokédex"
+          subtitle={`${basinPokemon.length} Pokémon`}
+        />
+        <PokedexGrid
+          pokemon={baseFilteredBasin}
+          interactive={interactive}
+          onToggle={onToggle}
+          unlockedIds={unlockedIds}
+        />
+      </Box>
     </Stack>
   );
 }
@@ -395,6 +432,7 @@ function PokedexSections({
 function PokedexSectionsStatusFiltered({
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   status,
   interactive,
   onToggle,
@@ -402,6 +440,7 @@ function PokedexSectionsStatusFiltered({
 }: {
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   status: "unlocked" | "locked";
   interactive: boolean;
   onToggle: (id: string) => void;
@@ -431,11 +470,24 @@ function PokedexSectionsStatusFiltered({
 
     return result;
   }, [baseFilteredEvent, status, unlockedIds]);
+  const filteredBasin = useMemo(() => {
+    const result: Pokemon[] = [];
+
+    for (const p of baseFilteredBasin) {
+      const isUnlocked = unlockedIds.has(p.id);
+      if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+        result.push(p);
+      }
+    }
+
+    return result;
+  }, [baseFilteredBasin, status, unlockedIds]);
 
   return (
     <PokedexSections
       baseFilteredStandard={filteredStandard}
       baseFilteredEvent={filteredEvent}
+      baseFilteredBasin={filteredBasin}
       interactive={interactive}
       onToggle={onToggle}
       unlockedIds={unlockedIds}

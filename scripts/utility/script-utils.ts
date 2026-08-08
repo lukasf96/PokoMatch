@@ -11,6 +11,7 @@ export const SEREBII_ROBOTS_URL = `${SEREBII_BASE}/robots.txt`;
 export const SEREBII_URLS = {
   availablePokemon: `${SEREBII_BASE}/pokemonpokopia/availablepokemon.shtml`,
   eventPokedex: `${SEREBII_BASE}/pokemonpokopia/eventpokedex.shtml`,
+  basinPokedex: `${SEREBII_BASE}/pokemonpokopia/basinpokedex.shtml`,
   itemsOverview: `${SEREBII_BASE}/pokemonpokopia/items.shtml`,
 } as const;
 
@@ -38,6 +39,10 @@ const POKEMON_NAME_ALIAS_ENTRIES: readonly (readonly [string, string])[] = [
   ["tatsugiri stretchy form", "tatsugiri-stretchy"],
   ["toxtricity amped form", "toxtricity-amped"],
   ["toxtricity low key form", "toxtricity-low-key"],
+  ["frillish male form", "frillish-male"],
+  ["frillish female form", "frillish-female"],
+  ["jellicent male form", "jellicent-male"],
+  ["jellicent female form", "jellicent-female"],
 ];
 
 const pokemonNameAliasMap = new Map<string, string>(POKEMON_NAME_ALIAS_ENTRIES);

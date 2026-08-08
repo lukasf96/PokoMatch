@@ -67,6 +67,7 @@ export interface PokedexJson {
   generatedAt: string;
   standard: PokemonEntry[];
   event: PokemonEntry[];
+  basin: PokemonEntry[];
 }
 
 function parseSerebiiList(html: string): ListRow[] {
@@ -509,6 +510,7 @@ async function main(): Promise<void> {
     mustCheckUrls: [
       SEREBII_URLS.availablePokemon,
       SEREBII_URLS.eventPokedex,
+      SEREBII_URLS.basinPokedex,
       SEREBII_ROBOTS_URL,
     ],
   });
@@ -529,9 +531,17 @@ async function main(): Promise<void> {
     serebiiGapMs,
     "e",
   );
+  const basin = await collectSerebiiDex(
+    SEREBII_URLS.basinPokedex,
+    "basin",
+    robotsGroup,
+    serebiiGapMs,
+    "b",
+  );
 
   let standardEnriched = standard;
   let eventEnriched = event;
+  let basinEnriched = basin;
 
   console.error("Enriching localized names via PokéAPI…");
   standardEnriched = await enrichWithLocalizations(
@@ -539,26 +549,37 @@ async function main(): Promise<void> {
     pokeApiCtx,
   );
   eventEnriched = await enrichWithLocalizations(eventEnriched, pokeApiCtx);
+  basinEnriched = await enrichWithLocalizations(basinEnriched, pokeApiCtx);
 
   console.error("Enriching evolution line peers via PokéAPI…");
   const standardCount = standardEnriched.length;
-  const allEnrichedForEvoPeers = [...standardEnriched, ...eventEnriched];
+  const eventCount = eventEnriched.length;
+  const allEnrichedForEvoPeers = [
+    ...standardEnriched,
+    ...eventEnriched,
+    ...basinEnriched,
+  ];
   const allEnrichedWithEvoPeers = await enrichWithEvolutionPeers(
     allEnrichedForEvoPeers,
     pokeApiCtx,
   );
   standardEnriched = allEnrichedWithEvoPeers.slice(0, standardCount);
-  eventEnriched = allEnrichedWithEvoPeers.slice(standardCount);
+  eventEnriched = allEnrichedWithEvoPeers.slice(
+    standardCount,
+    standardCount + eventCount,
+  );
+  basinEnriched = allEnrichedWithEvoPeers.slice(standardCount + eventCount);
 
   const payload: PokedexJson = {
     generatedAt: new Date().toISOString(),
     standard: standardEnriched,
     event: eventEnriched,
+    basin: basinEnriched,
   };
 
   await writeFile(outPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
   console.log(
-    `Wrote ${outPath} (${String(payload.standard.length)} standard, ${String(payload.event.length)} event).`,
+    `Wrote ${outPath} (${String(payload.standard.length)} standard, ${String(payload.event.length)} event, ${String(payload.basin.length)} basin).`,
   );
 }
 

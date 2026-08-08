@@ -39,6 +39,25 @@ export default function HomePage() {
             }}>
             Plan Pokopia habitats with roommates who actually click.
           </Typography>
+          <Paper
+            variant="outlined"
+            sx={{
+              p: 1.25,
+              borderRadius: 2,
+              bgcolor: "info.light",
+              borderColor: "info.main",
+              color: "info.dark",
+              maxWidth: "sm",
+            }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              Updated for Bubbly Basin
+            </Typography>
+            <Typography variant="caption" component="p" sx={{ mt: 0.25 }}>
+              PokoMatch now includes the Basin Pokédex from the Pokopia
+              Expansion Pass—plan habitats with the new Bubbly Basin roster.
+            </Typography>
+          </Paper>
           <Box sx={{ pt: 0.5 }}>
             <Button
               startIcon={<AutoFixHighOutlinedIcon />}

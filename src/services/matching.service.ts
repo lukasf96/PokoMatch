@@ -28,7 +28,7 @@ function habitatBit(p: Pokemon): number {
 
 // ---------------------------------------------------------------------------
 // Favorites affinity — 64-bit bitmask split across two 32-bit ints (lo/hi).
-// Supports up to 64 distinct favorites (dataset has 43).
+// Supports up to 64 distinct favorites (dataset currently uses fewer).
 // sharedFavorites(a,b) = popcount(alo&blo) + popcount(ahi&bhi)
 // ---------------------------------------------------------------------------
 

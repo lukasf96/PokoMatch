@@ -19,11 +19,24 @@ export const eventPokemon = withDexKind(
   rawData.event as PokemonJson[],
   "event",
 );
-export const allPokemon = [...standardPokemon, ...eventPokemon];
+export const basinPokemon = withDexKind(
+  rawData.basin as PokemonJson[],
+  "basin",
+);
+export const allPokemon = [
+  ...standardPokemon,
+  ...eventPokemon,
+  ...basinPokemon,
+];
 
 /** True when the species is listed under the event dex (see `eventPokemon`). */
 export function isEventDexPokemon(pokemon: Pokemon): boolean {
   return pokemon.dexKind === "event";
+}
+
+/** True when the species is listed under the Basin (DLC) dex (see `basinPokemon`). */
+export function isBasinDexPokemon(pokemon: Pokemon): boolean {
+  return pokemon.dexKind === "basin";
 }
 
 /** Lower national-style dex first; other dex strings use numeric-aware locale order; ties use `id`. */
@@ -47,7 +60,9 @@ export function comparePokemonByDex(a: Pokemon, b: Pokemon): number {
 
 const habitableStandardPokemon = standardPokemon.filter(isPokemonHabitable);
 const habitableEventPokemon = eventPokemon.filter(isPokemonHabitable);
+const habitableBasinPokemon = basinPokemon.filter(isPokemonHabitable);
 export const habitablePokemon = [
   ...habitableStandardPokemon,
   ...habitableEventPokemon,
+  ...habitableBasinPokemon,
 ];

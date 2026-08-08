@@ -57,6 +57,7 @@ interface PokedexPokemonRef {
 interface PokedexJson {
   standard: PokedexPokemonRef[];
   event: PokedexPokemonRef[];
+  basin: PokedexPokemonRef[];
 }
 
 async function ensureSpritesRepo(): Promise<void> {
@@ -191,7 +192,11 @@ async function main(): Promise<void> {
   const pokedexJson = JSON.parse(
     await readFile(pokedexPath, "utf8"),
   ) as PokedexJson;
-  const allPokemon = [...pokedexJson.standard, ...pokedexJson.event];
+  const allPokemon = [
+    ...pokedexJson.standard,
+    ...pokedexJson.event,
+    ...pokedexJson.basin,
+  ];
   console.error(`Entries to process: ${String(allPokemon.length)}.`);
 
   const cachedSpriteStemByApiName = new Map<string, string>();
