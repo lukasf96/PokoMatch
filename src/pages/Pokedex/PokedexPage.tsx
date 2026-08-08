@@ -18,12 +18,20 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
-import { useLocation } from "react-router-dom";
+import {
+  useCallback,
+  useMemo,
+  useState,
+  type SyntheticEvent,
+} from "react";
 import { contentSkeletonSx } from "../../components/ContentSkeleton";
-import { DeferredMount } from "../../components/DeferredMount";
+import {
+  DeferredMount,
+  DeferredMountGate,
+} from "../../components/DeferredMount";
 import { InstantCollapse } from "../../components/InstantCollapse";
 import { PokemonCard } from "../../components/PokemonCard";
+import { useScrollToHash } from "../../hooks/useScrollToHash";
 import { habitatIcons } from "../../services/habitatColors";
 import {
   allPokemon,
@@ -60,7 +68,6 @@ export default function PokedexPage() {
   const unlockMany = useStore((s) => s.unlockMany);
   const lockMany = useStore((s) => s.lockMany);
   const unlockedIds = useStore((s) => s.unlockedIds);
-  const { hash } = useLocation();
 
   const [search, setSearch] = useState("");
   const [habitatFilter, setHabitatFilter] = useState<Habitat | "all">("all");
@@ -70,20 +77,17 @@ export default function PokedexPage() {
     useState<Record<SectionKey, boolean>>(DEFAULT_EXPANDED);
 
   const effectiveStatusFilter = statusFilter;
+  const [deferredGridsReady, setDeferredGridsReady] = useState(false);
 
-  useEffect(() => {
-    if (hash !== `#${SECTION_IDS.basin}`) return;
-
+  const handleHashTarget = useCallback((id: string) => {
+    if (id !== SECTION_IDS.basin) return;
     setExpanded((prev) => (prev.basin ? prev : { ...prev, basin: true }));
+  }, []);
 
-    const timer = window.setTimeout(() => {
-      document
-        .getElementById(SECTION_IDS.basin)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 120);
-
-    return () => window.clearTimeout(timer);
-  }, [hash]);
+  useScrollToHash({
+    contentReady: deferredGridsReady,
+    onHash: handleHashTarget,
+  });
 
   const filterList = useMemo(
     () =>
@@ -313,34 +317,36 @@ export default function PokedexPage() {
           unlockedIds={unlockedIds}
         />
       </Stack>
-      {effectiveStatusFilter === "all" ? (
-        <PokedexSections
-          baseFilteredStandard={baseFilteredStandard}
-          baseFilteredEvent={baseFilteredEvent}
-          baseFilteredBasin={baseFilteredBasin}
-          interactive
-          onToggle={togglePokemon}
-          unlockedIds={unlockedIds}
-          expanded={expanded}
-          onExpandedChange={handleSectionExpandedChange}
-          onUnlockSection={unlockMany}
-          onLockSection={lockMany}
-        />
-      ) : (
-        <PokedexSectionsStatusFiltered
-          baseFilteredStandard={baseFilteredStandard}
-          baseFilteredEvent={baseFilteredEvent}
-          baseFilteredBasin={baseFilteredBasin}
-          status={effectiveStatusFilter}
-          interactive
-          onToggle={togglePokemon}
-          unlockedIds={unlockedIds}
-          expanded={expanded}
-          onExpandedChange={handleSectionExpandedChange}
-          onUnlockSection={unlockMany}
-          onLockSection={lockMany}
-        />
-      )}
+      <DeferredMountGate onReady={() => setDeferredGridsReady(true)}>
+        {effectiveStatusFilter === "all" ? (
+          <PokedexSections
+            baseFilteredStandard={baseFilteredStandard}
+            baseFilteredEvent={baseFilteredEvent}
+            baseFilteredBasin={baseFilteredBasin}
+            interactive
+            onToggle={togglePokemon}
+            unlockedIds={unlockedIds}
+            expanded={expanded}
+            onExpandedChange={handleSectionExpandedChange}
+            onUnlockSection={unlockMany}
+            onLockSection={lockMany}
+          />
+        ) : (
+          <PokedexSectionsStatusFiltered
+            baseFilteredStandard={baseFilteredStandard}
+            baseFilteredEvent={baseFilteredEvent}
+            baseFilteredBasin={baseFilteredBasin}
+            status={effectiveStatusFilter}
+            interactive
+            onToggle={togglePokemon}
+            unlockedIds={unlockedIds}
+            expanded={expanded}
+            onExpandedChange={handleSectionExpandedChange}
+            onUnlockSection={unlockMany}
+            onLockSection={lockMany}
+          />
+        )}
+      </DeferredMountGate>
     </Container>
   );
 }
