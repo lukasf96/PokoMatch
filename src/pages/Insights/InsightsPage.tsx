@@ -1,5 +1,6 @@
 import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import { useMemo } from "react";
+import { DeferredMount } from "../../components/DeferredMount";
 import { allItems } from "../../services/items";
 import { allPokemon, isBasinDexPokemon } from "../../services/pokemon";
 import type { DexKind, Habitat, Pokemon } from "../../types/types";
@@ -207,36 +208,40 @@ export default function InsightsPage() {
           </Grid>
         </Grid>
       </Box>
-      <Grid container spacing={3}>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <IdealHabitats
-            habitats={habitats as ReadonlyArray<readonly [Habitat, Pokemon[]]>}
-          />
-        </Grid>
+      <DeferredMount>
+        <Grid container spacing={3}>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <IdealHabitats
+              habitats={
+                habitats as ReadonlyArray<readonly [Habitat, Pokemon[]]>
+              }
+            />
+          </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
-          <DistributionSection
-            title="Favorites Distribution"
-            items={favorites}
-            totalPokemon={allPokemon.length}
-            maxVisibleItems={10}
-          />
-        </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <DistributionSection
+              title="Favorites Distribution"
+              items={favorites}
+              totalPokemon={allPokemon.length}
+              maxVisibleItems={10}
+            />
+          </Grid>
 
-        <Grid size={{ xs: 12, md: 4 }}>
-          <DistributionSection
-            title="Favorite Flavor Distribution"
-            items={flavors}
-            totalPokemon={allPokemon.length}
-          />
-        </Grid>
+          <Grid size={{ xs: 12, md: 4 }}>
+            <DistributionSection
+              title="Favorite Flavor Distribution"
+              items={flavors}
+              totalPokemon={allPokemon.length}
+            />
+          </Grid>
 
-        <Grid size={{ xs: 12 }}>
-          <Paper variant="outlined" sx={{ p: 2, borderRadius: 2 }}>
-            <ItemsCatalogSection items={allItems} />
-          </Paper>
+          <Grid size={{ xs: 12 }}>
+            <Paper variant="outlined" sx={{ p: 2, borderRadius: 2 }}>
+              <ItemsCatalogSection items={allItems} />
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
+      </DeferredMount>
     </Container>
   );
 }

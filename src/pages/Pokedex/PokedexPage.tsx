@@ -12,6 +12,7 @@ import {
   MenuItem,
   Stack,
   TextField,
+  Skeleton,
   ToggleButton,
   ToggleButtonGroup,
   Tooltip,
@@ -19,6 +20,8 @@ import {
 } from "@mui/material";
 import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
 import { useLocation } from "react-router-dom";
+import { contentSkeletonSx } from "../../components/ContentSkeleton";
+import { DeferredMount } from "../../components/DeferredMount";
 import { InstantCollapse } from "../../components/InstantCollapse";
 import { PokemonCard } from "../../components/PokemonCard";
 import { habitatIcons } from "../../services/habitatColors";
@@ -751,7 +754,31 @@ function PokedexGrid({
   unlockedIds: Set<string>;
 }) {
   return (
-    <>
+    <DeferredMount
+      fallback={
+        <Box
+          aria-hidden
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(auto-fill, minmax(156px, 1fr))",
+              sm: "repeat(auto-fill, minmax(200px, 1fr))",
+            },
+            gap: { xs: 0.75, sm: 1 },
+          }}
+        >
+          {Array.from({ length: 12 }).map((_, index) => (
+            <Skeleton
+              key={index}
+              variant="rounded"
+              animation="wave"
+              height={148}
+              sx={contentSkeletonSx}
+            />
+          ))}
+        </Box>
+      }
+    >
       <Box
         sx={{
           display: "grid",
@@ -783,6 +810,6 @@ function PokedexGrid({
           </Typography>
         </Box>
       )}
-    </>
+    </DeferredMount>
   );
 }

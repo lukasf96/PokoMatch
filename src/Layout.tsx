@@ -5,8 +5,12 @@ import {
   HomeOutlined,
 } from "@mui/icons-material";
 import { Box, Chip } from "@mui/material";
-import { useEffect } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { useEffect, useState, useTransition, type MouseEvent } from "react";
+import {
+  Link as RouterLink,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { LayoutSettingsMenu } from "./components/layout-settings-menu/LayoutSettingsMenu";
 import { preloadRoute } from "./router/lazyPages";
 import { appRoutes } from "./router/routes";
@@ -22,10 +26,20 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const unlockedCount = useStore((s) => s.unlockedIds.size);
   const { pathname } = useLocation();
-  const isHomeActive = pathname === appRoutes.home;
-  const isMatchMakerActive = pathname === appRoutes.matchmaker;
-  const isInsightsActive = pathname === appRoutes.insights;
-  const isPokedexActive = pathname === appRoutes.pokedex;
+  const navigate = useNavigate();
+  const [, startTransition] = useTransition();
+  /** Optimistic path so the active nav chip flips on the click frame. */
+  const [pendingPath, setPendingPath] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPendingPath(null);
+  }, [pathname]);
+
+  const displayPath = pendingPath ?? pathname;
+  const isHomeActive = displayPath === appRoutes.home;
+  const isMatchMakerActive = displayPath === appRoutes.matchmaker;
+  const isInsightsActive = displayPath === appRoutes.insights;
+  const isPokedexActive = displayPath === appRoutes.pokedex;
 
   // Prefetch the other route chunks during idle time so their first navigation
   // is instant (Match Maker also pulls in the heavier matching code + worker
@@ -46,6 +60,16 @@ export default function Layout({ children }: LayoutProps) {
     const handle = window.setTimeout(prefetch, 1200);
     return () => window.clearTimeout(handle);
   }, [pathname]);
+
+  const goTo = (to: string) => {
+    if (to === pathname) return;
+    setPendingPath(to);
+    // Defer the route swap so the click paints immediately; during the
+    // transition React keeps the previous page visible (no Suspense spinner).
+    startTransition(() => {
+      navigate(to);
+    });
+  };
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
@@ -86,6 +110,20 @@ export default function Layout({ children }: LayoutProps) {
           <Box
             component={RouterLink}
             to={appRoutes.home}
+            onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+              if (
+                event.defaultPrevented ||
+                event.button !== 0 ||
+                event.metaKey ||
+                event.altKey ||
+                event.ctrlKey ||
+                event.shiftKey
+              ) {
+                return;
+              }
+              event.preventDefault();
+              goTo(appRoutes.home);
+            }}
             sx={{
               display: "flex",
               justifyContent: "center",
@@ -136,6 +174,7 @@ export default function Layout({ children }: LayoutProps) {
             active={isHomeActive}
             to={appRoutes.home}
             icon={<HomeOutlined fontSize="inherit" />}
+            onNavigate={goTo}
           >
             Home
           </NavItem>
@@ -143,6 +182,7 @@ export default function Layout({ children }: LayoutProps) {
             active={isMatchMakerActive}
             to={appRoutes.matchmaker}
             icon={<AutoFixHighOutlined fontSize="inherit" />}
+            onNavigate={goTo}
           >
             Match-Maker
           </NavItem>
@@ -150,6 +190,7 @@ export default function Layout({ children }: LayoutProps) {
             active={isInsightsActive}
             to={appRoutes.insights}
             icon={<DashboardOutlined fontSize="inherit" />}
+            onNavigate={goTo}
           >
             Insights
           </NavItem>
@@ -157,6 +198,7 @@ export default function Layout({ children }: LayoutProps) {
             active={isPokedexActive}
             to={appRoutes.pokedex}
             icon={<CatchingPokemonOutlined fontSize="inherit" />}
+            onNavigate={goTo}
           >
             Pokédex
             <Chip
@@ -185,11 +227,13 @@ function NavItem({
   active,
   to,
   icon,
+  onNavigate,
   children,
 }: {
   active: boolean;
   to: string;
   icon: React.ReactNode;
+  onNavigate: (to: string) => void;
   children: React.ReactNode;
 }) {
   return (
@@ -199,6 +243,20 @@ function NavItem({
       onMouseEnter={() => preloadRoute(to)}
       onFocus={() => preloadRoute(to)}
       onTouchStart={() => preloadRoute(to)}
+      onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.altKey ||
+          event.ctrlKey ||
+          event.shiftKey
+        ) {
+          return;
+        }
+        event.preventDefault();
+        onNavigate(to);
+      }}
       sx={{
         textDecoration: "none",
         cursor: "pointer",

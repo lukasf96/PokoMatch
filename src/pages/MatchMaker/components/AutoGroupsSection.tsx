@@ -17,6 +17,10 @@ import {
   Typography,
 } from "@mui/material";
 import { memo, useCallback, useMemo } from "react";
+import {
+  ContentSkeleton,
+  contentSkeletonSx,
+} from "../../../components/ContentSkeleton";
 import { InstantCollapse } from "../../../components/InstantCollapse";
 import { suggestItemsForGroup } from "../../../services/items";
 import type { Pokemon } from "../../../types/types";
@@ -107,25 +111,9 @@ const AutoGroupsList = memo(function AutoGroupsList({
 /** Placeholder cards shown while the first computation is still running. */
 function AutoGroupsSkeleton() {
   return (
-    <Stack spacing={2} aria-hidden data-testid="auto-groups-skeleton">
-      {Array.from({ length: 4 }).map((_, index) => (
-        <Skeleton
-          key={index}
-          variant="rounded"
-          animation="wave"
-          height={132}
-          sx={{
-            borderRadius: 1,
-            // Default MUI skeleton tint is nearly invisible on the light paper
-            // background, so set an explicit, clearly-visible tone.
-            bgcolor: (theme) =>
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[800]
-                : theme.palette.grey[100],
-          }}
-        />
-      ))}
-    </Stack>
+    <Box data-testid="auto-groups-skeleton">
+      <ContentSkeleton />
+    </Box>
   );
 }
 
@@ -195,7 +183,13 @@ function AutoGroupsSectionComponent({
             Suggested groups
           </Typography>
           {initialLoading ? (
-            <Skeleton variant="rounded" width={64} height={24} />
+            <Skeleton
+              variant="rounded"
+              animation="wave"
+              width={64}
+              height={24}
+              sx={contentSkeletonSx}
+            />
           ) : (
             <Chip label={`${groups.length} groups`} size="small" />
           )}
