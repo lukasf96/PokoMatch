@@ -76,7 +76,7 @@ export function BubblyBasinBanner() {
                   lineHeight: 1.25,
                 }}
               >
-                Now with Bubbly Basin support
+                Bubbly Basin - Expansion
               </Typography>
               <Typography
                 variant="body2"
@@ -94,7 +94,7 @@ export function BubblyBasinBanner() {
 
           <Button
             component={RouterLink}
-            to={appRoutes.pokedex}
+            to={{ pathname: appRoutes.pokedex, hash: "basin" }}
             variant="outlined"
             size="small"
             startIcon={<CatchingPokemonOutlinedIcon />}
@@ -124,7 +124,7 @@ export function BubblyBasinBanner() {
               };
             }}
           >
-            Browse Basin Pokédex
+            Open Basin Pokédex
           </Button>
         </Stack>
       </Container>
