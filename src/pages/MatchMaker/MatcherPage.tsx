@@ -1,9 +1,7 @@
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
   Alert,
   Container,
-  Fab,
   Snackbar,
   Stack,
   Typography,
@@ -13,8 +11,8 @@ import {
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
 } from "react";
+import { ScrollToTopFab } from "../../components/ScrollToTopFab";
 import { suggestItemsForGroup } from "../../services/items";
 import {
   type SuggestedPokemon,
@@ -32,15 +30,6 @@ function groupKeyFromPokemon(group: Pokemon[]): string {
     .map((pokemon) => pokemon.id)
     .sort()
     .join("|");
-}
-
-function subscribeWindowScroll(onStoreChange: () => void) {
-  window.addEventListener("scroll", onStoreChange, { passive: true });
-  return () => window.removeEventListener("scroll", onStoreChange);
-}
-
-function getWindowScrollY() {
-  return window.scrollY;
 }
 
 export default function MatcherPage() {
@@ -114,16 +103,6 @@ export default function MatcherPage() {
   const [groupToastMessage, setGroupToastMessage] = useState<string | null>(
     null,
   );
-  const scrollY = useSyncExternalStore(
-    subscribeWindowScroll,
-    getWindowScrollY,
-    () => 0,
-  );
-  const showScrollTop = scrollY > 120;
-
-  const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const availablePokemon = useMemo(
     () => activePokemon.filter((p) => !customAssignedIds.has(p.id)),
@@ -336,32 +315,7 @@ export default function MatcherPage() {
           {groupToastMessage}
         </Alert>
       </Snackbar>
-      <Fab
-        color="primary"
-        size="medium"
-        aria-label="Scroll back to top"
-        aria-hidden={!showScrollTop}
-        tabIndex={showScrollTop ? 0 : -1}
-        onClick={scrollToTop}
-        sx={{
-          position: "fixed",
-          right: { xs: 16, sm: 24 },
-          bottom: { xs: 16, sm: 24 },
-          zIndex: (theme) => theme.zIndex.speedDial,
-          opacity: showScrollTop ? 1 : 0,
-          transform: showScrollTop
-            ? "scale(1) translateY(0)"
-            : "scale(0.88) translateY(10px)",
-          pointerEvents: showScrollTop ? "auto" : "none",
-          transition: (theme) =>
-            theme.transitions.create(["opacity", "transform"], {
-              duration: 200,
-              easing: theme.transitions.easing.easeOut,
-            }),
-        }}
-      >
-        <KeyboardArrowUpIcon />
-      </Fab>
+      <ScrollToTopFab />
     </Container>
   );
 }

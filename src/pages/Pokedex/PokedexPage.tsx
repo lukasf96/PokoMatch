@@ -31,6 +31,7 @@ import {
 } from "../../components/DeferredMount";
 import { InstantCollapse } from "../../components/InstantCollapse";
 import { PokemonCard } from "../../components/PokemonCard";
+import { ScrollToTopFab } from "../../components/ScrollToTopFab";
 import { useScrollToHash } from "../../hooks/useScrollToHash";
 import { habitatIcons } from "../../services/habitatColors";
 import {
@@ -347,6 +348,7 @@ export default function PokedexPage() {
           />
         )}
       </DeferredMountGate>
+      <ScrollToTopFab />
     </Container>
   );
 }
