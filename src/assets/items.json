@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T18:11:48.212Z",
+  "generatedAt": "2026-08-08T10:41:11.861Z",
   "items": [
     {
       "id": "honey",
@@ -7710,6 +7710,13 @@
     {
       "id": "twisty-waterweed",
       "name": "Twisty waterweed",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "seagrape-stalk-grow",
+      "name": "Seagrape stalk (grow)",
       "category": "Nature",
       "tag": "",
       "favoriteCategories": []
