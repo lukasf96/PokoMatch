@@ -14,10 +14,13 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { appRoutes } from "../../router/routes";
+import { BubblyBasinBanner } from "./BubblyBasinBanner";
 
 export default function HomePage() {
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 3, sm: 5 } }}>
+    <>
+      <BubblyBasinBanner />
+      <Container maxWidth="lg" sx={{ py: { xs: 3, sm: 5 } }}>
       <Stack spacing={3}>
         <Stack spacing={1}>
           <Typography
@@ -39,25 +42,6 @@ export default function HomePage() {
             }}>
             Plan Pokopia habitats with roommates who actually click.
           </Typography>
-          <Paper
-            variant="outlined"
-            sx={{
-              p: 1.25,
-              borderRadius: 2,
-              bgcolor: "info.light",
-              borderColor: "info.main",
-              color: "info.dark",
-              maxWidth: "sm",
-            }}
-          >
-            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              Updated for Bubbly Basin
-            </Typography>
-            <Typography variant="caption" component="p" sx={{ mt: 0.25 }}>
-              PokoMatch now includes the Basin Pokédex from the Pokopia
-              Expansion Pass—plan habitats with the new Bubbly Basin roster.
-            </Typography>
-          </Paper>
           <Box sx={{ pt: 0.5 }}>
             <Button
               startIcon={<AutoFixHighOutlinedIcon />}
@@ -342,5 +326,6 @@ export default function HomePage() {
         </Paper>
       </Stack>
     </Container>
+    </>
   );
 }
