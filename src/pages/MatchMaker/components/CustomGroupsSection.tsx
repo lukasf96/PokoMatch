@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { memo, useCallback, useMemo } from "react";
+import { InstantCollapse } from "../../../components/InstantCollapse";
 import type { SuggestedPokemon } from "../../../services/matching.service";
 import type { PokemonNameLanguage } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
@@ -213,10 +214,30 @@ function CustomGroupsSectionComponent({
   return (
     <Accordion
       defaultExpanded
+      disableGutters
       elevation={0}
+      slots={{ transition: InstantCollapse }}
       sx={{ borderRadius: 1, overflow: "hidden" }}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon aria-hidden />}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon aria-hidden />}
+        sx={{
+          minHeight: 0,
+          "&.Mui-expanded": { minHeight: 0 },
+          "& .MuiAccordionSummary-content": {
+            margin: 0,
+            alignItems: "center",
+            my: 1.5,
+          },
+          "& .MuiAccordionSummary-content.Mui-expanded": {
+            margin: 0,
+            my: 1.5,
+          },
+          "& .MuiAccordionSummary-expandIconWrapper": {
+            transition: "none",
+          },
+        }}
+      >
         <Stack
           direction="row"
           spacing={1.5}

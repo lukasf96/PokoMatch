@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { memo } from "react";
+import { InstantCollapse } from "../../../components/InstantCollapse";
 import type { Pokemon, SuggestedItem } from "../../../types/types";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
@@ -37,10 +38,30 @@ function AutoGroupsSectionComponent({
   return (
     <Accordion
       defaultExpanded
+      disableGutters
       elevation={0}
+      slots={{ transition: InstantCollapse }}
       sx={{ borderRadius: 1, overflow: "hidden" }}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon aria-hidden />}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon aria-hidden />}
+        sx={{
+          minHeight: 0,
+          "&.Mui-expanded": { minHeight: 0 },
+          "& .MuiAccordionSummary-content": {
+            margin: 0,
+            alignItems: "center",
+            my: 1.5,
+          },
+          "& .MuiAccordionSummary-content.Mui-expanded": {
+            margin: 0,
+            my: 1.5,
+          },
+          "& .MuiAccordionSummary-expandIconWrapper": {
+            transition: "none",
+          },
+        }}
+      >
         <Stack
           direction="row"
           spacing={1.5}

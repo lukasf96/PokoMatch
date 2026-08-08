@@ -295,7 +295,7 @@ export default function MatcherPage() {
           Build automatic or custom Pokopia habitat roommate groups, get ranked
           suggestions for who to add next, and keep everyone habitat-compatible.
         </Typography>
-        <Stack spacing={3}>
+        <Stack spacing={4}>
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}
             suggestions={suggestions}
