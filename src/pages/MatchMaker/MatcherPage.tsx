@@ -10,14 +10,13 @@ import {
 } from "@mui/material";
 import {
   useCallback,
-  useDeferredValue,
   useMemo,
+  useRef,
   useState,
   useSyncExternalStore,
 } from "react";
 import { suggestItemsForGroup } from "../../services/items";
 import {
-  computeAutoGroups,
   type SuggestedPokemon,
   suggestNextPokemon,
 } from "../../services/matching.service";
@@ -26,6 +25,7 @@ import { useStore } from "../../store/store";
 import type { Pokemon, SuggestedItem } from "../../types/types";
 import { AutoGroupsSection } from "./components/AutoGroupsSection";
 import { CustomGroupsSection } from "./components/CustomGroupsSection";
+import { useAutoGroups } from "./useAutoGroups";
 
 function groupKeyFromPokemon(group: Pokemon[]): string {
   return group
@@ -97,14 +97,10 @@ export default function MatcherPage() {
     () => activePokemon.filter((pokemon) => !customAssignedIds.has(pokemon.id)),
     [activePokemon, customAssignedIds],
   );
-  const deferredAutoPokemon = useDeferredValue(autoPokemon);
-  const autoGroups = useMemo(
-    () =>
-      computeAutoGroups(deferredAutoPokemon, {
-        preferEvolutionLines,
-      }),
-    [deferredAutoPokemon, preferEvolutionLines],
-  );
+  // Heavy grouping runs in a Web Worker; previous results stay visible while a
+  // new computation is in flight, so toggling/adding never blocks the UI.
+  const { groups: autoGroups, isRecomputing: isAutoGroupsRecomputing } =
+    useAutoGroups(autoPokemon, preferEvolutionLines);
   const [frozenSuggestedGroups, setFrozenSuggestedGroups] = useState<
     Pokemon[][] | null
   >(null);
@@ -192,14 +188,33 @@ export default function MatcherPage() {
     [frozenSuggestedGroups, freezePreferEvolutionLines, preferEvolutionLines],
   );
 
+  // Latest values read by the (referentially stable) quick-add handler. Keeping
+  // the handler identity stable lets the memoized suggested-groups list skip
+  // re-rendering when unrelated state (e.g. the evolution switch) changes.
+  const quickAddStateRef = useRef({
+    hasActiveSuggestedFreeze,
+    autoGroups,
+    preferEvolutionLines,
+  });
+  quickAddStateRef.current = {
+    hasActiveSuggestedFreeze,
+    autoGroups,
+    preferEvolutionLines,
+  };
+
   const handleQuickAddGroup = useCallback(
     (group: Pokemon[]) => {
-      if (!hasActiveSuggestedFreeze) {
-        setFrozenSuggestedGroups(autoGroups);
-        setFreezePreferEvolutionLines(preferEvolutionLines);
+      const {
+        hasActiveSuggestedFreeze: frozen,
+        autoGroups: currentAutoGroups,
+        preferEvolutionLines: currentPref,
+      } = quickAddStateRef.current;
+      if (!frozen) {
+        setFrozenSuggestedGroups(currentAutoGroups);
+        setFreezePreferEvolutionLines(currentPref);
       }
       setAdoptedSuggestedGroupKeys((prev) => {
-        const base = !hasActiveSuggestedFreeze ? new Set<string>() : prev;
+        const base = !frozen ? new Set<string>() : prev;
         const next = new Set(base);
         next.add(groupKeyFromPokemon(group));
         return next;
@@ -207,12 +222,7 @@ export default function MatcherPage() {
       addSuggestedGroupToCustomGroups(group.map((pokemon) => pokemon.id));
       setGroupToastMessage("Suggested group added");
     },
-    [
-      hasActiveSuggestedFreeze,
-      autoGroups,
-      preferEvolutionLines,
-      addSuggestedGroupToCustomGroups,
-    ],
+    [addSuggestedGroupToCustomGroups],
   );
 
   const displayedSuggestedGroups = useMemo(() => {
@@ -230,11 +240,6 @@ export default function MatcherPage() {
   const customGroupItemSuggestions = useMemo<SuggestedItem[][]>(
     () => resolvedCustomGroups.map((group) => suggestItemsForGroup(group)),
     [resolvedCustomGroups],
-  );
-
-  const autoGroupItemSuggestions = useMemo<SuggestedItem[][]>(
-    () => displayedSuggestedGroups.map((group) => suggestItemsForGroup(group)),
-    [displayedSuggestedGroups],
   );
 
   if (activePokemon.length === 0) {
@@ -309,10 +314,10 @@ export default function MatcherPage() {
 
           <AutoGroupsSection
             groups={displayedSuggestedGroups}
-            itemSuggestions={autoGroupItemSuggestions}
             preferEvolutionLines={preferEvolutionLines}
             onPreferEvolutionLinesChange={setPreferEvolutionLines}
             onQuickAddGroup={handleQuickAddGroup}
+            isRecomputing={isAutoGroupsRecomputing}
           />
         </Stack>
       </Stack>

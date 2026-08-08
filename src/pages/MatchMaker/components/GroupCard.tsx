@@ -60,6 +60,18 @@ function getGroupSpecialties(group: Pokemon[]): string[] {
   return [...new Set(group.flatMap((p) => p.specialties))].sort();
 }
 
+/** Stable sx for member cards so memoized `PokemonCard`s aren't re-rendered when
+ * only the enclosing group re-renders (e.g. a group-number label change). */
+const MEMBER_CARD_SX: SxProps<Theme> = {
+  border: "none",
+  borderRadius: 0,
+  bgcolor: "transparent",
+  "&:hover": {
+    boxShadow: "none",
+    transform: "none",
+  },
+};
+
 /** Four+ members: one row × four columns from `md` (900px) up; `sm` is 2×2, `xs` single column. */
 function groupMembersGridSx(memberCount: number): SxProps<Theme> {
   const base: SxProps<Theme> = {
@@ -328,15 +340,7 @@ function GroupCardComponent({
               onRemove={onRemovePokemon}
               favoriteCounts={favCounts}
               universalFavorites={universalFavorites}
-              sx={{
-                border: "none",
-                borderRadius: 0,
-                bgcolor: "transparent",
-                "&:hover": {
-                  boxShadow: "none",
-                  transform: "none",
-                },
-              }}
+              sx={MEMBER_CARD_SX}
             />
           </Box>
         ))}

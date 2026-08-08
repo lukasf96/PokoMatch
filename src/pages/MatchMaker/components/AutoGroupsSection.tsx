@@ -6,35 +6,147 @@ import {
   AccordionSummary,
   Box,
   Chip,
+  CircularProgress,
+  Fade,
   FormControlLabel,
   IconButton,
+  Skeleton,
   Stack,
   Switch,
   Tooltip,
   Typography,
 } from "@mui/material";
-import { memo } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { InstantCollapse } from "../../../components/InstantCollapse";
-import type { Pokemon, SuggestedItem } from "../../../types/types";
+import { suggestItemsForGroup } from "../../../services/items";
+import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
 import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
 
+interface AutoGroupRowProps {
+  group: Pokemon[];
+  groupNumber: number;
+  onQuickAddGroup: (group: Pokemon[]) => void;
+}
+
+/**
+ * One suggested group. Item suggestions are derived from the (stable) group
+ * reference so this row only re-renders when its own group or number changes —
+ * never when the evolution switch or the "updating" flag toggle.
+ */
+const AutoGroupRow = memo(function AutoGroupRow({
+  group,
+  groupNumber,
+  onQuickAddGroup,
+}: AutoGroupRowProps) {
+  const itemSuggestions = useMemo(() => suggestItemsForGroup(group), [group]);
+  const groupFavorites = useMemo(
+    () => new Set(group.flatMap((p) => p.favorites)),
+    [group],
+  );
+  const habitat = useMemo(() => getDisplayHabitat(group), [group]);
+  const handleQuickAdd = useCallback(
+    () => onQuickAddGroup(group),
+    [onQuickAddGroup, group],
+  );
+
+  return (
+    <Stack spacing={1}>
+      <GroupCard
+        group={group}
+        groupNumber={groupNumber}
+        habitat={habitat}
+        footerContent={
+          itemSuggestions.length > 0 ? (
+            <SuggestedItemsPanel
+              suggestions={itemSuggestions}
+              groupFavorites={groupFavorites}
+              groupSize={group.length}
+            />
+          ) : undefined
+        }
+        groupAction={{
+          ariaLabel: `Quick add suggested group ${groupNumber}`,
+          onClick: handleQuickAdd,
+          kind: "add",
+        }}
+      />
+    </Stack>
+  );
+});
+
+interface AutoGroupsListProps {
+  groups: Pokemon[][];
+  onQuickAddGroup: (group: Pokemon[]) => void;
+}
+
+/**
+ * The suggested-groups list. Memoized and kept independent of the header state
+ * (evolution switch, "updating" indicator) so those never force a re-render of
+ * the (potentially dozens of) heavy group cards.
+ */
+const AutoGroupsList = memo(function AutoGroupsList({
+  groups,
+  onQuickAddGroup,
+}: AutoGroupsListProps) {
+  return (
+    <Stack spacing={2}>
+      {groups.map((group, index) => (
+        <AutoGroupRow
+          key={groupStableKey(group)}
+          group={group}
+          groupNumber={index + 1}
+          onQuickAddGroup={onQuickAddGroup}
+        />
+      ))}
+    </Stack>
+  );
+});
+
+/** Placeholder cards shown while the first computation is still running. */
+function AutoGroupsSkeleton() {
+  return (
+    <Stack spacing={2} aria-hidden data-testid="auto-groups-skeleton">
+      {Array.from({ length: 4 }).map((_, index) => (
+        <Skeleton
+          key={index}
+          variant="rounded"
+          animation="wave"
+          height={132}
+          sx={{
+            borderRadius: 1,
+            // Default MUI skeleton tint is nearly invisible on the light paper
+            // background, so set an explicit, clearly-visible tone.
+            bgcolor: (theme) =>
+              theme.palette.mode === "dark"
+                ? theme.palette.grey[800]
+                : theme.palette.grey[100],
+          }}
+        />
+      ))}
+    </Stack>
+  );
+}
+
 interface AutoGroupsSectionProps {
   groups: Pokemon[][];
-  itemSuggestions: SuggestedItem[][];
   preferEvolutionLines: boolean;
   onPreferEvolutionLinesChange: (value: boolean) => void;
   onQuickAddGroup: (group: Pokemon[]) => void;
+  isRecomputing?: boolean;
 }
 
 function AutoGroupsSectionComponent({
   groups,
-  itemSuggestions,
   preferEvolutionLines,
   onPreferEvolutionLinesChange,
   onQuickAddGroup,
+  isRecomputing = false,
 }: AutoGroupsSectionProps) {
+  // First run: no results yet and still computing — show placeholders instead
+  // of a misleading "no groups" message.
+  const initialLoading = isRecomputing && groups.length === 0;
   return (
     <Accordion
       defaultExpanded
@@ -71,14 +183,39 @@ function AutoGroupsSectionComponent({
             flexWrap: "wrap",
             flex: 1,
             minWidth: 0,
-            pr: 1
-          }}>
-          <Typography component="span" sx={{
-            fontWeight: 700
-          }}>
+            pr: 1,
+          }}
+        >
+          <Typography
+            component="span"
+            sx={{
+              fontWeight: 700,
+            }}
+          >
             Suggested groups
           </Typography>
-          <Chip label={`${groups.length} groups`} size="small" />
+          {initialLoading ? (
+            <Skeleton variant="rounded" width={64} height={24} />
+          ) : (
+            <Chip label={`${groups.length} groups`} size="small" />
+          )}
+          <Fade
+            in={isRecomputing}
+            timeout={{ enter: 0, exit: 400 }}
+            unmountOnExit
+          >
+            <Stack
+              direction="row"
+              spacing={0.5}
+              component="span"
+              sx={{ alignItems: "center", color: "text.secondary" }}
+            >
+              <CircularProgress size={12} thickness={6} color="inherit" />
+              <Typography component="span" variant="caption">
+                Updating…
+              </Typography>
+            </Stack>
+          </Fade>
           <Box sx={{ flexGrow: 1, minWidth: 8 }} aria-hidden />
           <Box
             component="span"
@@ -107,14 +244,14 @@ function AutoGroupsSectionComponent({
                   spacing={0.5}
                   component="span"
                   sx={{
-                    alignItems: "center"
+                    alignItems: "center",
                   }}
                 >
                   <Typography
                     component="span"
                     variant="body2"
                     sx={{
-                      color: "text.secondary"
+                      color: "text.secondary",
                     }}
                   >
                     Prefer grouping Evolution lines together
@@ -139,38 +276,15 @@ function AutoGroupsSectionComponent({
         </Stack>
       </AccordionSummary>
       <AccordionDetails sx={{ p: 2 }}>
-        <Stack spacing={2}>
-          {groups.map((group, index) => {
-            const suggestions = itemSuggestions[index] ?? [];
-            const groupFavorites = new Set(group.flatMap((p) => p.favorites));
-            return (
-            <Stack key={groupStableKey(group)} spacing={1}>
-              <GroupCard
-                group={group}
-                groupNumber={index + 1}
-                habitat={getDisplayHabitat(group)}
-                footerContent={
-                  suggestions.length > 0 ? (
-                    <SuggestedItemsPanel suggestions={suggestions} groupFavorites={groupFavorites} groupSize={group.length} />
-                  ) : undefined
-                }
-                groupAction={{
-                  ariaLabel: `Quick add suggested group ${index + 1}`,
-                  onClick: () => onQuickAddGroup(group),
-                  kind: "add",
-                }}
-              />
-            </Stack>
-            );
-          })}
-          {groups.length === 0 && (
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
-              No suggested groups left from the remaining pool.
-            </Typography>
-          )}
-        </Stack>
+        {groups.length > 0 ? (
+          <AutoGroupsList groups={groups} onQuickAddGroup={onQuickAddGroup} />
+        ) : initialLoading ? (
+          <AutoGroupsSkeleton />
+        ) : (
+          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+            No suggested groups left from the remaining pool.
+          </Typography>
+        )}
       </AccordionDetails>
     </Accordion>
   );

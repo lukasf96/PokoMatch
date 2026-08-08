@@ -5,8 +5,10 @@ import {
   HomeOutlined,
 } from "@mui/icons-material";
 import { Box, Chip } from "@mui/material";
+import { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { LayoutSettingsMenu } from "./components/layout-settings-menu/LayoutSettingsMenu";
+import { preloadRoute } from "./router/lazyPages";
 import { appRoutes } from "./router/routes";
 import { allPokemon } from "./services/pokemon";
 import { useStore } from "./store/store";
@@ -24,6 +26,26 @@ export default function Layout({ children }: LayoutProps) {
   const isMatchMakerActive = pathname === appRoutes.matchmaker;
   const isInsightsActive = pathname === appRoutes.insights;
   const isPokedexActive = pathname === appRoutes.pokedex;
+
+  // Prefetch the other route chunks during idle time so their first navigation
+  // is instant (Match Maker also pulls in the heavier matching code + worker
+  // chunk). Hovering/focusing a nav link prefetches on demand too.
+  useEffect(() => {
+    const targets = [
+      appRoutes.matchmaker,
+      appRoutes.insights,
+      appRoutes.pokedex,
+      appRoutes.home,
+    ].filter((path) => path !== pathname);
+    const prefetch = () => targets.forEach(preloadRoute);
+    const ric = window.requestIdleCallback;
+    if (typeof ric === "function") {
+      const handle = ric(prefetch);
+      return () => window.cancelIdleCallback(handle);
+    }
+    const handle = window.setTimeout(prefetch, 1200);
+    return () => window.clearTimeout(handle);
+  }, [pathname]);
 
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
@@ -174,6 +196,9 @@ function NavItem({
     <Box
       component={RouterLink}
       to={to}
+      onMouseEnter={() => preloadRoute(to)}
+      onFocus={() => preloadRoute(to)}
+      onTouchStart={() => preloadRoute(to)}
       sx={{
         textDecoration: "none",
         cursor: "pointer",
