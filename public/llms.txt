@@ -1,0 +1,24 @@
+# PokoMatch
+
+> Free web companion for Pokémon Pokopia: plan habitats, match compatible roommates, and track your Pokédex—including Bubbly Basin (Expansion Pass).
+
+PokoMatch (https://pokomatch.com/) helps players of Pokémon Pokopia build habitat groups where Pokémon can live together without habitat conflicts, while maximizing shared favorites. Data stays in the browser; no account is required.
+
+## Main pages
+
+- [Home](https://pokomatch.com/): Overview of the habitat planner and Bubbly Basin support
+- [Match Maker](https://pokomatch.com/matchmaker): Automatic and custom roommate groups (up to four), next-member suggestions, and habitat item ideas
+- [Insights](https://pokomatch.com/insights): Read-only views of ideal habitats, favorites, and items in the dataset
+- [Pokédex](https://pokomatch.com/pokedex): Browse Standard, Event, and Basin Pokédex entries; lock/unlock species for matching
+
+## What it helps with
+
+- Habitat roommate matching for Pokopia
+- Planning around habitat types (Bright, Dark, Humid, Dry, Warm, Cool) and conflict rules
+- Bubbly Basin Expansion Pass / Basin Pokédex companion tools
+- Filtering matches to Pokémon you have unlocked
+
+## Notes
+
+- Unofficial fan tool; not affiliated with Nintendo, The Pokémon Company, or related rights holders
+- Source: https://github.com/lukasf96/pokomatch

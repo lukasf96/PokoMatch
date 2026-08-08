@@ -148,10 +148,18 @@ export default function PokedexPage() {
         sx={{
           fontWeight: 950,
           lineHeight: 1.1,
-          mb: 1,
+          mb: 0.75,
         }}
       >
         Pokopia Pokédex
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ color: "text.secondary", mb: 2, maxWidth: 640 }}
+      >
+        Browse Standard, Event, and Basin Pokédex entries for Pokémon Pokopia.
+        Search, filter by habitat, and lock or unlock species so our Match-Maker
+        only uses your available Pokémon.
       </Typography>
       {/* Toolbar */}
       <Stack

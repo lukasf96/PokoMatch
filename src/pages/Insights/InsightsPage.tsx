@@ -53,17 +53,21 @@ function StatCard({
             color: "text.secondary",
             fontWeight: 800,
             textTransform: "uppercase",
-            letterSpacing: "0.04em"
-          }}>
+            letterSpacing: "0.04em",
+          }}
+        >
           {label}
         </Typography>
         <Typography variant="h5" sx={{ fontWeight: 900, lineHeight: 1.1 }}>
           {value}
         </Typography>
         {subvalue ? (
-          <Typography variant="body2" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+            }}
+          >
             {subvalue}
           </Typography>
         ) : null}
@@ -166,10 +170,13 @@ export default function InsightsPage() {
         >
           Pokopia Insights
         </Typography>
-        <Typography variant="body2" sx={{
-          color: "text.secondary"
-        }}>
-          A quick look at the dataset behind Pokomatch: habitats, favorites,
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
+          A quick look at the dataset behind PokoMatch: habitats, favorites,
           items, and more.
         </Typography>
 

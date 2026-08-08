@@ -254,13 +254,17 @@ export default function MatcherPage() {
         <Typography
           sx={{
             color: "text.secondary",
-            mb: 1
-          }}>
+            mb: 1,
+          }}
+        >
           No Pokémon available with current settings.
         </Typography>
-        <Typography variant="body2" sx={{
-          color: "text.secondary"
-        }}>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
           Go to Pokédex and unlock some Pokémon first.
         </Typography>
       </Container>
@@ -279,10 +283,17 @@ export default function MatcherPage() {
           sx={{
             fontWeight: 950,
             lineHeight: 1.1,
-            mb: 2,
+            mb: 0.75,
           }}
         >
-          Pokopia Habitat Planner & Match‑Maker
+          Match Maker
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.secondary", mb: 2, maxWidth: 640 }}
+        >
+          Build automatic or custom Pokopia habitat roommate groups, get ranked
+          suggestions for who to add next, and keep everyone habitat-compatible.
         </Typography>
         <Stack spacing={3}>
           <CustomGroupsSection

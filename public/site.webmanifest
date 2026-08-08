@@ -1,6 +1,9 @@
 {
-  "name": "PokoMatch",
+  "name": "PokoMatch — Pokopia Habitat Planner",
   "short_name": "PokoMatch",
+  "description": "Pokémon Pokopia habitat planner and roommate matchmaker, with Standard, Event, and Basin Pokédex tracking including Bubbly Basin.",
+  "start_url": "/",
+  "id": "/",
   "icons": [
     {
       "src": "web-app-manifest-192x192.png",
@@ -15,7 +18,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#2563eb",
   "background_color": "#ffffff",
   "display": "standalone"
 }
