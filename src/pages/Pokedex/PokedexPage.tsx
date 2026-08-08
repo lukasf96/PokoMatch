@@ -1,10 +1,13 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SearchIcon from "@mui/icons-material/Search";
 import StarsIcon from "@mui/icons-material/Stars";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Container,
-  Divider,
   InputAdornment,
   MenuItem,
   Stack,
@@ -14,11 +17,13 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
+import { useLocation } from "react-router-dom";
 import { PokemonCard } from "../../components/PokemonCard";
 import { habitatIcons } from "../../services/habitatColors";
 import {
   allPokemon,
+  basinPokemon,
   eventPokemon,
   standardPokemon,
 } from "../../services/pokemon";
@@ -26,19 +31,55 @@ import { useStore } from "../../store/store";
 import type { Habitat, Pokemon } from "../../types/types";
 
 type Filter = "all" | "unlocked" | "locked";
+type SectionKey = "standard" | "event" | "basin";
+
+const SECTION_IDS: Record<SectionKey, string> = {
+  standard: "standard",
+  event: "event",
+  basin: "basin",
+};
+
+const standardIds = standardPokemon.map((p) => p.id);
+const eventIds = eventPokemon.map((p) => p.id);
+const basinIds = basinPokemon.map((p) => p.id);
+
+const DEFAULT_EXPANDED: Record<SectionKey, boolean> = {
+  standard: true,
+  event: true,
+  basin: true,
+};
 
 export default function PokedexPage() {
   const togglePokemon = useStore((s) => s.togglePokemon);
   const unlockAll = useStore((s) => s.unlockAll);
   const lockAll = useStore((s) => s.lockAll);
+  const unlockMany = useStore((s) => s.unlockMany);
+  const lockMany = useStore((s) => s.lockMany);
   const unlockedIds = useStore((s) => s.unlockedIds);
+  const { hash } = useLocation();
 
   const [search, setSearch] = useState("");
   const [habitatFilter, setHabitatFilter] = useState<Habitat | "all">("all");
   const [specialtyFilter, setSpecialtyFilter] = useState<string | "all">("all");
   const [statusFilter, setStatusFilter] = useState<Filter>("all");
+  const [expanded, setExpanded] =
+    useState<Record<SectionKey, boolean>>(DEFAULT_EXPANDED);
 
   const effectiveStatusFilter = statusFilter;
+
+  useEffect(() => {
+    if (hash !== `#${SECTION_IDS.basin}`) return;
+
+    setExpanded((prev) => (prev.basin ? prev : { ...prev, basin: true }));
+
+    const timer = window.setTimeout(() => {
+      document
+        .getElementById(SECTION_IDS.basin)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [hash]);
 
   const filterList = useMemo(
     () =>
@@ -72,6 +113,10 @@ export default function PokedexPage() {
     () => filterList(eventPokemon),
     [filterList],
   );
+  const baseFilteredBasin = useMemo(
+    () => filterList(basinPokemon),
+    [filterList],
+  );
 
   const habitats = useMemo(
     () =>
@@ -87,6 +132,11 @@ export default function PokedexPage() {
 
   const totalCount = allPokemon.length;
 
+  const handleSectionExpandedChange =
+    (key: SectionKey) => (_: SyntheticEvent, isExpanded: boolean) => {
+      setExpanded((prev) => ({ ...prev, [key]: isExpanded }));
+    };
+
   return (
     <Container
       maxWidth="lg"
@@ -98,10 +148,18 @@ export default function PokedexPage() {
         sx={{
           fontWeight: 950,
           lineHeight: 1.1,
-          mb: 1,
+          mb: 0.75,
         }}
       >
         Pokopia Pokédex
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ color: "text.secondary", mb: 2, maxWidth: 640 }}
+      >
+        Browse Standard, Event, and Basin Pokédex entries for Pokémon Pokopia.
+        Search, filter by habitat, and lock or unlock species so our Match-Maker
+        only uses your available Pokémon.
       </Typography>
       {/* Toolbar */}
       <Stack
@@ -246,6 +304,7 @@ export default function PokedexPage() {
           totalCount={totalCount}
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           effectiveStatusFilter={effectiveStatusFilter}
           unlockedIds={unlockedIds}
         />
@@ -254,18 +313,28 @@ export default function PokedexPage() {
         <PokedexSections
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           interactive
           onToggle={togglePokemon}
           unlockedIds={unlockedIds}
+          expanded={expanded}
+          onExpandedChange={handleSectionExpandedChange}
+          onUnlockSection={unlockMany}
+          onLockSection={lockMany}
         />
       ) : (
         <PokedexSectionsStatusFiltered
           baseFilteredStandard={baseFilteredStandard}
           baseFilteredEvent={baseFilteredEvent}
+          baseFilteredBasin={baseFilteredBasin}
           status={effectiveStatusFilter}
           interactive
           onToggle={togglePokemon}
           unlockedIds={unlockedIds}
+          expanded={expanded}
+          onExpandedChange={handleSectionExpandedChange}
+          onUnlockSection={unlockMany}
+          onLockSection={lockMany}
         />
       )}
     </Container>
@@ -276,17 +345,22 @@ function PokedexShowingCount({
   totalCount,
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   effectiveStatusFilter,
   unlockedIds,
 }: {
   totalCount: number;
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   effectiveStatusFilter: Filter;
   unlockedIds: Set<string>;
 }) {
   if (effectiveStatusFilter === "all") {
-    const n = baseFilteredStandard.length + baseFilteredEvent.length;
+    const n =
+      baseFilteredStandard.length +
+      baseFilteredEvent.length +
+      baseFilteredBasin.length;
     return (
       <Typography
         variant="body2"
@@ -304,6 +378,7 @@ function PokedexShowingCount({
       totalCount={totalCount}
       baseFilteredStandard={baseFilteredStandard}
       baseFilteredEvent={baseFilteredEvent}
+      baseFilteredBasin={baseFilteredBasin}
       status={effectiveStatusFilter}
       unlockedIds={unlockedIds}
     />
@@ -314,12 +389,14 @@ function PokedexShowingCountWithStatus({
   totalCount,
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   status,
   unlockedIds,
 }: {
   totalCount: number;
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   status: "unlocked" | "locked";
   unlockedIds: Set<string>;
 }) {
@@ -333,6 +410,10 @@ function PokedexShowingCountWithStatus({
     const isUnlocked = unlockedIds.has(p.id);
     if (status === "unlocked" ? isUnlocked : !isUnlocked) showing += 1;
   }
+  for (const p of baseFilteredBasin) {
+    const isUnlocked = unlockedIds.has(p.id);
+    if (status === "unlocked" ? isUnlocked : !isUnlocked) showing += 1;
+  }
 
   return (
     <Typography
@@ -341,7 +422,7 @@ function PokedexShowingCountWithStatus({
         color: "text.secondary",
       }}
     >
-      Showing {showing}of {totalCount}Pokémon
+      Showing {showing} of {totalCount} Pokémon
     </Typography>
   );
 }
@@ -349,45 +430,74 @@ function PokedexShowingCountWithStatus({
 function PokedexSections({
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   interactive,
   onToggle,
   unlockedIds,
+  expanded,
+  onExpandedChange,
+  onUnlockSection,
+  onLockSection,
 }: {
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   interactive: boolean;
   onToggle: (id: string) => void;
   unlockedIds: Set<string>;
+  expanded: Record<SectionKey, boolean>;
+  onExpandedChange: (
+    key: SectionKey,
+  ) => (_: SyntheticEvent, isExpanded: boolean) => void;
+  onUnlockSection: (ids: readonly string[]) => void;
+  onLockSection: (ids: readonly string[]) => void;
 }) {
   return (
-    <Stack spacing={3}>
-      <Box>
-        <PokedexSectionHeader
-          title="Standard Pokédex"
-          subtitle={`${standardPokemon.length} Pokémon`}
-        />
-        <PokedexGrid
-          pokemon={baseFilteredStandard}
-          interactive={interactive}
-          onToggle={onToggle}
-          unlockedIds={unlockedIds}
-        />
-      </Box>
+    <Stack spacing={1.5}>
+      <PokedexSection
+        id={SECTION_IDS.standard}
+        title="Standard Pokédex"
+        subtitle={`${standardPokemon.length} Pokémon`}
+        pokemon={baseFilteredStandard}
+        sectionIds={standardIds}
+        expanded={expanded.standard}
+        onExpandedChange={onExpandedChange("standard")}
+        interactive={interactive}
+        onToggle={onToggle}
+        unlockedIds={unlockedIds}
+        onUnlockSection={onUnlockSection}
+        onLockSection={onLockSection}
+      />
 
-      <Divider />
+      <PokedexSection
+        id={SECTION_IDS.event}
+        title="Event Pokédex"
+        subtitle={`${eventPokemon.length} Pokémon`}
+        pokemon={baseFilteredEvent}
+        sectionIds={eventIds}
+        expanded={expanded.event}
+        onExpandedChange={onExpandedChange("event")}
+        interactive={interactive}
+        onToggle={onToggle}
+        unlockedIds={unlockedIds}
+        onUnlockSection={onUnlockSection}
+        onLockSection={onLockSection}
+      />
 
-      <Box>
-        <PokedexSectionHeader
-          title="Event Pokédex"
-          subtitle={`${eventPokemon.length} Pokémon`}
-        />
-        <PokedexGrid
-          pokemon={baseFilteredEvent}
-          interactive={interactive}
-          onToggle={onToggle}
-          unlockedIds={unlockedIds}
-        />
-      </Box>
+      <PokedexSection
+        id={SECTION_IDS.basin}
+        title="Basin Pokédex"
+        subtitle={`${basinPokemon.length} Pokémon`}
+        pokemon={baseFilteredBasin}
+        sectionIds={basinIds}
+        expanded={expanded.basin}
+        onExpandedChange={onExpandedChange("basin")}
+        interactive={interactive}
+        onToggle={onToggle}
+        unlockedIds={unlockedIds}
+        onUnlockSection={onUnlockSection}
+        onLockSection={onLockSection}
+      />
     </Stack>
   );
 }
@@ -395,17 +505,29 @@ function PokedexSections({
 function PokedexSectionsStatusFiltered({
   baseFilteredStandard,
   baseFilteredEvent,
+  baseFilteredBasin,
   status,
   interactive,
   onToggle,
   unlockedIds,
+  expanded,
+  onExpandedChange,
+  onUnlockSection,
+  onLockSection,
 }: {
   baseFilteredStandard: Pokemon[];
   baseFilteredEvent: Pokemon[];
+  baseFilteredBasin: Pokemon[];
   status: "unlocked" | "locked";
   interactive: boolean;
   onToggle: (id: string) => void;
   unlockedIds: Set<string>;
+  expanded: Record<SectionKey, boolean>;
+  onExpandedChange: (
+    key: SectionKey,
+  ) => (_: SyntheticEvent, isExpanded: boolean) => void;
+  onUnlockSection: (ids: readonly string[]) => void;
+  onLockSection: (ids: readonly string[]) => void;
 }) {
   const filteredStandard = useMemo(() => {
     const result: Pokemon[] = [];
@@ -431,51 +553,167 @@ function PokedexSectionsStatusFiltered({
 
     return result;
   }, [baseFilteredEvent, status, unlockedIds]);
+  const filteredBasin = useMemo(() => {
+    const result: Pokemon[] = [];
+
+    for (const p of baseFilteredBasin) {
+      const isUnlocked = unlockedIds.has(p.id);
+      if (status === "unlocked" ? isUnlocked : !isUnlocked) {
+        result.push(p);
+      }
+    }
+
+    return result;
+  }, [baseFilteredBasin, status, unlockedIds]);
 
   return (
     <PokedexSections
       baseFilteredStandard={filteredStandard}
       baseFilteredEvent={filteredEvent}
+      baseFilteredBasin={filteredBasin}
       interactive={interactive}
       onToggle={onToggle}
       unlockedIds={unlockedIds}
+      expanded={expanded}
+      onExpandedChange={onExpandedChange}
+      onUnlockSection={onUnlockSection}
+      onLockSection={onLockSection}
     />
   );
 }
 
-function PokedexSectionHeader({
+function PokedexSection({
+  id,
   title,
   subtitle,
+  pokemon,
+  sectionIds,
+  expanded,
+  onExpandedChange,
+  interactive,
+  onToggle,
+  unlockedIds,
+  onUnlockSection,
+  onLockSection,
 }: {
+  id: string;
   title: string;
   subtitle: string;
+  pokemon: Pokemon[];
+  sectionIds: readonly string[];
+  expanded: boolean;
+  onExpandedChange: (_: SyntheticEvent, isExpanded: boolean) => void;
+  interactive: boolean;
+  onToggle: (id: string) => void;
+  unlockedIds: Set<string>;
+  onUnlockSection: (ids: readonly string[]) => void;
+  onLockSection: (ids: readonly string[]) => void;
 }) {
   return (
-    <Stack
-      spacing={0.25}
+    <Accordion
+      id={id}
+      disableGutters
+      elevation={0}
+      expanded={expanded}
+      onChange={onExpandedChange}
       sx={{
-        mb: { xs: 1, sm: 1.5 },
+        scrollMarginTop: 88,
+        overflow: "hidden",
+        "&:before": { display: "none" },
       }}
     >
-      <Typography
-        variant="h6"
-        component="h2"
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon aria-hidden />}
+        aria-controls={`${id}-content`}
+        id={`${id}-header`}
         sx={{
-          fontWeight: 700,
-          fontSize: { xs: "1rem", sm: "1.25rem" },
+          px: { xs: 1.25, sm: 1.5 },
+          py: 0.75,
+          minHeight: 0,
+          "&.Mui-expanded": { minHeight: 0 },
+          "& .MuiAccordionSummary-content": {
+            margin: 0,
+            alignItems: "center",
+            my: 0.5,
+          },
+          "& .MuiAccordionSummary-content.Mui-expanded": { margin: 0, my: 0.5 },
         }}
       >
-        {title}
-      </Typography>
-      <Typography
-        variant="caption"
-        sx={{
-          color: "text.secondary",
-        }}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 1, sm: 2 }}
+          sx={{
+            alignItems: { xs: "stretch", sm: "center" },
+            justifyContent: "space-between",
+            width: "100%",
+            pr: 1,
+            minWidth: 0,
+          }}
+        >
+          <Stack spacing={0.25} sx={{ minWidth: 0 }}>
+            <Typography
+              variant="h6"
+              component="h2"
+              sx={{
+                fontWeight: 700,
+                fontSize: { xs: "1rem", sm: "1.25rem" },
+              }}
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
+              {subtitle}
+            </Typography>
+          </Stack>
+
+          <Stack
+            direction="row"
+            spacing={1}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
+            sx={{
+              flexShrink: 0,
+              alignItems: "center",
+            }}
+          >
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={() => onUnlockSection(sectionIds)}
+              sx={{ whiteSpace: "nowrap" }}
+            >
+              Unlock all
+            </Button>
+            <Button
+              size="small"
+              variant="outlined"
+              color="warning"
+              onClick={() => onLockSection(sectionIds)}
+              sx={{ whiteSpace: "nowrap" }}
+            >
+              Lock all
+            </Button>
+          </Stack>
+        </Stack>
+      </AccordionSummary>
+      <AccordionDetails
+        id={`${id}-content`}
+        sx={{ px: { xs: 1.25, sm: 1.5 }, pt: 0, pb: { xs: 1.5, sm: 2 } }}
       >
-        {subtitle}
-      </Typography>
-    </Stack>
+        <PokedexGrid
+          pokemon={pokemon}
+          interactive={interactive}
+          onToggle={onToggle}
+          unlockedIds={unlockedIds}
+        />
+      </AccordionDetails>
+    </Accordion>
   );
 }
 

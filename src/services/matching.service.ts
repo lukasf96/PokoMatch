@@ -28,7 +28,7 @@ function habitatBit(p: Pokemon): number {
 
 // ---------------------------------------------------------------------------
 // Favorites affinity — 64-bit bitmask split across two 32-bit ints (lo/hi).
-// Supports up to 64 distinct favorites (dataset has 43).
+// Supports up to 64 distinct favorites (dataset currently uses fewer).
 // sharedFavorites(a,b) = popcount(alo&blo) + popcount(ahi&bhi)
 // ---------------------------------------------------------------------------
 
@@ -398,6 +398,7 @@ interface ComputeAutoGroupsOptions {
 /**
  * Partition pokemon into groups of up to 4, maximising shared favorites
  * while respecting habitat conflicts.
+ * Groups are ordered by {@link groupScore} descending (highest favorite overlap first).
  * Members within each group are ordered by {@link comparePokemonByDex} (same as dropdowns / next-Pokémon suggestions).
  */
 export function computeAutoGroups(
@@ -442,6 +443,19 @@ export function computeAutoGroups(
       best = improved;
     }
   }
+
+  // Present suggested groups best-first using the same favorite-overlap score shown in the UI
+  best.sort((ga, gb) => {
+    let scoreA = 0;
+    let scoreB = 0;
+    for (let i = 0; i < ga.length; i++)
+      for (let j = i + 1; j < ga.length; j++)
+        scoreA += ctx.aff[ga[i] * n + ga[j]];
+    for (let i = 0; i < gb.length; i++)
+      for (let j = i + 1; j < gb.length; j++)
+        scoreB += ctx.aff[gb[i] * n + gb[j]];
+    return scoreB - scoreA;
+  });
 
   return best.map((g) =>
     Array.from(g)

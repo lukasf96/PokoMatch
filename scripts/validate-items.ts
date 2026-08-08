@@ -16,6 +16,7 @@ interface PokedexEntry {
 interface PokedexJson {
   standard: PokedexEntry[];
   event: PokedexEntry[];
+  basin: PokedexEntry[];
 }
 
 interface ItemEntry {
@@ -37,7 +38,11 @@ async function main(): Promise<void> {
   const itemsJson = JSON.parse(itemsRaw) as ItemsJson;
 
   const knownFavorites = new Set<string>();
-  for (const entry of [...pokedex.standard, ...pokedex.event]) {
+  for (const entry of [
+    ...pokedex.standard,
+    ...pokedex.event,
+    ...pokedex.basin,
+  ]) {
     for (const fav of entry.favorites) knownFavorites.add(fav);
   }
 

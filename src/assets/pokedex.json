@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T19:54:54.645Z",
+  "generatedAt": "2026-08-08T10:52:09.034Z",
   "standard": [
     {
       "id": "001",
@@ -6340,6 +6340,1048 @@
         "fr": "Jirachi"
       },
       "evolutionLinePeerIds": []
+    }
+  ],
+  "basin": [
+    {
+      "id": "b001",
+      "dexNumber": "001",
+      "name": "Shellder",
+      "specialties": ["Scrub", "Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Shiny stuff",
+        "Round stuff",
+        "Hard stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Muschas",
+        "fr": "Kokiyas"
+      },
+      "evolutionLinePeerIds": ["b002"]
+    },
+    {
+      "id": "b002",
+      "dexNumber": "002",
+      "name": "Cloyster",
+      "specialties": ["Scrub", "Litter"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Lots of water",
+        "Shiny stuff",
+        "Round stuff",
+        "Sharp stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Austos",
+        "fr": "Crustabri"
+      },
+      "evolutionLinePeerIds": ["b001"]
+    },
+    {
+      "id": "b003",
+      "dexNumber": "003",
+      "name": "Horsea",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of Water",
+        "Slender objects",
+        "Spinning stuff",
+        "Play spaces",
+        "Group activities"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Seeper",
+        "fr": "Hypotrempe"
+      },
+      "evolutionLinePeerIds": ["b004", "b005"]
+    },
+    {
+      "id": "b004",
+      "dexNumber": "004",
+      "name": "Seadra",
+      "specialties": ["Water", "Litter"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Slender objects",
+        "Spinning stuff",
+        "Ocean vibes",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Seemon",
+        "fr": "Hypocéan"
+      },
+      "evolutionLinePeerIds": ["b003", "b005"]
+    },
+    {
+      "id": "b005",
+      "dexNumber": "005",
+      "name": "Kingdra",
+      "specialties": ["Water", "Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Slender objects",
+        "Luxury",
+        "Exercise",
+        "Nice breezes"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Seedraking",
+        "fr": "Hyporoi"
+      },
+      "evolutionLinePeerIds": ["b003", "b004"]
+    },
+    {
+      "id": "b006",
+      "dexNumber": "006",
+      "name": "Staryu",
+      "specialties": ["Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Strange stuff",
+        "Spinning stuff",
+        "Colorful stuff",
+        "Sharp stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Sterndu",
+        "fr": "Stari"
+      },
+      "evolutionLinePeerIds": ["b007"]
+    },
+    {
+      "id": "b007",
+      "dexNumber": "007",
+      "name": "Starmie",
+      "specialties": ["Teleport", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Strange stuff",
+        "Spinning stuff",
+        "Colorful stuff",
+        "Complicated stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Starmie",
+        "fr": "Staross"
+      },
+      "evolutionLinePeerIds": ["b006"]
+    },
+    {
+      "id": "b008",
+      "dexNumber": "008",
+      "name": "Totodile",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Sharp stuff",
+        "Play spaces",
+        "Group activities",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Karnimani",
+        "fr": "Kaiminus"
+      },
+      "evolutionLinePeerIds": ["b009", "b010"]
+    },
+    {
+      "id": "b009",
+      "dexNumber": "009",
+      "name": "Croconaw",
+      "specialties": ["Chop", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Sharp stuff",
+        "Exercise",
+        "Slender objects",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Tyracroc",
+        "fr": "Crocrodil"
+      },
+      "evolutionLinePeerIds": ["b008", "b010"]
+    },
+    {
+      "id": "b010",
+      "dexNumber": "010",
+      "name": "Feraligatr",
+      "specialties": ["Chop", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Sharp stuff",
+        "Exercise",
+        "Luxury",
+        "Nice breezes"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Impergator",
+        "fr": "Aligatueur"
+      },
+      "evolutionLinePeerIds": ["b008", "b009"]
+    },
+    {
+      "id": "b011",
+      "dexNumber": "011",
+      "name": "Chinchou",
+      "specialties": ["Generate"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Electronics",
+        "Wobbly stuff",
+        "Glass stuff",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Lampi",
+        "fr": "Loupio"
+      },
+      "evolutionLinePeerIds": ["b012"]
+    },
+    {
+      "id": "b012",
+      "dexNumber": "012",
+      "name": "Lanturn",
+      "specialties": ["Generate", "Water"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Electronics",
+        "Wobbly stuff",
+        "Glass stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Lanturn",
+        "fr": "Lanturn"
+      },
+      "evolutionLinePeerIds": ["b011"]
+    },
+    {
+      "id": "b013",
+      "dexNumber": "013",
+      "name": "Corsola",
+      "specialties": ["Grow"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Stone stuff",
+        "Lots of nature",
+        "Glass stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Corasonn",
+        "fr": "Corayon"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b014",
+      "dexNumber": "014",
+      "name": "Mudkip",
+      "specialties": ["Water"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Soft stuff",
+        "Play spaces",
+        "Stone stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Hydropi",
+        "fr": "Gobou"
+      },
+      "evolutionLinePeerIds": ["b015", "b016"]
+    },
+    {
+      "id": "b015",
+      "dexNumber": "015",
+      "name": "Marshtomp",
+      "specialties": ["Water", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Soft stuff",
+        "Construction",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Moorabbel",
+        "fr": "Flobio"
+      },
+      "evolutionLinePeerIds": ["b014", "b016"]
+    },
+    {
+      "id": "b016",
+      "dexNumber": "016",
+      "name": "Swampert",
+      "specialties": ["Build", "Bulldoze"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Soft stuff",
+        "Construction",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Sumpex",
+        "fr": "Laggron"
+      },
+      "evolutionLinePeerIds": ["b014", "b015"]
+    },
+    {
+      "id": "b017",
+      "dexNumber": "017",
+      "name": "Carvanha",
+      "specialties": ["Chop"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Sharp stuff",
+        "Exercise",
+        "Ocean vibes",
+        "Group activities"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Kanivanha",
+        "fr": "Carvanha"
+      },
+      "evolutionLinePeerIds": ["b018"]
+    },
+    {
+      "id": "b018",
+      "dexNumber": "018",
+      "name": "Sharpedo",
+      "specialties": ["Chop", "Scrub"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Sharp stuff",
+        "Exercise",
+        "Ocean vibes",
+        "Symbols"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Tohaido",
+        "fr": "Sharpedo"
+      },
+      "evolutionLinePeerIds": ["b017"]
+    },
+    {
+      "id": "b019",
+      "dexNumber": "019",
+      "name": "Barboach",
+      "specialties": ["Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Watching stuff",
+        "Soft stuff",
+        "Slender objects"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Schmerbe",
+        "fr": "Barloche"
+      },
+      "evolutionLinePeerIds": ["b020"]
+    },
+    {
+      "id": "b020",
+      "dexNumber": "020",
+      "name": "Whiscash",
+      "specialties": ["Search", "Bulldoze"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Lots of dirt",
+        "Watching stuff",
+        "Soft stuff",
+        "Wobbly stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Welsar",
+        "fr": "Barbicha"
+      },
+      "evolutionLinePeerIds": ["b019"]
+    },
+    {
+      "id": "b021",
+      "dexNumber": "021",
+      "name": "Corphish",
+      "specialties": ["Build"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Construction",
+        "Exercise",
+        "Lots of nature",
+        "Play spaces"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Krebscorps",
+        "fr": "Écrapince"
+      },
+      "evolutionLinePeerIds": ["b022"]
+    },
+    {
+      "id": "b022",
+      "dexNumber": "022",
+      "name": "Crawdaunt",
+      "specialties": ["Build", "Crush"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Construction",
+        "Exercise",
+        "Healing",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Krebutack",
+        "fr": "Colhomard"
+      },
+      "evolutionLinePeerIds": ["b021"]
+    },
+    {
+      "id": "b023",
+      "dexNumber": "023",
+      "name": "Luvdisc",
+      "specialties": ["Hype"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Healing",
+        "Group activities",
+        "Play spaces"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Liebiskus",
+        "fr": "Lovdisc"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b024",
+      "dexNumber": "024",
+      "name": "Buizel",
+      "specialties": ["Chop", "Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Soft stuff",
+        "Spinning stuff",
+        "Play spaces",
+        "Group activities"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Bamelin",
+        "fr": "Mustébouée"
+      },
+      "evolutionLinePeerIds": ["b025"]
+    },
+    {
+      "id": "b025",
+      "dexNumber": "025",
+      "name": "Floatzel",
+      "specialties": ["Trade", "Build"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Soft stuff",
+        "Spinning stuff",
+        "Healing",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Bojelin",
+        "fr": "Mustéflott"
+      },
+      "evolutionLinePeerIds": ["b024"]
+    },
+    {
+      "id": "b026",
+      "dexNumber": "026",
+      "name": "Finneon",
+      "specialties": ["Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Colorful stuff",
+        "Shiny stuff",
+        "Glass stuff",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Finneon",
+        "fr": "Écayon"
+      },
+      "evolutionLinePeerIds": ["b027"]
+    },
+    {
+      "id": "b027",
+      "dexNumber": "027",
+      "name": "Lumineon",
+      "specialties": ["Hype", "Water"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Colorful stuff",
+        "Shiny stuff",
+        "Glass stuff",
+        "Group activities"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Lumineon",
+        "fr": "Luminéon"
+      },
+      "evolutionLinePeerIds": ["b026"]
+    },
+    {
+      "id": "b028a",
+      "dexNumber": "028",
+      "name": "Frillish Male Form",
+      "specialties": ["Search", "Burn"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Spooky stuff",
+        "Ocean vibes",
+        "Watching stuff",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Quabbel",
+        "fr": "Viskuse"
+      },
+      "evolutionLinePeerIds": ["b028b", "b029a", "b029b"]
+    },
+    {
+      "id": "b028b",
+      "dexNumber": "028",
+      "name": "Frillish Female Form",
+      "specialties": ["Search", "Burn"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Spooky stuff",
+        "Ocean vibes",
+        "Watching stuff",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Quabbel",
+        "fr": "Viskuse"
+      },
+      "evolutionLinePeerIds": ["b028a", "b029a", "b029b"]
+    },
+    {
+      "id": "b029a",
+      "dexNumber": "029",
+      "name": "Jellicent Male Form",
+      "specialties": ["Search", "Burn"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Spooky stuff",
+        "Ocean vibes",
+        "Rides",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Apoquallyp",
+        "fr": "Moyade"
+      },
+      "evolutionLinePeerIds": ["b028a", "b028b", "b029b"]
+    },
+    {
+      "id": "b029b",
+      "dexNumber": "029",
+      "name": "Jellicent Female Form",
+      "specialties": ["Search", "Burn"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of water",
+        "Spooky stuff",
+        "Ocean vibes",
+        "Rides",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Spicy flavors",
+      "localizedNames": {
+        "de": "Apoquallyp",
+        "fr": "Moyade"
+      },
+      "evolutionLinePeerIds": ["b028a", "b028b", "b029a"]
+    },
+    {
+      "id": "b030",
+      "dexNumber": "030",
+      "name": "Alomomola",
+      "specialties": ["Water", "Scrub"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Healing",
+        "Colorful stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Mamolida",
+        "fr": "Mamanbo"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b031",
+      "dexNumber": "031",
+      "name": "Stunfisk",
+      "specialties": ["Generate", "Bulldoze"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of dirt",
+        "Electronics",
+        "Blocky stuff",
+        "Soft stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Flunschlik",
+        "fr": "Limonde"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b032",
+      "dexNumber": "032",
+      "name": "Inkay",
+      "specialties": ["Gather", "Teleport"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Complicated stuff",
+        "Strange stuff",
+        "Colorful stuff",
+        "Spinning stuff",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Iscalar",
+        "fr": "Sepiatop"
+      },
+      "evolutionLinePeerIds": ["b033"]
+    },
+    {
+      "id": "b033",
+      "dexNumber": "033",
+      "name": "Malamar",
+      "specialties": ["Gather", "Teleport"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Complicated stuff",
+        "Strange stuff",
+        "Colorful stuff",
+        "Spooky stuff",
+        "Letters and words"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Calamanero",
+        "fr": "Sepiatroce"
+      },
+      "evolutionLinePeerIds": ["b032"]
+    },
+    {
+      "id": "b034",
+      "dexNumber": "034",
+      "name": "Popplio",
+      "specialties": ["Hype", "Water"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Play spaces",
+        "Cute stuff",
+        "Round stuff",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Robball",
+        "fr": "Otaquin"
+      },
+      "evolutionLinePeerIds": ["b035", "b036"]
+    },
+    {
+      "id": "b035",
+      "dexNumber": "035",
+      "name": "Brionne",
+      "specialties": ["Hype", "Trade"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Play spaces",
+        "Group activities",
+        "Noisy stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Marikeck",
+        "fr": "Otarlette"
+      },
+      "evolutionLinePeerIds": ["b034", "b036"]
+    },
+    {
+      "id": "b036",
+      "dexNumber": "036",
+      "name": "Primarina",
+      "specialties": ["Hype", "Scrub"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Play spaces",
+        "Cute stuff",
+        "Noisy stuff",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Primarene",
+        "fr": "Oratoria"
+      },
+      "evolutionLinePeerIds": ["b034", "b035"]
+    },
+    {
+      "id": "b037",
+      "dexNumber": "037",
+      "name": "Mareanie",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Garbage",
+        "Lots of water",
+        "Sharp stuff",
+        "Colorful stuff",
+        "Shiny stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Garstella",
+        "fr": "Vorastérie"
+      },
+      "evolutionLinePeerIds": ["b038"]
+    },
+    {
+      "id": "b038",
+      "dexNumber": "038",
+      "name": "Toxapex",
+      "specialties": ["Recycle", "Build"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Garbage",
+        "Lots of water",
+        "Sharp stuff",
+        "Colorful stuff",
+        "Containers"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Aggrostella",
+        "fr": "Prédastérie"
+      },
+      "evolutionLinePeerIds": ["b037"]
+    },
+    {
+      "id": "b039",
+      "dexNumber": "039",
+      "name": "Wimpod",
+      "specialties": ["Recycle"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Lots of water",
+        "Group activities",
+        "Garbage",
+        "Ocean vibes"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Reißlaus",
+        "fr": "Sovkipou"
+      },
+      "evolutionLinePeerIds": ["b040"]
+    },
+    {
+      "id": "b040",
+      "dexNumber": "040",
+      "name": "Golisopod",
+      "specialties": ["Recycle", "Chop"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Lots of nature",
+        "Lots of water",
+        "Healing",
+        "Exercise",
+        "Luxury"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Tectass",
+        "fr": "Sarmuraï"
+      },
+      "evolutionLinePeerIds": ["b039"]
+    },
+    {
+      "id": "b041",
+      "dexNumber": "041",
+      "name": "Bruxish",
+      "specialties": ["Gather", "Teleport"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Strange stuff",
+        "Colorful stuff",
+        "Hard stuff",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Knirfish",
+        "fr": "Denticrisse"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b042",
+      "dexNumber": "042",
+      "name": "Dhelmise",
+      "specialties": ["Grow", "Litter"],
+      "idealHabitat": "Dark",
+      "favorites": [
+        "Spooky stuff",
+        "Lots of nature",
+        "Wobbly stuff",
+        "Symbols",
+        "Ocean vibes"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Moruda",
+        "fr": "Sinistrail"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b043",
+      "dexNumber": "043",
+      "name": "Chewtle",
+      "specialties": ["Chop"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Hard stuff",
+        "Round stuff",
+        "Lots of nature",
+        "Fabric"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Kamehaps",
+        "fr": "Khélocrok"
+      },
+      "evolutionLinePeerIds": ["b044"]
+    },
+    {
+      "id": "b044",
+      "dexNumber": "044",
+      "name": "Drednaw",
+      "specialties": ["Chop", "Bulldoze"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of water",
+        "Hard stuff",
+        "Round stuff",
+        "Stone stuff",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Kamalm",
+        "fr": "Torgamord"
+      },
+      "evolutionLinePeerIds": ["b043"]
+    },
+    {
+      "id": "b045",
+      "dexNumber": "045",
+      "name": "Pincurchin",
+      "specialties": ["Generate"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Electronics",
+        "Round stuff",
+        "Sharp stuff",
+        "Watching stuff",
+        "Ocean vibes"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Britzigel",
+        "fr": "Wattapik"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b046",
+      "dexNumber": "046",
+      "name": "Wiglett",
+      "specialties": ["Bulldoze"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Gatherings",
+        "Slender objects",
+        "Group activities",
+        "Lots of dirt"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Schligda",
+        "fr": "Taupikeau"
+      },
+      "evolutionLinePeerIds": ["b047"]
+    },
+    {
+      "id": "b047",
+      "dexNumber": "047",
+      "name": "Wugtrio",
+      "specialties": ["Bulldoze", "Search"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Gatherings",
+        "Slender objects",
+        "Group activities",
+        "Stone stuff"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Schligdri",
+        "fr": "Triopikeau"
+      },
+      "evolutionLinePeerIds": ["b046"]
+    },
+    {
+      "id": "b048",
+      "dexNumber": "048",
+      "name": "Veluza",
+      "specialties": ["Gather", "Teleport"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Lots of water",
+        "Soft stuff",
+        "Sharp stuff",
+        "Exercise",
+        "Rides"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Agiluza",
+        "fr": "Délestin"
+      },
+      "evolutionLinePeerIds": []
+    },
+    {
+      "id": "b049",
+      "dexNumber": "049",
+      "name": "Phione",
+      "specialties": ["Trade"],
+      "idealHabitat": "Warm",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Ocean vibes",
+        "Soft stuff",
+        "Round stuff"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Phione",
+        "fr": "Phione"
+      },
+      "evolutionLinePeerIds": ["b050"]
+    },
+    {
+      "id": "b050",
+      "dexNumber": "050",
+      "name": "Manaphy",
+      "specialties": ["Trade", "Hype"],
+      "idealHabitat": "Cool",
+      "favorites": [
+        "Lots of water",
+        "Cute stuff",
+        "Ocean vibes",
+        "Healing",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Bitter flavors",
+      "localizedNames": {
+        "de": "Manaphy",
+        "fr": "Manaphy"
+      },
+      "evolutionLinePeerIds": ["b049"]
     }
   ]
 }

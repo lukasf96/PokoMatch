@@ -11,6 +11,7 @@ export const SEREBII_ROBOTS_URL = `${SEREBII_BASE}/robots.txt`;
 export const SEREBII_URLS = {
   availablePokemon: `${SEREBII_BASE}/pokemonpokopia/availablepokemon.shtml`,
   eventPokedex: `${SEREBII_BASE}/pokemonpokopia/eventpokedex.shtml`,
+  basinPokedex: `${SEREBII_BASE}/pokemonpokopia/basinpokedex.shtml`,
   itemsOverview: `${SEREBII_BASE}/pokemonpokopia/items.shtml`,
 } as const;
 
@@ -38,6 +39,13 @@ const POKEMON_NAME_ALIAS_ENTRIES: readonly (readonly [string, string])[] = [
   ["tatsugiri stretchy form", "tatsugiri-stretchy"],
   ["toxtricity amped form", "toxtricity-amped"],
   ["toxtricity low key form", "toxtricity-low-key"],
+  // Gen 5 gender diffs: species default is `*-male`; female is a pokemon-form
+  // slug whose sprites live under `female/{id}` in PokeAPI/sprites (not a
+  // separate pokemon resource).
+  ["frillish male form", "frillish-male"],
+  ["frillish female form", "frillish-female"],
+  ["jellicent male form", "jellicent-male"],
+  ["jellicent female form", "jellicent-female"],
 ];
 
 const pokemonNameAliasMap = new Map<string, string>(POKEMON_NAME_ALIAS_ENTRIES);
@@ -146,6 +154,7 @@ export async function resolvePokeApiPokemonByApiName(
 
   interface PokeApiPokemonFormJson {
     pokemon?: { url?: string };
+    form_name?: string;
     sprites?: { front_default?: string | null };
   }
   if (seqGap > 0) await sleep(seqGap);
@@ -167,6 +176,13 @@ export async function resolvePokeApiPokemonByApiName(
   if (typeof front === "string") {
     const stemMatch = /\/(\d+(?:-[\w-]+)?)\.png(?:\?|$)/i.exec(front);
     if (stemMatch) spriteRepoStem = stemMatch[1]!;
+  } else if (
+    formJson.form_name === "female" ||
+    pokemonApiName.endsWith("-female")
+  ) {
+    // Gender-difference forms (Frillish/Jellicent) share the male pokemon id;
+    // artwork is under female/ in each sprite variant folder.
+    spriteRepoStem = `female/${String(id)}`;
   }
 
   return {

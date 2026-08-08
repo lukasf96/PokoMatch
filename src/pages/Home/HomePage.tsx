@@ -14,314 +14,348 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { appRoutes } from "../../router/routes";
+import { BubblyBasinBanner } from "./BubblyBasinBanner";
 
 export default function HomePage() {
   return (
-    <Container maxWidth="lg" sx={{ py: { xs: 3, sm: 5 } }}>
-      <Stack spacing={3}>
-        <Stack spacing={1}>
-          <Typography
-            component="h1"
-            variant="h4"
-            sx={{
-              fontWeight: 800,
-              lineHeight: 1.15,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Pokopia Habitat Planner & Match‑Maker
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "text.secondary",
-              maxWidth: "sm"
-            }}>
-            Plan Pokopia habitats with roommates who actually click.
-          </Typography>
-          <Box sx={{ pt: 0.5 }}>
-            <Button
-              startIcon={<AutoFixHighOutlinedIcon />}
-              component={RouterLink}
-              to={appRoutes.matchmaker}
-              variant="contained"
-              size="large"
-              sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
-            >
-              Open Match-Maker
-            </Button>
-          </Box>
-        </Stack>
-
-        <Paper
-          variant="outlined"
-          sx={{
-            p: { xs: 1.75, sm: 2 },
-            borderRadius: 2,
-            bgcolor: "action.hover",
-            borderColor: "divider",
-          }}
-        >
-          <Stack spacing={1.5}>
+    <>
+      <BubblyBasinBanner />
+      <Container maxWidth="lg" sx={{ py: { xs: 3, sm: 5 } }}>
+        <Stack spacing={3}>
+          <Stack spacing={1}>
             <Typography
-              variant="subtitle1"
-              component="h2"
-              sx={{ fontWeight: 700 }}
-            >
-              What PokoMatch offers
-            </Typography>
-            <Typography variant="body2" component="p" sx={{
-              color: "text.secondary"
-            }}>
-              Habitat planning in Pokopia means finding the right roommates.
-              With a growing Pokédex and specific habitat needs, spotting the
-              perfect fit for a full house of four can be a challenge.
-            </Typography>
-
-            <Typography variant="body2" component="p" sx={{
-              color: "text.secondary"
-            }}>
-              PokoMatch is your shortcut: we find the Pokémon that love living
-              together so you can spend less time guessing and more time
-              building.
-            </Typography>
-            <Box
+              component="h1"
+              variant="h4"
               sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "1fr",
-                  sm: "repeat(2, minmax(0, 1fr))",
-                },
-                gap: 1,
+                fontWeight: 800,
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
               }}
             >
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
+              Pokopia Habitat Planner & Match‑Maker
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "text.secondary",
+                maxWidth: 560,
+              }}
+            >
+              Free companion for Pokémon Pokopia: match compatible habitat
+              roommates, explore Insights, and manage your Pokédex.
+            </Typography>
+            <Box sx={{ pt: 0.5 }}>
+              <Button
+                startIcon={<AutoFixHighOutlinedIcon />}
+                component={RouterLink}
+                to={appRoutes.matchmaker}
+                variant="contained"
+                size="large"
+                sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
               >
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  sx={{ alignItems: "center" }}
-                >
-                  <AutoFixHighOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main", flexShrink: 0 }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                      Automated matching
-                    </Typography>
-                    <Typography variant="caption" sx={{
-                      color: "text.secondary"
-                    }}>
-                      Find perfectly-fitting habitat groups from shared
-                      favorites and habitat fit.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  sx={{ alignItems: "center" }}
-                >
-                  <SaveOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main", flexShrink: 0 }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                      Always saved
-                    </Typography>
-                    <Typography variant="caption" sx={{
-                      color: "text.secondary"
-                    }}>
-                      Your groups and choices stay on this device — no account
-                      needed.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  sx={{ alignItems: "center" }}
-                >
-                  <TipsAndUpdatesOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main", flexShrink: 0 }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                      Smart suggestions
-                    </Typography>
-                    <Typography variant="caption" sx={{
-                      color: "text.secondary"
-                    }}>
-                      See who to add next, plus automated picks for habitat
-                      items that keep everyone happy.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  sx={{ alignItems: "center" }}
-                >
-                  <TuneOutlinedIcon
-                    fontSize="small"
-                    sx={{ color: "primary.main", flexShrink: 0 }}
-                  />
-                  <Stack spacing={0.25}>
-                    <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                      Have it your way
-                    </Typography>
-                    <Typography variant="caption" sx={{
-                      color: "text.secondary"
-                    }}>
-                      Choose the language for Pokémon names and set theme mode
-                      from the settings menu.
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack
-                  direction={{ xs: "column", sm: "row" }}
-                  spacing={{ xs: 1.25, sm: 1.5 }}
-                  sx={{ width: "100%", alignItems: { xs: "stretch", sm: "center" } }}
-                >
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{ flex: 1, minWidth: 0, alignItems: "center" }}
-                  >
-                    <DashboardOutlinedIcon
-                      fontSize="small"
-                      sx={{ color: "primary.main", flexShrink: 0 }}
-                    />
-                    <Stack spacing={0.25} sx={{ minWidth: 0 }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                        Insights
-                      </Typography>
-                      <Typography variant="caption" sx={{
-                        color: "text.secondary"
-                      }}>
-                        Explore Pokémon and item data and how they connect.
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                  <Button
-                    component={RouterLink}
-                    to={appRoutes.insights}
-                    variant="contained"
-                    size="small"
-                    sx={{
-                      flexShrink: 0,
-                      alignSelf: { xs: "stretch", sm: "auto" },
-                      width: { xs: "100%", sm: "auto" },
-                    }}
-                  >
-                    Open Insights
-                  </Button>
-                </Stack>
-              </Paper>
-              <Paper
-                variant="outlined"
-                sx={{
-                  p: 1.25,
-                  borderRadius: 1.5,
-                  bgcolor: "background.paper",
-                  borderColor: "divider",
-                }}
-              >
-                <Stack
-                  direction={{ xs: "column", sm: "row" }}
-                  spacing={{ xs: 1.25, sm: 1.5 }}
-                  sx={{ width: "100%", alignItems: { xs: "stretch", sm: "center" } }}
-                >
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{ flex: 1, minWidth: 0, alignItems: "center" }}
-                  >
-                    <CatchingPokemonOutlinedIcon
-                      fontSize="small"
-                      sx={{ color: "primary.main", flexShrink: 0 }}
-                    />
-                    <Stack spacing={0.25} sx={{ minWidth: 0 }}>
-                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                        Your collection
-                      </Typography>
-                      <Typography variant="caption" sx={{
-                        color: "text.secondary"
-                      }}>
-                        Only matches with Pokémon you've unlocked in your
-                        Pokédex.
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                  <Button
-                    component={RouterLink}
-                    to={appRoutes.pokedex}
-                    variant="contained"
-                    size="small"
-                    sx={{
-                      flexShrink: 0,
-                      alignSelf: { xs: "stretch", sm: "auto" },
-                      width: { xs: "100%", sm: "auto" },
-                    }}
-                  >
-                    Open Pokédex
-                  </Button>
-                </Stack>
-              </Paper>
+                Open Match-Maker
+              </Button>
             </Box>
           </Stack>
-        </Paper>
-      </Stack>
-    </Container>
+
+          <Paper
+            variant="outlined"
+            sx={{
+              p: { xs: 1.75, sm: 2 },
+              borderRadius: 2,
+              bgcolor: "action.hover",
+              borderColor: "divider",
+            }}
+          >
+            <Stack spacing={1.5}>
+              <Typography
+                variant="subtitle1"
+                component="h2"
+                sx={{ fontWeight: 700 }}
+              >
+                What PokoMatch offers
+              </Typography>
+              <Typography
+                variant="body2"
+                component="p"
+                sx={{ color: "text.secondary" }}
+              >
+                Habitat planning in Pokopia means finding the right roommates.
+                With a growing Pokédex and specific habitat needs, spotting the
+                perfect fit for a full house of four can be a challenge.
+              </Typography>
+
+              <Typography
+                variant="body2"
+                component="p"
+                sx={{ color: "text.secondary" }}
+              >
+                PokoMatch is your shortcut: we find the Pokémon that love living
+                together so you can spend less time guessing and more time
+                building.
+              </Typography>
+              <Box
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: {
+                    xs: "1fr",
+                    sm: "repeat(2, minmax(0, 1fr))",
+                  },
+                  gap: 1,
+                }}
+              >
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <AutoFixHighOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                        Automated matching
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "text.secondary",
+                        }}
+                      >
+                        Find perfectly-fitting habitat groups from shared
+                        favorites and habitat fit.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <SaveOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                        Always saved
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "text.secondary",
+                        }}
+                      >
+                        Your groups and choices stay on this device — no account
+                        needed.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <TipsAndUpdatesOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                        Smart suggestions
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "text.secondary",
+                        }}
+                      >
+                        See who to add next, plus automated picks for habitat
+                        items that keep everyone happy.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <TuneOutlinedIcon
+                      fontSize="small"
+                      sx={{ color: "primary.main", flexShrink: 0 }}
+                    />
+                    <Stack spacing={0.25}>
+                      <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                        Have it your way
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "text.secondary",
+                        }}
+                      >
+                        Choose the language for Pokémon names and set theme mode
+                        from the settings menu.
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction={{ xs: "column", sm: "row" }}
+                    spacing={{ xs: 1.25, sm: 1.5 }}
+                    sx={{
+                      width: "100%",
+                      alignItems: { xs: "stretch", sm: "center" },
+                    }}
+                  >
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ flex: 1, minWidth: 0, alignItems: "center" }}
+                    >
+                      <DashboardOutlinedIcon
+                        fontSize="small"
+                        sx={{ color: "primary.main", flexShrink: 0 }}
+                      />
+                      <Stack spacing={0.25} sx={{ minWidth: 0 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                          Insights
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: "text.secondary",
+                          }}
+                        >
+                          Explore Pokémon and item data and how they connect.
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                    <Button
+                      component={RouterLink}
+                      to={appRoutes.insights}
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        flexShrink: 0,
+                        alignSelf: { xs: "stretch", sm: "auto" },
+                        width: { xs: "100%", sm: "auto" },
+                      }}
+                    >
+                      Open Insights
+                    </Button>
+                  </Stack>
+                </Paper>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 1.25,
+                    borderRadius: 1.5,
+                    bgcolor: "background.paper",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Stack
+                    direction={{ xs: "column", sm: "row" }}
+                    spacing={{ xs: 1.25, sm: 1.5 }}
+                    sx={{
+                      width: "100%",
+                      alignItems: { xs: "stretch", sm: "center" },
+                    }}
+                  >
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      sx={{ flex: 1, minWidth: 0, alignItems: "center" }}
+                    >
+                      <CatchingPokemonOutlinedIcon
+                        fontSize="small"
+                        sx={{ color: "primary.main", flexShrink: 0 }}
+                      />
+                      <Stack spacing={0.25} sx={{ minWidth: 0 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
+                          Your collection
+                        </Typography>
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            color: "text.secondary",
+                          }}
+                        >
+                          Only matches with Pokémon you've unlocked in your
+                          Pokédex.
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                    <Button
+                      component={RouterLink}
+                      to={appRoutes.pokedex}
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        flexShrink: 0,
+                        alignSelf: { xs: "stretch", sm: "auto" },
+                        width: { xs: "100%", sm: "auto" },
+                      }}
+                    >
+                      Open Pokédex
+                    </Button>
+                  </Stack>
+                </Paper>
+              </Box>
+            </Stack>
+          </Paper>
+        </Stack>
+      </Container>
+    </>
   );
 }

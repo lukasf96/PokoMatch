@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Paper, Stack, Typography } from "@mui/material";
 import { useMemo } from "react";
 import { allItems } from "../../services/items";
-import { allPokemon, isEventDexPokemon } from "../../services/pokemon";
-import type { Habitat, Pokemon } from "../../types/types";
+import { allPokemon, isBasinDexPokemon } from "../../services/pokemon";
+import type { DexKind, Habitat, Pokemon } from "../../types/types";
 import { DistributionSection } from "./components/DistributionSection";
 import { IdealHabitats } from "./components/IdealHabitats";
 import { ItemsCatalogSection } from "./components/ItemsCatalogSection";
@@ -12,10 +12,16 @@ function getDexSortValue(dexNumber: string): number {
   return matchedNumber ? Number(matchedNumber[0]) : Number.MAX_SAFE_INTEGER;
 }
 
+const DEX_KIND_SORT_ORDER: Record<DexKind, number> = {
+  standard: 0,
+  event: 1,
+  basin: 2,
+};
+
 function sortByDexOrder(a: Pokemon, b: Pokemon): number {
-  const aEvent = isEventDexPokemon(a);
-  const bEvent = isEventDexPokemon(b);
-  if (aEvent !== bEvent) return aEvent ? 1 : -1;
+  const kindDiff =
+    DEX_KIND_SORT_ORDER[a.dexKind] - DEX_KIND_SORT_ORDER[b.dexKind];
+  if (kindDiff !== 0) return kindDiff;
 
   const dexDiff = getDexSortValue(a.dexNumber) - getDexSortValue(b.dexNumber);
   if (dexDiff !== 0) return dexDiff;
@@ -47,17 +53,21 @@ function StatCard({
             color: "text.secondary",
             fontWeight: 800,
             textTransform: "uppercase",
-            letterSpacing: "0.04em"
-          }}>
+            letterSpacing: "0.04em",
+          }}
+        >
           {label}
         </Typography>
         <Typography variant="h5" sx={{ fontWeight: 900, lineHeight: 1.1 }}>
           {value}
         </Typography>
         {subvalue ? (
-          <Typography variant="body2" sx={{
-            color: "text.secondary"
-          }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+            }}
+          >
             {subvalue}
           </Typography>
         ) : null}
@@ -121,7 +131,11 @@ export default function InsightsPage() {
       (count, pokemon) => count + (pokemon.dexKind === "event" ? 1 : 0),
       0,
     );
-    return { standardCount, eventCount };
+    const basinCount = allPokemon.reduce(
+      (count, pokemon) => count + (isBasinDexPokemon(pokemon) ? 1 : 0),
+      0,
+    );
+    return { standardCount, eventCount, basinCount };
   }, []);
 
   const uniqueFavoritesCount = useMemo(() => {
@@ -156,10 +170,13 @@ export default function InsightsPage() {
         >
           Pokopia Insights
         </Typography>
-        <Typography variant="body2" sx={{
-          color: "text.secondary"
-        }}>
-          A quick look at the dataset behind Pokomatch: habitats, favorites,
+        <Typography
+          variant="body2"
+          sx={{
+            color: "text.secondary",
+          }}
+        >
+          A quick look at the dataset behind PokoMatch: habitats, favorites,
           items, and more.
         </Typography>
 
@@ -168,7 +185,7 @@ export default function InsightsPage() {
             <StatCard
               label="Total Pokémon"
               value={`${allPokemon.length}`}
-              subvalue={`Standard: ${dexKindCounts.standardCount} • Event: ${dexKindCounts.eventCount}`}
+              subvalue={`Standard: ${dexKindCounts.standardCount} • Event: ${dexKindCounts.eventCount} • Basin: ${dexKindCounts.basinCount}`}
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 3 }}>

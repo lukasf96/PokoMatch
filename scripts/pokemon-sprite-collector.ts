@@ -57,6 +57,7 @@ interface PokedexPokemonRef {
 interface PokedexJson {
   standard: PokedexPokemonRef[];
   event: PokedexPokemonRef[];
+  basin: PokedexPokemonRef[];
 }
 
 async function ensureSpritesRepo(): Promise<void> {
@@ -98,7 +99,7 @@ async function resolveSourceSpritePath(spriteRepoStem: string): Promise<{
 
   for (const variant of SOURCE_SPRITE_VARIANTS) {
     const fullPath = path.join(variant.variantDir, fileName);
-    await mkdir(variant.variantDir, { recursive: true });
+    await mkdir(path.dirname(fullPath), { recursive: true });
     const spriteUrl = `${RAW_SPRITES_BASE_URL}/${variant.remoteSubPath}/${fileName}`;
     const response = await fetchWithRetry(spriteUrl, 2);
     if (response.ok) {
@@ -185,23 +186,59 @@ async function assertAllOutputsUnderBudget(): Promise<void> {
   }
 }
 
+function parseOnlyIdsCli(argv: string[]): Set<string> | undefined {
+  const idx = argv.findIndex((a) => a === "--only");
+  if (idx < 0) return undefined;
+  const raw = argv[idx + 1];
+  if (!raw) {
+    throw new Error("Expected comma-separated ids after --only.");
+  }
+  const ids = raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (ids.length === 0) {
+    throw new Error("Expected comma-separated ids after --only.");
+  }
+  return new Set(ids);
+}
+
 async function main(): Promise<void> {
+  const onlyIds = parseOnlyIdsCli(process.argv.slice(2));
   console.error(`Reading Pokédex: ${pokedexPath}`);
   await ensureSpritesRepo();
   const pokedexJson = JSON.parse(
     await readFile(pokedexPath, "utf8"),
   ) as PokedexJson;
-  const allPokemon = [...pokedexJson.standard, ...pokedexJson.event];
-  console.error(`Entries to process: ${String(allPokemon.length)}.`);
+  const allPokemon = [
+    ...pokedexJson.standard,
+    ...pokedexJson.event,
+    ...pokedexJson.basin,
+  ];
+  const pokemonToProcess = onlyIds
+    ? allPokemon.filter((p) => onlyIds.has(p.id))
+    : allPokemon;
+  if (onlyIds) {
+    const missing = [...onlyIds].filter(
+      (id) => !pokemonToProcess.some((p) => p.id === id),
+    );
+    if (missing.length > 0) {
+      throw new Error(`Unknown Pokédex ids for --only: ${missing.join(", ")}`);
+    }
+    console.error(
+      `Selective refresh (--only): ${pokemonToProcess.map((p) => p.id).join(", ")}.`,
+    );
+  }
+  console.error(`Entries to process: ${String(pokemonToProcess.length)}.`);
 
   const cachedSpriteStemByApiName = new Map<string, string>();
 
   console.error("Resolving PokéAPI sprite stems…");
-  for (let i = 0; i < allPokemon.length; i++) {
-    const pokemon = allPokemon[i]!;
+  for (let i = 0; i < pokemonToProcess.length; i++) {
+    const pokemon = pokemonToProcess[i]!;
     writeTerminalProgressLine(
       process.stderr,
-      `[pokeapi ${String(i + 1)}/${String(allPokemon.length)}] ${pokemon.name}…`,
+      `[pokeapi ${String(i + 1)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
     );
     const pokemonApiName = toPokemonApiName(pokemon.name);
     if (!cachedSpriteStemByApiName.has(pokemonApiName)) {
@@ -217,13 +254,15 @@ async function main(): Promise<void> {
   process.stderr.write("\n");
 
   console.error(`Encoding WebP to ${outputSpritesDir}…`);
-  await rm(outputSpritesDir, { recursive: true, force: true });
+  if (!onlyIds) {
+    await rm(outputSpritesDir, { recursive: true, force: true });
+  }
   await mkdir(outputSpritesDir, { recursive: true });
-  for (let i = 0; i < allPokemon.length; i++) {
-    const pokemon = allPokemon[i]!;
+  for (let i = 0; i < pokemonToProcess.length; i++) {
+    const pokemon = pokemonToProcess[i]!;
     writeTerminalProgressLine(
       process.stderr,
-      `[webp ${String(i + 1)}/${String(allPokemon.length)}] ${pokemon.name}…`,
+      `[webp ${String(i + 1)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
     );
     const pokemonApiName = toPokemonApiName(pokemon.name);
     const spriteRepoStem = cachedSpriteStemByApiName.get(pokemonApiName);
@@ -242,7 +281,7 @@ async function main(): Promise<void> {
 
   await assertAllOutputsUnderBudget();
   console.log(
-    `Vendored ${String(allPokemon.length)} WebP sprite files (< ${String(MAX_WEBP_FILE_BYTES)} B each) to ${outputSpritesDir}.`,
+    `Vendored ${String(pokemonToProcess.length)} WebP sprite files (< ${String(MAX_WEBP_FILE_BYTES)} B each) to ${outputSpritesDir}.`,
   );
 }
 

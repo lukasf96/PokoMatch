@@ -16,8 +16,8 @@ export interface SuggestedItem {
   pokemonCoverage: number;
 }
 
-/** National dex entries vs. separate event dex listing in data. */
-export type DexKind = "standard" | "event";
+/** Standard Pokopia dex vs. separate event / Basin (DLC) listings in data. */
+export type DexKind = "standard" | "event" | "basin";
 
 export interface PokemonLocalizedNames {
   de: string;
