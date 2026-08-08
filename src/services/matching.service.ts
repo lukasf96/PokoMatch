@@ -3,9 +3,24 @@ import { habitatConflictMap } from "./habitat-conflicts";
 import { comparePokemonByDex } from "./pokemon";
 
 // ---------------------------------------------------------------------------
-// Habitat compatibility — bitmask per pokemon.
-// A pokemon's "conflict mask" is the bit of its opposite habitat.
-// Candidate can join a group iff: groupConflictMask & habitatBit[candidate] === 0
+// The problem
+// ---------------------------------------------------------------------------
+// Partition all input Pokémon into groups of size 1..4 to maximise the sum, over
+// every group, of the sum over every unordered pair of `sharedFavorites(a, b)`
+// (0..5) — plus a small evolution-line bonus per pair when `preferEvolutionLines`
+// is on. Hard constraint: two Pokémon with OPPOSITE ideal habitats may never share
+// a group. This is max-weight capacitated clique partitioning (NP-hard), but the
+// instances are small (≤ ~365) and low-weight, so a good construction + local
+// search + iterated local search within a time budget gets us at/near optimal fast.
+//
+// All per-call state is local (no module-level caches) so results are always
+// correct regardless of which/how many Pokémon are passed across calls.
+
+// ---------------------------------------------------------------------------
+// Habitat compatibility — bitmask per Pokémon.
+// A Pokémon's "conflict bit" is the bit of its opposite habitat; a candidate may
+// join a group iff none of its habitat bits hit the group's accumulated conflict
+// bits and vice-versa.
 // ---------------------------------------------------------------------------
 
 const HABITAT_BIT: Record<string, number> = {
@@ -28,40 +43,34 @@ function habitatBit(p: Pokemon): number {
 
 // ---------------------------------------------------------------------------
 // Favorites affinity — 64-bit bitmask split across two 32-bit ints (lo/hi).
-// Supports up to 64 distinct favorites (dataset currently uses fewer).
-// sharedFavorites(a,b) = popcount(alo&blo) + popcount(ahi&bhi)
+// The dex has 45 distinct favorites, comfortably under 64. sharedFavorites is a
+// popcount of the intersection.
 // ---------------------------------------------------------------------------
 
-let _favVocab: Map<string, number> | null = null;
-let _favLo: Int32Array | null = null;
-let _favHi: Int32Array | null = null;
-
-function buildVocab(pokemon: Pokemon[]): void {
-  if (_favVocab) return;
-  _favVocab = new Map();
-  let bit = 0;
-  for (const p of pokemon)
-    for (const f of p.favorites) if (!_favVocab.has(f)) _favVocab.set(f, bit++);
+interface FavMasks {
+  lo: Int32Array;
+  hi: Int32Array;
 }
 
-function initBitmasks(pokemon: Pokemon[]): void {
-  buildVocab(pokemon);
+/** Build favorite bitmasks with a vocabulary local to this exact Pokémon set. */
+function buildFavMasks(pokemon: Pokemon[]): FavMasks {
+  const vocab = new Map<string, number>();
+  let nextBit = 0;
   const n = pokemon.length;
-  _favLo = new Int32Array(n);
-  _favHi = new Int32Array(n);
+  const lo = new Int32Array(n);
+  const hi = new Int32Array(n);
   for (let i = 0; i < n; i++) {
-    let lo = 0,
-      hi = 0;
     for (const f of pokemon[i].favorites) {
-      const b = _favVocab!.get(f);
-      if (b !== undefined) {
-        if (b < 32) lo |= 1 << b;
-        else hi |= 1 << (b - 32);
+      let b = vocab.get(f);
+      if (b === undefined) {
+        b = nextBit++;
+        vocab.set(f, b);
       }
+      if (b < 32) lo[i] |= 1 << b;
+      else if (b < 64) hi[i] |= 1 << (b - 32);
     }
-    _favLo[i] = lo;
-    _favHi[i] = hi;
   }
+  return { lo, hi };
 }
 
 function popcount(x: number): number {
@@ -71,319 +80,338 @@ function popcount(x: number): number {
   return (x * 0x01010101) >>> 24;
 }
 
-function sharedFav(alo: number, ahi: number, blo: number, bhi: number): number {
-  return popcount(alo & blo) + popcount(ahi & bhi);
+function sharedFav(masks: FavMasks, i: number, j: number): number {
+  return (
+    popcount(masks.lo[i] & masks.lo[j]) + popcount(masks.hi[i] & masks.hi[j])
+  );
 }
 
 // ---------------------------------------------------------------------------
-// Affinity + compatibility matrices
+// Model — all matrices/arrays needed by construction and local search.
 // ---------------------------------------------------------------------------
 
-let _conflictBits: Int32Array;
-let _habitatBits: Int32Array;
-
-function buildHabitatArrays(pokemon: Pokemon[]): void {
-  const n = pokemon.length;
-  _conflictBits = new Int32Array(n);
-  _habitatBits = new Int32Array(n);
-  for (let i = 0; i < n; i++) {
-    _conflictBits[i] = habitatConflictBit(pokemon[i]);
-    _habitatBits[i] = habitatBit(pokemon[i]);
-  }
-}
-
-function buildAffinityMatrix(n: number): Int32Array {
-  const aff = new Int32Array(n * n);
-  for (let i = 0; i < n; i++) {
-    const ilo = _favLo![i],
-      ihi = _favHi![i];
-    for (let j = i + 1; j < n; j++) {
-      const v = sharedFav(ilo, ihi, _favLo![j], _favHi![j]);
-      aff[i * n + j] = v;
-      aff[j * n + i] = v;
-    }
-  }
-  return aff;
-}
-
-interface Ctx {
-  n: number;
-  /** Raw shared-favorites count per pair. */
-  aff: Int32Array;
-  /** Matrix used to rank groups (favorites plus optional evolution-line tie-break). */
-  scoreAff: Int32Array;
-  compat: Uint8Array;
-  affSum: Int32Array;
-}
-
-/** Per unordered pair: 1 if both are in the same evolution line (symmetric). */
-function buildEvolutionPairFlags(pokemon: Pokemon[]): Uint8Array {
-  const n = pokemon.length;
-  const peerSets = pokemon.map((p) => new Set(p.evolutionLinePeerIds ?? []));
-  const evo = new Uint8Array(n * n);
-  for (let i = 0; i < n; i++) {
-    for (let j = i + 1; j < n; j++) {
-      const same = peerSets[i].has(pokemon[j].id) ? 1 : 0;
-      evo[i * n + j] = same;
-      evo[j * n + i] = same;
-    }
-  }
-  return evo;
-}
-
-/**
- * Small additive bonus so evolution ties break toward grouping lines together without
- * routinely beating a much stronger favorite overlap (typical pair scores are larger).
- */
 const EVOLUTION_LINE_PAIR_BONUS = 2;
+const TIME_BUDGET_MS = 300;
+/** Stop the search early once this long has passed with no improvement (keeps easy/small inputs snappy). */
+const STALL_MS = 60;
+/** Only the strongest partners of each Pokémon are considered when building seed edges. */
+const NEIGHBOR_K = 20;
 
-function buildScoreAffinity(
-  n: number,
-  aff: Int32Array,
-  evoFlags: Uint8Array | null,
-  evolutionBonus: number,
-): Int32Array {
-  if (evolutionBonus === 0 || evoFlags === null) return aff;
-  const out = new Int32Array(n * n);
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      const base = aff[i * n + j];
-      out[i * n + j] =
-        i === j ? base : base + (evoFlags[i * n + j] ? evolutionBonus : 0);
-    }
-  }
-  return out;
+interface Model {
+  n: number;
+  /** Raw shared-favorites per ordered pair (objective weight, symmetric). */
+  aff: Int32Array;
+  /** Optimisation weight: aff plus optional evolution-line bonus (symmetric). */
+  scoreAff: Int32Array;
+  /** 1 if the two Pokémon may legally share a group. */
+  compat: Uint8Array;
+  conflictBit: Int32Array;
+  habitatBit: Int32Array;
 }
 
-function buildCtx(
-  pokemon: Pokemon[],
-  preferEvolutionLines: boolean,
-): Ctx {
+function buildModel(pokemon: Pokemon[], preferEvolutionLines: boolean): Model {
   const n = pokemon.length;
-  initBitmasks(pokemon);
-  const aff = buildAffinityMatrix(n);
+  const masks = buildFavMasks(pokemon);
+
+  const conflictBit = new Int32Array(n);
+  const habitatBit_ = new Int32Array(n);
+  for (let i = 0; i < n; i++) {
+    conflictBit[i] = habitatConflictBit(pokemon[i]);
+    habitatBit_[i] = habitatBit(pokemon[i]);
+  }
+
   const hasEvolutionData = pokemon.some(
     (p) => (p.evolutionLinePeerIds?.length ?? 0) > 0,
   );
-  const evoFlags =
-    preferEvolutionLines && hasEvolutionData
-      ? buildEvolutionPairFlags(pokemon)
-      : null;
-  const evoBonus =
-    preferEvolutionLines && hasEvolutionData ? EVOLUTION_LINE_PAIR_BONUS : 0;
-  const scoreAff = buildScoreAffinity(n, aff, evoFlags, evoBonus);
-  const compat = new Uint8Array(n * n);
-  const affSum = new Int32Array(n);
+  const useEvo = preferEvolutionLines && hasEvolutionData;
+  const peerSets = useEvo
+    ? pokemon.map((p) => new Set(p.evolutionLinePeerIds ?? []))
+    : null;
 
+  const aff = new Int32Array(n * n);
+  const scoreAff = new Int32Array(n * n);
+  const compat = new Uint8Array(n * n);
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
+      const w = sharedFav(masks, i, j);
+      aff[i * n + j] = w;
+      aff[j * n + i] = w;
+      let sw = w;
+      if (peerSets && peerSets[i].has(pokemon[j].id))
+        sw += EVOLUTION_LINE_PAIR_BONUS;
+      scoreAff[i * n + j] = sw;
+      scoreAff[j * n + i] = sw;
       const ok =
-        !(_conflictBits[i] & _habitatBits[j]) &&
-        !(_conflictBits[j] & _habitatBits[i])
+        !(conflictBit[i] & habitatBit_[j]) && !(conflictBit[j] & habitatBit_[i])
           ? 1
           : 0;
       compat[i * n + j] = ok;
       compat[j * n + i] = ok;
-      if (ok) {
-        affSum[i] += scoreAff[i * n + j];
-        affSum[j] += scoreAff[i * n + j];
-      }
     }
   }
 
-  return { n, aff, scoreAff, compat, affSum };
+  return { n, aff, scoreAff, compat, conflictBit, habitatBit: habitatBit_ };
 }
 
-function totalScore(
-  groups: Int32Array[],
-  scoreAff: Int32Array,
-  n: number,
-): number {
+// ---------------------------------------------------------------------------
+// Scoring helpers over index-based groups.
+// ---------------------------------------------------------------------------
+
+function totalScore(groups: number[][], weight: Int32Array, n: number): number {
   let total = 0;
   for (const g of groups)
     for (let i = 0; i < g.length; i++)
       for (let j = i + 1; j < g.length; j++)
-        total += scoreAff[g[i] * n + g[j]];
+        total += weight[g[i] * n + g[j]];
   return total;
 }
 
-function computeGreedy(order: Int32Array, ctx: Ctx): Int32Array[] {
-  const { n, scoreAff } = ctx;
-  const assigned = new Uint8Array(n);
-  const groups: Int32Array[] = [];
-
-  for (let oi = 0; oi < order.length; oi++) {
-    const first = order[oi];
-    if (assigned[first]) continue;
-    assigned[first] = 1;
-
-    const g: number[] = [first];
-    let gc = _conflictBits[first];
-    let gh = _habitatBits[first];
-
-    while (g.length < 4) {
-      let bestIdx = -1,
-        bestScore = -1;
-      for (let oj = 0; oj < order.length; oj++) {
-        const c = order[oj];
-        if (assigned[c]) continue;
-        if (gc & _habitatBits[c]) continue;
-        if (_conflictBits[c] & gh) continue;
-        let score = 0;
-        for (let k = 0; k < g.length; k++) score += scoreAff[c * n + g[k]];
-        if (score > bestScore) {
-          bestScore = score;
-          bestIdx = oj;
-        }
-      }
-      if (bestIdx < 0) break;
-      const chosen = order[bestIdx];
-      assigned[chosen] = 1;
-      gc |= _conflictBits[chosen];
-      gh |= _habitatBits[chosen];
-      g.push(chosen);
-    }
-
-    groups.push(Int32Array.from(g));
-  }
-
-  return groups;
+/** True if `v` may join `g` (habitat-compatible with every current member). */
+function canJoin(g: number[], v: number, model: Model): boolean {
+  const { n, compat } = model;
+  for (let k = 0; k < g.length; k++) if (!compat[v * n + g[k]]) return false;
+  return true;
 }
 
-function improve(
-  groups: Int32Array[],
-  ctx: Ctx,
-  deadlineMs: number,
-): Int32Array[] {
-  const { n, scoreAff, compat } = ctx;
-  const gs = groups.map((g) => Array.from(g));
-  const MAX_PASSES = 20;
+// ---------------------------------------------------------------------------
+// Construction — edge-greedy agglomerative merge.
+// Since every feasible merge only adds non-negative cross edges, we merge groups
+// starting from the heaviest pair edges (a savings-style heuristic), which packs
+// strong 3–4 cliques early. Local search then repairs capacity mistakes.
+// ---------------------------------------------------------------------------
 
-  for (let pass = 0; pass < MAX_PASSES; pass++) {
+function constructEdgeGreedy(model: Model): number[][] {
+  const { n, scoreAff, compat, conflictBit, habitatBit } = model;
+
+  // Strongest few partners per vertex → a small, high-value edge list.
+  interface Edge {
+    a: number;
+    b: number;
+    w: number;
+  }
+  const edges: Edge[] = [];
+  const seen = new Set<number>();
+  const scratch: number[] = [];
+  for (let i = 0; i < n; i++) {
+    scratch.length = 0;
+    for (let j = 0; j < n; j++) {
+      if (j === i) continue;
+      if (!compat[i * n + j]) continue;
+      if (scoreAff[i * n + j] > 0) scratch.push(j);
+    }
+    scratch.sort((x, y) => scoreAff[i * n + y] - scoreAff[i * n + x]);
+    const k = Math.min(NEIGHBOR_K, scratch.length);
+    for (let t = 0; t < k; t++) {
+      const j = scratch[t];
+      const a = i < j ? i : j;
+      const b = i < j ? j : i;
+      const key = a * n + b;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      edges.push({ a, b, w: scoreAff[key] });
+    }
+  }
+  edges.sort((x, y) => y.w - x.w);
+
+  const groupOf = new Int32Array(n);
+  const members: number[][] = new Array(n);
+  const gConf = new Int32Array(n);
+  const gHab = new Int32Array(n);
+  for (let i = 0; i < n; i++) {
+    groupOf[i] = i;
+    members[i] = [i];
+    gConf[i] = conflictBit[i];
+    gHab[i] = habitatBit[i];
+  }
+
+  for (const e of edges) {
+    const ga = groupOf[e.a];
+    const gb = groupOf[e.b];
+    if (ga === gb) continue;
+    const ma = members[ga];
+    const mb = members[gb];
+    if (ma.length + mb.length > 4) continue;
+    if ((gConf[ga] & gHab[gb]) !== 0 || (gConf[gb] & gHab[ga]) !== 0) continue;
+    // Merge gb into ga.
+    for (const v of mb) {
+      ma.push(v);
+      groupOf[v] = ga;
+    }
+    gConf[ga] |= gConf[gb];
+    gHab[ga] |= gHab[gb];
+    mb.length = 0;
+  }
+
+  const out: number[][] = [];
+  for (let i = 0; i < n; i++) if (members[i].length > 0) out.push(members[i]);
+  return out;
+}
+
+// ---------------------------------------------------------------------------
+// Local search — relocate + swap to a local optimum.
+// Relocate MAY empty its source group (absorbing singletons into richer groups),
+// which the previous implementation could not do.
+// ---------------------------------------------------------------------------
+
+function localSearch(gs: number[][], model: Model, deadlineMs: number): void {
+  const { n, scoreAff } = model;
+
+  let changed = true;
+  let guard = 0;
+  while (changed && guard++ < 1000) {
     if (Date.now() >= deadlineMs) break;
-    let changed = false;
+    changed = false;
 
     for (let i = 0; i < gs.length; i++) {
-      if (Date.now() >= deadlineMs) break;
+      const gA = gs[i];
+      if (gA.length === 0) continue;
       for (let j = i + 1; j < gs.length; j++) {
-        if (Date.now() >= deadlineMs) break;
-        const gA = gs[i],
-          gB = gs[j];
+        const gB = gs[j];
+        if (gB.length === 0) continue;
 
-        // swap
+        // Swap one member of A with one member of B.
         for (let a = 0; a < gA.length; a++) {
           const left = gA[a];
           for (let b = 0; b < gB.length; b++) {
             const right = gB[b];
-            let okA = true,
-              okB = true;
+            let okA = true;
             for (let k = 0; k < gA.length; k++) {
               if (k === a) continue;
-              if (!compat[right * n + gA[k]]) {
+              if (!model.compat[right * n + gA[k]]) {
                 okA = false;
                 break;
               }
             }
             if (!okA) continue;
+            let okB = true;
             for (let k = 0; k < gB.length; k++) {
               if (k === b) continue;
-              if (!compat[left * n + gB[k]]) {
+              if (!model.compat[left * n + gB[k]]) {
                 okB = false;
                 break;
               }
             }
             if (!okB) continue;
-            let dA = 0,
-              dB = 0;
-            for (let k = 0; k < gA.length; k++) {
+            let delta = 0;
+            for (let k = 0; k < gA.length; k++)
               if (k !== a)
-                dA +=
+                delta +=
                   scoreAff[right * n + gA[k]] - scoreAff[left * n + gA[k]];
-            }
-            for (let k = 0; k < gB.length; k++) {
+            for (let k = 0; k < gB.length; k++)
               if (k !== b)
-                dB +=
+                delta +=
                   scoreAff[left * n + gB[k]] - scoreAff[right * n + gB[k]];
+            if (delta > 0) {
+              gA[a] = right;
+              gB[b] = left;
+              changed = true;
             }
-            if (dA + dB <= 0) continue;
-            gA[a] = right;
-            gB[b] = left;
-            changed = true;
           }
         }
 
-        // move A→B
-        if (gA.length > 1 && gB.length < 4) {
+        // Relocate a member of A into B (may empty A).
+        if (gB.length < 4) {
           for (let a = 0; a < gA.length; a++) {
             const c = gA[a];
-            let ok = true;
-            for (let k = 0; k < gB.length; k++) {
-              if (!compat[c * n + gB[k]]) {
-                ok = false;
-                break;
-              }
-            }
-            if (!ok) continue;
+            if (!canJoin(gB, c, model)) continue;
             let delta = 0;
             for (let k = 0; k < gB.length; k++) delta += scoreAff[c * n + gB[k]];
-            for (let k = 0; k < gA.length; k++) {
+            for (let k = 0; k < gA.length; k++)
               if (k !== a) delta -= scoreAff[c * n + gA[k]];
+            if (delta > 0) {
+              gA.splice(a, 1);
+              gB.push(c);
+              changed = true;
+              a--;
+              if (gB.length >= 4 || gA.length === 0) break;
             }
-            if (delta <= 0) continue;
-            gA.splice(a, 1);
-            gB.push(c);
-            changed = true;
-            a--;
-            if (gB.length >= 4 || gA.length <= 1) break;
           }
         }
 
-        // move B→A
-        if (gB.length > 1 && gA.length < 4) {
+        // Relocate a member of B into A (may empty B).
+        if (gA.length > 0 && gA.length < 4) {
           for (let b = 0; b < gB.length; b++) {
             const c = gB[b];
-            let ok = true;
-            for (let k = 0; k < gA.length; k++) {
-              if (!compat[c * n + gA[k]]) {
-                ok = false;
-                break;
-              }
-            }
-            if (!ok) continue;
+            if (!canJoin(gA, c, model)) continue;
             let delta = 0;
             for (let k = 0; k < gA.length; k++) delta += scoreAff[c * n + gA[k]];
-            for (let k = 0; k < gB.length; k++) {
+            for (let k = 0; k < gB.length; k++)
               if (k !== b) delta -= scoreAff[c * n + gB[k]];
+            if (delta > 0) {
+              gB.splice(b, 1);
+              gA.push(c);
+              changed = true;
+              b--;
+              if (gA.length >= 4 || gB.length === 0) break;
             }
-            if (delta <= 0) continue;
-            gB.splice(b, 1);
-            gA.push(c);
-            changed = true;
-            b--;
-            if (gA.length >= 4 || gB.length <= 1) break;
           }
         }
       }
     }
 
-    if (!changed) break;
+    // Drop any groups emptied by relocation.
+    for (let i = gs.length - 1; i >= 0; i--)
+      if (gs[i].length === 0) gs.splice(i, 1);
   }
-
-  return gs.filter((g) => g.length > 0).map((g) => Int32Array.from(g));
 }
 
-function seededShuffle(n: number, seed: number): Int32Array {
-  let state = seed >>> 0;
-  const arr = new Int32Array(n);
-  for (let i = 0; i < n; i++) arr[i] = i;
-  for (let i = n - 1; i > 0; i--) {
-    state = (Math.imul(1664525, state) + 1013904223) >>> 0;
-    const j = state % (i + 1);
-    const tmp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = tmp;
+// ---------------------------------------------------------------------------
+// Iterated local search — perturb (ruin & greedily recreate) then re-optimise.
+// ---------------------------------------------------------------------------
+
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Eject a handful of random members and greedily reinsert them (best marginal gain). */
+function perturb(gs: number[][], model: Model, rng: () => number): void {
+  const { n, scoreAff } = model;
+  const total = gs.reduce((s, g) => s + g.length, 0);
+  if (total <= 2) return;
+  const kicks = Math.min(total - 1, 3 + Math.floor(rng() * 6));
+
+  const ejected: number[] = [];
+  for (let t = 0; t < kicks; t++) {
+    let gi = Math.floor(rng() * gs.length);
+    let tries = 0;
+    while (gs[gi].length === 0 && tries++ < gs.length) gi = (gi + 1) % gs.length;
+    const g = gs[gi];
+    if (g.length === 0) continue;
+    const vi = Math.floor(rng() * g.length);
+    ejected.push(g[vi]);
+    g.splice(vi, 1);
   }
-  return arr;
+  for (let i = gs.length - 1; i >= 0; i--)
+    if (gs[i].length === 0) gs.splice(i, 1);
+
+  for (const v of ejected) {
+    let bestGain = 0;
+    let bestGroup = -1;
+    for (let gi = 0; gi < gs.length; gi++) {
+      const g = gs[gi];
+      if (g.length >= 4) continue;
+      if (!canJoin(g, v, model)) continue;
+      let gain = 0;
+      for (let k = 0; k < g.length; k++) gain += scoreAff[v * n + g[k]];
+      // Randomised tie-breaking keeps successive perturbations diverse.
+      if (gain > bestGain || (gain === bestGain && rng() < 0.35)) {
+        bestGain = gain;
+        bestGroup = gi;
+      }
+    }
+    if (bestGroup >= 0) gs[bestGroup].push(v);
+    else gs.push([v]);
+  }
+}
+
+function clone(gs: number[][]): number[][] {
+  return gs.map((g) => g.slice());
 }
 
 // ---------------------------------------------------------------------------
@@ -396,10 +424,10 @@ interface ComputeAutoGroupsOptions {
 }
 
 /**
- * Partition pokemon into groups of up to 4, maximising shared favorites
- * while respecting habitat conflicts.
+ * Partition Pokémon into groups of up to 4, maximising shared favorites while
+ * respecting habitat conflicts.
  * Groups are ordered by {@link groupScore} descending (highest favorite overlap first).
- * Members within each group are ordered by {@link comparePokemonByDex} (same as dropdowns / next-Pokémon suggestions).
+ * Members within each group are ordered by {@link comparePokemonByDex}.
  */
 export function computeAutoGroups(
   pokemon: Pokemon[],
@@ -408,59 +436,54 @@ export function computeAutoGroups(
   if (pokemon.length === 0) return [];
 
   const n = pokemon.length;
-  buildHabitatArrays(pokemon);
-  const ctx = buildCtx(pokemon, Boolean(options.preferEvolutionLines));
+  const model = buildModel(pokemon, Boolean(options.preferEvolutionLines));
+  const deadline = Date.now() + TIME_BUDGET_MS;
 
-  const natural = new Int32Array(n).map((_, i) => i);
-  const byAffDesc = Int32Array.from(natural).sort(
-    (a, b) => ctx.affSum[b] - ctx.affSum[a],
-  );
-  const byAffAsc = Int32Array.from(byAffDesc).reverse();
+  let best = constructEdgeGreedy(model);
+  localSearch(best, model, deadline);
+  let bestScore = totalScore(best, model.scoreAff, n);
+  // Secondary objective: among equal optimisation scores, prefer more raw favorite
+  // overlap (only matters when the evolution bonus is active).
+  let bestAff = totalScore(best, model.aff, n);
 
-  const randomCount = n > 220 ? 3 : 6;
-  const seeds: Int32Array[] = [natural, byAffDesc, byAffAsc];
-  for (let i = 0; i < randomCount; i++)
-    seeds.push(seededShuffle(n, 12345 + i * 7919));
-
-  // Phase 1: run all greedy seeds (fast), ranked by score
-  type Candidate = { groups: Int32Array[]; score: number };
-  const allGreedy: Candidate[] = seeds.map((seed) => {
-    const groups = computeGreedy(seed, ctx);
-    return { groups, score: totalScore(groups, ctx.scoreAff, n) };
-  });
-  allGreedy.sort((a, b) => b.score - a.score);
-
-  // Phase 2: improve candidates within time budget, best-first
-  const deadline = Date.now() + 300;
-  let best = allGreedy[0].groups;
-  let bestScore = allGreedy[0].score;
-  for (const candidate of allGreedy) {
-    if (Date.now() >= deadline) break;
-    const improved = improve(candidate.groups, ctx, deadline);
-    const score = totalScore(improved, ctx.scoreAff, n);
-    if (score > bestScore) {
+  // Iterated local search: keep perturbing the incumbent and re-optimising,
+  // spending the remaining time budget to escape local optima. Stops early once
+  // improvements dry up so small/easy inputs return quickly.
+  const rng = mulberry32(0x9e3779b9 ^ n);
+  let lastImprove = Date.now();
+  for (;;) {
+    const now = Date.now();
+    if (now >= deadline || now - lastImprove >= STALL_MS) break;
+    const trial = clone(best);
+    perturb(trial, model, rng);
+    localSearch(trial, model, deadline);
+    const score = totalScore(trial, model.scoreAff, n);
+    if (score < bestScore) continue;
+    const aff = totalScore(trial, model.aff, n);
+    if (score > bestScore || aff > bestAff) {
       bestScore = score;
-      best = improved;
+      bestAff = aff;
+      best = trial;
+      lastImprove = now;
     }
   }
 
-  // Present suggested groups best-first using the same favorite-overlap score shown in the UI
+  // Present groups best-first using the same favorite-overlap score shown in the UI
+  // (never the evolution bonus), tie-broken by lowest member dex for stable order.
+  const groupAff = (g: number[]): number => {
+    let s = 0;
+    for (let i = 0; i < g.length; i++)
+      for (let j = i + 1; j < g.length; j++) s += model.aff[g[i] * n + g[j]];
+    return s;
+  };
   best.sort((ga, gb) => {
-    let scoreA = 0;
-    let scoreB = 0;
-    for (let i = 0; i < ga.length; i++)
-      for (let j = i + 1; j < ga.length; j++)
-        scoreA += ctx.aff[ga[i] * n + ga[j]];
-    for (let i = 0; i < gb.length; i++)
-      for (let j = i + 1; j < gb.length; j++)
-        scoreB += ctx.aff[gb[i] * n + gb[j]];
-    return scoreB - scoreA;
+    const d = groupAff(gb) - groupAff(ga);
+    if (d !== 0) return d;
+    return Math.min(...ga) - Math.min(...gb);
   });
 
   return best.map((g) =>
-    Array.from(g)
-      .map((i) => pokemon[i])
-      .sort(comparePokemonByDex),
+    g.map((i) => pokemon[i]).sort(comparePokemonByDex),
   );
 }
 
@@ -480,39 +503,29 @@ function enumerateCandidateAddScores(
   candidates: Pokemon[],
 ): { pokemon: Pokemon; score: number; habitatCompatible: boolean }[] {
   const all = [...group, ...candidates];
-  buildHabitatArrays(all);
-  initBitmasks(all);
+  const masks = buildFavMasks(all);
+  const conflictBits = all.map(habitatConflictBit);
+  const habitatBits = all.map(habitatBit);
   const gLen = group.length;
   const out: { pokemon: Pokemon; score: number; habitatCompatible: boolean }[] =
     [];
 
-  for (let candidateIndex = 0; candidateIndex < candidates.length; candidateIndex++) {
-    const pokemon = candidates[candidateIndex];
-    const idx = gLen + candidateIndex;
-    const cb = _habitatBits[idx];
-    const candidateConflictBit = _conflictBits[idx];
+  for (let ci = 0; ci < candidates.length; ci++) {
+    const pokemon = candidates[ci];
+    const idx = gLen + ci;
     let habitatCompatible = true;
     for (let k = 0; k < gLen; k++) {
-      if (_conflictBits[k] & cb) {
-        habitatCompatible = false;
-        break;
-      }
-      if (candidateConflictBit & _habitatBits[k]) {
+      if (
+        conflictBits[k] & habitatBits[idx] ||
+        conflictBits[idx] & habitatBits[k]
+      ) {
         habitatCompatible = false;
         break;
       }
     }
     let score = 0;
-    if (habitatCompatible) {
-      for (let k = 0; k < gLen; k++) {
-        score += sharedFav(
-          _favLo![k],
-          _favHi![k],
-          _favLo![idx],
-          _favHi![idx],
-        );
-      }
-    }
+    if (habitatCompatible)
+      for (let k = 0; k < gLen; k++) score += sharedFav(masks, k, idx);
     out.push({ pokemon, score, habitatCompatible });
   }
   return out;
@@ -529,9 +542,8 @@ export function candidateAddInfoByPokemonId(
 ): Map<string, CandidateAddToGroupInfo> {
   const map = new Map<string, CandidateAddToGroupInfo>();
   if (group.length === 0) {
-    for (const p of candidates) {
+    for (const p of candidates)
       map.set(p.id, { score: 0, habitatCompatible: true });
-    }
     return map;
   }
   for (const row of enumerateCandidateAddScores(group, candidates)) {
@@ -569,13 +581,11 @@ export function suggestNextPokemon(
  */
 export function groupScore(group: Pokemon[]): number {
   if (group.length === 0) return 0;
-  buildHabitatArrays(group);
-  initBitmasks(group);
-  const aff = buildAffinityMatrix(group.length);
+  const masks = buildFavMasks(group);
   const n = group.length;
   let score = 0;
   for (let i = 0; i < n; i++)
-    for (let j = i + 1; j < n; j++) score += aff[i * n + j];
+    for (let j = i + 1; j < n; j++) score += sharedFav(masks, i, j);
   return score;
 }
 
