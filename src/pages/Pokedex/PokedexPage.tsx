@@ -17,6 +17,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import type { CollapseProps } from "@mui/material/Collapse";
 import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
 import { useLocation } from "react-router-dom";
 import { PokemonCard } from "../../components/PokemonCard";
@@ -32,6 +33,11 @@ import type { Habitat, Pokemon } from "../../types/types";
 
 type Filter = "all" | "unlocked" | "locked";
 type SectionKey = "standard" | "event" | "basin";
+
+/** Skip Collapse height animation — large Pokédex grids make it laggy. */
+function InstantCollapse({ in: inProp = false, children }: CollapseProps) {
+  return <div style={{ display: inProp ? "block" : "none" }}>{children}</div>;
+}
 
 const SECTION_IDS: Record<SectionKey, string> = {
   standard: "standard",
@@ -616,6 +622,7 @@ function PokedexSection({
       elevation={0}
       expanded={expanded}
       onChange={onExpandedChange}
+      slots={{ transition: InstantCollapse }}
       sx={{
         scrollMarginTop: 88,
         overflow: "hidden",
@@ -637,6 +644,9 @@ function PokedexSection({
             my: 0.5,
           },
           "& .MuiAccordionSummary-content.Mui-expanded": { margin: 0, my: 0.5 },
+          "& .MuiAccordionSummary-expandIconWrapper": {
+            transition: "none",
+          },
         }}
       >
         <Stack
