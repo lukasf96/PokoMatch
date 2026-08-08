@@ -267,6 +267,18 @@ function CustomGroupsSectionComponent({
               onRemovePokemon={onRemovePokemon}
             />
           ))}
+
+          {customGroups.length > 0 && (
+            <Button
+              onClick={onAddGroup}
+              size="small"
+              variant="contained"
+              startIcon={<AddIcon />}
+              sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}
+            >
+              Add group
+            </Button>
+          )}
         </Stack>
       </AccordionDetails>
     </Accordion>
