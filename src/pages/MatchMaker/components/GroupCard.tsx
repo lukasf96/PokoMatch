@@ -1,5 +1,11 @@
+import type {
+  DraggableAttributes,
+  DraggableSyntheticListeners,
+} from "@dnd-kit/core";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
 import {
   Alert,
@@ -7,16 +13,20 @@ import {
   Box,
   Chip,
   Divider,
+  FormControl,
   IconButton,
+  MenuItem,
   Paper,
+  Select,
   Stack,
   Typography,
   useTheme,
+  type SelectChangeEvent,
   type SxProps,
   type Theme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { memo, useMemo, type ReactNode } from "react";
+import { memo, useMemo, type CSSProperties, type ReactNode } from "react";
 import { PokemonCard } from "../../../components/PokemonCard";
 import { SpecialtyChip } from "../../../components/SpecialtyChip";
 import {
@@ -31,7 +41,12 @@ import {
   groupScore,
   groupScoreUpperBound,
 } from "../../../services/matching.service";
-import type { Habitat, Pokemon } from "../../../types/types";
+import {
+  POKOPIA_LOCATIONS,
+  type Habitat,
+  type Pokemon,
+  type PokopiaLocation,
+} from "../../../types/types";
 
 interface GroupCardProps {
   group: Pokemon[];
@@ -44,6 +59,13 @@ interface GroupCardProps {
     onClick: () => void;
     kind: "add" | "remove";
   };
+  /** Optional Pokopia location for this group. */
+  location?: PokopiaLocation;
+  onLocationChange?: (location: PokopiaLocation | undefined) => void;
+  dragHandleAttributes?: DraggableAttributes;
+  dragHandleListeners?: DraggableSyntheticListeners;
+  isDragging?: boolean;
+  style?: CSSProperties;
 }
 
 function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
@@ -122,6 +144,12 @@ function GroupCardComponent({
   onRemovePokemon,
   footerContent,
   groupAction,
+  location,
+  onLocationChange,
+  dragHandleAttributes,
+  dragHandleListeners,
+  isDragging = false,
+  style,
 }: GroupCardProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
@@ -165,10 +193,12 @@ function GroupCardComponent({
   );
 
   const hasHabitatConflict = conflicts.length > 0;
+  const locationSelectId = `group-${groupNumber}-location`;
 
   return (
     <Paper
       variant="outlined"
+      style={style}
       sx={{
         borderColor: hasHabitatConflict
           ? theme.palette.error.main
@@ -176,11 +206,13 @@ function GroupCardComponent({
         borderWidth: hasHabitatConflict ? 2 : 1,
         borderRadius: 2,
         overflow: "hidden",
+        opacity: isDragging ? 0.88 : 1,
+        boxShadow: isDragging ? theme.shadows[6] : undefined,
         transition: theme.transitions.create(["box-shadow", "border-color"], {
           duration: theme.transitions.duration.shortest,
         }),
         "&:hover": {
-          boxShadow: theme.shadows[2],
+          boxShadow: theme.shadows[isDragging ? 6 : 2],
         },
       }}
     >
@@ -196,18 +228,47 @@ function GroupCardComponent({
           gap: 1.5,
         }}
       >
-        <Stack direction="row" spacing={1.5} sx={{
-          alignItems: "center"
-        }}>
-          <Typography variant="subtitle2" color={colors.text} sx={{
-            fontWeight: 700
-          }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          {dragHandleAttributes ? (
+            <IconButton
+              size="small"
+              aria-label={`Drag to reorder group ${groupNumber}`}
+              {...dragHandleAttributes}
+              {...dragHandleListeners}
+              sx={{
+                cursor: "grab",
+                color: colors.text,
+                touchAction: "none",
+                "&:active": { cursor: "grabbing" },
+              }}
+            >
+              <DragIndicatorIcon fontSize="small" />
+            </IconButton>
+          ) : null}
+          <Typography
+            variant="subtitle2"
+            color={colors.text}
+            sx={{
+              fontWeight: 700,
+            }}
+          >
             Group {groupNumber}
           </Typography>
 
-          <Stack direction="row" spacing={0.5} useFlexGap sx={{
-            flexWrap: "wrap"
-          }}>
+          <Stack
+            direction="row"
+            spacing={0.5}
+            useFlexGap
+            sx={{
+              flexWrap: "wrap",
+            }}
+          >
             {specialties.map((s) => (
               <SpecialtyChip
                 key={`group-spec-${s}`}
@@ -226,8 +287,119 @@ function GroupCardComponent({
           useFlexGap
           sx={{
             alignItems: "center",
-            flexWrap: "wrap"
-          }}>
+            flexWrap: "wrap",
+          }}
+        >
+          {onLocationChange ? (
+            <FormControl
+              size="small"
+              sx={{
+                minWidth: { xs: "100%", sm: 168 },
+                maxWidth: { xs: "100%", sm: 220 },
+              }}
+            >
+              <Select
+                id={locationSelectId}
+                value={location ?? ""}
+                displayEmpty
+                aria-label={`Location for group ${groupNumber}`}
+                onChange={(event: SelectChangeEvent<string>) => {
+                  const value = event.target.value;
+                  onLocationChange(
+                    value === "" ? undefined : (value as PokopiaLocation),
+                  );
+                }}
+                sx={{
+                  bgcolor: "background.paper",
+                  height: 22,
+                  fontSize: 11,
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderRadius: "16px",
+                  },
+                  "& .MuiOutlinedInput-input": {
+                    py: 0,
+                    px: 1,
+                    pr: "28px !important",
+                    display: "flex",
+                    alignItems: "center",
+                    minHeight: "unset",
+                    height: 22,
+                    boxSizing: "border-box",
+                  },
+                  "& .MuiSelect-select": {
+                    display: "flex",
+                    alignItems: "center",
+                    py: 0,
+                  },
+                  "& .MuiSelect-icon": {
+                    right: 2,
+                    fontSize: 16,
+                  },
+                }}
+                renderValue={(selected) =>
+                  selected ? (
+                    <Stack
+                      direction="row"
+                      spacing={0.5}
+                      sx={{ alignItems: "center", minWidth: 0 }}
+                    >
+                      <PlaceOutlinedIcon
+                        sx={{ fontSize: 14, color: "text.secondary" }}
+                      />
+                      <Typography
+                        variant="body2"
+                        component="span"
+                        noWrap
+                        sx={{ fontSize: 11, lineHeight: 1 }}
+                      >
+                        {selected}
+                      </Typography>
+                    </Stack>
+                  ) : (
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      sx={{
+                        color: "text.secondary",
+                        fontSize: 11,
+                        lineHeight: 1,
+                      }}
+                    >
+                      No location set
+                    </Typography>
+                  )
+                }
+              >
+                <MenuItem value="">
+                  <em>No location set</em>
+                </MenuItem>
+                {POKOPIA_LOCATIONS.map((pokopiaLocation) => (
+                  <MenuItem key={pokopiaLocation} value={pokopiaLocation}>
+                    {pokopiaLocation}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          ) : location ? (
+            <Chip
+              icon={<PlaceOutlinedIcon />}
+              label={location}
+              size="small"
+              variant="outlined"
+              sx={{
+                height: 22,
+                fontSize: 11,
+                bgcolor: "background.paper",
+                color: colors.text,
+                borderColor: colors.border,
+                "& .MuiChip-icon": {
+                  color: colors.text,
+                  ml: 0.5,
+                  fontSize: 14,
+                },
+              }}
+            />
+          ) : null}
           {habitats.map((groupHabitat) => (
             <HabitatChip
               key={`habitat-${groupHabitat}`}
@@ -297,8 +469,9 @@ function GroupCardComponent({
             variant="body2"
             sx={{
               color: "text.primary",
-              mb: 0.5
-            }}>
+              mb: 0.5,
+            }}
+          >
             Opposite habitat needs are mixed in this group. Someone will not be
             happy here.
           </Typography>
@@ -307,8 +480,9 @@ function GroupCardComponent({
             useFlexGap
             sx={{
               flexWrap: "wrap",
-              gap: 0.75
-            }}>
+              gap: 0.75,
+            }}
+          >
             {conflicts.map(([left, right]) => (
               <Chip
                 key={`${left}-${right}`}
@@ -316,7 +490,7 @@ function GroupCardComponent({
                 size="small"
                 color="error"
                 variant="filled"
-                sx={{ fontWeight: 700, fontSize: 11 }}
+                sx={{ fontWeight: 700, fontSize: 11, height: 22 }}
               />
             ))}
           </Stack>
@@ -376,8 +550,8 @@ function HabitatChip({
       size="small"
       variant="outlined"
       sx={{
-        height: isGroup ? 20 : 18,
-        fontSize: 10,
+        height: isGroup ? 22 : 18,
+        fontSize: isGroup ? 11 : 10,
         bgcolor: "background.paper",
         color: habitatColors[habitat].text,
         borderColor: habitatColors[habitat].border,

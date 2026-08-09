@@ -20,9 +20,12 @@ import {
 } from "../../services/matching.service";
 import { habitablePokemon } from "../../services/pokemon";
 import { useStore } from "../../store/store";
-import type { Pokemon, SuggestedItem } from "../../types/types";
+import type { Pokemon, PokopiaLocation, SuggestedItem } from "../../types/types";
 import { AutoGroupsSection } from "./components/AutoGroupsSection";
-import { CustomGroupsSection } from "./components/CustomGroupsSection";
+import {
+  CustomGroupsSection,
+  type ResolvedCustomGroup,
+} from "./components/CustomGroupsSection";
 import { useAutoGroups } from "./useAutoGroups";
 
 function groupKeyFromPokemon(group: Pokemon[]): string {
@@ -40,6 +43,8 @@ export default function MatcherPage() {
     (s) => s.addSuggestedGroupToCustomGroups,
   );
   const deleteCustomGroup = useStore((s) => s.deleteCustomGroup);
+  const reorderCustomGroups = useStore((s) => s.reorderCustomGroups);
+  const setCustomGroupLocation = useStore((s) => s.setCustomGroupLocation);
   const addPokemonToCustomGroup = useStore((s) => s.addPokemonToCustomGroup);
   const removePokemonFromCustomGroup = useStore(
     (s) => s.removePokemonFromCustomGroup,
@@ -64,20 +69,22 @@ export default function MatcherPage() {
     [activePokemon],
   );
 
-  const resolvedCustomGroups = useMemo(
+  const resolvedCustomGroups = useMemo<ResolvedCustomGroup[]>(
     () =>
-      customGroups.map((group) =>
-        group
+      customGroups.map((group) => ({
+        id: group.id,
+        location: group.location,
+        members: group.pokemonIds
           .map((id) => pokemonById[id])
           .filter((pokemon): pokemon is Pokemon => Boolean(pokemon)),
-      ),
+      })),
     [customGroups, pokemonById],
   );
 
   const customAssignedIds = useMemo(() => {
     const ids = new Set<string>();
     for (const group of resolvedCustomGroups) {
-      for (const pokemon of group) ids.add(pokemon.id);
+      for (const pokemon of group.members) ids.add(pokemon.id);
     }
     return ids;
   }, [resolvedCustomGroups]);
@@ -113,9 +120,10 @@ export default function MatcherPage() {
     () =>
       resolvedCustomGroups.map((group) =>
         suggestNextPokemon(
-          group,
+          group.members,
           availablePokemon.filter(
-            (candidate) => !group.some((member) => member.id === candidate.id),
+            (candidate) =>
+              !group.members.some((member) => member.id === candidate.id),
           ),
         ),
       ),
@@ -158,6 +166,20 @@ export default function MatcherPage() {
       removePokemonFromCustomGroup(groupIndex, pokemonId);
     },
     [resetSuggestedFreeze, removePokemonFromCustomGroup],
+  );
+
+  const handleReorderGroups = useCallback(
+    (activeId: string, overId: string) => {
+      reorderCustomGroups(activeId, overId);
+    },
+    [reorderCustomGroups],
+  );
+
+  const handleLocationChange = useCallback(
+    (groupIndex: number, location: PokopiaLocation | undefined) => {
+      setCustomGroupLocation(groupIndex, location);
+    },
+    [setCustomGroupLocation],
   );
 
   const hasActiveSuggestedFreeze = useMemo(
@@ -217,7 +239,8 @@ export default function MatcherPage() {
   ]);
 
   const customGroupItemSuggestions = useMemo<SuggestedItem[][]>(
-    () => resolvedCustomGroups.map((group) => suggestItemsForGroup(group)),
+    () =>
+      resolvedCustomGroups.map((group) => suggestItemsForGroup(group.members)),
     [resolvedCustomGroups],
   );
 
@@ -289,6 +312,8 @@ export default function MatcherPage() {
             onDeleteGroup={handleDeleteGroup}
             onAddPokemon={handleAddPokemon}
             onRemovePokemon={handleRemovePokemon}
+            onReorderGroups={handleReorderGroups}
+            onLocationChange={handleLocationChange}
           />
 
           <AutoGroupsSection

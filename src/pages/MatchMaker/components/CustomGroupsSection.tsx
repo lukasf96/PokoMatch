@@ -1,3 +1,19 @@
+import {
+  DndContext,
+  KeyboardSensor,
+  PointerSensor,
+  closestCenter,
+  type DragEndEvent,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
@@ -19,15 +35,25 @@ import { InstantCollapse } from "../../../components/InstantCollapse";
 import type { SuggestedPokemon } from "../../../services/matching.service";
 import type { PokemonNameLanguage } from "../../../services/pokemon-localization";
 import { useStore } from "../../../store/store";
-import type { Pokemon, SuggestedItem } from "../../../types/types";
-import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
-import { getDisplayHabitat, groupStableKey } from "../group-helpers";
+import type {
+  Pokemon,
+  PokopiaLocation,
+  SuggestedItem,
+} from "../../../types/types";
+import { getDisplayHabitat } from "../group-helpers";
 import { AddPokemonToGroupAutocomplete } from "./AddPokemonToGroupAutocomplete";
 import GroupCard from "./GroupCard";
+import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
 import { SuggestedNextPokemonControls } from "./SuggestedNextPokemonControls";
 
+export interface ResolvedCustomGroup {
+  id: string;
+  members: Pokemon[];
+  location?: PokopiaLocation;
+}
+
 interface CustomGroupRowProps {
-  group: Pokemon[];
+  group: ResolvedCustomGroup;
   groupIndex: number;
   suggestions: SuggestedPokemon[];
   itemSuggestions: SuggestedItem[];
@@ -36,6 +62,10 @@ interface CustomGroupRowProps {
   onDeleteGroup: (groupIndex: number) => void;
   onAddPokemon: (groupIndex: number, pokemonId: string) => void;
   onRemovePokemon: (groupIndex: number, pokemonId: string) => void;
+  onLocationChange: (
+    groupIndex: number,
+    location: PokopiaLocation | undefined,
+  ) => void;
 }
 
 const CustomGroupRow = memo(function CustomGroupRow({
@@ -48,10 +78,19 @@ const CustomGroupRow = memo(function CustomGroupRow({
   onDeleteGroup,
   onAddPokemon,
   onRemovePokemon,
+  onLocationChange,
 }: CustomGroupRowProps) {
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const groupNumber = groupIndex + 1;
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: group.id });
 
   const handleRemovePokemon = useCallback(
     (pokemonId: string) => onRemovePokemon(groupIndex, pokemonId),
@@ -65,30 +104,50 @@ const CustomGroupRow = memo(function CustomGroupRow({
     () => onDeleteGroup(groupIndex),
     [groupIndex, onDeleteGroup],
   );
+  const handleLocationChange = useCallback(
+    (location: PokopiaLocation | undefined) =>
+      onLocationChange(groupIndex, location),
+    [groupIndex, onLocationChange],
+  );
 
   const groupFavorites = useMemo(
-    () => new Set(group.flatMap((p) => p.favorites)),
-    [group],
+    () => new Set(group.members.flatMap((p) => p.favorites)),
+    [group.members],
   );
 
   return (
-    <Stack key={`custom-${groupStableKey(group) || groupIndex}`} spacing={1}>
+    <Box
+      ref={setNodeRef}
+      sx={{
+        position: "relative",
+        zIndex: isDragging ? 2 : 0,
+      }}
+    >
       <GroupCard
-        group={group}
+        group={group.members}
         groupNumber={groupNumber}
-        habitat={getDisplayHabitat(group)}
+        habitat={getDisplayHabitat(group.members)}
+        location={group.location}
+        onLocationChange={handleLocationChange}
         onRemovePokemon={handleRemovePokemon}
+        dragHandleAttributes={attributes}
+        dragHandleListeners={listeners}
+        isDragging={isDragging}
+        style={{
+          transform: CSS.Transform.toString(transform),
+          transition,
+        }}
         footerContent={
-          group.length < 4 || itemSuggestions.length > 0 ? (
+          group.members.length < 4 || itemSuggestions.length > 0 ? (
             <Stack spacing={2}>
-              {group.length < 4 ? (
+              {group.members.length < 4 ? (
                 <>
                   <Stack
                     direction="row"
                     spacing={1.5}
                     useFlexGap
                     sx={{
-                      alignItems: "stretch"
+                      alignItems: "stretch",
                     }}
                   >
                     <Box
@@ -121,20 +180,22 @@ const CustomGroupRow = memo(function CustomGroupRow({
                       spacing={1.25}
                       sx={{
                         flex: 1,
-                        minWidth: 0
-                      }}>
+                        minWidth: 0,
+                      }}
+                    >
                       <Typography
                         variant="subtitle2"
                         sx={{
                           fontWeight: 800,
-                          letterSpacing: "0.01em"
-                        }}>
+                          letterSpacing: "0.01em",
+                        }}
+                      >
                         Add Pokémon · Group {groupNumber}
                       </Typography>
 
                       <AddPokemonToGroupAutocomplete
                         embedded
-                        group={group}
+                        group={group.members}
                         availablePokemon={availablePokemon}
                         nameLanguage={nameLanguage}
                         onSelect={handleSelect}
@@ -142,7 +203,7 @@ const CustomGroupRow = memo(function CustomGroupRow({
                     </Stack>
                   </Stack>
 
-                  {group.length > 0 && suggestions.length > 0 ? (
+                  {group.members.length > 0 && suggestions.length > 0 ? (
                     <>
                       <Divider
                         flexItem
@@ -163,7 +224,7 @@ const CustomGroupRow = memo(function CustomGroupRow({
 
               {itemSuggestions.length > 0 ? (
                 <>
-                  {group.length < 4 && (
+                  {group.members.length < 4 && (
                     <Divider
                       flexItem
                       sx={{
@@ -172,7 +233,11 @@ const CustomGroupRow = memo(function CustomGroupRow({
                       }}
                     />
                   )}
-                  <SuggestedItemsPanel suggestions={itemSuggestions} groupFavorites={groupFavorites} groupSize={group.length} />
+                  <SuggestedItemsPanel
+                    suggestions={itemSuggestions}
+                    groupFavorites={groupFavorites}
+                    groupSize={group.members.length}
+                  />
                 </>
               ) : null}
             </Stack>
@@ -184,12 +249,12 @@ const CustomGroupRow = memo(function CustomGroupRow({
           kind: "remove",
         }}
       />
-    </Stack>
+    </Box>
   );
 });
 
 interface CustomGroupsSectionProps {
-  customGroups: Pokemon[][];
+  customGroups: ResolvedCustomGroup[];
   suggestions: SuggestedPokemon[][];
   itemSuggestions: SuggestedItem[][];
   availablePokemon: Pokemon[];
@@ -197,6 +262,11 @@ interface CustomGroupsSectionProps {
   onDeleteGroup: (groupIndex: number) => void;
   onAddPokemon: (groupIndex: number, pokemonId: string) => void;
   onRemovePokemon: (groupIndex: number, pokemonId: string) => void;
+  onReorderGroups: (activeId: string, overId: string) => void;
+  onLocationChange: (
+    groupIndex: number,
+    location: PokopiaLocation | undefined,
+  ) => void;
 }
 
 function CustomGroupsSectionComponent({
@@ -208,8 +278,32 @@ function CustomGroupsSectionComponent({
   onDeleteGroup,
   onAddPokemon,
   onRemovePokemon,
+  onReorderGroups,
+  onLocationChange,
 }: CustomGroupsSectionProps) {
   const nameLanguage = useStore((state) => state.nameLanguage);
+  const groupIds = useMemo(
+    () => customGroups.map((group) => group.id),
+    [customGroups],
+  );
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 6 },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
+  );
+
+  const handleDragEnd = useCallback(
+    (event: DragEndEvent) => {
+      const { active, over } = event;
+      if (!over || active.id === over.id) return;
+      onReorderGroups(String(active.id), String(over.id));
+    },
+    [onReorderGroups],
+  );
 
   return (
     <Accordion
@@ -244,11 +338,15 @@ function CustomGroupsSectionComponent({
           useFlexGap
           sx={{
             alignItems: "center",
-            flexWrap: "wrap"
-          }}>
-          <Typography component="span" sx={{
-            fontWeight: 700
-          }}>
+            flexWrap: "wrap",
+          }}
+        >
+          <Typography
+            component="span"
+            sx={{
+              fontWeight: 700,
+            }}
+          >
             My Groups
           </Typography>
           <Chip label={`${customGroups.length} groups`} size="small" />
@@ -267,27 +365,46 @@ function CustomGroupsSectionComponent({
           </Button>
 
           {customGroups.length === 0 && (
-            <Typography variant="body2" sx={{
-              color: "text.secondary"
-            }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "text.secondary",
+              }}
+            >
               Add your habitats you have already setup in-game.
             </Typography>
           )}
 
-          {customGroups.map((group, gi) => (
-            <CustomGroupRow
-              key={`custom-${groupStableKey(group) || gi}`}
-              group={group}
-              groupIndex={gi}
-              suggestions={suggestions[gi] ?? []}
-              itemSuggestions={itemSuggestions[gi] ?? []}
-              availablePokemon={availablePokemon}
-              nameLanguage={nameLanguage}
-              onDeleteGroup={onDeleteGroup}
-              onAddPokemon={onAddPokemon}
-              onRemovePokemon={onRemovePokemon}
-            />
-          ))}
+          {customGroups.length > 0 ? (
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={groupIds}
+                strategy={verticalListSortingStrategy}
+              >
+                <Stack spacing={2}>
+                  {customGroups.map((group, gi) => (
+                    <CustomGroupRow
+                      key={group.id}
+                      group={group}
+                      groupIndex={gi}
+                      suggestions={suggestions[gi] ?? []}
+                      itemSuggestions={itemSuggestions[gi] ?? []}
+                      availablePokemon={availablePokemon}
+                      nameLanguage={nameLanguage}
+                      onDeleteGroup={onDeleteGroup}
+                      onAddPokemon={onAddPokemon}
+                      onRemovePokemon={onRemovePokemon}
+                      onLocationChange={onLocationChange}
+                    />
+                  ))}
+                </Stack>
+              </SortableContext>
+            </DndContext>
+          ) : null}
 
           {customGroups.length > 0 && (
             <Button

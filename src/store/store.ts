@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist, type StateStorage } from "zustand/middleware";
 import { allPokemon } from "../services/pokemon";
+import type { CustomGroup, PokopiaLocation } from "../types/types";
+import { createCustomGroup, normalizeCustomGroups } from "./customGroups";
 
 /** Debounce localStorage writes — full-state JSON on each toggle was blocking the main thread. */
 function createDebouncedJsonStorage(delayMs: number): StateStorage {
@@ -43,7 +45,8 @@ interface AppState {
   preferEvolutionLinesInMatching: boolean;
   // Set of Pokemon IDs currently selected by the user
   unlockedIds: Set<string>;
-  customGroups: string[][];
+  /** Display order is array order (user-reorderable via drag and drop). */
+  customGroups: CustomGroup[];
 
   setNameLanguage: (language: "en" | "de" | "fr") => void;
   setThemeMode: (mode: "system" | "light" | "dark") => void;
@@ -56,6 +59,11 @@ interface AppState {
   addCustomGroup: () => void;
   addSuggestedGroupToCustomGroups: (pokemonIds: string[]) => void;
   deleteCustomGroup: (groupIndex: number) => void;
+  reorderCustomGroups: (activeId: string, overId: string) => void;
+  setCustomGroupLocation: (
+    groupIndex: number,
+    location: PokopiaLocation | undefined,
+  ) => void;
   addPokemonToCustomGroup: (groupIndex: number, pokemonId: string) => void;
   removePokemonFromCustomGroup: (groupIndex: number, pokemonId: string) => void;
 }
@@ -66,7 +74,8 @@ interface PersistedState {
   themeMode?: "system" | "light" | "dark";
   preferEvolutionLinesInMatching?: boolean;
   unlockedIds: string[];
-  customGroups?: string[][];
+  /** Legacy `string[][]` or current `CustomGroup[]`. */
+  customGroups?: unknown;
 }
 
 export const useStore = create<AppState>()(
@@ -109,17 +118,22 @@ export const useStore = create<AppState>()(
         }),
       addCustomGroup: () =>
         set((state) => ({
-          customGroups: [...state.customGroups, []],
+          customGroups: [...state.customGroups, createCustomGroup()],
         })),
       addSuggestedGroupToCustomGroups: (pokemonIds) =>
         set((state) => {
-          const assignedIds = new Set(state.customGroups.flat());
-          const nextGroup = pokemonIds
+          const assignedIds = new Set(
+            state.customGroups.flatMap((group) => group.pokemonIds),
+          );
+          const nextGroupIds = pokemonIds
             .filter((pokemonId) => !assignedIds.has(pokemonId))
             .slice(0, 4);
-          if (nextGroup.length === 0) return {};
+          if (nextGroupIds.length === 0) return {};
           return {
-            customGroups: [...state.customGroups, nextGroup],
+            customGroups: [
+              ...state.customGroups,
+              createCustomGroup(nextGroupIds),
+            ],
           };
         }),
       deleteCustomGroup: (groupIndex) =>
@@ -128,17 +142,45 @@ export const useStore = create<AppState>()(
             (_, index) => index !== groupIndex,
           ),
         })),
+      reorderCustomGroups: (activeId, overId) =>
+        set((state) => {
+          if (activeId === overId) return {};
+          const fromIndex = state.customGroups.findIndex(
+            (group) => group.id === activeId,
+          );
+          const toIndex = state.customGroups.findIndex(
+            (group) => group.id === overId,
+          );
+          if (fromIndex < 0 || toIndex < 0) return {};
+          const next = [...state.customGroups];
+          const [moved] = next.splice(fromIndex, 1);
+          next.splice(toIndex, 0, moved);
+          return { customGroups: next };
+        }),
+      setCustomGroupLocation: (groupIndex, location) =>
+        set((state) => ({
+          customGroups: state.customGroups.map((group, index) => {
+            if (index !== groupIndex) return group;
+            if (location === undefined) {
+              return { id: group.id, pokemonIds: group.pokemonIds };
+            }
+            return { ...group, location };
+          }),
+        })),
       addPokemonToCustomGroup: (groupIndex, pokemonId) =>
         set((state) => {
           const isAlreadyAssigned = state.customGroups.some((group) =>
-            group.includes(pokemonId),
+            group.pokemonIds.includes(pokemonId),
           );
           if (isAlreadyAssigned) return {};
           return {
             customGroups: state.customGroups.map((group, index) => {
               if (index !== groupIndex) return group;
-              if (group.length >= 4) return group;
-              return [...group, pokemonId];
+              if (group.pokemonIds.length >= 4) return group;
+              return {
+                ...group,
+                pokemonIds: [...group.pokemonIds, pokemonId],
+              };
             }),
           };
         }),
@@ -146,20 +188,49 @@ export const useStore = create<AppState>()(
         set((state) => ({
           customGroups: state.customGroups.map((group, index) =>
             index === groupIndex
-              ? group.filter((id) => id !== pokemonId)
+              ? {
+                  ...group,
+                  pokemonIds: group.pokemonIds.filter((id) => id !== pokemonId),
+                }
               : group,
           ),
         })),
     }),
     {
       name: "pokomatch",
-      // Serialize Set → array and back
+      // Serialize Set → array and back; migrate legacy customGroups shapes
       storage: {
         getItem: (name) => {
           const raw = localStorage.getItem(name);
           if (!raw) return null;
           const parsed: { state: PersistedState; version: number } =
             JSON.parse(raw);
+          const customGroups = normalizeCustomGroups(parsed.state.customGroups);
+          const rawGroups = parsed.state.customGroups;
+          const needsCustomGroupsRewrite =
+            Array.isArray(rawGroups) &&
+            rawGroups.some((item) => {
+              if (Array.isArray(item)) return true;
+              if (!item || typeof item !== "object") return true;
+              const id = (item as { id?: unknown }).id;
+              return typeof id !== "string" || id.length === 0;
+            });
+
+          // Persist migrated group objects immediately so generated ids stay stable
+          // across reloads (legacy shape was `string[][]`).
+          if (needsCustomGroupsRewrite) {
+            localStorage.setItem(
+              name,
+              JSON.stringify({
+                ...parsed,
+                state: {
+                  ...parsed.state,
+                  customGroups,
+                },
+              }),
+            );
+          }
+
           return {
             ...parsed,
             state: {
@@ -169,7 +240,7 @@ export const useStore = create<AppState>()(
               preferEvolutionLinesInMatching:
                 parsed.state.preferEvolutionLinesInMatching ?? false,
               unlockedIds: new Set(parsed.state.unlockedIds ?? allIds),
-              customGroups: parsed.state.customGroups ?? [],
+              customGroups,
             },
           };
         },
