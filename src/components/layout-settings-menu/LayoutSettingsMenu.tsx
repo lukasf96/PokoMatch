@@ -3,6 +3,7 @@ import {
   Check,
   ChevronRight,
   DarkModeOutlined,
+  FeedbackOutlined,
   ImportExportOutlined,
   InfoOutlined,
   LightModeOutlined,
@@ -16,6 +17,7 @@ import type { ElementType, MouseEvent } from "react";
 import { useState } from "react";
 import { useStore } from "../../store/store";
 import { LayoutDataTransferDialog } from "./LayoutDataTransferDialog";
+import { LayoutFeedbackDialog } from "./LayoutFeedbackDialog";
 import { LayoutInfoDialog } from "./LayoutInfoDialog";
 
 type NameLanguage = "en" | "de" | "fr";
@@ -143,6 +145,7 @@ export function LayoutSettingsMenu() {
   );
   const [settingsView, setSettingsView] = useState<SettingsView>("root");
   const [isInfoDialogOpen, setIsInfoDialogOpen] = useState(false);
+  const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false);
   const [isDataTransferDialogOpen, setIsDataTransferDialogOpen] =
     useState(false);
   const isSettingsOpen = Boolean(settingsAnchorEl);
@@ -159,6 +162,11 @@ export function LayoutSettingsMenu() {
 
   function openInfoDialog() {
     setIsInfoDialogOpen(true);
+    closeSettingsMenu();
+  }
+
+  function openFeedbackDialog() {
+    setIsFeedbackDialogOpen(true);
     closeSettingsMenu();
   }
 
@@ -229,6 +237,14 @@ export function LayoutSettingsMenu() {
                 showChevron={false}
               />,
               <NavRootItem
+                key="feedback"
+                icon={FeedbackOutlined}
+                title="Feedback"
+                detail="Contact & ideas"
+                onClick={openFeedbackDialog}
+                showChevron={false}
+              />,
+              <NavRootItem
                 key="info"
                 icon={InfoOutlined}
                 title="Info"
@@ -276,6 +292,10 @@ export function LayoutSettingsMenu() {
       <LayoutInfoDialog
         isOpen={isInfoDialogOpen}
         onClose={() => setIsInfoDialogOpen(false)}
+      />
+      <LayoutFeedbackDialog
+        isOpen={isFeedbackDialogOpen}
+        onClose={() => setIsFeedbackDialogOpen(false)}
       />
       <LayoutDataTransferDialog
         isOpen={isDataTransferDialogOpen}
