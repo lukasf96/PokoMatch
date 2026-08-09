@@ -18,6 +18,7 @@ import {
   decodeTransferString,
   encodeTransferData,
   sanitizeTransferData,
+  type TransferData,
 } from "../../utils/data-transfer";
 
 interface LayoutDataTransferDialogProps {
@@ -51,10 +52,9 @@ export function LayoutDataTransferDialog({
 
   const [importText, setImportText] = useState("");
   const [confirmReplaceOpen, setConfirmReplaceOpen] = useState(false);
-  const [pendingImport, setPendingImport] = useState<{
-    unlockedIds: string[];
-    customGroups: string[][];
-  } | null>(null);
+  const [pendingImport, setPendingImport] = useState<TransferData | null>(
+    null,
+  );
   const [toast, setToast] = useState<ToastState>(null);
 
   useEffect(() => {

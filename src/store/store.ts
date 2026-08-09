@@ -69,7 +69,7 @@ interface AppState {
   /** Replace Pokédex unlocks and saved groups (used by transfer import). */
   replaceCollectionData: (data: {
     unlockedIds: readonly string[];
-    customGroups: readonly string[][];
+    customGroups: readonly CustomGroup[];
   }) => void;
 }
 
@@ -203,7 +203,11 @@ export const useStore = create<AppState>()(
       replaceCollectionData: ({ unlockedIds, customGroups }) =>
         set({
           unlockedIds: new Set(unlockedIds),
-          customGroups: customGroups.map((group) => [...group]),
+          customGroups: customGroups.map((group) => ({
+            id: group.id,
+            pokemonIds: [...group.pokemonIds],
+            ...(group.location ? { location: group.location } : {}),
+          })),
         }),
     }),
     {
