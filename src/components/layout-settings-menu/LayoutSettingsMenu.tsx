@@ -3,6 +3,7 @@ import {
   Check,
   ChevronRight,
   DarkModeOutlined,
+  ImportExportOutlined,
   InfoOutlined,
   LightModeOutlined,
   PaletteOutlined,
@@ -14,6 +15,7 @@ import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import type { ElementType, MouseEvent } from "react";
 import { useState } from "react";
 import { useStore } from "../../store/store";
+import { LayoutDataTransferDialog } from "./LayoutDataTransferDialog";
 import { LayoutInfoDialog } from "./LayoutInfoDialog";
 
 type NameLanguage = "en" | "de" | "fr";
@@ -141,6 +143,8 @@ export function LayoutSettingsMenu() {
   );
   const [settingsView, setSettingsView] = useState<SettingsView>("root");
   const [isInfoDialogOpen, setIsInfoDialogOpen] = useState(false);
+  const [isDataTransferDialogOpen, setIsDataTransferDialogOpen] =
+    useState(false);
   const isSettingsOpen = Boolean(settingsAnchorEl);
 
   function openSettingsMenu(event: MouseEvent<HTMLElement>) {
@@ -155,6 +159,11 @@ export function LayoutSettingsMenu() {
 
   function openInfoDialog() {
     setIsInfoDialogOpen(true);
+    closeSettingsMenu();
+  }
+
+  function openDataTransferDialog() {
+    setIsDataTransferDialogOpen(true);
     closeSettingsMenu();
   }
 
@@ -212,6 +221,14 @@ export function LayoutSettingsMenu() {
                 onClick={() => setSettingsView("theme")}
               />,
               <NavRootItem
+                key="data-transfer"
+                icon={ImportExportOutlined}
+                title="Export / Import"
+                detail="Pokédex & groups"
+                onClick={openDataTransferDialog}
+                showChevron={false}
+              />,
+              <NavRootItem
                 key="info"
                 icon={InfoOutlined}
                 title="Info"
@@ -259,6 +276,10 @@ export function LayoutSettingsMenu() {
       <LayoutInfoDialog
         isOpen={isInfoDialogOpen}
         onClose={() => setIsInfoDialogOpen(false)}
+      />
+      <LayoutDataTransferDialog
+        isOpen={isDataTransferDialogOpen}
+        onClose={() => setIsDataTransferDialogOpen(false)}
       />
     </>
   );

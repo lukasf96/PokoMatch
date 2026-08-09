@@ -66,6 +66,11 @@ interface AppState {
   ) => void;
   addPokemonToCustomGroup: (groupIndex: number, pokemonId: string) => void;
   removePokemonFromCustomGroup: (groupIndex: number, pokemonId: string) => void;
+  /** Replace Pokédex unlocks and saved groups (used by transfer import). */
+  replaceCollectionData: (data: {
+    unlockedIds: readonly string[];
+    customGroups: readonly string[][];
+  }) => void;
 }
 
 // Zustand persist doesn't handle Set natively — store as array and convert
@@ -195,6 +200,11 @@ export const useStore = create<AppState>()(
               : group,
           ),
         })),
+      replaceCollectionData: ({ unlockedIds, customGroups }) =>
+        set({
+          unlockedIds: new Set(unlockedIds),
+          customGroups: customGroups.map((group) => [...group]),
+        }),
     }),
     {
       name: "pokomatch",
