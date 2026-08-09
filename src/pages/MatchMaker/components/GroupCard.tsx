@@ -312,12 +312,18 @@ function GroupCardComponent({
                 sx={{
                   bgcolor: "background.paper",
                   height: 22,
+                  fontSize: 11,
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderRadius: "16px",
+                  },
                   "& .MuiOutlinedInput-input": {
                     py: 0,
+                    px: 1,
+                    pr: "28px !important",
                     display: "flex",
                     alignItems: "center",
                     minHeight: "unset",
-                    height: "100%",
+                    height: 22,
                     boxSizing: "border-box",
                   },
                   "& .MuiSelect-select": {
@@ -326,8 +332,8 @@ function GroupCardComponent({
                     py: 0,
                   },
                   "& .MuiSelect-icon": {
-                    right: 4,
-                    fontSize: 18,
+                    right: 2,
+                    fontSize: 16,
                   },
                 }}
                 renderValue={(selected) =>
@@ -344,7 +350,7 @@ function GroupCardComponent({
                         variant="body2"
                         component="span"
                         noWrap
-                        sx={{ fontSize: 12, lineHeight: 1.2 }}
+                        sx={{ fontSize: 11, lineHeight: 1 }}
                       >
                         {selected}
                       </Typography>
@@ -355,8 +361,8 @@ function GroupCardComponent({
                       component="span"
                       sx={{
                         color: "text.secondary",
-                        fontSize: 12,
-                        lineHeight: 1.2,
+                        fontSize: 11,
+                        lineHeight: 1,
                       }}
                     >
                       No location set
@@ -484,7 +490,7 @@ function GroupCardComponent({
                 size="small"
                 color="error"
                 variant="filled"
-                sx={{ fontWeight: 700, fontSize: 11 }}
+                sx={{ fontWeight: 700, fontSize: 11, height: 22 }}
               />
             ))}
           </Stack>
@@ -544,8 +550,8 @@ function HabitatChip({
       size="small"
       variant="outlined"
       sx={{
-        height: isGroup ? 20 : 18,
-        fontSize: 10,
+        height: isGroup ? 22 : 18,
+        fontSize: isGroup ? 11 : 10,
         bgcolor: "background.paper",
         color: habitatColors[habitat].text,
         borderColor: habitatColors[habitat].border,
