@@ -24,7 +24,10 @@ function toBase64Url(bytes: Uint8Array): string {
   for (let i = 0; i < bytes.length; i++) {
     binary += String.fromCharCode(bytes[i]!);
   }
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
 }
 
 function fromBase64Url(encoded: string): Uint8Array {
@@ -60,7 +63,9 @@ function checksum(unlockedIds: string[], customGroups: string[][]): string {
 }
 
 function isStringArray(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every((item) => typeof item === "string");
+  return (
+    Array.isArray(value) && value.every((item) => typeof item === "string")
+  );
 }
 
 function isStringMatrix(value: unknown): value is string[][] {
@@ -125,7 +130,7 @@ export function decodeTransferString(raw: string): DecodeTransferResult {
   if (version !== TRANSFER_VERSION) {
     return {
       ok: false,
-      error: `Unsupported transfer version (${version}). Update the app and try again.`,
+      error: `Unsupported transfer version (${version}).`,
     };
   }
 
@@ -168,7 +173,8 @@ export function decodeTransferString(raw: string): DecodeTransferResult {
   if (payload.c !== checksum(payload.u, payload.g)) {
     return {
       ok: false,
-      error: "Transfer string is corrupted or was edited. Export again and retry.",
+      error:
+        "Transfer string is corrupted or was edited. Export again and retry.",
     };
   }
 
