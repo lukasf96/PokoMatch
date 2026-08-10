@@ -13,6 +13,14 @@ generate an HTML coverage report with `pnpm test:coverage`. Run
 Tests live beside the source they protect and use the `.test.ts` / `.test.tsx`
 suffix. Prefer observable behavior and invariants over implementation details.
 
+## Generated data integrity
+
+Run `pnpm validate-items` after changing either `pokedex.json` or `items.json`. It
+checks required item fields, unique item IDs, duplicate favorite categories, and
+that every item favorite category exists in the Pokédex data. `refresh-all` runs it
+after collection, and CI validates the committed artifacts without refreshing from
+the network.
+
 ## Coverage policy
 
 Application-wide coverage includes every runtime `.ts` and `.tsx` module

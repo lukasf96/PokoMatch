@@ -19,6 +19,8 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Validate generated data
+        run: pnpm validate-items
       - run: pnpm lint
       - run: pnpm test:coverage
       - run: pnpm test:coverage:core
