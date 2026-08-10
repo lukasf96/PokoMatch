@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'coverage', 'playwright-report', 'test-results']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -18,6 +18,20 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+    rules: {
+      // These opt-in React compiler rules reject established synchronization
+      // patterns used by the worker, deferred-mount, and controlled dialogs.
+      // The standard Hooks rules remain enabled above.
+      'react-hooks/refs': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
+  {
+    files: ['src/components/ContentSkeleton.tsx'],
+    rules: {
+      // This module deliberately shares its static sx object with skeleton users.
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])

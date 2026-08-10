@@ -356,11 +356,17 @@ export const AddPokemonToGroupAutocomplete = memo(
             size="small"
             label={embedded ? undefined : "Choose Pokémon"}
             placeholder="Name, #, habitat, specialty…"
-            aria-label={
-              embedded ? "Search for a Pokémon to add to this group" : undefined
-            }
             slotProps={{
               ...params.slotProps,
+              htmlInput: {
+                ...params.slotProps.htmlInput,
+                ...(embedded
+                  ? {
+                      "aria-label":
+                        "Search for a Pokémon to add to this group",
+                    }
+                  : {}),
+              },
               input: {
                 ...params.slotProps.input,
                 startAdornment: (

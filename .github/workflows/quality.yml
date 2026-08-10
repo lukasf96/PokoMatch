@@ -1,0 +1,28 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.18.0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate generated data
+        run: pnpm validate-items
+      - run: pnpm lint
+      - run: pnpm test:coverage
+      - run: pnpm test:coverage:core
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e

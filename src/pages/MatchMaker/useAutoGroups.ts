@@ -95,7 +95,6 @@ export function useAutoGroups(
     };
     worker.postMessage(request);
     // idsKey encodes autoPokemon's contents; read via ref to avoid churn.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [worker, idsKey, preferEvolutionLines]);
 
   return { groups, isRecomputing };
