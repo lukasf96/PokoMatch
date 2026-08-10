@@ -53,18 +53,17 @@ suffix. Prefer observable behavior and invariants over implementation details.
   imported data without retaining mutable caller references.
 - [x] Custom groups: add/delete/reorder, prevent cross-group duplicates, enforce
   capacity, remove members, and assign/clear locations.
-- [ ] Custom-group normalization: current and legacy shapes, invalid members and
+- [x] Custom-group normalization: current and legacy shapes, invalid members and
   locations, missing IDs, and order preservation.
-- [ ] Item suggestions: score, Pokémon coverage, exclusions, stable ordering, and
-  result limits.
-- [ ] Habitat conflict helpers: all three opposite pairs, symmetry, unique group
+- [x] Item suggestions: score, Pokémon coverage, exclusions, and stable ordering.
+- [x] Habitat conflict helpers: all three opposite pairs, symmetry, unique group
   conflicts, and empty/same-habitat groups.
-- [ ] Pokémon catalog helpers: standard/event/Basin classification, habitable
+- [x] Pokémon catalog helpers: standard/event/Basin classification, habitable
   filtering, and dex ordering for numeric and special dex values.
-- [ ] Localization: English fallback and German/French localized names.
-- [ ] Search/highlighting: accents, punctuation, whitespace, tokenization, matching,
+- [x] Localization: English fallback and German/French localized names.
+- [x] Search/highlighting: accents, punctuation, whitespace, tokenization, matching,
   and correct highlight segment boundaries.
-- [ ] Sprite URL handling and group display-habitat tie-breaking.
+- [x] Sprite URL handling and group display-habitat tie-breaking.
 
 ### P2 — React integration tests
 
