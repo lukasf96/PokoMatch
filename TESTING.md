@@ -84,6 +84,9 @@ suffix. Prefer observable behavior and invariants over implementation details.
   reload recovery.
 - [x] Route selection and unknown-path redirect.
 - [x] Document titles and error-boundary fallback rendering.
+- [x] Deferred mounting, multi-section readiness gates, and hash scrolling after
+  deferred content becomes ready.
+- [x] Feedback validation, configuration, API submission, errors, and rate limiting.
 - [ ] Accessibility: keyboard operation, focus management for dialogs/menus, labels,
   headings, and automated axe checks on each page.
 
