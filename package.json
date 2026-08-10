@@ -17,7 +17,7 @@
     "refresh-sprites": "tsx ./scripts/pokemon-sprite-collector.ts",
     "refresh-items": "tsx ./scripts/item-data-collector.ts && pnpm run validate-items",
     "validate-items": "tsx ./scripts/validate-items.ts",
-    "refresh-all": "pnpm run refresh-dex && pnpm run refresh-sprites && pnpm run refresh-items"
+    "refresh-all": "tsx ./scripts/refresh-all.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

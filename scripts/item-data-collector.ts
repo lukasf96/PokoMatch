@@ -4,14 +4,16 @@ import path from "node:path";
 import process from "node:process";
 import {
   APP_ROOT,
+  DEFAULT_SEREBII_CONCURRENCY,
   SEREBII_ROBOTS_URL,
   SEREBII_URLS,
   absolutizeSerebiiHrefFromPage,
-  assertSerebiiRobotsAndGap,
+  assertSerebiiRobots,
   fetchText,
   isPathAllowedByRobots,
+  mapWithConcurrency,
   parseOutPathCli,
-  sleep,
+  readPositiveIntegerEnv,
   writeTerminalProgressLine,
 } from "./utility/script-utils";
 
@@ -45,6 +47,11 @@ interface ItemListRow {
   tag: string;
   /** Absolute URL to the item's detail page. */
   detailUrl: string;
+}
+
+interface FavoriteCategoryPage {
+  name: string;
+  url: string;
 }
 
 /**
@@ -127,105 +134,121 @@ function parseItemsOverview(html: string): ItemListRow[] {
   });
 }
 
-/**
- * Parse a single item's detail page for favorite categories.
- *
- * Structure (inside table.tab):
- *   Row: fooevo headers "Category | Tag | Paintable | Requirements"
- *   Row: cen data      [category] [tag] [paintable] [requirements]
- *   Row: fooevo headers "Trade Value | 3D Print Cost | Favorite Categories (colspan=2)"
- *   Row: cen data      [trade value] [3D print cost] [favorite categories — links to /pokemonpokopia/favorites/…]
- */
-function parseItemDetail(html: string): { favoriteCategories: string[] } {
+function parseFavoriteCategoryPages(html: string): FavoriteCategoryPage[] {
   const $ = cheerio.load(html);
+  const pages: FavoriteCategoryPage[] = [];
+  const seenUrls = new Set<string>();
 
-  const favoriteCategories: string[] = [];
-
-  $("table.tab tr").each((_, tr) => {
-    const cells = $(tr).children("td");
-
-    // Look for the header row that contains "Favorite Categories"
-    let favHeaderIdx = -1;
-    cells.each((i, td) => {
-      if ($(td).hasClass("fooevo") && $(td).text().includes("Favorite Categories")) {
-        favHeaderIdx = i;
-      }
-    });
-
-    if (favHeaderIdx < 0) return;
-
-    // The next sibling row holds the data
-    const dataRow = $(tr).next("tr");
-    const dataCells = dataRow.children("td");
-
-    // Favorite categories cell aligns with the header column index (currently 2
-    // after Serebii added a "3D Print Cost" column between trade value and favorites).
-    const favCell = $(dataCells[favHeaderIdx]);
-
-    favCell.find("a[href]").each((__, a) => {
-      const href = $(a).attr("href") ?? "";
-      if (!href.includes("/pokemonpokopia/favorites/")) return;
-      const label =
-        $(a).find("u").first().text().trim() || $(a).text().trim();
-      if (label) favoriteCategories.push(label);
-    });
-
-    return false; // stop after first match
+  $('a[href*="/pokemonpokopia/favorites/"]').each((_, a) => {
+    const href = $(a).attr("href");
+    const name = $(a).text().replace(/\s+/g, " ").trim();
+    if (!href || !name) return;
+    const url = absolutizeSerebiiHrefFromPage(
+      href,
+      SEREBII_URLS.favoritesOverview,
+    );
+    if (seenUrls.has(url)) return;
+    seenUrls.add(url);
+    pages.push({ name, url });
   });
+  return pages;
+}
 
-  return { favoriteCategories };
+function parseFavoriteCategoryItemUrls(html: string): Set<string> {
+  const $ = cheerio.load(html);
+  const urls = new Set<string>();
+  $('a[href*="/pokemonpokopia/items/"]').each((_, a) => {
+    const href = $(a).attr("href");
+    if (!href) return;
+    urls.add(
+      absolutizeSerebiiHrefFromPage(href, SEREBII_URLS.favoritesOverview),
+    );
+  });
+  return urls;
 }
 
 async function main(): Promise<void> {
   const argv = process.argv.slice(2);
   const outPath = parseOutPathCli(argv) ?? DEFAULT_OUT_PATH;
 
-  const { group: robotsGroup, serebiiGapMs } = await assertSerebiiRobotsAndGap({
-    mustCheckUrls: [SEREBII_URLS.itemsOverview, SEREBII_ROBOTS_URL],
+  const { group: robotsGroup } = await assertSerebiiRobots({
+    mustCheckUrls: [
+      SEREBII_URLS.itemsOverview,
+      SEREBII_URLS.favoritesOverview,
+      SEREBII_ROBOTS_URL,
+    ],
   });
-
+  const serebiiConcurrency = readPositiveIntegerEnv(
+    "SEREBII_CONCURRENCY",
+    DEFAULT_SEREBII_CONCURRENCY,
+  );
   console.error(`Reading items overview: ${SEREBII_URLS.itemsOverview}`);
-  await sleep(serebiiGapMs);
   const overviewHtml = await fetchText(SEREBII_URLS.itemsOverview);
   const listRows = parseItemsOverview(overviewHtml);
   console.error(`Found ${String(listRows.length)} items in overview.`);
 
-  const items: ItemEntry[] = [];
-
-  for (let i = 0; i < listRows.length; i++) {
-    const row = listRows[i]!;
-    const urlObj = new URL(row.detailUrl);
-
-    writeTerminalProgressLine(
-      process.stderr,
-      `[items ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
-    );
-    await sleep(serebiiGapMs);
-
-    let favoriteCategories: string[] = [];
-
-    try {
-      if (!isPathAllowedByRobots(robotsGroup, urlObj.pathname)) {
-        console.error(
-          `\nrobots.txt disallows collecting ${urlObj.pathname}; skipping favorites for ${row.name}.`,
-        );
-      } else {
-        const html = await fetchText(row.detailUrl);
-        favoriteCategories = parseItemDetail(html).favoriteCategories;
-      }
-    } catch (err) {
-      console.error(`\nFailed ${urlObj.pathname}:`, err);
-    }
-
-    items.push({
-      id: toItemId(row.name),
-      name: row.name,
-      category: row.category,
-      tag: row.tag,
-      favoriteCategories,
-    });
+  console.error(`Reading favorite categories: ${SEREBII_URLS.favoritesOverview}`);
+  const favoritesHtml = await fetchText(SEREBII_URLS.favoritesOverview);
+  const favoritePages = parseFavoriteCategoryPages(favoritesHtml);
+  if (favoritePages.length === 0) {
+    throw new Error("No favorite category pages found; Serebii markup may have changed.");
   }
+  console.error(`Found ${String(favoritePages.length)} favorite categories.`);
+
+  let completed = 0;
+  const failures: string[] = [];
+  const favoritePageResults = await mapWithConcurrency(
+    favoritePages,
+    serebiiConcurrency,
+    async (page): Promise<Set<string>> => {
+      const progress = ++completed;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[favorite categories ${String(progress)}/${String(favoritePages.length)}] ${page.name}…`,
+      );
+      try {
+        const urlObj = new URL(page.url);
+        if (!isPathAllowedByRobots(robotsGroup, urlObj.pathname)) {
+          throw new Error(`robots.txt disallows ${urlObj.pathname}`);
+        }
+        const itemUrls = parseFavoriteCategoryItemUrls(
+          await fetchText(page.url),
+        );
+        if (itemUrls.size === 0) {
+          throw new Error("favorite category page contained no item links");
+        }
+        return itemUrls;
+      } catch (err) {
+        failures.push(`${page.name} (${page.url}): ${String(err)}`);
+        return new Set<string>();
+      }
+    },
+  );
   process.stderr.write("\n");
+
+  if (failures.length > 0) {
+    throw new Error(
+      `Failed to collect ${String(failures.length)} favorite category page(s):\n${failures.join("\n")}`,
+    );
+  }
+
+  const favoriteCategoriesByItemUrl = new Map<string, string[]>();
+  for (const [index, itemUrls] of favoritePageResults.entries()) {
+    const favoriteName = favoritePages[index]!.name;
+    for (const itemUrl of itemUrls) {
+      const names = favoriteCategoriesByItemUrl.get(itemUrl) ?? [];
+      names.push(favoriteName);
+      favoriteCategoriesByItemUrl.set(itemUrl, names);
+    }
+  }
+
+  const items: ItemEntry[] = listRows.map((row) => ({
+    id: toItemId(row.name),
+    name: row.name,
+    category: row.category,
+    tag: row.tag,
+    favoriteCategories: favoriteCategoriesByItemUrl.get(row.detailUrl) ?? [],
+  }));
 
   const payload: ItemsJson = {
     generatedAt: new Date().toISOString(),

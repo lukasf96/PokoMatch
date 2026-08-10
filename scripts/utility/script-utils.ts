@@ -13,6 +13,7 @@ export const SEREBII_URLS = {
   eventPokedex: `${SEREBII_BASE}/pokemonpokopia/eventpokedex.shtml`,
   basinPokedex: `${SEREBII_BASE}/pokemonpokopia/basinpokedex.shtml`,
   itemsOverview: `${SEREBII_BASE}/pokemonpokopia/items.shtml`,
+  favoritesOverview: `${SEREBII_BASE}/pokemonpokopia/favorites.shtml`,
 } as const;
 
 /**
@@ -20,8 +21,9 @@ export const SEREBII_URLS = {
  */
 const USER_AGENT = "Pokopia Data Collector/1.0";
 
-const DEFAULT_SEREBII_REQUEST_GAP_MS = 10;
+export const DEFAULT_SEREBII_CONCURRENCY = 3;
 export const DEFAULT_POKEAPI_GAP_MS = 10;
+export const DEFAULT_POKEAPI_CONCURRENCY = 12;
 
 export const POKEAPI_BASE = "https://pokeapi.co";
 
@@ -81,6 +83,62 @@ export function readNumberEnv(name: string): number | undefined {
   return Math.floor(n);
 }
 
+export function readPositiveIntegerEnv(
+  name: string,
+  fallback: number,
+): number {
+  const value = readNumberEnv(name);
+  return value === undefined || value < 1 ? fallback : value;
+}
+
+/** Maps concurrently while preserving input order and bounding active work. */
+export async function mapWithConcurrency<T, R>(
+  values: readonly T[],
+  concurrency: number,
+  mapper: (value: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  if (values.length === 0) return [];
+  const results = new Array<R>(values.length);
+  let nextIndex = 0;
+
+  async function worker(): Promise<void> {
+    while (nextIndex < values.length) {
+      const index = nextIndex++;
+      results[index] = await mapper(values[index]!, index);
+    }
+  }
+
+  await Promise.all(
+    Array.from(
+      { length: Math.min(Math.max(1, concurrency), values.length) },
+      worker,
+    ),
+  );
+  return results;
+}
+
+/**
+ * Returns a gate that spaces request starts across all concurrent workers.
+ * This avoids turning a worker pool into a burst of simultaneous requests.
+ */
+export function createRequestStartGate(gapMs: number): () => Promise<void> {
+  let nextStartAt = 0;
+  let tail = Promise.resolve();
+
+  return async (): Promise<void> => {
+    let release!: () => void;
+    const previous = tail;
+    tail = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await previous;
+    const waitMs = Math.max(0, nextStartAt - Date.now());
+    if (waitMs > 0) await sleep(waitMs);
+    nextStartAt = Date.now() + gapMs;
+    release();
+  };
+}
+
 export function parseOutPathCli(
   argv: string[],
   cwd: string = APP_ROOT,
@@ -92,11 +150,47 @@ export function parseOutPathCli(
   return path.isAbsolute(p) ? p : path.join(cwd, p);
 }
 
+export async function fetchWithRetry(
+  url: string,
+  options: { retries?: number; init?: RequestInit } = {},
+): Promise<Response> {
+  const retries = options.retries ?? 2;
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url, options.init);
+      if (
+        response.ok ||
+        response.status === 404 ||
+        (response.status !== 408 && response.status !== 429 && response.status < 500) ||
+        attempt === retries
+      ) {
+        return response;
+      }
+      lastError = new Error(`GET ${url} -> ${String(response.status)}`);
+      const retryAfterSeconds = Number(response.headers.get("retry-after"));
+      await response.body?.cancel();
+      await sleep(
+        Number.isFinite(retryAfterSeconds) && retryAfterSeconds >= 0
+          ? retryAfterSeconds * 1000
+          : 500 * 2 ** attempt,
+      );
+    } catch (error) {
+      lastError = error;
+      if (attempt === retries) throw error;
+      await sleep(500 * 2 ** attempt);
+    }
+  }
+  throw lastError;
+}
+
 export async function fetchText(url: string): Promise<string> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": USER_AGENT,
-      Accept: "text/html,text/plain;q=0.9,*/*;q=0.8",
+  const response = await fetchWithRetry(url, {
+    init: {
+      headers: {
+        "User-Agent": USER_AGENT,
+        Accept: "text/html,text/plain;q=0.9,*/*;q=0.8",
+      },
     },
   });
   if (!response.ok) throw new Error(`GET ${url} -> ${String(response.status)}`);
@@ -104,10 +198,9 @@ export async function fetchText(url: string): Promise<string> {
 }
 
 export async function fetchJson<T>(url: string): Promise<T | null> {
-  const response = await fetch(url, {
-    headers: {
-      "User-Agent": USER_AGENT,
-      Accept: "application/json",
+  const response = await fetchWithRetry(url, {
+    init: {
+      headers: { "User-Agent": USER_AGENT, Accept: "application/json" },
     },
   });
   if (!response.ok) return null;
@@ -133,11 +226,16 @@ interface PokeApiPokemonResolve {
  */
 export async function resolvePokeApiPokemonByApiName(
   pokemonApiName: string,
-  options?: { gapMsBetweenSequentialPokeApiCalls?: number },
+  options?: {
+    gapMsBetweenSequentialPokeApiCalls?: number;
+    beforeRequest?: () => Promise<void>;
+  },
 ): Promise<PokeApiPokemonResolve | null> {
   const seqGap = options?.gapMsBetweenSequentialPokeApiCalls ?? 0;
+  const beforeRequest = options?.beforeRequest;
 
   const pokemonUrl = `${POKEAPI_BASE}/api/v2/pokemon/${pokemonApiName}`;
+  if (beforeRequest) await beforeRequest();
   const pokemonJson = await fetchJson<{
     id?: unknown;
     species?: { name?: string };
@@ -157,13 +255,15 @@ export async function resolvePokeApiPokemonByApiName(
     form_name?: string;
     sprites?: { front_default?: string | null };
   }
-  if (seqGap > 0) await sleep(seqGap);
+  if (beforeRequest) await beforeRequest();
+  else if (seqGap > 0) await sleep(seqGap);
   const formUrl = `${POKEAPI_BASE}/api/v2/pokemon-form/${pokemonApiName}`;
   const formJson = await fetchJson<PokeApiPokemonFormJson>(formUrl);
   const linkedPokemonUrl = formJson?.pokemon?.url;
   if (!linkedPokemonUrl) return null;
 
-  if (seqGap > 0) await sleep(seqGap);
+  if (beforeRequest) await beforeRequest();
+  else if (seqGap > 0) await sleep(seqGap);
   const linkedPokemon = await fetchJson<{
     id?: unknown;
     species?: { name?: string };
@@ -199,8 +299,12 @@ export async function resolvePokeApiPokemonByApiName(
  */
 export async function fetchPokemonSpriteRepoStemByApiName(
   pokemonApiName: string,
+  options?: { beforeRequest?: () => Promise<void> },
 ): Promise<string | null> {
-  const resolved = await resolvePokeApiPokemonByApiName(pokemonApiName);
+  const resolved = await resolvePokeApiPokemonByApiName(
+    pokemonApiName,
+    options,
+  );
   return resolved?.spriteRepoStem ?? null;
 }
 
@@ -209,7 +313,6 @@ export interface RobotsGroup {
   userAgents: string[];
   disallow: string[];
   allow: string[];
-  crawlDelaySeconds?: number;
 }
 
 function parseRobotsTxt(content: string): RobotsGroup[] {
@@ -244,10 +347,6 @@ function parseRobotsTxt(content: string): RobotsGroup[] {
 
     if (key === "disallow") current.disallow.push(value);
     else if (key === "allow") current.allow.push(value);
-    else if (key === "crawl-delay") {
-      const n = Number(value);
-      if (Number.isFinite(n) && n >= 0) current.crawlDelaySeconds = n;
-    }
   }
 
   return groups.filter((g) => g.userAgents.length > 0);
@@ -287,13 +386,9 @@ export function isPathAllowedByRobots(
   return true;
 }
 
-export async function assertSerebiiRobotsAndGap(options: {
+export async function assertSerebiiRobots(options: {
   mustCheckUrls: readonly string[];
-  defaultRequestGapMs?: number;
-}): Promise<{ group: RobotsGroup | null; serebiiGapMs: number }> {
-  const defaultRequestGapMs =
-    options.defaultRequestGapMs ?? DEFAULT_SEREBII_REQUEST_GAP_MS;
-
+}): Promise<{ group: RobotsGroup | null }> {
   const robotsTxt = await fetchText(SEREBII_ROBOTS_URL);
   const groups = parseRobotsTxt(robotsTxt);
   const group = pickRobotsGroup(groups, USER_AGENT);
@@ -307,16 +402,7 @@ export async function assertSerebiiRobotsAndGap(options: {
     }
   }
 
-  const crawlDelayMs =
-    group?.crawlDelaySeconds !== undefined
-      ? Math.ceil(group.crawlDelaySeconds * 1000)
-      : 0;
-  const serebiiGapMs = Math.max(
-    readNumberEnv("SEREBII_GAP_MS") ?? defaultRequestGapMs,
-    crawlDelayMs,
-  );
-
-  return { group, serebiiGapMs };
+  return { group };
 }
 
 /** Serebii href relative to site root (e.g. dex list/detail links). */
