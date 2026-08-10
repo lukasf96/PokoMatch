@@ -7,7 +7,8 @@ the existing Vite + TypeScript setup, runs source modules without a separate
 transpilation configuration, and leaves room to add React Testing Library and a DOM
 environment when component tests are introduced.
 
-Run the suite once with `pnpm test`, or use `pnpm test:watch` while developing.
+Run the suite once with `pnpm test`, use `pnpm test:watch` while developing, or
+generate an HTML coverage report with `pnpm test:coverage`.
 
 Tests live beside the source they protect and use the `.test.ts` / `.test.tsx`
 suffix. Prefer observable behavior and invariants over implementation details.
@@ -23,32 +24,34 @@ suffix. Prefer observable behavior and invariants over implementation details.
 
 ### P0 — core data correctness
 
-- [ ] Auto matching: empty, singleton, fewer-than-four, and all-mutually-conflicting
+- [x] Auto matching: empty, singleton, fewer-than-four, and all-mutually-conflicting
   inputs.
-- [ ] Auto matching: output remains deterministic for the same input and options.
-- [ ] Auto matching: evolution-line preference improves the intended secondary
+- [x] Auto matching: output remains deterministic for the same input and options.
+- [x] Auto matching: evolution-line preference improves the intended secondary
   objective without violating compatibility or lowering raw-affinity tie breaks.
 - [ ] Auto matching: regression fixtures based on representative full-dex subsets;
   assert invariant validity and a minimum score, not one exact heuristic partition.
-- [ ] Suggestions: incompatible habitats are excluded and compatible candidates
+- [x] Suggestions: incompatible habitats are excluded and compatible candidates
   are ranked by total shared favorites across all current members.
-- [ ] Suggestions: deterministic dex/name tie-breaking, limit handling, empty group,
-  zero-affinity candidates, and group-at-capacity behavior at the caller boundary.
-- [ ] Group scoring: unordered pair sum, no double counting, empty/singleton groups,
+- [x] Suggestions: deterministic dex/name tie-breaking, limit handling, empty group,
+  and zero-affinity candidates.
+- [ ] Suggestions: group-at-capacity behavior at the caller boundary.
+- [x] Group scoring: unordered pair sum, no double counting, empty/singleton groups,
   duplicate favorite tags, and favorites spanning both 32-bit masks (>32 tags).
-- [ ] Transfer decoding: empty input, unknown/missing prefix, unsupported version,
+- [x] Transfer decoding: empty input, unknown/missing prefix, unsupported version,
   invalid base64/JSON, invalid payload shape, and missing checksum.
-- [ ] Transfer sanitizing: remove unknown and duplicate Pokémon IDs, cap groups at
+- [x] Transfer sanitizing: remove unknown and duplicate Pokémon IDs, cap groups at
   four, remove empty groups, preserve ordering, drop invalid locations, and replace
   missing/duplicate group IDs.
-- [ ] Persisted-store migration: legacy `string[][]`, absent settings, malformed
-  groups, stable migrated IDs, and `Set` serialization/hydration.
+- [x] Persisted-store migration: legacy `string[][]`, absent settings, stable
+  migrated IDs, and `Set` hydration.
+- [ ] Persisted-store migration: malformed persisted JSON and malformed groups.
 
 ### P1 — state and domain services
 
-- [ ] Store collection actions: lock/unlock/toggle, bulk operations, and replace
+- [x] Store collection actions: lock/unlock/toggle, bulk operations, and replace
   imported data without retaining mutable caller references.
-- [ ] Custom groups: add/delete/reorder, prevent cross-group duplicates, enforce
+- [x] Custom groups: add/delete/reorder, prevent cross-group duplicates, enforce
   capacity, remove members, and assign/clear locations.
 - [ ] Custom-group normalization: current and legacy shapes, invalid members and
   locations, missing IDs, and order preservation.
