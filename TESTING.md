@@ -67,18 +67,23 @@ suffix. Prefer observable behavior and invariants over implementation details.
 
 ### P2 — React integration tests
 
-- [ ] Add `@testing-library/react`, `@testing-library/user-event`,
+- [x] Add `@testing-library/react`, `@testing-library/user-event`,
   `@testing-library/jest-dom`, and a DOM environment (`jsdom` or `happy-dom`).
 - [ ] Pokédex: search/filter and lock controls update visible results and store state.
 - [ ] Match Maker: selected roster produces auto groups; loading/worker errors and
   empty states render correctly.
+- [x] Auto-group worker hook: request payloads, response mapping, stale responses,
+  previous-result retention, empty pools, and worker cleanup.
 - [ ] Custom groups: create, add/remove Pokémon, reject duplicate/full-group adds,
   reorder, location selection, and suggested-group import.
-- [ ] Data transfer dialog: export, copy feedback, valid import confirmation, invalid
-  import errors, and sanitization summary.
-- [ ] Settings: theme, language, evolution preference, and persistence across render.
-- [ ] Routing: navigation, lazy-page fallback, document titles, hash scrolling, and
-  error-boundary fallback/recovery.
+- [x] Data transfer dialog: export, copy feedback, valid import confirmation, invalid
+  import errors, sanitization summary, and confirmed replacement.
+- [ ] Settings: evolution preference and persistence across render.
+- [x] Settings menu: theme and Pokémon-language selection.
+- [ ] Routing: lazy-page fallback, hash scrolling, and error-boundary
+  reload recovery.
+- [x] Route selection and unknown-path redirect.
+- [x] Document titles and error-boundary fallback rendering.
 - [ ] Accessibility: keyboard operation, focus management for dialogs/menus, labels,
   headings, and automated axe checks on each page.
 
