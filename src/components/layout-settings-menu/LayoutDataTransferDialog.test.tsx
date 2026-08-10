@@ -71,7 +71,9 @@ describe("LayoutDataTransferDialog", () => {
     });
     render(<LayoutDataTransferDialog isOpen onClose={vi.fn()} />);
 
-    await user.type(screen.getAllByRole("textbox")[1], transfer);
+    const importTextbox = screen.getAllByRole("textbox")[1];
+    await user.click(importTextbox);
+    await user.paste(transfer);
     await user.click(screen.getByRole("button", { name: /import and replace/i }));
 
     const confirmation = await screen.findByRole("dialog", {
