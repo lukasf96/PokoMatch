@@ -14,8 +14,26 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "html"],
       reportsDirectory: "coverage",
-      include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/**/*.test.{ts,tsx}", "src/vite-env.d.ts"],
+      include: [
+        "src/services/**/*.ts",
+        "src/store/**/*.ts",
+        "src/utils/{data-transfer,feedback,search-text}.ts",
+        "src/hooks/**/*.ts",
+        "src/pages/MatchMaker/{group-helpers,useAutoGroups}.{ts,tsx}",
+        "src/router/{AppRouter,DocumentTitle}.tsx",
+        "src/components/{AppErrorBoundary,DeferredMount}.tsx",
+        "src/components/layout-settings-menu/{LayoutDataTransferDialog,LayoutSettingsMenu}.tsx",
+      ],
+      exclude: [
+        "src/**/*.test.{ts,tsx}",
+        "src/services/habitatColors.ts",
+      ],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
     },
   },
 });

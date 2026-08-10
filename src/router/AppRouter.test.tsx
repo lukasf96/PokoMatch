@@ -5,8 +5,13 @@ import { MemoryRouter, useLocation } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 import AppRouter from "./AppRouter";
 
+const routeState = vi.hoisted(() => ({ suspendHome: false }));
+
 vi.mock("./lazyPages", () => ({
-  HomePage: () => <h1>Home test page</h1>,
+  HomePage: () => {
+    if (routeState.suspendHome) throw new Promise(() => {});
+    return <h1>Home test page</h1>;
+  },
   MatcherPage: () => <h1>Matcher test page</h1>,
   InsightsPage: () => <h1>Insights test page</h1>,
   PokedexPage: () => <h1>Pokedex test page</h1>,
@@ -44,5 +49,13 @@ describe("AppRouter", () => {
       expect(screen.getByLabelText("Current path")).toHaveTextContent("/"),
     );
     expect(screen.getByRole("heading", { name: "Home test page" })).toBeInTheDocument();
+  });
+
+  it("shows the application fallback while a lazy route is suspended", () => {
+    routeState.suspendHome = true;
+    renderAt("/");
+
+    expect(screen.getByLabelText("Loading page")).toBeInTheDocument();
+    routeState.suspendHome = false;
   });
 });

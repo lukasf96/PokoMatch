@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Habitat, Pokemon } from "../types/types";
 import { habitatConflictMap } from "./habitat-conflicts";
+import { habitablePokemon } from "./pokemon";
 import {
   candidateAddInfoByPokemonId,
   computeAutoGroups,
@@ -127,6 +128,26 @@ describe("computeAutoGroups", () => {
     expect(preferred.reduce((sum, group) => sum + groupScore(group), 0)).toBeGreaterThanOrEqual(
       regular.reduce((sum, group) => sum + groupScore(group), 0),
     );
+  });
+
+  it("meets invariants and a quality floor on a representative real-dex subset", () => {
+    const input = habitablePokemon.slice(0, 24);
+    const groups = computeAutoGroups(input);
+    const outputIds = groups.flatMap((group) => group.map(({ id }) => id));
+
+    expect(outputIds).toHaveLength(input.length);
+    expect(new Set(outputIds)).toEqual(new Set(input.map(({ id }) => id)));
+    expect(groups.every((group) => group.length >= 1 && group.length <= 4)).toBe(true);
+    for (const group of groups) {
+      for (let i = 0; i < group.length; i += 1) {
+        for (let j = i + 1; j < group.length; j += 1) {
+          expect(group[j].idealHabitat).not.toBe(
+            habitatConflictMap[group[i].idealHabitat],
+          );
+        }
+      }
+    }
+    expect(groups.reduce((sum, group) => sum + groupScore(group), 0)).toBeGreaterThanOrEqual(45);
   });
 });
 

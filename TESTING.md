@@ -13,6 +13,38 @@ generate an HTML coverage report with `pnpm test:coverage`.
 Tests live beside the source they protect and use the `.test.ts` / `.test.tsx`
 suffix. Prefer observable behavior and invariants over implementation details.
 
+## Coverage policy
+
+The enforced coverage gate applies to business logic, state management, hooks,
+worker protocols, routing behavior, and stateful dialogs. All four metrics
+(statements, branches, functions, and lines) must remain at or above 80%.
+
+The gate intentionally excludes code where line coverage is a poor proxy for
+confidence:
+
+- Application entry/composition files and route lazy-import declarations.
+- Static MUI theme declarations, icon/color maps, and type-only modules.
+- Presentation-only cards, chips, skeletons, avatars, and page layout markup.
+- Large page compositions that should be exercised through browser smoke and
+  accessibility tests rather than branch-by-branch jsdom assertions.
+
+Exclusion from the unit coverage denominator does not mean "never test." A
+presentational component still warrants a focused test when it owns meaningful
+interaction, accessibility, fallback, or state behavior. Browser coverage remains
+tracked separately in the P3 backlog.
+
+### Test audit decisions
+
+- Removed theme tests that primarily re-tested MUI's `createTheme` and static maps.
+- Removed the `MatchHighlight` render test because search segmentation already
+  verifies the application logic; rendering a MUI `Box` as `<mark>` added little.
+- Removed the error boundary's healthy-child test because React child rendering is
+  framework behavior; the application fallback and logging test remains.
+- Retained router tests because they verify PokoMatch's path-to-page wiring,
+  fallback, and unknown-path policy—not React Router's internal matching.
+- Retained dialog and settings tests because they verify validation gates and
+  Zustand mutations across real user interactions.
+
 ## Current critical coverage
 
 - [x] Auto matching preserves every input exactly once, enforces the four-member
@@ -29,7 +61,7 @@ suffix. Prefer observable behavior and invariants over implementation details.
 - [x] Auto matching: output remains deterministic for the same input and options.
 - [x] Auto matching: evolution-line preference improves the intended secondary
   objective without violating compatibility or lowering raw-affinity tie breaks.
-- [ ] Auto matching: regression fixtures based on representative full-dex subsets;
+- [x] Auto matching: regression fixtures based on representative full-dex subsets;
   assert invariant validity and a minimum score, not one exact heuristic partition.
 - [x] Suggestions: incompatible habitats are excluded and compatible candidates
   are ranked by total shared favorites across all current members.
@@ -80,8 +112,9 @@ suffix. Prefer observable behavior and invariants over implementation details.
   import errors, sanitization summary, and confirmed replacement.
 - [ ] Settings: evolution preference and persistence across render.
 - [x] Settings menu: theme and Pokémon-language selection.
-- [ ] Routing: lazy-page fallback, hash scrolling, and error-boundary
+- [ ] Routing: error-boundary
   reload recovery.
+- [x] Lazy-page fallback and hash scrolling.
 - [x] Route selection and unknown-path redirect.
 - [x] Document titles and error-boundary fallback rendering.
 - [x] Deferred mounting, multi-section readiness gates, and hash scrolling after
@@ -99,8 +132,7 @@ suffix. Prefer observable behavior and invariants over implementation details.
 - [ ] Verify the web worker in a production build and its fallback/error path.
 - [ ] Add CI gates for `pnpm lint`, `pnpm test`, and `pnpm build`; publish test and
   coverage results on pull requests.
-- [ ] Add Vitest coverage with initial thresholds focused on domain services, then
-  raise thresholds as P0/P1 work lands.
+- [x] Enforce 80% Vitest coverage thresholds for test-worthy application logic.
 - [ ] Add performance regression checks for representative and full-roster matching
   against the existing benchmark script.
 

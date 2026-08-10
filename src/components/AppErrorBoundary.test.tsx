@@ -13,17 +13,6 @@ afterEach(() => {
 });
 
 describe("AppErrorBoundary", () => {
-  it("renders children while healthy", () => {
-    render(
-      <AppErrorBoundary>
-        <p>Healthy content</p>
-      </AppErrorBoundary>,
-    );
-
-    expect(screen.getByText("Healthy content")).toBeInTheDocument();
-    expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
-  });
-
   it("logs render errors and presents a reload fallback", () => {
     const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
 
