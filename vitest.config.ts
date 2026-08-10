@@ -26,7 +26,9 @@ export default defineConfig({
         // Baseline for the whole application, including presentation-heavy pages.
         // The stricter per-file business-logic gate lives in vitest.core.config.ts.
         statements: 52,
-        branches: 38,
+        // V8 maps JSX branches slightly differently between supported Node
+        // releases; leave a narrow portability margin around the measured baseline.
+        branches: 37.5,
         functions: 39,
         lines: 52,
       },
