@@ -4,7 +4,10 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useStore } from "../../store/store";
-import { encodeTransferData } from "../../utils/data-transfer";
+import {
+  decodeTransferString,
+  encodeTransferData,
+} from "../../utils/data-transfer";
 import { LayoutDataTransferDialog } from "./LayoutDataTransferDialog";
 
 beforeEach(() => {
@@ -28,7 +31,13 @@ describe("LayoutDataTransferDialog", () => {
 
     const textboxes = screen.getAllByRole("textbox");
     const exportString = (textboxes[0] as HTMLTextAreaElement).value;
-    expect(exportString).toMatch(/^PKM1\./);
+    expect(decodeTransferString(exportString)).toEqual({
+      ok: true,
+      data: {
+        unlockedIds: ["001"],
+        customGroups: [{ id: "current", pokemonIds: ["001"] }],
+      },
+    });
 
     await user.click(screen.getByRole("button", { name: /copy export string/i }));
 

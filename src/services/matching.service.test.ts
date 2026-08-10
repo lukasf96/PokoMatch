@@ -131,7 +131,15 @@ describe("computeAutoGroups", () => {
   });
 
   it("meets invariants and a quality floor on a representative real-dex subset", () => {
-    const input = habitablePokemon.slice(0, 24);
+    const representativeIds = Array.from(
+      { length: 24 },
+      (_, index) => String(index + 1).padStart(3, "0"),
+    );
+    const input = representativeIds.map((id) => {
+      const found = habitablePokemon.find((candidate) => candidate.id === id);
+      expect(found, `representative fixture ${id} must exist`).toBeDefined();
+      return found!;
+    });
     const groups = computeAutoGroups(input);
     const outputIds = groups.flatMap((group) => group.map(({ id }) => id));
 

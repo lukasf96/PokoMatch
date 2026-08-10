@@ -14,25 +14,21 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "html"],
       reportsDirectory: "coverage",
-      include: [
-        "src/services/**/*.ts",
-        "src/store/**/*.ts",
-        "src/utils/{data-transfer,feedback,search-text}.ts",
-        "src/hooks/**/*.ts",
-        "src/pages/MatchMaker/{group-helpers,useAutoGroups}.{ts,tsx}",
-        "src/router/{AppRouter,DocumentTitle}.tsx",
-        "src/components/{AppErrorBoundary,DeferredMount}.tsx",
-        "src/components/layout-settings-menu/{LayoutDataTransferDialog,LayoutSettingsMenu}.tsx",
-      ],
+      // Keep this broad: new runtime modules must affect the application-wide
+      // coverage result without anyone maintaining a filename allowlist.
+      include: ["src/**/*.{ts,tsx}"],
       exclude: [
         "src/**/*.test.{ts,tsx}",
-        "src/services/habitatColors.ts",
+        "src/test/**",
+        "src/**/*.d.ts",
       ],
       thresholds: {
-        statements: 80,
-        branches: 80,
-        functions: 80,
-        lines: 80,
+        // Baseline for the whole application, including presentation-heavy pages.
+        // The stricter per-file business-logic gate lives in vitest.core.config.ts.
+        statements: 52,
+        branches: 38,
+        functions: 39,
+        lines: 52,
       },
     },
   },

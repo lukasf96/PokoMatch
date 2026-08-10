@@ -2,36 +2,41 @@
 
 ## Test stack
 
-The project uses **Vitest** for unit and integration tests. It is the closest fit for
-the existing Vite + TypeScript setup, runs source modules without a separate
-transpilation configuration, and leaves room to add React Testing Library and a DOM
-environment when component tests are introduced.
+The project uses **Vitest** and React Testing Library for unit and integration tests,
+plus **Playwright** for critical behavior in a production build.
 
 Run the suite once with `pnpm test`, use `pnpm test:watch` while developing, or
-generate an HTML coverage report with `pnpm test:coverage`.
+generate an HTML coverage report with `pnpm test:coverage`. Run
+`pnpm test:coverage:core` for the stricter per-file business-logic gate and
+`pnpm test:e2e` for the production-build browser suite.
 
 Tests live beside the source they protect and use the `.test.ts` / `.test.tsx`
 suffix. Prefer observable behavior and invariants over implementation details.
 
 ## Coverage policy
 
-The enforced coverage gate applies to business logic, state management, hooks,
-worker protocols, routing behavior, and stateful dialogs. All four metrics
-(statements, branches, functions, and lines) must remain at or above 80%.
+Application-wide coverage includes every runtime `.ts` and `.tsx` module
+automatically. Its baseline catches broad regressions across pages and presentation
+code without requiring a filename allowlist.
 
-The gate intentionally excludes code where line coverage is a poor proxy for
-confidence:
+A second gate automatically includes services, state management, hooks, and
+TypeScript utilities. Every file in those architectural directories must maintain
+at least 65% statements, branches, functions, and lines, so a new untested core
+module cannot hide behind aggregate coverage from older files.
+
+The per-file core gate intentionally excludes code where line coverage is a poor
+proxy for confidence:
 
 - Application entry/composition files and route lazy-import declarations.
 - Static MUI theme declarations, icon/color maps, and type-only modules.
 - Presentation-only cards, chips, skeletons, avatars, and page layout markup.
-- Large page compositions that should be exercised through browser smoke and
-  accessibility tests rather than branch-by-branch jsdom assertions.
+- Large page compositions exercised through browser smoke tests rather than
+  branch-by-branch jsdom assertions.
 
-Exclusion from the unit coverage denominator does not mean "never test." A
-presentational component still warrants a focused test when it owns meaningful
-interaction, accessibility, fallback, or state behavior. Browser coverage remains
-tracked separately in the P3 backlog.
+Exemption from the strict per-file gate does not mean "never test." A presentational
+component still warrants a focused test when it owns meaningful interaction,
+accessibility, fallback, or state behavior. Browser coverage remains tracked
+separately in the P3 backlog.
 
 ### Test audit decisions
 
@@ -101,7 +106,8 @@ tracked separately in the P3 backlog.
 
 - [x] Add `@testing-library/react`, `@testing-library/user-event`,
   `@testing-library/jest-dom`, and a DOM environment (`jsdom` or `happy-dom`).
-- [ ] Pokédex: search/filter and lock controls update visible results and store state.
+- [x] Pokédex: search and lock controls update visible results and persisted state
+  (Playwright critical flow).
 - [ ] Match Maker: selected roster produces auto groups; loading/worker errors and
   empty states render correctly.
 - [x] Auto-group worker hook: request payloads, response mapping, stale responses,
@@ -125,14 +131,16 @@ tracked separately in the P3 backlog.
 
 ### P3 — browser and operational confidence
 
-- [ ] Add Playwright smoke tests for home → Pokédex → Match Maker, including a
+- [x] Add Playwright smoke tests for home → Pokédex → Match Maker, including a
   reload that verifies browser persistence.
 - [ ] Test import/export between two clean browser contexts.
 - [ ] Test mobile and desktop breakpoints plus drag-and-drop keyboard interaction.
-- [ ] Verify the web worker in a production build and its fallback/error path.
-- [ ] Add CI gates for `pnpm lint`, `pnpm test`, and `pnpm build`; publish test and
-  coverage results on pull requests.
-- [x] Enforce 80% Vitest coverage thresholds for test-worthy application logic.
+- [ ] Verify the web worker fallback/error path. Its successful production-build
+  path is covered by Playwright.
+- [x] Add CI gates for lint, full-source coverage, per-file core coverage, build,
+  and Playwright tests on pull requests and `main`.
+- [x] Enforce full-source regression thresholds plus a 65% per-file gate for core
+  application logic.
 - [ ] Add performance regression checks for representative and full-roster matching
   against the existing benchmark script.
 

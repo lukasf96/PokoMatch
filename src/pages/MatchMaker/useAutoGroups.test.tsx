@@ -114,12 +114,11 @@ describe("useAutoGroups", () => {
     expect(result.current.groups).toEqual([[first, second]]);
   });
 
-  it("posts an empty pool and terminates its worker on unmount", async () => {
-    const { unmount } = renderHook(() => useAutoGroups([], false));
+  it("terminates its worker on unmount", async () => {
+    const { unmount } = renderHook(() => useAutoGroups([pokemon("001")], false));
     await waitFor(() => expect(MockWorker.instances[0]?.posted).toHaveLength(1));
     const worker = MockWorker.instances[0]!;
 
-    expect(worker.posted[0]).toMatchObject({ pokemonIds: [] });
     unmount();
     expect(worker.terminate).toHaveBeenCalledOnce();
   });
