@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T10:52:09.034Z",
+  "generatedAt": "2026-08-12T16:02:54.426Z",
   "standard": [
     {
       "id": "001",
@@ -6687,7 +6687,7 @@
       "id": "b018",
       "dexNumber": "018",
       "name": "Sharpedo",
-      "specialties": ["Chop", "Scrub"],
+      "specialties": ["Crush", "Scrub"],
       "idealHabitat": "Humid",
       "favorites": [
         "Lots of water",
