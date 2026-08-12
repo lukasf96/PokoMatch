@@ -12,7 +12,14 @@ import process from "node:process";
 import sharp from "sharp";
 import {
   APP_ROOT,
+  DEFAULT_POKEAPI_CONCURRENCY,
+  DEFAULT_POKEAPI_GAP_MS,
+  createRequestStartGate,
   fetchPokemonSpriteRepoStemByApiName,
+  fetchWithRetry,
+  mapWithConcurrency,
+  readNumberEnv,
+  readPositiveIntegerEnv,
   toPokemonApiName,
   writeTerminalProgressLine,
 } from "./utility/script-utils";
@@ -66,31 +73,6 @@ async function ensureSpritesRepo(): Promise<void> {
   console.error(`Cleaned local sprite temp directory at ${tempDir}.`);
 }
 
-function isRetryableStatusCode(status: number): boolean {
-  return status === 408 || status === 429 || status >= 500;
-}
-
-async function fetchWithRetry(url: string, retries: number): Promise<Response> {
-  let lastError: unknown = null;
-
-  for (let attempt = 1; attempt <= retries + 1; attempt++) {
-    try {
-      const response = await fetch(url);
-      if (response.ok) return response;
-      if (response.status === 404) return response;
-      if (!isRetryableStatusCode(response.status) || attempt > retries) {
-        return response;
-      }
-      lastError = new Error(`HTTP ${String(response.status)} for ${url}`);
-    } catch (error: unknown) {
-      lastError = error;
-      if (attempt > retries) throw error;
-    }
-  }
-
-  throw new Error(`Failed to fetch ${url}: ${String(lastError)}`);
-}
-
 async function resolveSourceSpritePath(spriteRepoStem: string): Promise<{
   fullPath: string;
   variantDir: string;
@@ -101,7 +83,7 @@ async function resolveSourceSpritePath(spriteRepoStem: string): Promise<{
     const fullPath = path.join(variant.variantDir, fileName);
     await mkdir(path.dirname(fullPath), { recursive: true });
     const spriteUrl = `${RAW_SPRITES_BASE_URL}/${variant.remoteSubPath}/${fileName}`;
-    const response = await fetchWithRetry(spriteUrl, 2);
+    const response = await fetchWithRetry(spriteUrl, { retries: 2 });
     if (response.ok) {
       const arrayBuffer = await response.arrayBuffer();
       await writeFile(fullPath, Buffer.from(arrayBuffer));
@@ -231,26 +213,37 @@ async function main(): Promise<void> {
   }
   console.error(`Entries to process: ${String(pokemonToProcess.length)}.`);
 
-  const cachedSpriteStemByApiName = new Map<string, string>();
-
-  console.error("Resolving PokéAPI sprite stems…");
-  for (let i = 0; i < pokemonToProcess.length; i++) {
-    const pokemon = pokemonToProcess[i]!;
-    writeTerminalProgressLine(
-      process.stderr,
-      `[pokeapi ${String(i + 1)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
-    );
-    const pokemonApiName = toPokemonApiName(pokemon.name);
-    if (!cachedSpriteStemByApiName.has(pokemonApiName)) {
-      const stem = await fetchPokemonSpriteRepoStemByApiName(pokemonApiName);
+  const pokeApiConcurrency = readPositiveIntegerEnv(
+    "POKEAPI_CONCURRENCY",
+    DEFAULT_POKEAPI_CONCURRENCY,
+  );
+  const spriteConcurrency = readPositiveIntegerEnv("SPRITE_CONCURRENCY", 8);
+  const beforePokeApiRequest = createRequestStartGate(
+    readNumberEnv("POKEAPI_GAP_MS") ?? DEFAULT_POKEAPI_GAP_MS,
+  );
+  console.error("Resolving sprite metadata via PokéAPI…");
+  let resolvedCount = 0;
+  const resolvedSpriteStems = await mapWithConcurrency(
+    pokemonToProcess,
+    pokeApiConcurrency,
+    async (pokemon): Promise<string> => {
+      const progress = ++resolvedCount;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[sprite metadata ${String(progress)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
+      );
+      const pokemonApiName = toPokemonApiName(pokemon.name);
+      const stem = await fetchPokemonSpriteRepoStemByApiName(pokemonApiName, {
+        beforeRequest: beforePokeApiRequest,
+      });
       if (stem === null) {
         throw new Error(
           `No PokéAPI sprite stem found for "${pokemon.name}" (${pokemonApiName}).`,
         );
       }
-      cachedSpriteStemByApiName.set(pokemonApiName, stem);
-    }
-  }
+      return stem;
+    },
+  );
   process.stderr.write("\n");
 
   console.error(`Encoding WebP to ${outputSpritesDir}…`);
@@ -258,25 +251,26 @@ async function main(): Promise<void> {
     await rm(outputSpritesDir, { recursive: true, force: true });
   }
   await mkdir(outputSpritesDir, { recursive: true });
-  for (let i = 0; i < pokemonToProcess.length; i++) {
-    const pokemon = pokemonToProcess[i]!;
-    writeTerminalProgressLine(
-      process.stderr,
-      `[webp ${String(i + 1)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
-    );
-    const pokemonApiName = toPokemonApiName(pokemon.name);
-    const spriteRepoStem = cachedSpriteStemByApiName.get(pokemonApiName);
-    if (spriteRepoStem === undefined) {
-      throw new Error(`Missing cached sprite stem for ${pokemonApiName}`);
-    }
-    const { fullPath: sourcePath, variantDir } =
-      await resolveSourceSpritePath(spriteRepoStem);
-    const targetPath = path.join(
-      outputSpritesDir,
-      `${pokemon.id}${SPRITE_OUTPUT_EXT}`,
-    );
-    await writeWebpUnderByteBudget({ sourcePath, variantDir, targetPath });
-  }
+  let encodedCount = 0;
+  await mapWithConcurrency(
+    pokemonToProcess,
+    spriteConcurrency,
+    async (pokemon, index): Promise<void> => {
+      const progress = ++encodedCount;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[webp ${String(progress)}/${String(pokemonToProcess.length)}] ${pokemon.name}…`,
+      );
+      const spriteRepoStem = resolvedSpriteStems[index]!;
+      const { fullPath: sourcePath, variantDir } =
+        await resolveSourceSpritePath(spriteRepoStem);
+      const targetPath = path.join(
+        outputSpritesDir,
+        `${pokemon.id}${SPRITE_OUTPUT_EXT}`,
+      );
+      await writeWebpUnderByteBudget({ sourcePath, variantDir, targetPath });
+    },
+  );
   process.stderr.write("\n");
 
   await assertAllOutputsUnderBudget();

@@ -4,19 +4,23 @@ import path from "node:path";
 import process from "node:process";
 import {
   APP_ROOT,
+  DEFAULT_POKEAPI_CONCURRENCY,
   DEFAULT_POKEAPI_GAP_MS,
+  DEFAULT_SEREBII_CONCURRENCY,
   POKEAPI_BASE,
   SEREBII_ROBOTS_URL,
   SEREBII_URLS,
   absolutizeSerebiiHrefFromSite,
-  assertSerebiiRobotsAndGap,
+  assertSerebiiRobots,
+  createRequestStartGate,
   fetchJson,
   fetchText,
   isPathAllowedByRobots,
+  mapWithConcurrency,
   parseOutPathCli,
   readNumberEnv,
+  readPositiveIntegerEnv,
   resolvePokeApiPokemonByApiName,
-  sleep,
   toPokemonApiName,
   writeTerminalProgressLine,
   type RobotsGroup,
@@ -240,45 +244,52 @@ async function collectSerebiiDex(
   listUrl: string,
   label: string,
   robotsGroup: RobotsGroup | null,
-  serebiiGapMs: number,
+  serebiiConcurrency: number,
   idPrefix: string,
 ): Promise<PokemonEntry[]> {
   console.error(`Reading ${label} list: ${listUrl}`);
-  await sleep(serebiiGapMs);
   const listHtml = await fetchText(listUrl);
   const listRows = parseSerebiiList(listHtml);
   console.error(`Found ${String(listRows.length)} Pokémon (${label}).`);
 
-  const details: DetailRow[] = [];
+  let completed = 0;
+  const failures: string[] = [];
+  const details = await mapWithConcurrency(
+    listRows,
+    serebiiConcurrency,
+    async (row): Promise<DetailRow> => {
+      const url = absolutizeSerebiiHrefFromSite(row.detailPath);
+      const urlObj = new URL(url);
 
-  for (let i = 0; i < listRows.length; i++) {
-    const row = listRows[i]!;
-    const url = absolutizeSerebiiHrefFromSite(row.detailPath);
-    const urlObj = new URL(url);
+      const progress = ++completed;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[${label} ${String(progress)}/${String(listRows.length)}] ${row.name}…`,
+      );
 
-    writeTerminalProgressLine(
-      process.stderr,
-      `[${label} ${String(i + 1)}/${String(listRows.length)}] ${row.name}…`,
-    );
-    await sleep(serebiiGapMs);
-
-    try {
-      if (!isPathAllowedByRobots(robotsGroup, urlObj.pathname)) {
-        console.error(
-          `\nrobots.txt disallows collecting ${urlObj.pathname}; keeping empty habitat/favorites for ${row.name}.`,
-        );
-        details.push({ ...row, idealHabitat: "", favoritesRaw: [] });
-        continue;
+      try {
+        if (!isPathAllowedByRobots(robotsGroup, urlObj.pathname)) {
+          throw new Error(`robots.txt disallows ${urlObj.pathname}`);
+        }
+        const html = await fetchText(url);
+        const { idealHabitat, favoritesRaw } = parseSerebiiDetail(html);
+        if (!idealHabitat && row.name !== "Ditto") {
+          throw new Error("detail parser found no ideal habitat");
+        }
+        return { ...row, idealHabitat, favoritesRaw };
+      } catch (err) {
+        failures.push(`${row.name} (${urlObj.pathname}): ${String(err)}`);
+        return { ...row, idealHabitat: "", favoritesRaw: [] };
       }
-      const html = await fetchText(url);
-      const { idealHabitat, favoritesRaw } = parseSerebiiDetail(html);
-      details.push({ ...row, idealHabitat, favoritesRaw });
-    } catch (err) {
-      console.error(`\nFailed ${urlObj.pathname}:`, err);
-      details.push({ ...row, idealHabitat: "", favoritesRaw: [] });
-    }
-  }
+    },
+  );
   process.stderr.write("\n");
+
+  if (failures.length > 0) {
+    throw new Error(
+      `Failed to collect ${String(failures.length)} ${label} detail page(s):\n${failures.join("\n")}`,
+    );
+  }
 
   return toPokemonEntries(details, idPrefix);
 }
@@ -286,55 +297,52 @@ async function collectSerebiiDex(
 async function enrichWithLocalizations(
   entries: PokemonEntry[],
   pokeApiCtx: PokeApiContext,
+  pokeApiConcurrency: number,
 ): Promise<PokemonEntry[]> {
   const supportedLanguages: Array<keyof LocalizedNames> = ["de", "fr"];
-  const localizedByApiName = new Map<string, LocalizedNames | null>();
+  let completed = 0;
+  const enriched = await mapWithConcurrency(
+    entries,
+    pokeApiConcurrency,
+    async (pokemon): Promise<PokemonEntry> => {
+      const progress = ++completed;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[localizations ${String(progress)}/${String(entries.length)}] ${pokemon.name}…`,
+      );
 
-  for (let i = 0; i < entries.length; i++) {
-    const pokemon = entries[i]!;
-    const apiName = toPokemonApiName(pokemon.name);
-    if (localizedByApiName.has(apiName)) continue;
-
-    writeTerminalProgressLine(
-      process.stderr,
-      `[localizations ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
-    );
-
+      const apiName = toPokemonApiName(pokemon.name);
     const speciesName =
       await pokeApiCtx.getSpeciesNameByPokemonApiName(apiName);
-    if (!speciesName) {
-      localizedByApiName.set(apiName, null);
-      continue;
-    }
+      if (!speciesName) {
+        throw new Error(
+          `No PokéAPI species found for ${pokemon.name} (${apiName}).`,
+        );
+      }
 
-    const speciesData =
-      await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
-    if (!speciesData?.names) {
-      localizedByApiName.set(apiName, null);
-      continue;
-    }
+      const speciesData =
+        await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
+      if (!speciesData?.names) {
+        throw new Error(`No PokéAPI localization data found for ${speciesName}.`);
+      }
 
-    const localized: LocalizedNames = { de: null, fr: null };
-    for (const lang of supportedLanguages) {
-      const entry = speciesData.names.find((n) => n.language?.name === lang);
-      localized[lang] = entry?.name ?? null;
-    }
-    localizedByApiName.set(apiName, localized);
-  }
+      const localized: LocalizedNames = { de: null, fr: null };
+      for (const lang of supportedLanguages) {
+        const entry = speciesData.names.find((n) => n.language?.name === lang);
+        localized[lang] = entry?.name ?? null;
+      }
+      return {
+        ...pokemon,
+        localizedNames: localized,
+      };
+    },
+  );
   process.stderr.write("\n");
-
-  return entries.map((pokemon) => {
-    const apiName = toPokemonApiName(pokemon.name);
-    const localized = localizedByApiName.get(apiName);
-    const fallback: LocalizedNames = { de: pokemon.name, fr: pokemon.name };
-    return {
-      ...pokemon,
-      localizedNames: localized ?? fallback,
-    };
-  });
+  return enriched;
 }
 
 interface PokeApiPokemonSpeciesData {
+  name?: string;
   names?: Array<{ language?: { name?: string }; name?: string }>;
   evolution_chain?: { url?: string };
 }
@@ -357,12 +365,13 @@ interface PokeApiContext {
 }
 
 function createPokeApiContext(pokeApiGapMs: number): PokeApiContext {
-  const speciesNameByApiName = new Map<string, string | null>();
+  const beforePokeApiRequest = createRequestStartGate(pokeApiGapMs);
+  const speciesNameByApiName = new Map<string, Promise<string | null>>();
   const pokemonSpeciesBySpeciesName = new Map<
     string,
-    PokeApiPokemonSpeciesData | null
+    Promise<PokeApiPokemonSpeciesData | null>
   >();
-  const chainSpeciesByUrl = new Map<string, Set<string> | null>();
+  const chainSpeciesByUrl = new Map<string, Promise<Set<string> | null>>();
 
   function collectSpeciesFromChain(
     node: EvolutionNode | undefined,
@@ -377,52 +386,61 @@ function createPokeApiContext(pokeApiGapMs: number): PokeApiContext {
   async function getSpeciesNameByPokemonApiName(
     apiName: string,
   ): Promise<string | null> {
-    if (speciesNameByApiName.has(apiName)) {
-      return speciesNameByApiName.get(apiName) ?? null;
-    }
+    const cached = speciesNameByApiName.get(apiName);
+    if (cached) return cached;
 
-    await sleep(pokeApiGapMs);
-    const resolved = await resolvePokeApiPokemonByApiName(apiName, {
-      gapMsBetweenSequentialPokeApiCalls: pokeApiGapMs,
-    });
-    const speciesName = resolved?.speciesName ?? null;
-    speciesNameByApiName.set(apiName, speciesName);
-    return speciesName;
+    const promise = (async (): Promise<string | null> => {
+      await beforePokeApiRequest();
+      const directSpecies = await fetchJson<PokeApiPokemonSpeciesData>(
+        `${POKEAPI_BASE}/api/v2/pokemon-species/${apiName}`,
+      );
+      if (directSpecies) {
+        pokemonSpeciesBySpeciesName.set(
+          apiName,
+          Promise.resolve(directSpecies),
+        );
+        return directSpecies.name ?? apiName;
+      }
+
+      const resolved = await resolvePokeApiPokemonByApiName(apiName, {
+        beforeRequest: beforePokeApiRequest,
+      });
+      return resolved?.speciesName ?? null;
+    })();
+    speciesNameByApiName.set(apiName, promise);
+    return promise;
   }
 
   async function getPokemonSpeciesBySpeciesName(
     speciesName: string,
   ): Promise<PokeApiPokemonSpeciesData | null> {
-    if (pokemonSpeciesBySpeciesName.has(speciesName)) {
-      return pokemonSpeciesBySpeciesName.get(speciesName) ?? null;
-    }
-
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiPokemonSpeciesData>(
-      `${POKEAPI_BASE}/api/v2/pokemon-species/${speciesName}`,
-    );
-    pokemonSpeciesBySpeciesName.set(speciesName, data);
-    return data;
+    const cached = pokemonSpeciesBySpeciesName.get(speciesName);
+    if (cached) return cached;
+    const promise = (async (): Promise<PokeApiPokemonSpeciesData | null> => {
+      await beforePokeApiRequest();
+      return fetchJson<PokeApiPokemonSpeciesData>(
+        `${POKEAPI_BASE}/api/v2/pokemon-species/${speciesName}`,
+      );
+    })();
+    pokemonSpeciesBySpeciesName.set(speciesName, promise);
+    return promise;
   }
 
   async function getEvolutionChainSpeciesSet(
     chainUrl: string,
   ): Promise<Set<string> | null> {
-    if (chainSpeciesByUrl.has(chainUrl)) {
-      return chainSpeciesByUrl.get(chainUrl) ?? null;
-    }
-
-    await sleep(pokeApiGapMs);
-    const data = await fetchJson<PokeApiEvolutionChainData>(chainUrl);
-    if (!data?.chain) {
-      chainSpeciesByUrl.set(chainUrl, null);
-      return null;
-    }
-
-    const set = new Set<string>();
-    collectSpeciesFromChain(data.chain, set);
-    chainSpeciesByUrl.set(chainUrl, set);
-    return set;
+    const cached = chainSpeciesByUrl.get(chainUrl);
+    if (cached) return cached;
+    const promise = (async (): Promise<Set<string> | null> => {
+      await beforePokeApiRequest();
+      const data = await fetchJson<PokeApiEvolutionChainData>(chainUrl);
+      if (!data?.chain) return null;
+      const set = new Set<string>();
+      collectSpeciesFromChain(data.chain, set);
+      return set;
+    })();
+    chainSpeciesByUrl.set(chainUrl, promise);
+    return promise;
   }
 
   return {
@@ -435,19 +453,28 @@ function createPokeApiContext(pokeApiGapMs: number): PokeApiContext {
 async function enrichWithEvolutionPeers(
   entries: PokemonEntry[],
   pokeApiCtx: PokeApiContext,
+  pokeApiConcurrency: number,
 ): Promise<PokemonEntry[]> {
   const speciesNameByApiName = new Map<string, string | null>();
 
   const idBySpecies = new Map<string, string[]>();
-  for (let i = 0; i < entries.length; i++) {
-    const pokemon = entries[i]!;
-    writeTerminalProgressLine(
-      process.stderr,
-      `[evolution species ${String(i + 1)}/${String(entries.length)}] ${pokemon.name}…`,
-    );
-    const apiName = toPokemonApiName(pokemon.name);
-    const speciesName =
-      await pokeApiCtx.getSpeciesNameByPokemonApiName(apiName);
+  let completedSpecies = 0;
+  const resolvedSpecies = await mapWithConcurrency(
+    entries,
+    pokeApiConcurrency,
+    async (pokemon) => {
+      const progress = ++completedSpecies;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[evolution species ${String(progress)}/${String(entries.length)}] ${pokemon.name}…`,
+      );
+      const apiName = toPokemonApiName(pokemon.name);
+      const speciesName =
+        await pokeApiCtx.getSpeciesNameByPokemonApiName(apiName);
+      return { pokemon, apiName, speciesName };
+    },
+  );
+  for (const { pokemon, apiName, speciesName } of resolvedSpecies) {
     speciesNameByApiName.set(apiName, speciesName);
     if (!speciesName) continue;
     const list = idBySpecies.get(speciesName) ?? [];
@@ -458,20 +485,27 @@ async function enrichWithEvolutionPeers(
 
   const evolutionSetBySpecies = new Map<string, Set<string> | null>();
   const speciesKeys = [...idBySpecies.keys()];
-  for (let i = 0; i < speciesKeys.length; i++) {
-    const speciesName = speciesKeys[i]!;
-    writeTerminalProgressLine(
-      process.stderr,
-      `[evolution chains ${String(i + 1)}/${String(speciesKeys.length)}] ${speciesName}…`,
-    );
-    const speciesData =
-      await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
-    const chainUrl = speciesData?.evolution_chain?.url ?? null;
-    if (!chainUrl) {
-      evolutionSetBySpecies.set(speciesName, null);
-      continue;
-    }
-    const set = await pokeApiCtx.getEvolutionChainSpeciesSet(chainUrl);
+  let completedChains = 0;
+  const resolvedChains = await mapWithConcurrency(
+    speciesKeys,
+    pokeApiConcurrency,
+    async (speciesName) => {
+      const progress = ++completedChains;
+      writeTerminalProgressLine(
+        process.stderr,
+        `[evolution chains ${String(progress)}/${String(speciesKeys.length)}] ${speciesName}…`,
+      );
+      const speciesData =
+        await pokeApiCtx.getPokemonSpeciesBySpeciesName(speciesName);
+      const chainUrl = speciesData?.evolution_chain?.url ?? null;
+      if (!chainUrl) {
+        return { speciesName, set: null };
+      }
+      const set = await pokeApiCtx.getEvolutionChainSpeciesSet(chainUrl);
+      return { speciesName, set };
+    },
+  );
+  for (const { speciesName, set } of resolvedChains) {
     evolutionSetBySpecies.set(speciesName, set);
   }
   process.stderr.write("\n");
@@ -505,8 +539,16 @@ async function main(): Promise<void> {
 
   const pokeApiGapMs =
     readNumberEnv("POKEAPI_GAP_MS") ?? DEFAULT_POKEAPI_GAP_MS;
+  const pokeApiConcurrency = readPositiveIntegerEnv(
+    "POKEAPI_CONCURRENCY",
+    DEFAULT_POKEAPI_CONCURRENCY,
+  );
+  const serebiiConcurrency = readPositiveIntegerEnv(
+    "SEREBII_CONCURRENCY",
+    DEFAULT_SEREBII_CONCURRENCY,
+  );
 
-  const { group: robotsGroup, serebiiGapMs } = await assertSerebiiRobotsAndGap({
+  const { group: robotsGroup } = await assertSerebiiRobots({
     mustCheckUrls: [
       SEREBII_URLS.availablePokemon,
       SEREBII_URLS.eventPokedex,
@@ -516,26 +558,25 @@ async function main(): Promise<void> {
   });
 
   const pokeApiCtx = createPokeApiContext(pokeApiGapMs);
-
   const standard = await collectSerebiiDex(
     SEREBII_URLS.availablePokemon,
     "standard",
     robotsGroup,
-    serebiiGapMs,
+    serebiiConcurrency,
     "",
   );
   const event = await collectSerebiiDex(
     SEREBII_URLS.eventPokedex,
     "event",
     robotsGroup,
-    serebiiGapMs,
+    serebiiConcurrency,
     "e",
   );
   const basin = await collectSerebiiDex(
     SEREBII_URLS.basinPokedex,
     "basin",
     robotsGroup,
-    serebiiGapMs,
+    serebiiConcurrency,
     "b",
   );
 
@@ -547,9 +588,18 @@ async function main(): Promise<void> {
   standardEnriched = await enrichWithLocalizations(
     standardEnriched,
     pokeApiCtx,
+    pokeApiConcurrency,
   );
-  eventEnriched = await enrichWithLocalizations(eventEnriched, pokeApiCtx);
-  basinEnriched = await enrichWithLocalizations(basinEnriched, pokeApiCtx);
+  eventEnriched = await enrichWithLocalizations(
+    eventEnriched,
+    pokeApiCtx,
+    pokeApiConcurrency,
+  );
+  basinEnriched = await enrichWithLocalizations(
+    basinEnriched,
+    pokeApiCtx,
+    pokeApiConcurrency,
+  );
 
   console.error("Enriching evolution line peers via PokéAPI…");
   const standardCount = standardEnriched.length;
@@ -562,6 +612,7 @@ async function main(): Promise<void> {
   const allEnrichedWithEvoPeers = await enrichWithEvolutionPeers(
     allEnrichedForEvoPeers,
     pokeApiCtx,
+    pokeApiConcurrency,
   );
   standardEnriched = allEnrichedWithEvoPeers.slice(0, standardCount);
   eventEnriched = allEnrichedWithEvoPeers.slice(
