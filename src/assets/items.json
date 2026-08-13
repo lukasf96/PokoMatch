@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T16:02:58.909Z",
+  "generatedAt": "2026-08-13T05:50:58.787Z",
   "items": [
     {
       "id": "honey",
@@ -2143,6 +2143,25 @@
       "favoriteCategories": []
     },
     {
+      "id": "cooler",
+      "name": "Cooler",
+      "category": "Furniture",
+      "tag": "Decoration",
+      "favoriteCategories": ["Blocky stuff", "Cleanliness", "Group Activities"]
+    },
+    {
+      "id": "sand-bed",
+      "name": "Sand bed",
+      "category": "Furniture",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Fabric",
+        "Ocean vibes",
+        "Play spaces",
+        "Soft stuff"
+      ]
+    },
+    {
       "id": "wooden-plate",
       "name": "Wooden plate",
       "category": "Misc.",
@@ -2448,6 +2467,7 @@
         "Complicated stuff",
         "Containers",
         "Gatherings",
+        "Sharp stuff",
         "Stone stuff"
       ]
     },
@@ -5273,6 +5293,37 @@
       ]
     },
     {
+      "id": "swim-ring",
+      "name": "Swim ring",
+      "category": "Outdoor",
+      "tag": "Relaxation",
+      "favoriteCategories": ["Ocean vibes", "Round stuff", "Soft stuff"]
+    },
+    {
+      "id": "big-swim-ring",
+      "name": "Big swim ring",
+      "category": "Outdoor",
+      "tag": "Relaxation",
+      "favoriteCategories": [
+        "Group Activities",
+        "Ocean vibes",
+        "Round stuff",
+        "Soft stuff"
+      ]
+    },
+    {
+      "id": "beach-volleyball-set",
+      "name": "Beach volleyball set",
+      "category": "Outdoor",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Group Activities",
+        "Ocean vibes",
+        "Play spaces",
+        "Wobbly stuff"
+      ]
+    },
+    {
       "id": "ditto-flag",
       "name": "Ditto Flag",
       "category": "Utilities",
@@ -6195,6 +6246,13 @@
         "Metal stuff",
         "Wobbly stuff"
       ]
+    },
+    {
+      "id": "floating-lantern",
+      "name": "Floating lantern",
+      "category": "Utilities",
+      "tag": "Decoration",
+      "favoriteCategories": []
     },
     {
       "id": "leppa-seeds",

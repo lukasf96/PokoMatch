@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T16:02:54.426Z",
+  "generatedAt": "2026-08-13T05:50:54.366Z",
   "standard": [
     {
       "id": "001",
@@ -6340,6 +6340,46 @@
         "fr": "Jirachi"
       },
       "evolutionLinePeerIds": []
+    },
+    {
+      "id": "e006",
+      "dexNumber": "006",
+      "name": "Feebas",
+      "specialties": ["Water"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Shiny stuff",
+        "Glass stuff",
+        "Lots of nature",
+        "Group activities"
+      ],
+      "favoriteFlavor": "Sweet Flavors",
+      "localizedNames": {
+        "de": "Barschwa",
+        "fr": "Barpau"
+      },
+      "evolutionLinePeerIds": ["e007"]
+    },
+    {
+      "id": "e007",
+      "dexNumber": "007",
+      "name": "Milotic",
+      "specialties": ["Water", "Hype"],
+      "idealHabitat": "Humid",
+      "favorites": [
+        "Lots of water",
+        "Shiny stuff",
+        "Glass stuff",
+        "Luxury",
+        "Cleanliness"
+      ],
+      "favoriteFlavor": "Sour Flavors",
+      "localizedNames": {
+        "de": "Milotic",
+        "fr": "Milobellus"
+      },
+      "evolutionLinePeerIds": ["e006"]
     }
   ],
   "basin": [
