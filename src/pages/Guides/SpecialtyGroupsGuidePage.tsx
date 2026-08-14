@@ -23,38 +23,41 @@ export default function SpecialtyGroupsGuidePage() {
         <Stack component="section" spacing={2}>
           <Typography component="h2" variant="h5">Plan the job, then the household</Typography>
           <Typography variant="body1" color="text.secondary">
-            Pick a task you want nearby—wood, heat, water, growing, or power—and find a compact group with that specialty. Check its habitat before you build around it. A dedicated work corner is most pleasant when its residents also share decorations, rather than merely standing close to the same machine.
+            A real factory is a small production chain, not merely a room full of Pokémon with the same label. Start with the material you want, then work backwards: one Pokémon produces it, another moves it into a Community Box, and a third converts it. Check that the workers can still live together before you build around the chain.
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Keep the factory idea flexible. A specialty group can be a four-Pokémon house beside a workshop, or a few compatible homes along a garden path. Let the layout serve your island instead of forcing every worker into one building.
+            Keep the factory idea flexible. One Pokémon can cover more than one step, so a productive setup does not have to fill all four beds. A dedicated work corner can be a pair in one prefab house, or a few compatible homes arranged around the same Community Box.
           </Typography>
         </Stack>
 
         <Divider />
 
         <Stack component="section" spacing={2.25}>
-          <Typography component="h2" variant="h5">Example: the warm kiln crew</Typography>
+          <Typography component="h2" variant="h5">Worked example: a two-Pokémon brick factory</Typography>
           <Typography variant="body1" color="text.secondary">
-            Torkoal, Rolycoly, Carkol, and Coalossal are a tidy starting group for a warm industrial corner. They share the Burn specialty, so they make thematic neighbors for a furnace or cooking area, and their shared habitat lets the room’s main environmental choice benefit everybody.
+            Trapinch litters Squishy Clay near its home. Rolycoly has both Gather and Burn, so it can pick that clay up, put it into a nearby Community Box, and convert it into Bricks. This is the useful kind of specialty pairing: the two workers perform different, connected jobs instead of duplicating the same one.
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            The pair is a valid household: Trapinch prefers Dry and Rolycoly prefers Warm, which are not opposing habitats. Put the Community Box directly beside their house or within the area they regularly walk through. Player reports suggest the automation is opportunistic rather than instant, so keep both Pokémon fed and do not expect every dropped piece of clay to be collected immediately.
           </Typography>
           <GuideGroupExample
-            title="Warm kiln crew"
-            pokemonIds={["176", "193", "194", "195"]}
+            title="Trapinch + Rolycoly brick factory"
+            pokemonIds={["237", "193"]}
           >
-            This group is intentionally cohesive rather than maximally diverse. Use it as a dependable base camp for a fire- or stone-themed work area, then place more specialised Pokémon in nearby compatible homes.
+            Dry-compatible-with-Warm is the environmental fit. The actual loop is Squishy Clay → Gather → Community Box → Burn → Bricks.
           </GuideGroupExample>
         </Stack>
 
         <Stack component="section" spacing={2.25}>
-          <Typography component="h2" variant="h5">Example: a humid growing corner</Typography>
+          <Typography component="h2" variant="h5">A factory can also be a focused household</Typography>
           <Typography variant="body1" color="text.secondary">
-            A garden factory can be quieter and more decorative. Vileplume, Bellsprout, Weepinbell, and Victreebel share both a Humid ideal habitat and the Grow specialty. Their overlap gives you a focused reason to build a lush, plant-heavy home instead of scattering the garden helpers across incompatible terrain.
+            Not every useful setup needs a multi-step chain. A garden crew can be a good way to keep growing work close to the habitat it supports, as long as it is genuinely comfortable for the residents.
           </Typography>
           <GuideGroupExample
             title="Humid garden crew"
             pokemonIds={["015", "021", "022", "023"]}
           >
-            Repeated Grow labels are useful, but the real win is that the same humid setting and a few well-chosen favorites can support the whole household.
+            The shared Humid setting makes this a coherent household; the Grow specialty gives that household a practical reason to live beside a cultivated corner.
           </GuideGroupExample>
         </Stack>
 

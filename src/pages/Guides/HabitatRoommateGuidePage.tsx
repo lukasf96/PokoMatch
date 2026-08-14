@@ -28,7 +28,7 @@ export default function HabitatRoommateGuidePage() {
           <Typography variant="body1" color="text.secondary">
             Once the environment works, look for repeated favorites across the group. Shared favorites make it easier for a small set of furniture and decorations to pull their weight. Finally, let the house’s job break ties: a garden crew belongs near growing work, while a material crew is most useful close to the workshop.
           </Typography>
-          <Paper variant="outlined" sx={{ p: { xs: 2, sm: 2.5 }, borderLeft: 4, borderLeftColor: "primary.main", bgcolor: "background.paper" }}>
+          <Paper variant="outlined" sx={{ p: { xs: 2, sm: 2.5 }, bgcolor: "background.paper" }}>
             <Typography variant="subtitle1">A quick test before you move anyone in</Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
               Can the room support every resident’s ideal habitat? Do at least a few favorites repeat? If both answers are yes, it is a strong candidate. Use the Match Maker to compare the alternatives rather than trying to memorise every list.
