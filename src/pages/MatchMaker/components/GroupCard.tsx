@@ -52,6 +52,8 @@ interface GroupCardProps {
   group: Pokemon[];
   groupNumber: number;
   habitat: Habitat;
+  /** Hides the numbered label for read-only embeds such as share images. */
+  showGroupName?: boolean;
   onRemovePokemon?: (pokemonId: string) => void;
   footerContent?: ReactNode;
   groupAction?: {
@@ -141,6 +143,7 @@ function GroupCardComponent({
   group,
   groupNumber,
   habitat,
+  showGroupName = true,
   onRemovePokemon,
   footerContent,
   groupAction,
@@ -251,15 +254,17 @@ function GroupCardComponent({
               <DragIndicatorIcon fontSize="small" />
             </IconButton>
           ) : null}
-          <Typography
-            variant="subtitle2"
-            color={colors.text}
-            sx={{
-              fontWeight: 700,
-            }}
-          >
-            Group {groupNumber}
-          </Typography>
+          {showGroupName ? (
+            <Typography
+              variant="subtitle2"
+              color={colors.text}
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              Group {groupNumber}
+            </Typography>
+          ) : null}
 
           <Stack
             direction="row"

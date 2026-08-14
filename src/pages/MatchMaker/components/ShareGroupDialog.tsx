@@ -1,12 +1,13 @@
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat } from "../group-helpers";
 import { createGroupShareImage, downloadGroupShareImage } from "../create-share-image";
 import { copySharedGroupUrl, createSharedGroupUrl } from "../share-group";
 import GroupCard from "./GroupCard";
+import { ShareGroupImageCard } from "./ShareGroupImageCard";
 
 interface ShareGroupDialogProps {
   group: Pokemon[];
@@ -18,6 +19,7 @@ interface ShareGroupDialogProps {
 export function ShareGroupDialog({ group, groupNumber, open, onClose }: ShareGroupDialogProps) {
   const [status, setStatus] = useState<string | null>(null);
   const [isCreatingImage, setIsCreatingImage] = useState(false);
+  const shareImageRef = useRef<HTMLDivElement>(null);
   const habitat = getDisplayHabitat(group);
   const shareUrl = createSharedGroupUrl({ pokemonIds: group.map((pokemon) => pokemon.id) });
 
@@ -32,7 +34,8 @@ export function ShareGroupDialog({ group, groupNumber, open, onClose }: ShareGro
   const shareImage = async () => {
     setIsCreatingImage(true);
     try {
-      downloadGroupShareImage(await createGroupShareImage(group, habitat));
+      if (!shareImageRef.current) throw new Error("Could not prepare the share image.");
+      downloadGroupShareImage(await createGroupShareImage(shareImageRef.current));
       setStatus("Share image downloaded.");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Could not create the share image.");
@@ -51,6 +54,12 @@ export function ShareGroupDialog({ group, groupNumber, open, onClose }: ShareGro
           </Typography>
           <Box sx={{ pointerEvents: "none", "& button": { display: "none" } }}>
             <GroupCard group={group} groupNumber={groupNumber} habitat={habitat} />
+          </Box>
+          <Box
+            aria-hidden="true"
+            sx={{ position: "fixed", left: -10000, top: 0, width: 1200, pointerEvents: "none" }}
+          >
+            <ShareGroupImageCard ref={shareImageRef} group={group} />
           </Box>
           {status ? <Alert severity={status.startsWith("Could") ? "error" : "success"}>{status}</Alert> : null}
         </Stack>
