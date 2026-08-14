@@ -1,5 +1,5 @@
 import { Box, Stack, ThemeProvider, Typography } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, type CSSProperties } from "react";
 import { createAppTheme } from "../../../theme";
 import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat } from "../group-helpers";
@@ -10,6 +10,18 @@ interface ShareGroupImageCardProps {
 }
 
 const shareImageTheme = createAppTheme("light");
+type CssVariablesTheme = typeof shareImageTheme & {
+  generateStyleSheets: () => Array<{ ":root": CSSProperties }>;
+};
+// ThemeProvider changes React's theme context, but MUI's CSS variables remain
+// inherited from the app root. Put the light theme's generated variables on the
+// capture root as well so a dark app cannot leak into the PNG.
+const shareImageCssVariables = Object.assign(
+  {},
+  ...(shareImageTheme as CssVariablesTheme)
+    .generateStyleSheets()
+    .map((styleSheet) => styleSheet[":root"]),
+) as CSSProperties;
 
 /** The off-screen export source: it deliberately uses the production GroupCard. */
 export const ShareGroupImageCard = forwardRef<
@@ -20,6 +32,7 @@ export const ShareGroupImageCard = forwardRef<
     <ThemeProvider theme={shareImageTheme}>
       <Box
         ref={ref}
+        style={shareImageCssVariables}
         sx={{
           width: 1200,
           boxSizing: "border-box",
