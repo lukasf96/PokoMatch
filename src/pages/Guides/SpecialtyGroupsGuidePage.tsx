@@ -33,18 +33,18 @@ export default function SpecialtyGroupsGuidePage() {
         <Divider />
 
         <Stack component="section" spacing={2.25}>
-          <Typography component="h2" variant="h5">Worked example: a two-Pokémon brick factory</Typography>
+          <Typography component="h2" variant="h5">Worked example: a brick-factory household</Typography>
           <Typography variant="body1" color="text.secondary">
-            Trapinch litters Squishy Clay near its home. Rolycoly has both Gather and Burn, so it can pick that clay up, put it into a nearby Community Box, and convert it into Bricks. This is the useful kind of specialty pairing: the two workers perform different, connected jobs instead of duplicating the same one.
+            Trapinch litters Squishy Clay near its home. Rolycoly, Carkol, and Coalossal each have both Gather and Burn, so the coal line can pick that clay up, move it into a nearby Community Box, and convert it into Bricks. This is the useful kind of specialty pairing: the residents perform connected jobs instead of merely duplicating one label.
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            The pair is a valid household: Trapinch prefers Dry and Rolycoly prefers Warm, which are not opposing habitats. Put the Community Box directly beside their house or within the area they regularly walk through. Player reports suggest the automation is opportunistic rather than instant, so keep both Pokémon fed and do not expect every dropped piece of clay to be collected immediately.
+            It is also a much stronger roommate group than the simple Trapinch–Rolycoly pair. The coal-line trio shares all five of its favorites with one another, and Trapinch shares Hard stuff with each of them. Trapinch prefers Dry and the coal line prefers Warm, which are not opposing habitats. Put the Community Box directly beside their house or within the area they regularly walk through. Player reports suggest the automation is opportunistic rather than instant, so keep the residents fed and do not expect every dropped piece of clay to be collected immediately.
           </Typography>
           <GuideGroupExample
-            title="Trapinch + Rolycoly brick factory"
-            pokemonIds={["237", "193"]}
+            title="Trapinch + coal-line brick factory"
+            pokemonIds={["237", "193", "194", "195"]}
           >
-            Dry-compatible-with-Warm is the environmental fit. The actual loop is Squishy Clay → Gather → Community Box → Burn → Bricks.
+            A strong-fit factory group: Squishy Clay → Gather → Community Box → Burn → Bricks, with a group score of 18.
           </GuideGroupExample>
         </Stack>
 
