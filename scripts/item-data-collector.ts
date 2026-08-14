@@ -2,6 +2,8 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { clearSingletonPhraseTags } from "./utility/item-tags";
+import { stringifyPrettyJson } from "./utility/pretty-json";
 import {
   APP_ROOT,
   DEFAULT_SEREBII_CONCURRENCY,
@@ -242,20 +244,29 @@ async function main(): Promise<void> {
     }
   }
 
-  const items: ItemEntry[] = listRows.map((row) => ({
+  const collectedItems: ItemEntry[] = listRows.map((row) => ({
     id: toItemId(row.name),
     name: row.name,
     category: row.category,
     tag: row.tag,
     favoriteCategories: favoriteCategoriesByItemUrl.get(row.detailUrl) ?? [],
   }));
+  const { items, dropped } = clearSingletonPhraseTags(collectedItems);
+  if (dropped.length > 0) {
+    console.error(
+      `Cleared ${String(dropped.length)} singleton phrase tag(s) (likely a description in the Tag column):`,
+    );
+    for (const entry of dropped) {
+      console.error(`  ${entry.name}: ${JSON.stringify(entry.tag)}`);
+    }
+  }
 
   const payload: ItemsJson = {
     generatedAt: new Date().toISOString(),
     items,
   };
 
-  await writeFile(outPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  await writeFile(outPath, stringifyPrettyJson(payload), "utf8");
   console.log(`Wrote ${outPath} (${String(payload.items.length)} items).`);
 }
 

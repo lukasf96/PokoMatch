@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { stringifyPrettyJson } from "./utility/pretty-json";
 import {
   APP_ROOT,
   DEFAULT_POKEAPI_CONCURRENCY,
@@ -628,7 +629,7 @@ async function main(): Promise<void> {
     basin: basinEnriched,
   };
 
-  await writeFile(outPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  await writeFile(outPath, stringifyPrettyJson(payload), "utf8");
   console.log(
     `Wrote ${outPath} (${String(payload.standard.length)} standard, ${String(payload.event.length)} event, ${String(payload.basin.length)} basin).`,
   );
