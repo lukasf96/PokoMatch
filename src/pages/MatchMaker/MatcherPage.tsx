@@ -1,17 +1,12 @@
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import {
-  Alert,
-  Container,
-  Snackbar,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import {
   useCallback,
   useMemo,
   useRef,
   useState,
 } from "react";
+import { AppToast } from "../../components/AppToast";
 import { ScrollToTopFab } from "../../components/ScrollToTopFab";
 import { suggestItemsForGroup } from "../../services/items";
 import {
@@ -355,21 +350,14 @@ export default function MatcherPage() {
           />
         </Stack>
       </Stack>
-      <Snackbar
-        open={groupToastMessage != null}
-        autoHideDuration={4000}
+      <AppToast
+        toast={
+          groupToastMessage
+            ? { message: groupToastMessage, severity: "success" }
+            : null
+        }
         onClose={() => setGroupToastMessage(null)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={() => setGroupToastMessage(null)}
-          severity="success"
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {groupToastMessage}
-        </Alert>
-      </Snackbar>
+      />
       <ScrollToTopFab />
     </Container>
   );
