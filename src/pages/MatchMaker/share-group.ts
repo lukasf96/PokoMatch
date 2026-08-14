@@ -1,20 +1,18 @@
-import type { Pokemon, PokopiaLocation } from "../../types/types";
+import type { Pokemon } from "../../types/types";
 
 const SHARE_PARAMETER = "group";
 
 export interface SharedGroup {
   pokemonIds: string[];
-  location?: PokopiaLocation;
 }
 
 /** A compact, URL-safe group payload. It contains game data only—never a save or user identity. */
 export function createSharedGroupUrl(
-  group: Pick<SharedGroup, "pokemonIds" | "location">,
+  group: Pick<SharedGroup, "pokemonIds">,
   origin = window.location.origin,
 ): string {
   const url = new URL("/matchmaker", origin);
   url.searchParams.set(SHARE_PARAMETER, group.pokemonIds.join(","));
-  if (group.location) url.searchParams.set("location", group.location);
   return url.toString();
 }
 
@@ -32,21 +30,7 @@ export function readSharedGroup(
     .slice(0, 4);
   if (pokemonIds.length === 0) return null;
 
-  const location = params.get("location") ?? undefined;
-  return {
-    pokemonIds,
-    // Location is descriptive in-game data, but only accept values which exist in the app.
-    ...(location && [
-      "Withered Wastelands",
-      "Bleak Beach",
-      "Rocky Ridges",
-      "Sparkling Skylands",
-      "Palette Town",
-      "Bubbly Basin",
-    ].includes(location)
-      ? { location: location as PokopiaLocation }
-      : {}),
-  };
+  return { pokemonIds };
 }
 
 export async function copySharedGroupUrl(url: string): Promise<void> {

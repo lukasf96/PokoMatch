@@ -1,19 +1,17 @@
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
-import type { Pokemon, PokopiaLocation } from "../../../types/types";
+import type { Pokemon } from "../../../types/types";
 import { getDisplayHabitat } from "../group-helpers";
 import GroupCard from "./GroupCard";
 
 interface SharedGroupPreviewProps {
   group: Pokemon[];
-  location?: PokopiaLocation;
   onAdd: () => void;
 }
 
 /** Read-only shared plan, intentionally rendered with the same card as Match Maker groups. */
 export function SharedGroupPreview({
   group,
-  location,
   onAdd,
 }: SharedGroupPreviewProps) {
   return (
@@ -43,7 +41,6 @@ export function SharedGroupPreview({
             group={group}
             groupNumber={1}
             habitat={getDisplayHabitat(group)}
-            location={location}
           />
         </Box>
         <Button

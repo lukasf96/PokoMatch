@@ -323,7 +323,6 @@ export default function MatcherPage() {
         {sharedGroup && sharedPokemon.length > 0 ? (
           <SharedGroupPreview
             group={sharedPokemon}
-            location={sharedGroup.location}
             onAdd={handleAddSharedGroup}
           />
         ) : null}
