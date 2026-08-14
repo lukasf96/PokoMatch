@@ -15,6 +15,14 @@ describe("DocumentTitle", () => {
     ["/insights", "Insights | Pokopia Habitats, Favorites & Items — PokoMatch"],
     ["/pokedex", "Pokédex | Standard, Event & Basin Dex for Pokopia — PokoMatch"],
     [
+      "/pokopia-habitat-roommates",
+      "Pokopia Habitat & Roommate Compatibility Guide — PokoMatch",
+    ],
+    [
+      "/pokopia-specialty-groups",
+      "Pokopia Specialty Groups & Factory Guide — PokoMatch",
+    ],
+    [
       "/unknown",
       "PokoMatch | Pokémon Pokopia Habitat Planner & Roommate Matchmaker",
     ],

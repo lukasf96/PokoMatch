@@ -58,6 +58,32 @@ export default function HomePage() {
             </Box>
           </Stack>
 
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={1}
+            sx={{ alignItems: { sm: "center" }, color: "text.secondary" }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 700, color: "text.primary" }}>
+              New to habitat planning?
+            </Typography>
+            <Button
+              component={RouterLink}
+              to={appRoutes.habitatGuide}
+              size="small"
+              sx={{ alignSelf: { xs: "flex-start", sm: "auto" } }}
+            >
+              Read the habitat & roommate guide
+            </Button>
+            <Button
+              component={RouterLink}
+              to={appRoutes.specialtyGuide}
+              size="small"
+              sx={{ alignSelf: { xs: "flex-start", sm: "auto" } }}
+            >
+              Plan specialty groups
+            </Button>
+          </Stack>
+
           <Paper
             variant="outlined"
             sx={{
