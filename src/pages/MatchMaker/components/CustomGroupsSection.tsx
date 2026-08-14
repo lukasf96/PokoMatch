@@ -30,7 +30,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { InstantCollapse } from "../../../components/InstantCollapse";
 import type { SuggestedPokemon } from "../../../services/matching.service";
 import type { PokemonNameLanguage } from "../../../services/pokemon-localization";
@@ -45,6 +45,7 @@ import { AddPokemonToGroupAutocomplete } from "./AddPokemonToGroupAutocomplete";
 import GroupCard from "./GroupCard";
 import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
 import { SuggestedNextPokemonControls } from "./SuggestedNextPokemonControls";
+import { ShareGroupDialog } from "./ShareGroupDialog";
 
 export interface ResolvedCustomGroup {
   id: string;
@@ -80,6 +81,7 @@ const CustomGroupRow = memo(function CustomGroupRow({
   onRemovePokemon,
   onLocationChange,
 }: CustomGroupRowProps) {
+  const [shareOpen, setShareOpen] = useState(false);
   const theme = useTheme();
   const isDark = theme.palette.mode === "dark";
   const groupNumber = groupIndex + 1;
@@ -248,6 +250,20 @@ const CustomGroupRow = memo(function CustomGroupRow({
           onClick: handleDelete,
           kind: "remove",
         }}
+        groupActions={[
+          {
+            ariaLabel: `Share group ${groupNumber}`,
+            onClick: () => setShareOpen(true),
+            kind: "share",
+            disabled: group.members.length === 0,
+          },
+        ]}
+      />
+      <ShareGroupDialog
+        group={group.members}
+        groupNumber={groupNumber}
+        open={shareOpen}
+        onClose={() => setShareOpen(false)}
       />
     </Box>
   );

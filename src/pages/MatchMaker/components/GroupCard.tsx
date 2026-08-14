@@ -7,6 +7,7 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import {
   Alert,
   AlertTitle,
@@ -52,6 +53,8 @@ interface GroupCardProps {
   group: Pokemon[];
   groupNumber: number;
   habitat: Habitat;
+  /** Hides the numbered label for read-only embeds such as share images. */
+  showGroupName?: boolean;
   onRemovePokemon?: (pokemonId: string) => void;
   footerContent?: ReactNode;
   groupAction?: {
@@ -59,6 +62,13 @@ interface GroupCardProps {
     onClick: () => void;
     kind: "add" | "remove";
   };
+  /** Secondary header actions appear immediately before the primary group action. */
+  groupActions?: Array<{
+    ariaLabel: string;
+    onClick: () => void;
+    kind: "share";
+    disabled?: boolean;
+  }>;
   /** Optional Pokopia location for this group. */
   location?: PokopiaLocation;
   onLocationChange?: (location: PokopiaLocation | undefined) => void;
@@ -141,9 +151,11 @@ function GroupCardComponent({
   group,
   groupNumber,
   habitat,
+  showGroupName = true,
   onRemovePokemon,
   footerContent,
   groupAction,
+  groupActions,
   location,
   onLocationChange,
   dragHandleAttributes,
@@ -251,15 +263,17 @@ function GroupCardComponent({
               <DragIndicatorIcon fontSize="small" />
             </IconButton>
           ) : null}
-          <Typography
-            variant="subtitle2"
-            color={colors.text}
-            sx={{
-              fontWeight: 700,
-            }}
-          >
-            Group {groupNumber}
-          </Typography>
+          {showGroupName ? (
+            <Typography
+              variant="subtitle2"
+              color={colors.text}
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              Group {groupNumber}
+            </Typography>
+          ) : null}
 
           <Stack
             direction="row"
@@ -426,6 +440,17 @@ function GroupCardComponent({
               height: 22,
             }}
           />
+          {groupActions?.map((action) => (
+            <IconButton
+              key={action.ariaLabel}
+              size="small"
+              aria-label={action.ariaLabel}
+              onClick={action.onClick}
+              disabled={action.disabled}
+            >
+              <ShareOutlinedIcon fontSize="small" />
+            </IconButton>
+          ))}
           {groupAction && (
             <IconButton
               size="small"

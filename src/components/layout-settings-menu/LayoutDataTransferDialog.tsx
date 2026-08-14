@@ -1,17 +1,16 @@
 import ContentCopyOutlined from "@mui/icons-material/ContentCopyOutlined";
 import {
-  Alert,
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Snackbar,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
+import { AppToast, type ToastState } from "../AppToast";
 import { allPokemon } from "../../services/pokemon";
 import { useStore } from "../../store/store";
 import {
@@ -27,11 +26,6 @@ interface LayoutDataTransferDialogProps {
 }
 
 const knownIds = new Set(allPokemon.map((pokemon) => pokemon.id));
-
-type ToastState = {
-  message: string;
-  severity: "success" | "error" | "info";
-} | null;
 
 export function LayoutDataTransferDialog({
   isOpen,
@@ -215,23 +209,7 @@ export function LayoutDataTransferDialog({
         </DialogActions>
       </Dialog>
 
-      <Snackbar
-        open={toast != null}
-        autoHideDuration={4000}
-        onClose={() => setToast(null)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        {toast ? (
-          <Alert
-            onClose={() => setToast(null)}
-            severity={toast.severity}
-            variant="filled"
-            sx={{ width: "100%" }}
-          >
-            {toast.message}
-          </Alert>
-        ) : undefined}
-      </Snackbar>
+      <AppToast toast={toast} onClose={() => setToast(null)} />
     </>
   );
 }

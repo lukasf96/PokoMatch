@@ -7,13 +7,13 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Snackbar,
   Stack,
   TextField,
   Typography,
   useTheme,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { AppToast, type ToastState } from "../AppToast";
 import {
   FEEDBACK_LIMITS,
   getHCaptchaSiteKey,
@@ -25,11 +25,6 @@ interface LayoutFeedbackDialogProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-type ToastState = {
-  message: string;
-  severity: "success" | "error" | "info";
-} | null;
 
 export function LayoutFeedbackDialog({
   isOpen,
@@ -220,23 +215,7 @@ export function LayoutFeedbackDialog({
         </DialogActions>
       </Dialog>
 
-      <Snackbar
-        open={toast != null}
-        autoHideDuration={4000}
-        onClose={() => setToast(null)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        {toast ? (
-          <Alert
-            onClose={() => setToast(null)}
-            severity={toast.severity}
-            variant="filled"
-            sx={{ width: "100%" }}
-          >
-            {toast.message}
-          </Alert>
-        ) : undefined}
-      </Snackbar>
+      <AppToast toast={toast} onClose={() => setToast(null)} />
     </>
   );
 }

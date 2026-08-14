@@ -1,17 +1,12 @@
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import {
-  Alert,
-  Container,
-  Snackbar,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import {
   useCallback,
   useMemo,
   useRef,
   useState,
 } from "react";
+import { AppToast } from "../../components/AppToast";
 import { ScrollToTopFab } from "../../components/ScrollToTopFab";
 import { suggestItemsForGroup } from "../../services/items";
 import {
@@ -26,7 +21,9 @@ import {
   CustomGroupsSection,
   type ResolvedCustomGroup,
 } from "./components/CustomGroupsSection";
+import { SharedGroupPreview } from "./components/SharedGroupPreview";
 import { useAutoGroups } from "./useAutoGroups";
+import { readSharedGroup } from "./share-group";
 
 function groupKeyFromPokemon(group: Pokemon[]): string {
   return group
@@ -45,6 +42,7 @@ export default function MatcherPage() {
   const deleteCustomGroup = useStore((s) => s.deleteCustomGroup);
   const reorderCustomGroups = useStore((s) => s.reorderCustomGroups);
   const setCustomGroupLocation = useStore((s) => s.setCustomGroupLocation);
+  const unlockMany = useStore((s) => s.unlockMany);
   const addPokemonToCustomGroup = useStore((s) => s.addPokemonToCustomGroup);
   const removePokemonFromCustomGroup = useStore(
     (s) => s.removePokemonFromCustomGroup,
@@ -110,6 +108,14 @@ export default function MatcherPage() {
   const [groupToastMessage, setGroupToastMessage] = useState<string | null>(
     null,
   );
+  const [sharedGroup, setSharedGroup] = useState(() =>
+    readSharedGroup(window.location.search, habitablePokemon),
+  );
+  const sharedPokemon = useMemo(() => {
+    if (!sharedGroup) return [];
+    const sharedIds = new Set(sharedGroup.pokemonIds);
+    return habitablePokemon.filter((pokemon) => sharedIds.has(pokemon.id));
+  }, [sharedGroup]);
 
   const availablePokemon = useMemo(
     () => activePokemon.filter((p) => !customAssignedIds.has(p.id)),
@@ -182,6 +188,18 @@ export default function MatcherPage() {
     [setCustomGroupLocation],
   );
 
+  const handleAddSharedGroup = useCallback(() => {
+    if (!sharedGroup) return;
+    unlockMany(sharedGroup.pokemonIds);
+    addSuggestedGroupToCustomGroups(sharedGroup.pokemonIds);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("group");
+    url.searchParams.delete("location");
+    window.history.replaceState({}, "", `${url.pathname}${url.search}`);
+    setSharedGroup(null);
+    setGroupToastMessage("Shared group added to My Groups");
+  }, [addSuggestedGroupToCustomGroups, sharedGroup, unlockMany]);
+
   const hasActiveSuggestedFreeze = useMemo(
     () =>
       frozenSuggestedGroups != null &&
@@ -244,7 +262,7 @@ export default function MatcherPage() {
     [resolvedCustomGroups],
   );
 
-  if (activePokemon.length === 0) {
+  if (activePokemon.length === 0 && !sharedGroup) {
     return (
       <Container
         maxWidth="lg"
@@ -302,6 +320,12 @@ export default function MatcherPage() {
           Build automatic or custom Pokopia habitat roommate groups, get ranked
           suggestions for who to add next, and keep everyone habitat-compatible.
         </Typography>
+        {sharedGroup && sharedPokemon.length > 0 ? (
+          <SharedGroupPreview
+            group={sharedPokemon}
+            onAdd={handleAddSharedGroup}
+          />
+        ) : null}
         <Stack spacing={4}>
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}
@@ -325,21 +349,14 @@ export default function MatcherPage() {
           />
         </Stack>
       </Stack>
-      <Snackbar
-        open={groupToastMessage != null}
-        autoHideDuration={4000}
+      <AppToast
+        toast={
+          groupToastMessage
+            ? { message: groupToastMessage, severity: "success" }
+            : null
+        }
         onClose={() => setGroupToastMessage(null)}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={() => setGroupToastMessage(null)}
-          severity="success"
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {groupToastMessage}
-        </Alert>
-      </Snackbar>
+      />
       <ScrollToTopFab />
     </Container>
   );
