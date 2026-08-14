@@ -16,7 +16,7 @@ export default function SpecialtyGroupsGuidePage() {
             Pokopia specialty groups: build a factory district without sacrificing comfort
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 720, fontSize: { sm: "1.1rem" } }}>
-            “Factory” is a player shorthand for putting useful specialties near the work they support. It is not a separate game system: the same roommate rules still matter. The trick is to make a useful neighborhood from groups that can actually share a habitat.
+            A factory is a practical setup that places useful specialties close to the work they support. The same roommate rules still matter: build around groups that can share a habitat comfortably, then give that neighborhood a useful job.
           </Typography>
         </header>
 
