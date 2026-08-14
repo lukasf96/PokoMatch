@@ -39,9 +39,9 @@ export default function HabitatRoommateGuidePage() {
         <Divider />
 
         <Stack component="section" spacing={2.25}>
-          <Typography component="h2" variant="h5">Worked example: a bright gathering house</Typography>
+          <Typography component="h2" variant="h5">Worked example: a bright chop house</Typography>
           <Typography variant="body1" color="text.secondary">
-            This is a useful model for a house that does more than store roommates. Scyther, Scizor, Pinsir, and Heracross all favor a Bright habitat and share the Chop specialty. The card below surfaces their favorite overlap and gives you a concrete starting point for a nearby timber or crafting area.
+            This is a useful model for a house that does more than store roommates. Scyther, Scizor, Pinsir, and Heracross all favor a Bright habitat and share the Chop specialty. The card below surfaces their favorite overlap and gives you a concrete starting point for a nearby timber-processing or crafting area.
           </Typography>
           <GuideGroupExample
             title="Bright chop crew"
