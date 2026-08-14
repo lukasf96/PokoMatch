@@ -15,6 +15,8 @@ vi.mock("./lazyPages", () => ({
   MatcherPage: () => <h1>Matcher test page</h1>,
   InsightsPage: () => <h1>Insights test page</h1>,
   PokedexPage: () => <h1>Pokedex test page</h1>,
+  HabitatRoommateGuidePage: () => <h1>Habitat guide test page</h1>,
+  SpecialtyGroupsGuidePage: () => <h1>Specialty guide test page</h1>,
 }));
 
 function CurrentPath() {
@@ -36,6 +38,8 @@ describe("AppRouter", () => {
     ["/matchmaker", "Matcher test page"],
     ["/insights", "Insights test page"],
     ["/pokedex", "Pokedex test page"],
+    ["/pokopia-habitat-roommates", "Habitat guide test page"],
+    ["/pokopia-specialty-groups", "Specialty guide test page"],
   ])("renders %s", (path, heading) => {
     renderAt(path);
     expect(screen.getByRole("heading", { name: heading })).toBeInTheDocument();

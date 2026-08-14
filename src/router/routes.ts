@@ -3,4 +3,6 @@ export const appRoutes = {
   matchmaker: "/matchmaker",
   insights: "/insights",
   pokedex: "/pokedex",
+  habitatGuide: "/pokopia-habitat-roommates",
+  specialtyGuide: "/pokopia-specialty-groups",
 } as const;
