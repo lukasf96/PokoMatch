@@ -1,6 +1,7 @@
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import {
   Alert,
+  Button,
   Container,
   Snackbar,
   Stack,
@@ -27,6 +28,7 @@ import {
   type ResolvedCustomGroup,
 } from "./components/CustomGroupsSection";
 import { useAutoGroups } from "./useAutoGroups";
+import { readSharedGroup } from "./share-group";
 
 function groupKeyFromPokemon(group: Pokemon[]): string {
   return group
@@ -110,6 +112,9 @@ export default function MatcherPage() {
   const [groupToastMessage, setGroupToastMessage] = useState<string | null>(
     null,
   );
+  const [sharedGroup, setSharedGroup] = useState(() =>
+    readSharedGroup(window.location.search, habitablePokemon),
+  );
 
   const availablePokemon = useMemo(
     () => activePokemon.filter((p) => !customAssignedIds.has(p.id)),
@@ -181,6 +186,17 @@ export default function MatcherPage() {
     },
     [setCustomGroupLocation],
   );
+
+  const handleAddSharedGroup = useCallback(() => {
+    if (!sharedGroup) return;
+    addSuggestedGroupToCustomGroups(sharedGroup.pokemonIds);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("group");
+    url.searchParams.delete("location");
+    window.history.replaceState({}, "", `${url.pathname}${url.search}`);
+    setSharedGroup(null);
+    setGroupToastMessage("Shared group added to My Groups");
+  }, [addSuggestedGroupToCustomGroups, sharedGroup]);
 
   const hasActiveSuggestedFreeze = useMemo(
     () =>
@@ -302,6 +318,20 @@ export default function MatcherPage() {
           Build automatic or custom Pokopia habitat roommate groups, get ranked
           suggestions for who to add next, and keep everyone habitat-compatible.
         </Typography>
+        {sharedGroup ? (
+          <Alert
+            severity="success"
+            variant="outlined"
+            action={
+              <Button color="inherit" size="small" onClick={handleAddSharedGroup}>
+                Add to my groups
+              </Button>
+            }
+            sx={{ mb: 2, alignItems: "center" }}
+          >
+            A Pokopia habitat group was shared with you. Add it, then remix it in Match Maker.
+          </Alert>
+        ) : null}
         <Stack spacing={4}>
           <CustomGroupsSection
             customGroups={resolvedCustomGroups}
