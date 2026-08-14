@@ -17,7 +17,6 @@ import { CSS } from "@dnd-kit/utilities";
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import {
   Accordion,
   AccordionDetails,
@@ -251,19 +250,15 @@ const CustomGroupRow = memo(function CustomGroupRow({
           onClick: handleDelete,
           kind: "remove",
         }}
+        groupActions={[
+          {
+            ariaLabel: `Share group ${groupNumber}`,
+            onClick: () => setShareOpen(true),
+            kind: "share",
+            disabled: group.members.length === 0,
+          },
+        ]}
       />
-      <Stack direction="row" sx={{ justifyContent: "flex-end", mt: 1 }}>
-        <Button
-          size="small"
-          variant="text"
-          color="inherit"
-          startIcon={<ShareOutlinedIcon />}
-          onClick={() => setShareOpen(true)}
-          disabled={group.members.length === 0}
-        >
-          Share group
-        </Button>
-      </Stack>
       <ShareGroupDialog
         group={group.members}
         groupNumber={groupNumber}
