@@ -32,7 +32,7 @@ export function ShareGroupDialog({ group, groupNumber, open, onClose }: ShareGro
   const shareImage = async () => {
     setIsCreatingImage(true);
     try {
-      downloadGroupShareImage(await createGroupShareImage(group, habitat, shareUrl));
+      downloadGroupShareImage(await createGroupShareImage(group, habitat));
       setStatus("Share image downloaded.");
     } catch (error) {
       setStatus(error instanceof Error ? error.message : "Could not create the share image.");

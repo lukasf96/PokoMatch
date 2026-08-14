@@ -1,7 +1,6 @@
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import {
   Alert,
-  Button,
   Container,
   Snackbar,
   Stack,
@@ -27,6 +26,7 @@ import {
   CustomGroupsSection,
   type ResolvedCustomGroup,
 } from "./components/CustomGroupsSection";
+import { SharedGroupPreview } from "./components/SharedGroupPreview";
 import { useAutoGroups } from "./useAutoGroups";
 import { readSharedGroup } from "./share-group";
 
@@ -47,6 +47,7 @@ export default function MatcherPage() {
   const deleteCustomGroup = useStore((s) => s.deleteCustomGroup);
   const reorderCustomGroups = useStore((s) => s.reorderCustomGroups);
   const setCustomGroupLocation = useStore((s) => s.setCustomGroupLocation);
+  const unlockMany = useStore((s) => s.unlockMany);
   const addPokemonToCustomGroup = useStore((s) => s.addPokemonToCustomGroup);
   const removePokemonFromCustomGroup = useStore(
     (s) => s.removePokemonFromCustomGroup,
@@ -115,6 +116,11 @@ export default function MatcherPage() {
   const [sharedGroup, setSharedGroup] = useState(() =>
     readSharedGroup(window.location.search, habitablePokemon),
   );
+  const sharedPokemon = useMemo(() => {
+    if (!sharedGroup) return [];
+    const sharedIds = new Set(sharedGroup.pokemonIds);
+    return habitablePokemon.filter((pokemon) => sharedIds.has(pokemon.id));
+  }, [sharedGroup]);
 
   const availablePokemon = useMemo(
     () => activePokemon.filter((p) => !customAssignedIds.has(p.id)),
@@ -189,6 +195,7 @@ export default function MatcherPage() {
 
   const handleAddSharedGroup = useCallback(() => {
     if (!sharedGroup) return;
+    unlockMany(sharedGroup.pokemonIds);
     addSuggestedGroupToCustomGroups(sharedGroup.pokemonIds);
     const url = new URL(window.location.href);
     url.searchParams.delete("group");
@@ -196,7 +203,7 @@ export default function MatcherPage() {
     window.history.replaceState({}, "", `${url.pathname}${url.search}`);
     setSharedGroup(null);
     setGroupToastMessage("Shared group added to My Groups");
-  }, [addSuggestedGroupToCustomGroups, sharedGroup]);
+  }, [addSuggestedGroupToCustomGroups, sharedGroup, unlockMany]);
 
   const hasActiveSuggestedFreeze = useMemo(
     () =>
@@ -260,7 +267,7 @@ export default function MatcherPage() {
     [resolvedCustomGroups],
   );
 
-  if (activePokemon.length === 0) {
+  if (activePokemon.length === 0 && !sharedGroup) {
     return (
       <Container
         maxWidth="lg"
@@ -318,19 +325,12 @@ export default function MatcherPage() {
           Build automatic or custom Pokopia habitat roommate groups, get ranked
           suggestions for who to add next, and keep everyone habitat-compatible.
         </Typography>
-        {sharedGroup ? (
-          <Alert
-            severity="success"
-            variant="outlined"
-            action={
-              <Button color="inherit" size="small" onClick={handleAddSharedGroup}>
-                Add to my groups
-              </Button>
-            }
-            sx={{ mb: 2, alignItems: "center" }}
-          >
-            A Pokopia habitat group was shared with you. Add it, then remix it in Match Maker.
-          </Alert>
+        {sharedGroup && sharedPokemon.length > 0 ? (
+          <SharedGroupPreview
+            group={sharedPokemon}
+            location={sharedGroup.location}
+            onAdd={handleAddSharedGroup}
+          />
         ) : null}
         <Stack spacing={4}>
           <CustomGroupsSection
