@@ -21,4 +21,14 @@ describe("group sharing", () => {
     );
     expect(result).toEqual({ pokemonIds: ids });
   });
+
+  it("rejects empty and unknown payloads, and caps a valid group at four members", () => {
+    const ids = allPokemon.slice(0, 5).map((pokemon) => pokemon.id);
+
+    expect(readSharedGroup("", allPokemon)).toBeNull();
+    expect(readSharedGroup("?group=unknown,also-unknown", allPokemon)).toBeNull();
+    expect(readSharedGroup(`?group=${ids.join(",")}`, allPokemon)).toEqual({
+      pokemonIds: ids.slice(0, 4),
+    });
+  });
 });
