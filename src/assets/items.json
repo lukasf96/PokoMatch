@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T05:50:58.787Z",
+  "generatedAt": "2026-08-14T08:54:45.547Z",
   "items": [
     {
       "id": "honey",
@@ -2147,7 +2147,12 @@
       "name": "Cooler",
       "category": "Furniture",
       "tag": "Decoration",
-      "favoriteCategories": ["Blocky stuff", "Cleanliness", "Group Activities"]
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Cleanliness",
+        "Colorful stuff",
+        "Group Activities"
+      ]
     },
     {
       "id": "sand-bed",
@@ -2155,7 +2160,9 @@
       "category": "Furniture",
       "tag": "Toy",
       "favoriteCategories": [
+        "Colorful stuff",
         "Fabric",
+        "Lots of dirt",
         "Ocean vibes",
         "Play spaces",
         "Soft stuff"
@@ -5297,7 +5304,12 @@
       "name": "Swim ring",
       "category": "Outdoor",
       "tag": "Relaxation",
-      "favoriteCategories": ["Ocean vibes", "Round stuff", "Soft stuff"]
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Ocean vibes",
+        "Round stuff",
+        "Soft stuff"
+      ]
     },
     {
       "id": "big-swim-ring",
@@ -5305,6 +5317,7 @@
       "category": "Outdoor",
       "tag": "Relaxation",
       "favoriteCategories": [
+        "Colorful stuff",
         "Group Activities",
         "Ocean vibes",
         "Round stuff",
@@ -5317,7 +5330,9 @@
       "category": "Outdoor",
       "tag": "Toy",
       "favoriteCategories": [
+        "Exercise",
         "Group Activities",
+        "Lots of dirt",
         "Ocean vibes",
         "Play spaces",
         "Wobbly stuff"
@@ -6252,7 +6267,7 @@
       "name": "Floating lantern",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": []
+      "favoriteCategories": ["Colorful stuff", "Electronics"]
     },
     {
       "id": "leppa-seeds",
@@ -12671,7 +12686,7 @@
       "name": "Loaded Dice",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Blocky stuff"]
     },
     {
       "id": "sticky-barb",
