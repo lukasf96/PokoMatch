@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T08:54:45.547Z",
+  "generatedAt": "2026-08-20T10:26:31.473Z",
   "items": [
     {
       "id": "honey",
@@ -5368,7 +5368,6 @@
         "Blocky stuff",
         "Containers",
         "Letters and words",
-        "Sharp stuff",
         "Watching stuff",
         "Wooden stuff"
       ]
@@ -5891,12 +5890,7 @@
       "name": "Wall light",
       "category": "Utilities",
       "tag": "Decoration",
-      "favoriteCategories": [
-        "Blocky stuff",
-        "Electronics",
-        "Glass stuff",
-        "Sharp stuff"
-      ]
+      "favoriteCategories": ["Blocky stuff", "Electronics", "Glass stuff"]
     },
     {
       "id": "shell-lamp",
