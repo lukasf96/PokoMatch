@@ -1,5 +1,6 @@
 import rawData from "../assets/items.json";
 import type { Item, Pokemon, SuggestedItem } from "../types/types";
+import { favoriteKey, groupFavoriteKeys } from "../utils/favorites";
 
 type ItemJson = Item;
 
@@ -33,16 +34,17 @@ export function suggestItemsForGroup(
 ): SuggestedItem[] {
   if (group.length === 0 || items.length === 0) return [];
 
-  const groupFavorites = new Set(group.flatMap((p) => p.favorites));
+  const groupFavorites = groupFavoriteKeys(group);
   if (groupFavorites.size === 0) return [];
 
   // Score every item.
   const scored = items.map((item) => {
     const matchedFavs = item.favoriteCategories.filter((fc) =>
-      groupFavorites.has(fc),
+      groupFavorites.has(favoriteKey(fc)),
     );
+    const matchedKeys = new Set(matchedFavs.map(favoriteKey));
     const pokemonCoverage = group.filter((p) =>
-      p.favorites.some((f) => matchedFavs.includes(f)),
+      p.favorites.some((f) => matchedKeys.has(favoriteKey(f))),
     ).length;
     return { item, score: matchedFavs.length, pokemonCoverage, matchedFavs };
   });

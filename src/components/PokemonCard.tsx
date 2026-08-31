@@ -26,6 +26,7 @@ import {
 import { getPokemonDisplayName } from "../services/pokemon-localization";
 import { useStore } from "../store/store";
 import type { Habitat, Pokemon } from "../types/types";
+import { favoriteKey } from "../utils/favorites";
 import { PokemonSpriteAvatar } from "./PokemonSpriteAvatar";
 import { SpecialtyChip } from "./SpecialtyChip";
 
@@ -99,11 +100,11 @@ export const PokemonCard = memo(function PokemonCard({
     }
     const copy = [...favs];
     copy.sort((a, b) => {
-      const ua = universalFavorites.has(a) ? 1 : 0;
-      const ub = universalFavorites.has(b) ? 1 : 0;
+      const ua = universalFavorites.has(favoriteKey(a)) ? 1 : 0;
+      const ub = universalFavorites.has(favoriteKey(b)) ? 1 : 0;
       if (ub !== ua) return ub - ua;
-      const sa = (favoriteCounts[a] ?? 0) >= 2 ? 1 : 0;
-      const sb = (favoriteCounts[b] ?? 0) >= 2 ? 1 : 0;
+      const sa = (favoriteCounts[favoriteKey(a)] ?? 0) >= 2 ? 1 : 0;
+      const sb = (favoriteCounts[favoriteKey(b)] ?? 0) >= 2 ? 1 : 0;
       if (sb !== sa) return sb - sa;
       return a.localeCompare(b, undefined, { sensitivity: "base" });
     });
@@ -284,8 +285,9 @@ export const PokemonCard = memo(function PokemonCard({
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {sortedFavorites.map((fav) => {
-                const isUniversal = universalFavorites?.has(fav);
-                const isShared = (favoriteCounts?.[fav] ?? 0) >= 2;
+                const key = favoriteKey(fav);
+                const isUniversal = universalFavorites?.has(key);
+                const isShared = (favoriteCounts?.[key] ?? 0) >= 2;
 
                 return (
                   <FavoriteChip

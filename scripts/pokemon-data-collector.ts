@@ -26,6 +26,7 @@ import {
   writeTerminalProgressLine,
   type RobotsGroup,
 } from "./utility/script-utils";
+import { favoriteKey } from "../src/utils/favorites";
 
 const DEFAULT_OUT_PATH = path.join(APP_ROOT, "src", "assets", "pokedex.json");
 
@@ -41,13 +42,58 @@ interface DetailRow extends ListRow {
   favoritesRaw: string[];
 }
 
-// Correct inconsistent data -> DELETE if this is no longer needed
+// Correct inconsistent source labels. Known casing aliases are listed so a
+// category that appears only once still gets the majority spelling;
+// canonicalizeFavoriteCasing then folds any remaining mixed capitalization.
 function normalizeSerebiiValue(raw: string): string {
   const v = raw.trim();
   const lower = v.toLowerCase();
   if (lower === "slender objects") return "Slender objects";
   if (lower === "noise stuff") return "Noisy stuff";
+  if (lower === "lots of water") return "Lots of water";
+  if (lower === "group activities") return "Group Activities";
+  if (lower === "sour flavors") return "Sour flavors";
+  if (lower === "sweet flavors") return "Sweet flavors";
   return v;
+}
+
+/** Collapse mixed capitalization onto the most common spelling of each label. */
+function canonicalizeFavoriteCasing(entries: PokemonEntry[]): void {
+  const counts = new Map<string, Map<string, number>>();
+  const tally = (value: string | null | undefined): void => {
+    if (!value) return;
+    const key = favoriteKey(value);
+    let variants = counts.get(key);
+    if (!variants) {
+      variants = new Map();
+      counts.set(key, variants);
+    }
+    variants.set(value, (variants.get(value) ?? 0) + 1);
+  };
+  for (const entry of entries) {
+    for (const favorite of entry.favorites) tally(favorite);
+    tally(entry.favoriteFlavor);
+  }
+
+  const canonical = new Map<string, string>();
+  for (const [key, variants] of counts) {
+    let best = "";
+    let bestN = -1;
+    for (const [spelling, n] of variants) {
+      if (n > bestN || (n === bestN && spelling.localeCompare(best) < 0)) {
+        best = spelling;
+        bestN = n;
+      }
+    }
+    canonical.set(key, best);
+  }
+
+  const rewrite = (value: string): string =>
+    canonical.get(favoriteKey(value)) ?? value;
+  for (const entry of entries) {
+    entry.favorites = entry.favorites.map(rewrite);
+    if (entry.favoriteFlavor) entry.favoriteFlavor = rewrite(entry.favoriteFlavor);
+  }
 }
 
 interface LocalizedNames {
@@ -621,6 +667,12 @@ async function main(): Promise<void> {
     standardCount + eventCount,
   );
   basinEnriched = allEnrichedWithEvoPeers.slice(standardCount + eventCount);
+
+  canonicalizeFavoriteCasing([
+    ...standardEnriched,
+    ...eventEnriched,
+    ...basinEnriched,
+  ]);
 
   const payload: PokedexJson = {
     generatedAt: new Date().toISOString(),

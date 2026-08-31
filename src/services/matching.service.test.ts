@@ -221,6 +221,20 @@ describe("group scoring", () => {
     expect(groupScoreUpperBound(group)).toBe(6);
   });
 
+  it("treats favorite names as case-insensitive", () => {
+    const mixed = pokemon("horsea", 1, "Humid", ["Lots of Water", "Play spaces"]);
+    const canonical = pokemon("seadra", 2, "Humid", [
+      "Lots of water",
+      "Play spaces",
+    ]);
+    const unrelated = pokemon("charmander", 4, "Warm", ["Lots of fire"]);
+
+    expect(groupScore([mixed, canonical])).toBe(2);
+    expect(suggestNextPokemon([mixed], [canonical, unrelated])).toEqual([
+      { pokemon: canonical, score: 2 },
+    ]);
+  });
+
   it("deduplicates favorite tags and counts overlaps above the 32-bit boundary", () => {
     const fortyFavorites = Array.from({ length: 40 }, (_, index) => `tag-${index}`);
     const highBitFavorites = Array.from(

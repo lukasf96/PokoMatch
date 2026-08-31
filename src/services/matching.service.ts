@@ -1,4 +1,5 @@
 import type { Pokemon } from "../types/types";
+import { favoriteKey } from "../utils/favorites";
 import { habitatConflictMap } from "./habitat-conflicts";
 import { comparePokemonByDex } from "./pokemon";
 
@@ -43,8 +44,8 @@ function habitatBit(p: Pokemon): number {
 
 // ---------------------------------------------------------------------------
 // Favorites affinity — 64-bit bitmask split across two 32-bit ints (lo/hi).
-// The dex has 45 distinct favorites, comfortably under 64. sharedFavorites is a
-// popcount of the intersection.
+// The dex has fewer than 64 distinct favorites (case-insensitive). sharedFavorites
+// is a popcount of the intersection.
 // ---------------------------------------------------------------------------
 
 interface FavMasks {
@@ -61,10 +62,11 @@ function buildFavMasks(pokemon: Pokemon[]): FavMasks {
   const hi = new Int32Array(n);
   for (let i = 0; i < n; i++) {
     for (const f of pokemon[i].favorites) {
-      let b = vocab.get(f);
+      const key = favoriteKey(f);
+      let b = vocab.get(key);
       if (b === undefined) {
         b = nextBit++;
-        vocab.set(f, b);
+        vocab.set(key, b);
       }
       if (b < 32) lo[i] |= 1 << b;
       else if (b < 64) hi[i] |= 1 << (b - 32);

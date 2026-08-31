@@ -42,6 +42,7 @@ import {
   groupScore,
   groupScoreUpperBound,
 } from "../../../services/matching.service";
+import { favoriteKey } from "../../../utils/favorites";
 import {
   POKOPIA_LOCATIONS,
   type Habitat,
@@ -80,9 +81,9 @@ interface GroupCardProps {
 
 function favoritesEveryoneLikes(group: Pokemon[]): Set<string> {
   if (group.length < 2) return new Set();
-  let intersection = new Set(group[0].favorites);
+  let intersection = new Set(group[0].favorites.map(favoriteKey));
   for (let i = 1; i < group.length; i++) {
-    const next = new Set(group[i].favorites);
+    const next = new Set(group[i].favorites.map(favoriteKey));
     intersection = new Set([...intersection].filter((f) => next.has(f)));
   }
   return intersection;
@@ -183,7 +184,8 @@ function GroupCardComponent({
   } = useMemo(() => {
     const allFavs = group.flatMap((p) => p.favorites);
     const counts = allFavs.reduce<Record<string, number>>((acc, f) => {
-      acc[f] = (acc[f] ?? 0) + 1;
+      const key = favoriteKey(f);
+      acc[key] = (acc[key] ?? 0) + 1;
       return acc;
     }, {});
     const rawScore = groupScore(group);

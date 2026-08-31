@@ -15,6 +15,7 @@ import {
 import { alpha } from "@mui/material/styles";
 import { memo } from "react";
 import type { SuggestedItem } from "../../../types/types";
+import { favoriteKey } from "../../../utils/favorites";
 
 /** Pill showing one favorite category — primary-tinted if matched, muted if not. */
 function FavoriteChip({ label, matched }: { label: string; matched: boolean }) {
@@ -92,7 +93,7 @@ function ItemRow({
             <FavoriteChip
               key={fc}
               label={fc}
-              matched={groupFavorites.has(fc)}
+              matched={groupFavorites.has(favoriteKey(fc))}
             />
           ))}
         </Box>
@@ -132,6 +133,7 @@ interface SuggestedItemsDialogProps {
   open: boolean;
   onClose: () => void;
   suggestions: SuggestedItem[];
+  /** Favorite labels present in the group, stored as {@link favoriteKey} values. */
   groupFavorites: Set<string>;
   groupSize: number;
 }

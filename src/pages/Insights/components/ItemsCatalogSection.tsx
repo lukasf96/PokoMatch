@@ -22,6 +22,7 @@ import { alpha, type Theme } from "@mui/material/styles";
 import { memo, useDeferredValue, useMemo, useState } from "react";
 import { itemsCatalogGeneratedAt } from "../../../services/items";
 import type { Item } from "../../../types/types";
+import { favoriteKey } from "../../../utils/favorites";
 import { MatchHighlight } from "../../../utils/MatchHighlight";
 import {
   normalizeForSearch,
@@ -141,7 +142,10 @@ function itemPassesDropdowns(
   if (favorite !== FILTER_ALL) {
     if (favorite === FILTER_NO_FAV) {
       if (item.favoriteCategories.length > 0) return false;
-    } else if (!item.favoriteCategories.includes(favorite)) return false;
+    } else if (
+      !item.favoriteCategories.some((fc) => favoriteKey(fc) === favoriteKey(favorite))
+    )
+      return false;
   }
   return true;
 }

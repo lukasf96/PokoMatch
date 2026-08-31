@@ -12,12 +12,14 @@ import {
 import { alpha } from "@mui/material/styles";
 import { memo, useState } from "react";
 import type { SuggestedItem } from "../../../types/types";
+import { favoriteKey } from "../../../utils/favorites";
 import { SuggestedItemsDialog } from "./SuggestedItemsDialog";
 
 const PREVIEW_COUNT = 5;
 
 interface SuggestedItemsPanelProps {
   suggestions: SuggestedItem[];
+  /** Favorite labels present in the group, stored as {@link favoriteKey} values. */
   groupFavorites: Set<string>;
   groupSize: number;
 }
@@ -51,7 +53,7 @@ function ItemTooltipContent({
       </Stack>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.4 }}>
         {item.favoriteCategories.map((fc) => {
-          const matched = groupFavorites.has(fc);
+          const matched = groupFavorites.has(favoriteKey(fc));
           return (
             <Chip
               key={fc}

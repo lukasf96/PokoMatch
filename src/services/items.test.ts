@@ -41,6 +41,18 @@ describe("suggestItemsForGroup", () => {
     ]);
   });
 
+  it("matches favorite categories case-insensitively", () => {
+    const group = [pokemon("horsea", ["Lots of Water"])];
+    const items = [
+      item("fountain", "Fountain", ["Lots of water"]),
+      item("unrelated", "Unrelated", ["Lots of fire"]),
+    ];
+
+    expect(suggestItemsForGroup(group, items)).toEqual([
+      { item: items[0], score: 1, pokemonCoverage: 1 },
+    ]);
+  });
+
   it("returns no suggestions without Pokemon, items, or group favorites", () => {
     const populatedItem = item("one", "One", ["A"]);
     expect(suggestItemsForGroup([], [populatedItem])).toEqual([]);

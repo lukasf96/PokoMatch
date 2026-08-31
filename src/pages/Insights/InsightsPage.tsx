@@ -4,6 +4,7 @@ import { DeferredMount } from "../../components/DeferredMount";
 import { allItems } from "../../services/items";
 import { allPokemon, isBasinDexPokemon } from "../../services/pokemon";
 import type { DexKind, Habitat, Pokemon } from "../../types/types";
+import { favoriteKey } from "../../utils/favorites";
 import { DistributionSection } from "./components/DistributionSection";
 import { IdealHabitats } from "./components/IdealHabitats";
 import { ItemsCatalogSection } from "./components/ItemsCatalogSection";
@@ -90,36 +91,44 @@ export default function InsightsPage() {
   }, []);
 
   const favorites = useMemo(() => {
-    const favoriteMap = allPokemon.reduce<Record<string, Pokemon[]>>(
-      (acc, pokemon) => {
-        for (const favorite of pokemon.favorites)
-          (acc[favorite] ??= []).push(pokemon);
-        return acc;
-      },
-      {},
-    );
-    return Object.entries(favoriteMap)
-      .sort((a, b) => b[1].length - a[1].length)
+    const favoriteMap = new Map<
+      string,
+      { label: string; members: Pokemon[] }
+    >();
+    for (const pokemon of allPokemon) {
+      for (const favorite of pokemon.favorites) {
+        const key = favoriteKey(favorite);
+        const bucket = favoriteMap.get(key);
+        if (bucket) bucket.members.push(pokemon);
+        else favoriteMap.set(key, { label: favorite, members: [pokemon] });
+      }
+    }
+    return [...favoriteMap.values()]
+      .sort((a, b) => b.members.length - a.members.length)
       .map(
-        ([favorite, members]) =>
-          [favorite, members.slice().sort(sortByDexOrder)] as const,
+        ({ label, members }) =>
+          [label, members.slice().sort(sortByDexOrder)] as const,
       );
   }, []);
 
   const flavors = useMemo(() => {
-    const flavorMap = allPokemon.reduce<Record<string, Pokemon[]>>(
-      (acc, pokemon) => {
-        if (!pokemon.favoriteFlavor) return acc;
-        (acc[pokemon.favoriteFlavor] ??= []).push(pokemon);
-        return acc;
-      },
-      {},
-    );
-    return Object.entries(flavorMap)
-      .sort((a, b) => b[1].length - a[1].length)
+    const flavorMap = new Map<string, { label: string; members: Pokemon[] }>();
+    for (const pokemon of allPokemon) {
+      if (!pokemon.favoriteFlavor) continue;
+      const key = favoriteKey(pokemon.favoriteFlavor);
+      const bucket = flavorMap.get(key);
+      if (bucket) bucket.members.push(pokemon);
+      else
+        flavorMap.set(key, {
+          label: pokemon.favoriteFlavor,
+          members: [pokemon],
+        });
+    }
+    return [...flavorMap.values()]
+      .sort((a, b) => b.members.length - a.members.length)
       .map(
-        ([flavor, members]) =>
-          [flavor, members.slice().sort(sortByDexOrder)] as const,
+        ({ label, members }) =>
+          [label, members.slice().sort(sortByDexOrder)] as const,
       );
   }, []);
 
@@ -142,9 +151,11 @@ export default function InsightsPage() {
   const uniqueFavoritesCount = useMemo(() => {
     const unique = new Set<string>();
     for (const pokemon of allPokemon) {
-      for (const favorite of pokemon.favorites) unique.add(favorite);
+      for (const favorite of pokemon.favorites)
+        unique.add(favoriteKey(favorite));
       // Treat "favoriteFlavor" as a taste/favorite too.
-      if (pokemon.favoriteFlavor) unique.add(pokemon.favoriteFlavor);
+      if (pokemon.favoriteFlavor)
+        unique.add(favoriteKey(pokemon.favoriteFlavor));
     }
     return unique.size;
   }, []);

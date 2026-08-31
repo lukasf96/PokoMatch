@@ -40,6 +40,7 @@ import type {
   PokopiaLocation,
   SuggestedItem,
 } from "../../../types/types";
+import { groupFavoriteKeys } from "../../../utils/favorites";
 import { getDisplayHabitat } from "../group-helpers";
 import { AddPokemonToGroupAutocomplete } from "./AddPokemonToGroupAutocomplete";
 import GroupCard from "./GroupCard";
@@ -113,7 +114,7 @@ const CustomGroupRow = memo(function CustomGroupRow({
   );
 
   const groupFavorites = useMemo(
-    () => new Set(group.members.flatMap((p) => p.favorites)),
+    () => groupFavoriteKeys(group.members),
     [group.members],
   );
 

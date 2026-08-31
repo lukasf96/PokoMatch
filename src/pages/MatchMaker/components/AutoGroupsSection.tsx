@@ -24,6 +24,7 @@ import {
 import { InstantCollapse } from "../../../components/InstantCollapse";
 import { suggestItemsForGroup } from "../../../services/items";
 import type { Pokemon } from "../../../types/types";
+import { groupFavoriteKeys } from "../../../utils/favorites";
 import { getDisplayHabitat, groupStableKey } from "../group-helpers";
 import GroupCard from "./GroupCard";
 import { SuggestedItemsPanel } from "./SuggestedItemsPanel";
@@ -45,10 +46,7 @@ const AutoGroupRow = memo(function AutoGroupRow({
   onQuickAddGroup,
 }: AutoGroupRowProps) {
   const itemSuggestions = useMemo(() => suggestItemsForGroup(group), [group]);
-  const groupFavorites = useMemo(
-    () => new Set(group.flatMap((p) => p.favorites)),
-    [group],
-  );
+  const groupFavorites = useMemo(() => groupFavoriteKeys(group), [group]);
   const habitat = useMemo(() => getDisplayHabitat(group), [group]);
   const handleQuickAdd = useCallback(
     () => onQuickAddGroup(group),

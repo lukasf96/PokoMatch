@@ -6,6 +6,7 @@
  */
 import { readFile } from "node:fs/promises";
 import { resolveAppAssetPath } from "./utility/script-utils";
+import { favoriteKey } from "../src/utils/favorites";
 
 const POKEDEX_PATH = resolveAppAssetPath("pokedex.json");
 const ITEMS_PATH = resolveAppAssetPath("items.json");
@@ -54,7 +55,7 @@ async function main(): Promise<void> {
     ...pokedex.event,
     ...pokedex.basin,
   ]) {
-    for (const fav of entry.favorites) knownFavorites.add(fav);
+    for (const fav of entry.favorites) knownFavorites.add(favoriteKey(fav));
   }
 
   console.error(`Known favorite strings: ${String(knownFavorites.size)}`);
@@ -117,9 +118,10 @@ async function main(): Promise<void> {
         });
         continue;
       }
-      if (seenFavorites.has(favorite)) duplicateFavorites.add(favorite);
-      seenFavorites.add(favorite);
-      if (!knownFavorites.has(favorite)) unknownFavorites.add(favorite);
+      const key = favoriteKey(favorite);
+      if (seenFavorites.has(key)) duplicateFavorites.add(favorite);
+      seenFavorites.add(key);
+      if (!knownFavorites.has(key)) unknownFavorites.add(favorite);
     }
 
     if (duplicateFavorites.size > 0) {

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Habitat, Pokemon } from "../types/types";
+import { favoriteKey } from "../utils/favorites";
 import {
   getGroupConflicts,
   getGroupHabitats,
@@ -60,6 +61,24 @@ describe("habitat helpers", () => {
 });
 
 describe("Pokemon catalog helpers", () => {
+  it("uses a single canonical spelling for each favorite and flavor", () => {
+    const byKey = new Map<string, Set<string>>();
+    const add = (value: string | undefined): void => {
+      if (!value) return;
+      const key = favoriteKey(value);
+      const variants = byKey.get(key) ?? new Set();
+      variants.add(value);
+      byKey.set(key, variants);
+    };
+    for (const pokemon of allPokemon) {
+      for (const favorite of pokemon.favorites) add(favorite);
+      add(pokemon.favoriteFlavor);
+    }
+    for (const [key, variants] of byKey) {
+      expect([...variants], key).toHaveLength(1);
+    }
+  });
+
   it("assembles the typed catalogs and excludes explicitly uninhabitable entries", () => {
     expect(allPokemon).toEqual([
       ...standardPokemon,

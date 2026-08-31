@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T05:50:54.366Z",
+  "generatedAt": "2026-08-31T21:02:18.518Z",
   "standard": [
     {
       "id": "001",
@@ -6352,9 +6352,9 @@
         "Shiny stuff",
         "Glass stuff",
         "Lots of nature",
-        "Group activities"
+        "Group Activities"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Barschwa",
         "fr": "Barpau"
@@ -6374,7 +6374,7 @@
         "Luxury",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Milotic",
         "fr": "Milobellus"
@@ -6416,7 +6416,7 @@
         "Sharp stuff",
         "Containers"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Austos",
         "fr": "Crustabri"
@@ -6430,11 +6430,11 @@
       "specialties": ["Water"],
       "idealHabitat": "Humid",
       "favorites": [
-        "Lots of Water",
+        "Lots of water",
         "Slender objects",
         "Spinning stuff",
         "Play spaces",
-        "Group activities"
+        "Group Activities"
       ],
       "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
@@ -6533,7 +6533,7 @@
         "Lots of water",
         "Sharp stuff",
         "Play spaces",
-        "Group activities",
+        "Group Activities",
         "Wobbly stuff"
       ],
       "favoriteFlavor": "Spicy flavors",
@@ -6576,7 +6576,7 @@
         "Luxury",
         "Nice breezes"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Impergator",
         "fr": "Aligatueur"
@@ -6714,7 +6714,7 @@
         "Sharp stuff",
         "Exercise",
         "Ocean vibes",
-        "Group activities"
+        "Group Activities"
       ],
       "favoriteFlavor": "Spicy flavors",
       "localizedNames": {
@@ -6833,10 +6833,10 @@
         "Lots of water",
         "Cute stuff",
         "Healing",
-        "Group activities",
+        "Group Activities",
         "Play spaces"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Liebiskus",
         "fr": "Lovdisc"
@@ -6854,7 +6854,7 @@
         "Soft stuff",
         "Spinning stuff",
         "Play spaces",
-        "Group activities"
+        "Group Activities"
       ],
       "favoriteFlavor": "Dry flavors",
       "localizedNames": {
@@ -6896,7 +6896,7 @@
         "Glass stuff",
         "Fabric"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Finneon",
         "fr": "Écayon"
@@ -6914,7 +6914,7 @@
         "Colorful stuff",
         "Shiny stuff",
         "Glass stuff",
-        "Group activities"
+        "Group Activities"
       ],
       "favoriteFlavor": "Dry flavors",
       "localizedNames": {
@@ -6936,7 +6936,7 @@
         "Watching stuff",
         "Fabric"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Quabbel",
         "fr": "Viskuse"
@@ -6956,7 +6956,7 @@
         "Watching stuff",
         "Fabric"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Quabbel",
         "fr": "Viskuse"
@@ -6976,7 +6976,7 @@
         "Rides",
         "Luxury"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Apoquallyp",
         "fr": "Moyade"
@@ -7016,7 +7016,7 @@
         "Colorful stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Mamolida",
         "fr": "Mamanbo"
@@ -7056,7 +7056,7 @@
         "Spinning stuff",
         "Noisy stuff"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Iscalar",
         "fr": "Sepiatop"
@@ -7076,7 +7076,7 @@
         "Spooky stuff",
         "Letters and words"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Calamanero",
         "fr": "Sepiatroce"
@@ -7096,7 +7096,7 @@
         "Round stuff",
         "Shiny stuff"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Robball",
         "fr": "Otaquin"
@@ -7112,11 +7112,11 @@
       "favorites": [
         "Lots of water",
         "Play spaces",
-        "Group activities",
+        "Group Activities",
         "Noisy stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Marikeck",
         "fr": "Otarlette"
@@ -7136,7 +7136,7 @@
         "Noisy stuff",
         "Cleanliness"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Primarene",
         "fr": "Oratoria"
@@ -7192,7 +7192,7 @@
       "favorites": [
         "Lots of nature",
         "Lots of water",
-        "Group activities",
+        "Group Activities",
         "Garbage",
         "Ocean vibes"
       ],
@@ -7236,7 +7236,7 @@
         "Hard stuff",
         "Watching stuff"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Knirfish",
         "fr": "Denticrisse"
@@ -7276,7 +7276,7 @@
         "Lots of nature",
         "Fabric"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Kamehaps",
         "fr": "Khélocrok"
@@ -7296,7 +7296,7 @@
         "Stone stuff",
         "Exercise"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Kamalm",
         "fr": "Torgamord"
@@ -7333,7 +7333,7 @@
         "Lots of water",
         "Gatherings",
         "Slender objects",
-        "Group activities",
+        "Group Activities",
         "Lots of dirt"
       ],
       "favoriteFlavor": "Dry flavors",
@@ -7353,10 +7353,10 @@
         "Lots of water",
         "Gatherings",
         "Slender objects",
-        "Group activities",
+        "Group Activities",
         "Stone stuff"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Schligdri",
         "fr": "Triopikeau"
@@ -7376,7 +7376,7 @@
         "Exercise",
         "Rides"
       ],
-      "favoriteFlavor": "Sweet Flavors",
+      "favoriteFlavor": "Sweet flavors",
       "localizedNames": {
         "de": "Agiluza",
         "fr": "Délestin"
@@ -7396,7 +7396,7 @@
         "Soft stuff",
         "Round stuff"
       ],
-      "favoriteFlavor": "Sour Flavors",
+      "favoriteFlavor": "Sour flavors",
       "localizedNames": {
         "de": "Phione",
         "fr": "Phione"
