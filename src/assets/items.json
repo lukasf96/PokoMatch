@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T10:26:31.473Z",
+  "generatedAt": "2026-09-04T15:14:11.404Z",
   "items": [
     {
       "id": "honey",
@@ -403,6 +403,20 @@
     {
       "id": "buried-pearl",
       "name": "Buried pearl",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "prism-scale",
+      "name": "Prism scale",
+      "category": "Materials",
+      "tag": "",
+      "favoriteCategories": ["Shiny stuff"]
+    },
+    {
+      "id": "prism-scale-outdoors",
+      "name": "Prism scale (outdoors)",
       "category": "Materials",
       "tag": "",
       "favoriteCategories": []
