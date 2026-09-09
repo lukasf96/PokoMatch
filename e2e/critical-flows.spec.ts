@@ -73,3 +73,36 @@ test("production route chunks render through the primary navigation", async ({ p
   await expect(page).toHaveURL(/\/pokedex$/);
   await expect(page.getByRole("heading", { name: "Pokopia Pokédex" })).toBeVisible();
 });
+
+test("public routes contain useful HTML and metadata before JavaScript runs", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  const routes = [
+    ["/", "Pokopia Habitat Planner & Match‑Maker"],
+    ["/matchmaker", "Match Maker"],
+    ["/insights", "Pokopia Insights"],
+    ["/pokedex", "Pokopia Pokédex"],
+    [
+      "/pokopia-habitat-roommates",
+      "Pokopia habitats and roommates: a simple way to plan a happy home",
+    ],
+    [
+      "/pokopia-specialty-groups",
+      "Pokopia specialty groups: build a factory district without sacrificing comfort",
+    ],
+  ] as const;
+
+  for (const [path, heading] of routes) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://pokomatch.com${path}`,
+    );
+    await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
+  }
+
+  await context.close();
+});

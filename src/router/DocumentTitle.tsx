@@ -1,40 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { appRoutes } from "./routes";
-
-const DEFAULT_TITLE =
-  "PokoMatch | Pokémon Pokopia Habitat Planner & Roommate Matchmaker";
-
-const routeTitles: Record<string, string> = {
-  [appRoutes.home]: DEFAULT_TITLE,
-  [appRoutes.matchmaker]:
-    "Match Maker | Pokopia Habitat Roommate Planner — PokoMatch",
-  [appRoutes.insights]:
-    "Insights | Pokopia Habitats, Favorites & Items — PokoMatch",
-  [appRoutes.pokedex]:
-    "Pokédex | Standard, Event & Basin Dex for Pokopia — PokoMatch",
-  [appRoutes.habitatGuide]:
-    "Pokopia Habitat & Roommate Compatibility Guide — PokoMatch",
-  [appRoutes.specialtyGuide]:
-    "Pokopia Specialty Groups & Factory Guide — PokoMatch",
-};
-
-const defaultDescription =
-  "Free Pokopia habitat planner and roommate matchmaker for Pokémon Pokopia. Build compatible habitat groups and plan a happier island.";
-
-const routeDescriptions: Record<string, string> = {
-  [appRoutes.home]: defaultDescription,
-  [appRoutes.matchmaker]:
-    "Find compatible Pokopia roommates with shared favorites and habitat fit. Build groups of up to four Pokémon with PokoMatch.",
-  [appRoutes.insights]:
-    "Explore Pokopia habitats, favorites, specialties, and items to plan happier Pokémon homes.",
-  [appRoutes.pokedex]:
-    "Browse and track Standard, Event, and Basin Pokémon in the Pokopia Pokédex.",
-  [appRoutes.habitatGuide]:
-    "A practical Pokopia habitat and roommate compatibility guide: avoid conflicts, match favorites, and plan homes that work.",
-  [appRoutes.specialtyGuide]:
-    "Plan practical Pokopia specialty groups and factory neighborhoods while keeping compatible Pokémon together.",
-};
+import { getPageMetadata } from "./metadata";
 
 function setMeta(selector: string, attribute: "name" | "property", value: string) {
   const element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -52,9 +18,7 @@ export function DocumentTitle() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const title = routeTitles[pathname] ?? DEFAULT_TITLE;
-    const description = routeDescriptions[pathname] ?? defaultDescription;
-    const canonicalUrl = `https://pokomatch.com${pathname === "/" ? "/" : pathname}`;
+    const { title, description, canonicalUrl } = getPageMetadata(pathname);
 
     document.title = title;
     setMeta('meta[name="description"]', "name", description);

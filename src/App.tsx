@@ -1,15 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./Layout";
+import { AppShell } from "./AppShell";
 import AppRouter from "./router/AppRouter";
-import { DocumentTitle } from "./router/DocumentTitle";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <DocumentTitle />
-      <Layout>
+      <AppShell>
         <AppRouter />
-      </Layout>
+      </AppShell>
     </BrowserRouter>
   );
 }

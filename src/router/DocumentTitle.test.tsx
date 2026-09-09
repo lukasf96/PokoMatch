@@ -12,6 +12,10 @@ describe("DocumentTitle", () => {
       "/matchmaker",
       "Match Maker | Pokopia Habitat Roommate Planner — PokoMatch",
     ],
+    [
+      "/matchmaker/",
+      "Match Maker | Pokopia Habitat Roommate Planner — PokoMatch",
+    ],
     ["/insights", "Insights | Pokopia Habitats, Favorites & Items — PokoMatch"],
     ["/pokedex", "Pokédex | Standard, Event & Basin Dex for Pokopia — PokoMatch"],
     [

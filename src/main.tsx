@@ -1,17 +1,20 @@
 import { CssBaseline } from "@mui/material";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { AppErrorBoundary } from "./components/AppErrorBoundary.tsx";
 import { AppThemeProvider } from "./components/AppThemeProvider.tsx";
+import { StoreHydrator } from "./components/StoreHydrator.tsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
+hydrateRoot(document.getElementById("root")!,
   <StrictMode>
     <AppThemeProvider>
       <CssBaseline />
       <AppErrorBoundary>
-        <App />
+        <StoreHydrator>
+          <App />
+        </StoreHydrator>
       </AppErrorBoundary>
     </AppThemeProvider>
   </StrictMode>,

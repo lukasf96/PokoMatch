@@ -109,7 +109,9 @@ export default function MatcherPage() {
     null,
   );
   const [sharedGroup, setSharedGroup] = useState(() =>
-    readSharedGroup(window.location.search, habitablePokemon),
+    typeof window === "undefined"
+      ? null
+      : readSharedGroup(window.location.search, habitablePokemon),
   );
   const sharedPokemon = useMemo(() => {
     if (!sharedGroup) return [];

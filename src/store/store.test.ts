@@ -41,7 +41,8 @@ describe("persisted store", () => {
       }),
     );
 
-    const { useStore } = await import("./store");
+    const { rehydrateStore, useStore } = await import("./store");
+    await rehydrateStore();
     const state = useStore.getState();
 
     expect(state.unlockedIds).toEqual(new Set(["001", "004"]));
