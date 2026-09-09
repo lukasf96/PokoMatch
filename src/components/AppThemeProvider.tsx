@@ -1,5 +1,5 @@
 import { ThemeProvider, useMediaQuery } from "@mui/material";
-import { useMemo, type ReactNode } from "react";
+import { useDeferredValue, useMemo, type ReactNode } from "react";
 import { useStore } from "../store/store";
 import { createAppTheme } from "../theme";
 
@@ -14,7 +14,9 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const resolvedMode =
     themeMode === "system" ? (prefersDarkMode ? "dark" : "light") : themeMode;
-  const theme = useMemo(() => createAppTheme(resolvedMode), [resolvedMode]);
+  // Theme changes must not interrupt a route Suspense boundary still hydrating.
+  const deferredMode = useDeferredValue(resolvedMode, "light");
+  const theme = useMemo(() => createAppTheme(deferredMode), [deferredMode]);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

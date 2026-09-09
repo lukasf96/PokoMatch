@@ -628,7 +628,7 @@ function PokedexSection({
       elevation={0}
       expanded={expanded}
       onChange={onExpandedChange}
-      slots={{ transition: InstantCollapse }}
+      slots={{ transition: InstantCollapse, heading: "h2" }}
       sx={{
         scrollMarginTop: 88,
         overflow: "hidden",
@@ -669,7 +669,7 @@ function PokedexSection({
           <Stack spacing={0.25} sx={{ minWidth: 0 }}>
             <Typography
               variant="h6"
-              component="h2"
+              component="span"
               sx={{
                 fontWeight: 700,
                 fontSize: { xs: "1rem", sm: "1.25rem" },
@@ -686,42 +686,38 @@ function PokedexSection({
               {subtitle}
             </Typography>
           </Stack>
-
-          <Stack
-            direction="row"
-            spacing={1}
-            onClick={(e) => e.stopPropagation()}
-            onFocus={(e) => e.stopPropagation()}
-            onMouseDown={(e) => e.stopPropagation()}
-            sx={{
-              flexShrink: 0,
-              alignItems: "center",
-            }}
-          >
-            <Button
-              size="small"
-              variant="outlined"
-              onClick={() => onUnlockSection(sectionIds)}
-              sx={{ whiteSpace: "nowrap" }}
-            >
-              Unlock all
-            </Button>
-            <Button
-              size="small"
-              variant="outlined"
-              color="warning"
-              onClick={() => onLockSection(sectionIds)}
-              sx={{ whiteSpace: "nowrap" }}
-            >
-              Lock all
-            </Button>
-          </Stack>
         </Stack>
       </AccordionSummary>
       <AccordionDetails
         id={`${id}-content`}
         sx={{ px: { xs: 1.25, sm: 1.5 }, pt: 0, pb: { xs: 1.5, sm: 2 } }}
       >
+        <Stack
+          direction="row"
+          spacing={1}
+          sx={{
+            mb: 1.5,
+            alignItems: "center",
+          }}
+        >
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={() => onUnlockSection(sectionIds)}
+            sx={{ whiteSpace: "nowrap" }}
+          >
+            Unlock all
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            color="warning"
+            onClick={() => onLockSection(sectionIds)}
+            sx={{ whiteSpace: "nowrap" }}
+          >
+            Lock all
+          </Button>
+        </Stack>
         <PokedexGrid
           pokemon={pokemon}
           interactive={interactive}

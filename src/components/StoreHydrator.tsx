@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from "react";
 import { rehydrateStore } from "../store/store";
 
-/** Restores browser-only persisted state after the server HTML has hydrated. */
+/** Keep inside the route Suspense boundary so saved state restores only after it hydrates. */
 export function StoreHydrator({ children }: { children: ReactNode }) {
   useEffect(() => {
     void rehydrateStore();

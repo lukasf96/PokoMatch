@@ -35,7 +35,7 @@ export default function Layout({ children }: LayoutProps) {
     setPendingPath(null);
   }, [pathname]);
 
-  const displayPath = pendingPath ?? pathname;
+  const displayPath = (pendingPath ?? pathname).replace(/\/+$/, "") || "/";
   const isHomeActive = displayPath === appRoutes.home;
   const isMatchMakerActive = displayPath === appRoutes.matchmaker;
   const isInsightsActive = displayPath === appRoutes.insights;

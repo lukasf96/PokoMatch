@@ -9,6 +9,7 @@ import {
   PokedexPage,
   SpecialtyGroupsGuidePage,
 } from "./lazyPages";
+import { StoreHydrator } from "../components/StoreHydrator";
 import { appRoutes } from "./routes";
 
 function RouteFallback() {
@@ -29,21 +30,23 @@ function RouteFallback() {
 export default function AppRouter() {
   return (
     <Suspense fallback={<RouteFallback />}>
-    <Routes>
-      <Route path={appRoutes.home} element={<HomePage />} />
-      <Route path={appRoutes.matchmaker} element={<MatcherPage />} />
-      <Route path={appRoutes.insights} element={<InsightsPage />} />
-      <Route path={appRoutes.pokedex} element={<PokedexPage />} />
-      <Route
-        path={appRoutes.habitatGuide}
-        element={<HabitatRoommateGuidePage />}
-      />
-      <Route
-        path={appRoutes.specialtyGuide}
-        element={<SpecialtyGroupsGuidePage />}
-      />
-      <Route path="*" element={<Navigate to={appRoutes.home} replace />} />
-    </Routes>
+      <StoreHydrator>
+        <Routes>
+          <Route path={appRoutes.home} element={<HomePage />} />
+          <Route path={appRoutes.matchmaker} element={<MatcherPage />} />
+          <Route path={appRoutes.insights} element={<InsightsPage />} />
+          <Route path={appRoutes.pokedex} element={<PokedexPage />} />
+          <Route
+            path={appRoutes.habitatGuide}
+            element={<HabitatRoommateGuidePage />}
+          />
+          <Route
+            path={appRoutes.specialtyGuide}
+            element={<SpecialtyGroupsGuidePage />}
+          />
+          <Route path="*" element={<Navigate to={appRoutes.home} replace />} />
+        </Routes>
+      </StoreHydrator>
     </Suspense>
   );
 }
