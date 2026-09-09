@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, type ElementType } from "react";
 import { Route, Routes } from "react-router-dom";
 import HabitatRoommateGuidePage from "../pages/Guides/HabitatRoommateGuidePage";
 import SpecialtyGroupsGuidePage from "../pages/Guides/SpecialtyGroupsGuidePage";
@@ -6,7 +6,16 @@ import HomePage from "../pages/Home/HomePage";
 import InsightsPage from "../pages/Insights/InsightsPage";
 import MatcherPage from "../pages/MatchMaker/MatcherPage";
 import PokedexPage from "../pages/Pokedex/PokedexPage";
-import { appRoutes } from "./routes";
+import { appRouteEntries, type AppRouteId } from "./routes";
+
+const routeComponents: Record<AppRouteId, ElementType> = {
+  home: HomePage,
+  matchmaker: MatcherPage,
+  insights: InsightsPage,
+  pokedex: PokedexPage,
+  habitatGuide: HabitatRoommateGuidePage,
+  specialtyGuide: SpecialtyGroupsGuidePage,
+};
 
 /** Eager route tree used only while generating HTML at build time. */
 export function ServerAppRouter() {
@@ -14,12 +23,10 @@ export function ServerAppRouter() {
     // Match the client boundary even though these build-time imports are eager.
     <Suspense fallback={null}>
       <Routes>
-        <Route path={appRoutes.home} element={<HomePage />} />
-        <Route path={appRoutes.matchmaker} element={<MatcherPage />} />
-        <Route path={appRoutes.insights} element={<InsightsPage />} />
-        <Route path={appRoutes.pokedex} element={<PokedexPage />} />
-        <Route path={appRoutes.habitatGuide} element={<HabitatRoommateGuidePage />} />
-        <Route path={appRoutes.specialtyGuide} element={<SpecialtyGroupsGuidePage />} />
+        {appRouteEntries.map(([id, route]) => {
+          const Component = routeComponents[id];
+          return <Route key={id} path={route.path} element={<Component />} />;
+        })}
       </Routes>
     </Suspense>
   );
