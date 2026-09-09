@@ -12,7 +12,6 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { LayoutSettingsMenu } from "./components/layout-settings-menu/LayoutSettingsMenu";
-import { preloadRoute } from "./router/lazyPages";
 import { appRoutes } from "./router/routes";
 import { allPokemon } from "./services/pokemon";
 import { useStore } from "./store/store";
@@ -21,9 +20,12 @@ const TOTAL_POKEMON = allPokemon.length;
 
 interface LayoutProps {
   children: React.ReactNode;
+  preloadRoute?: (path: string) => void;
 }
 
-export default function Layout({ children }: LayoutProps) {
+const noopPreload = () => {};
+
+export default function Layout({ children, preloadRoute = noopPreload }: LayoutProps) {
   const unlockedCount = useStore((s) => s.unlockedIds.size);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ export default function Layout({ children }: LayoutProps) {
     }
     const handle = window.setTimeout(prefetch, 1200);
     return () => window.clearTimeout(handle);
-  }, [pathname]);
+  }, [pathname, preloadRoute]);
 
   const goTo = (to: string) => {
     if (to === pathname) return;
@@ -175,6 +177,7 @@ export default function Layout({ children }: LayoutProps) {
             to={appRoutes.home}
             icon={<HomeOutlined fontSize="inherit" />}
             onNavigate={goTo}
+            preloadRoute={preloadRoute}
           >
             Home
           </NavItem>
@@ -183,6 +186,7 @@ export default function Layout({ children }: LayoutProps) {
             to={appRoutes.matchmaker}
             icon={<AutoFixHighOutlined fontSize="inherit" />}
             onNavigate={goTo}
+            preloadRoute={preloadRoute}
           >
             Match-Maker
           </NavItem>
@@ -191,6 +195,7 @@ export default function Layout({ children }: LayoutProps) {
             to={appRoutes.insights}
             icon={<DashboardOutlined fontSize="inherit" />}
             onNavigate={goTo}
+            preloadRoute={preloadRoute}
           >
             Insights
           </NavItem>
@@ -199,6 +204,7 @@ export default function Layout({ children }: LayoutProps) {
             to={appRoutes.pokedex}
             icon={<CatchingPokemonOutlined fontSize="inherit" />}
             onNavigate={goTo}
+            preloadRoute={preloadRoute}
           >
             Pokédex
             <Chip
@@ -228,12 +234,14 @@ function NavItem({
   to,
   icon,
   onNavigate,
+  preloadRoute,
   children,
 }: {
   active: boolean;
   to: string;
   icon: React.ReactNode;
   onNavigate: (to: string) => void;
+  preloadRoute: (path: string) => void;
   children: React.ReactNode;
 }) {
   return (

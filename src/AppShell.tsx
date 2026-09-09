@@ -2,11 +2,14 @@ import type { ReactNode } from "react";
 import Layout from "./Layout";
 import { DocumentTitle } from "./router/DocumentTitle";
 
-export function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({ children, preloadRoute }: {
+  children: ReactNode;
+  preloadRoute?: (path: string) => void;
+}) {
   return (
     <>
       <DocumentTitle />
-      <Layout>{children}</Layout>
+      <Layout preloadRoute={preloadRoute}>{children}</Layout>
     </>
   );
 }
