@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T21:02:18.518Z",
+  "generatedAt": "2026-11-14T20:36:02.060Z",
   "standard": [
     {
       "id": "001",
@@ -6380,6 +6380,46 @@
         "fr": "Milobellus"
       },
       "evolutionLinePeerIds": ["e006"]
+    },
+    {
+      "id": "e008",
+      "dexNumber": "008",
+      "name": "Pumpkaboo",
+      "specialties": ["Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Spooky stuff",
+        "Lots of nature",
+        "Pretty flowers",
+        "Group Activities",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Irrbis",
+        "fr": "Pitrouille"
+      },
+      "evolutionLinePeerIds": ["e009"]
+    },
+    {
+      "id": "e009",
+      "dexNumber": "009",
+      "name": "Gourgeist",
+      "specialties": ["Hype", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Spooky stuff",
+        "Lots of nature",
+        "Pretty flowers",
+        "Group Activities",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pumpdjinn",
+        "fr": "Banshitrouye"
+      },
+      "evolutionLinePeerIds": ["e008"]
     }
   ],
   "basin": [

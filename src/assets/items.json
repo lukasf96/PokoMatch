@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T15:14:11.404Z",
+  "generatedAt": "2026-11-14T20:36:05.778Z",
   "items": [
     {
       "id": "honey",
@@ -828,6 +828,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "pumpkin-candy",
+      "name": "Pumpkin candy",
+      "category": "Food",
+      "tag": "Food",
+      "favoriteCategories": []
+    },
+    {
       "id": "storage-box",
       "name": "Storage box",
       "category": "Furniture",
@@ -1096,7 +1103,7 @@
       "id": "food-counter",
       "name": "Food counter",
       "category": "Furniture",
-      "tag": "Decoration",
+      "tag": "",
       "favoriteCategories": ["Wooden stuff"]
     },
     {
@@ -1995,13 +2002,6 @@
       "favoriteCategories": []
     },
     {
-      "id": "decorative-pok-ball",
-      "name": "Decorative Poké Ball",
-      "category": "Furniture",
-      "tag": "Decoration",
-      "favoriteCategories": ["Metal stuff", "Round stuff", "Watching stuff"]
-    },
-    {
       "id": "big-treasure-chest",
       "name": "Big treasure chest",
       "category": "Furniture",
@@ -2181,6 +2181,27 @@
         "Play spaces",
         "Soft stuff"
       ]
+    },
+    {
+      "id": "cofagrigus-locker",
+      "name": "Cofagrigus locker",
+      "category": "Furniture",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Blocky stuff",
+        "Containers",
+        "Luxury",
+        "Metal stuff",
+        "Shiny stuff",
+        "Spooky stuff"
+      ]
+    },
+    {
+      "id": "huge-table",
+      "name": "Huge table",
+      "category": "Furniture",
+      "tag": "",
+      "favoriteCategories": []
     },
     {
       "id": "wooden-plate",
@@ -3979,25 +4000,13 @@
       "id": "flower-backpack",
       "name": "Flower backpack",
       "category": "Misc.",
-      "tag": "",
+      "tag": "Decoration",
       "favoriteCategories": [
         "Containers",
         "Cute stuff",
         "Fabric",
         "Pretty flowers",
         "Soft stuff"
-      ]
-    },
-    {
-      "id": "inflatable-sudowoodo",
-      "name": "Inflatable Sudowoodo",
-      "category": "Misc.",
-      "tag": "Toy",
-      "favoriteCategories": [
-        "Slender objects",
-        "Strange stuff",
-        "Watching stuff",
-        "Wobbly stuff"
       ]
     },
     {
@@ -4033,26 +4042,6 @@
       "category": "Misc.",
       "tag": "Toy",
       "favoriteCategories": ["Containers", "Fabric", "Soft stuff"]
-    },
-    {
-      "id": "map-and-compass",
-      "name": "Map and compass",
-      "category": "Misc.",
-      "tag": "Toy",
-      "favoriteCategories": ["Group Activities", "Letters and words", "Symbols"]
-    },
-    {
-      "id": "treasure",
-      "name": "Treasure",
-      "category": "Misc.",
-      "tag": "Toy",
-      "favoriteCategories": [
-        "Colorful stuff",
-        "Group Activities",
-        "Luxury",
-        "Metal stuff",
-        "Stone stuff"
-      ]
     },
     {
       "id": "telescope",
@@ -4092,6 +4081,13 @@
         "Shiny stuff",
         "Watching stuff"
       ]
+    },
+    {
+      "id": "decorative-pok-ball",
+      "name": "Decorative Poké Ball",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": ["Metal stuff", "Round stuff", "Watching stuff"]
     },
     {
       "id": "teaware-set",
@@ -4346,6 +4342,7 @@
       "tag": "Toy",
       "favoriteCategories": [
         "Blocky stuff",
+        "Construction",
         "Containers",
         "Hard stuff",
         "Metal stuff"
@@ -4396,7 +4393,7 @@
       "name": "Wall-mounted tools",
       "category": "Misc.",
       "tag": "Toy",
-      "favoriteCategories": ["Colorful stuff", "Metal stuff"]
+      "favoriteCategories": ["Colorful stuff", "Construction", "Metal stuff"]
     },
     {
       "id": "chimecho-wind-chime",
@@ -4451,6 +4448,54 @@
         "Soft stuff",
         "Symbols",
         "Watching stuff"
+      ]
+    },
+    {
+      "id": "candy-bucket",
+      "name": "Candy bucket",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": [
+        "Containers",
+        "Cute stuff",
+        "Gatherings",
+        "Looks like food",
+        "Spooky stuff"
+      ]
+    },
+    {
+      "id": "fun-balloons",
+      "name": "Fun balloons",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Cute stuff",
+        "Gatherings",
+        "Play spaces",
+        "Round stuff",
+        "Spooky stuff",
+        "Wobbly stuff"
+      ]
+    },
+    {
+      "id": "ghost-smoke-projector",
+      "name": "Ghost smoke projector",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": ["Round stuff", "Spooky stuff", "Strange stuff"]
+    },
+    {
+      "id": "eerie-statue",
+      "name": "Eerie statue",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Letters and words",
+        "Spooky stuff",
+        "Stone stuff",
+        "Symbols",
+        "Wobbly stuff"
       ]
     },
     {
@@ -5128,6 +5173,38 @@
       "category": "Outdoor",
       "tag": "",
       "favoriteCategories": []
+    },
+    {
+      "id": "inflatable-sudowoodo",
+      "name": "Inflatable Sudowoodo",
+      "category": "Outdoor",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Slender objects",
+        "Strange stuff",
+        "Watching stuff",
+        "Wobbly stuff"
+      ]
+    },
+    {
+      "id": "map-and-compass",
+      "name": "Map and compass",
+      "category": "Outdoor",
+      "tag": "Toy",
+      "favoriteCategories": ["Group Activities", "Letters and words", "Symbols"]
+    },
+    {
+      "id": "treasure",
+      "name": "Treasure",
+      "category": "Outdoor",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Group Activities",
+        "Luxury",
+        "Metal stuff",
+        "Stone stuff"
+      ]
     },
     {
       "id": "cloud-cannon",
@@ -6276,6 +6353,44 @@
       "category": "Utilities",
       "tag": "Decoration",
       "favoriteCategories": ["Colorful stuff", "Electronics"]
+    },
+    {
+      "id": "trevenant-streetlight",
+      "name": "Trevenant streetlight",
+      "category": "Utilities",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Shiny stuff",
+        "Slender objects",
+        "Spooky stuff",
+        "Watching stuff"
+      ]
+    },
+    {
+      "id": "pumpkin-lantern",
+      "name": "Pumpkin lantern",
+      "category": "Utilities",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Looks like food",
+        "Round stuff",
+        "Shiny stuff",
+        "Spooky stuff",
+        "Watching stuff"
+      ]
+    },
+    {
+      "id": "pumpkin-lantern-tower",
+      "name": "Pumpkin lantern tower",
+      "category": "Utilities",
+      "tag": "Toy",
+      "favoriteCategories": [
+        "Looks like food",
+        "Round stuff",
+        "Shiny stuff",
+        "Spooky stuff",
+        "Watching stuff"
+      ]
     },
     {
       "id": "leppa-seeds",
@@ -8696,7 +8811,7 @@
       "id": "arch-bridge",
       "name": "Arch bridge",
       "category": "Buildings",
-      "tag": "",
+      "tag": "Road",
       "favoriteCategories": []
     },
     {
@@ -8840,8 +8955,8 @@
       "favoriteCategories": []
     },
     {
-      "id": "house-partition",
-      "name": "House partition",
+      "id": "house-partition-big",
+      "name": "House partition (big)",
       "category": "Buildings",
       "tag": "",
       "favoriteCategories": []
@@ -11297,6 +11412,13 @@
       "favoriteCategories": []
     },
     {
+      "id": "ocean-temple-kit",
+      "name": "Ocean temple kit",
+      "category": "Kits",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
       "id": "bouldery-badge",
       "name": "Bouldery Badge",
       "category": "Key Items",
@@ -13560,6 +13682,7 @@
       "category": "Other",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Complicated stuff",
         "Hard stuff",
         "Luxury",
         "Metal stuff",
@@ -13593,6 +13716,7 @@
       "category": "Other",
       "tag": "Decoration",
       "favoriteCategories": [
+        "Complicated stuff",
         "Hard stuff",
         "Luxury",
         "Metal stuff",
@@ -13807,7 +13931,7 @@
       "name": "The Sea",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": ["Round stuff"]
+      "favoriteCategories": []
     },
     {
       "id": "violet-city",
@@ -13877,7 +14001,7 @@
       "name": "Swampert squad rug",
       "category": "Other",
       "tag": "",
-      "favoriteCategories": []
+      "favoriteCategories": ["Round stuff"]
     },
     {
       "id": "ocean-pals-rug",
