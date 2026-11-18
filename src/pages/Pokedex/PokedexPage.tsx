@@ -24,6 +24,7 @@ import {
   useState,
   type SyntheticEvent,
 } from "react";
+import { AppToast, type ToastState } from "../../components/AppToast";
 import { contentSkeletonSx } from "../../components/ContentSkeleton";
 import {
   DeferredMount,
@@ -69,6 +70,39 @@ export default function PokedexPage() {
   const unlockMany = useStore((s) => s.unlockMany);
   const lockMany = useStore((s) => s.lockMany);
   const unlockedIds = useStore((s) => s.unlockedIds);
+  const [toast, setToast] = useState<ToastState>(null);
+
+  /** Run a bulk lock/unlock and offer to restore the previous roster. */
+  const withUndo = useCallback((change: () => void, message: string) => {
+    const previous = useStore.getState().unlockedIds;
+    change();
+    setToast({
+      message,
+      severity: "info",
+      action: {
+        label: "Undo",
+        onClick: () => useStore.setState({ unlockedIds: previous }),
+      },
+    });
+  }, []);
+  const handleUnlockAll = useCallback(
+    () => withUndo(unlockAll, "All Pokémon unlocked"),
+    [withUndo, unlockAll],
+  );
+  const handleLockAll = useCallback(
+    () => withUndo(lockAll, "All Pokémon locked"),
+    [withUndo, lockAll],
+  );
+  const handleUnlockSection = useCallback(
+    (ids: readonly string[]) =>
+      withUndo(() => unlockMany(ids), `${ids.length} Pokémon unlocked`),
+    [withUndo, unlockMany],
+  );
+  const handleLockSection = useCallback(
+    (ids: readonly string[]) =>
+      withUndo(() => lockMany(ids), `${ids.length} Pokémon locked`),
+    [withUndo, lockMany],
+  );
 
   const [search, setSearch] = useState("");
   const [habitatFilter, setHabitatFilter] = useState<Habitat | "all">("all");
@@ -282,7 +316,7 @@ export default function PokedexPage() {
           <Button
             size="small"
             variant="contained"
-            onClick={unlockAll}
+            onClick={handleUnlockAll}
             sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
           >
             Unlock all
@@ -291,7 +325,7 @@ export default function PokedexPage() {
             size="small"
             variant="contained"
             color="warning"
-            onClick={lockAll}
+            onClick={handleLockAll}
             sx={{ width: { xs: "100%", sm: "auto" }, whiteSpace: "nowrap" }}
           >
             Lock all
@@ -329,8 +363,8 @@ export default function PokedexPage() {
             unlockedIds={unlockedIds}
             expanded={expanded}
             onExpandedChange={handleSectionExpandedChange}
-            onUnlockSection={unlockMany}
-            onLockSection={lockMany}
+            onUnlockSection={handleUnlockSection}
+            onLockSection={handleLockSection}
           />
         ) : (
           <PokedexSectionsStatusFiltered
@@ -343,11 +377,12 @@ export default function PokedexPage() {
             unlockedIds={unlockedIds}
             expanded={expanded}
             onExpandedChange={handleSectionExpandedChange}
-            onUnlockSection={unlockMany}
-            onLockSection={lockMany}
+            onUnlockSection={handleUnlockSection}
+            onLockSection={handleLockSection}
           />
         )}
       </DeferredMountGate>
+      <AppToast toast={toast} onClose={() => setToast(null)} />
       <ScrollToTopFab />
     </Container>
   );
@@ -733,13 +768,20 @@ function HabitatToggleButton({ habitat }: { habitat: Habitat }) {
   const HabitatIcon = habitatIcons[habitat];
 
   return (
-    <ToggleButton value={habitat}>
+    <ToggleButton value={habitat} aria-label={habitat}>
       <Tooltip title={habitat}>
         <Box
           component="span"
-          sx={{ display: "inline-flex", alignItems: "center" }}
+          sx={{ display: "inline-flex", alignItems: "center", gap: 0.5 }}
         >
           <HabitatIcon sx={{ fontSize: 16 }} />
+          <Box
+            component="span"
+            aria-hidden
+            sx={{ display: { xs: "none", md: "inline" } }}
+          >
+            {habitat}
+          </Box>
         </Box>
       </Tooltip>
     </ToggleButton>

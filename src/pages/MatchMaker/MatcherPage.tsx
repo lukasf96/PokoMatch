@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { AppToast } from "../../components/AppToast";
+import { AppToast, type ToastState } from "../../components/AppToast";
 import { ScrollToTopFab } from "../../components/ScrollToTopFab";
 import { suggestItemsForGroup } from "../../services/items";
 import {
@@ -106,9 +106,7 @@ export default function MatcherPage() {
   const [adoptedSuggestedGroupKeys, setAdoptedSuggestedGroupKeys] = useState<
     Set<string>
   >(() => new Set());
-  const [groupToastMessage, setGroupToastMessage] = useState<string | null>(
-    null,
-  );
+  const [groupToast, setGroupToast] = useState<ToastState>(null);
   const [sharedGroup, setSharedGroup] =
     useState<ReturnType<typeof readSharedGroup>>(null);
   useEffect(() => {
@@ -149,14 +147,22 @@ export default function MatcherPage() {
   const handleAddGroup = useCallback(() => {
     resetSuggestedFreeze();
     addCustomGroup();
-    setGroupToastMessage("Group added");
+    setGroupToast({ message: "Group added", severity: "success" });
   }, [resetSuggestedFreeze, addCustomGroup]);
 
   const handleDeleteGroup = useCallback(
     (groupIndex: number) => {
+      const previous = useStore.getState().customGroups;
       resetSuggestedFreeze();
       deleteCustomGroup(groupIndex);
-      setGroupToastMessage("Group removed");
+      setGroupToast({
+        message: "Group removed",
+        severity: "success",
+        action: {
+          label: "Undo",
+          onClick: () => useStore.setState({ customGroups: previous }),
+        },
+      });
     },
     [resetSuggestedFreeze, deleteCustomGroup],
   );
@@ -200,7 +206,10 @@ export default function MatcherPage() {
     url.searchParams.delete("location");
     window.history.replaceState({}, "", `${url.pathname}${url.search}`);
     setSharedGroup(null);
-    setGroupToastMessage("Shared group added to My Groups");
+    setGroupToast({
+      message: "Shared group added to My Groups",
+      severity: "success",
+    });
   }, [addSuggestedGroupToCustomGroups, sharedGroup, unlockMany]);
 
   const hasActiveSuggestedFreeze = useMemo(
@@ -242,7 +251,7 @@ export default function MatcherPage() {
         return next;
       });
       addSuggestedGroupToCustomGroups(group.map((pokemon) => pokemon.id));
-      setGroupToastMessage("Suggested group added");
+      setGroupToast({ message: "Suggested group added", severity: "success" });
     },
     [addSuggestedGroupToCustomGroups],
   );
@@ -353,12 +362,8 @@ export default function MatcherPage() {
         </Stack>
       </Stack>
       <AppToast
-        toast={
-          groupToastMessage
-            ? { message: groupToastMessage, severity: "success" }
-            : null
-        }
-        onClose={() => setGroupToastMessage(null)}
+        toast={groupToast}
+        onClose={() => setGroupToast(null)}
       />
       <ScrollToTopFab />
     </Container>

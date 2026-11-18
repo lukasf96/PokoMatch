@@ -78,6 +78,13 @@ export const PokemonCard = memo(function PokemonCard({
     }
   }
 
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      handleToggle();
+    }
+  }
+
   const handleRemove = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onRemove) {
@@ -115,6 +122,13 @@ export const PokemonCard = memo(function PokemonCard({
     <Paper
       variant="outlined"
       onClick={interactive ? handleToggle : undefined}
+      {...(interactive && {
+        role: "checkbox",
+        tabIndex: 0,
+        "aria-checked": unlocked,
+        "aria-label": pokemonDisplayName,
+        onKeyDown: handleKeyDown,
+      })}
       sx={{
         borderRadius: 1,
         overflow: "hidden",
@@ -133,6 +147,12 @@ export const PokemonCard = memo(function PokemonCard({
               opacity: unlocked ? 1 : 0.65,
             }
           : undefined,
+        "&:focus-visible": {
+          outline: "2px solid",
+          outlineColor: "primary.main",
+          outlineOffset: 2,
+          opacity: 1,
+        },
         userSelect: "none",
         bgcolor: "background.paper",
         ...sx,
@@ -219,6 +239,7 @@ export const PokemonCard = memo(function PokemonCard({
           <IconButton
             size="small"
             onClick={handleRemove}
+            aria-label={`Remove ${pokemonDisplayName}`}
             sx={{
               ml: "auto",
               color: unlocked ? colors.text : "text.disabled",
