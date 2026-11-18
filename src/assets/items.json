@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T20:36:05.778Z",
+  "generatedAt": "2026-11-18T19:19:47.434Z",
   "items": [
     {
       "id": "honey",
@@ -830,6 +830,13 @@
     {
       "id": "pumpkin-candy",
       "name": "Pumpkin candy",
+      "category": "Food",
+      "tag": "Food",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple",
+      "name": "Syrupy Apple",
       "category": "Food",
       "tag": "Food",
       "favoriteCategories": []
@@ -4496,6 +4503,60 @@
         "Stone stuff",
         "Symbols",
         "Wobbly stuff"
+      ]
+    },
+    {
+      "id": "apple-pie",
+      "name": "Apple pie",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": ["Looks like food", "Luxury", "Round stuff"]
+    },
+    {
+      "id": "harvest-basket",
+      "name": "Harvest basket",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Containers",
+        "Gatherings",
+        "Looks like food",
+        "Lots of nature",
+        "Round stuff"
+      ]
+    },
+    {
+      "id": "dipplin-mixing-bowl",
+      "name": "Dipplin mixing bowl",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": ["Round stuff", "Wobbly stuff"]
+    },
+    {
+      "id": "kitchen-scale",
+      "name": "Kitchen scale",
+      "category": "Misc.",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "appley-blender",
+      "name": "Appley blender",
+      "category": "Misc.",
+      "tag": "Toy",
+      "favoriteCategories": ["Glass stuff", "Looks like food"]
+    },
+    {
+      "id": "cooking-utensils",
+      "name": "Cooking utensils",
+      "category": "Misc.",
+      "tag": "Decoration",
+      "favoriteCategories": [
+        "Colorful stuff",
+        "Slender objects",
+        "Wobbly stuff",
+        "Wooden stuff"
       ]
     },
     {
@@ -8208,6 +8269,55 @@
     {
       "id": "seagrape-stalk-grow",
       "name": "Seagrape stalk (grow)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple-seeds",
+      "name": "Syrupy Apple seeds",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple-tree-sapling",
+      "name": "Syrupy Apple tree sapling",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "small-syrupy-apple-tree",
+      "name": "Small Syrupy Apple tree",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple-tree",
+      "name": "Syrupy Apple tree",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple-tree-stump",
+      "name": "Syrupy Apple tree stump",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "syrupy-apple-tree-sapling-grow",
+      "name": "Syrupy Apple tree sapling (grow)",
+      "category": "Nature",
+      "tag": "",
+      "favoriteCategories": []
+    },
+    {
+      "id": "small-syrupy-apple-tree-grow",
+      "name": "Small Syrupy Apple tree (grow)",
       "category": "Nature",
       "tag": "",
       "favoriteCategories": []
