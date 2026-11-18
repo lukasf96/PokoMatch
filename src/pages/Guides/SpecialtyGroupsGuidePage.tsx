@@ -147,7 +147,7 @@ export default function SpecialtyGroupsGuidePage() {
             }}
           >
             <Box>
-              <Typography variant="h6">
+              <Typography component="h3" variant="h6">
                 Find groups around your own specialties
               </Typography>
               <Typography

@@ -5,7 +5,7 @@ import LandscapeIcon from "@mui/icons-material/Landscape";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
-import type { Theme } from "@mui/material/styles";
+import { getContrastRatio, type Theme } from "@mui/material/styles";
 import type { Habitat } from "../types/types";
 
 export interface HabitatColorSet {
@@ -57,6 +57,16 @@ export function getHabitatColors(
   };
   habitatColorCache[mode] = colors;
   return colors;
+}
+
+const DARK_CHIP_TEXT = "#18181b";
+
+/** White or near-black, whichever reads better on a solid habitat colour. */
+export function readableTextOn(background: string): string {
+  return getContrastRatio(background, "#fff") >=
+    getContrastRatio(background, DARK_CHIP_TEXT)
+    ? "#fff"
+    : DARK_CHIP_TEXT;
 }
 
 export const habitatIcons: Record<Habitat, SvgIconComponent> = {

@@ -139,6 +139,7 @@ export function DistributionSection({
   return (
     <>
       <Typography
+        component="h2"
         variant="subtitle1"
         sx={{
           fontWeight: 700,

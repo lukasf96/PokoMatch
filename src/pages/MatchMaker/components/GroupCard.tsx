@@ -37,6 +37,7 @@ import {
 import {
   getHabitatColors,
   habitatIcons,
+  readableTextOn,
 } from "../../../services/habitatColors";
 import {
   groupScore,
@@ -267,6 +268,7 @@ function GroupCardComponent({
           ) : null}
           {showGroupName ? (
             <Typography
+              component="h3"
               variant="subtitle2"
               color={colors.text}
               sx={{
@@ -437,7 +439,7 @@ function GroupCardComponent({
             size="small"
             sx={{
               bgcolor: colors.border,
-              color: "common.white",
+              color: readableTextOn(colors.border),
               fontSize: 11,
               height: 22,
             }}

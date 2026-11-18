@@ -60,7 +60,11 @@ function StatCard({
         >
           {label}
         </Typography>
-        <Typography variant="h5" sx={{ fontWeight: 900, lineHeight: 1.1 }}>
+        <Typography
+          component="p"
+          variant="h5"
+          sx={{ fontWeight: 900, lineHeight: 1.1 }}
+        >
           {value}
         </Typography>
         {subvalue ? (

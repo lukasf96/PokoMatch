@@ -29,7 +29,7 @@ export default function HabitatRoommateGuidePage() {
             Once the environment works, look for repeated favorites across the group. Shared favorites make it easier for a small set of furniture and decorations to pull their weight. Finally, let the house’s job break ties: a garden crew belongs near growing work, while a material crew is most useful close to the workshop.
           </Typography>
           <Paper variant="outlined" sx={{ p: { xs: 2, sm: 2.5 }, bgcolor: "background.paper" }}>
-            <Typography variant="subtitle1">A quick test before you move anyone in</Typography>
+            <Typography component="h3" variant="subtitle1">A quick test before you move anyone in</Typography>
             <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
               Can the room support every resident’s ideal habitat? Do at least a few favorites repeat? If both answers are yes, it is a strong candidate. Use the Match Maker to compare the alternatives rather than trying to memorise every list.
             </Typography>
@@ -68,7 +68,7 @@ export default function HabitatRoommateGuidePage() {
             sx={{ alignItems: { sm: "center" }, justifyContent: "space-between" }}
           >
             <Box>
-              <Typography variant="h6">Try your own collection</Typography>
+              <Typography component="h3" variant="h6">Try your own collection</Typography>
               <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
                 Select the Pokémon you have unlocked and compare compatible groups in seconds.
               </Typography>

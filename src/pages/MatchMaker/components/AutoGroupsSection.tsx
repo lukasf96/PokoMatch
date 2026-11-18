@@ -138,7 +138,7 @@ function AutoGroupsSectionComponent({
       defaultExpanded
       disableGutters
       elevation={0}
-      slots={{ transition: InstantCollapse }}
+      slots={{ transition: InstantCollapse, heading: "h2" }}
       sx={{ borderRadius: 1, overflow: "hidden" }}
     >
       <AccordionSummary

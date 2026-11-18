@@ -14,6 +14,7 @@ import { useMemo } from "react";
 import {
   getHabitatColors,
   habitatIcons,
+  readableTextOn,
 } from "../../../services/habitatColors";
 import type { Habitat, Pokemon } from "../../../types/types";
 import { PokemonChip } from "./PokemonChip";
@@ -94,7 +95,7 @@ function HabitatRow({ habitat, pokemon }: HabitatRowProps) {
             size="small"
             sx={{
               bgcolor: colors.border,
-              color: "white",
+              color: readableTextOn(colors.border),
               height: 20,
               fontSize: 11,
               flexShrink: 0,
@@ -120,6 +121,7 @@ export function IdealHabitats({ habitats }: IdealHabitatsProps) {
   return (
     <>
       <Typography
+        component="h2"
         variant="subtitle1"
         sx={{
           fontWeight: 700,

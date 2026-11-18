@@ -184,6 +184,41 @@ export function createAppTheme(mode: PaletteMode) {
                 },
               },
             },
+            // Default warning/primary shades miss 4.5:1 in these combinations.
+            {
+              props: { variant: 'contained', color: 'warning' },
+              style: {
+                backgroundColor: '#c2410c',
+                '&:hover': { backgroundColor: '#9a3412' },
+              },
+            },
+            ...(tokens.isDark
+              ? [
+                  {
+                    props: { variant: 'outlined', color: 'primary' } as const,
+                    style: {
+                      color: '#60a5fa',
+                      borderColor: alpha('#60a5fa', 0.5),
+                    },
+                  },
+                  {
+                    props: { variant: 'text', color: 'primary' } as const,
+                    style: { color: '#60a5fa' },
+                  },
+                ]
+              : [
+                  {
+                    props: { variant: 'outlined', color: 'warning' } as const,
+                    style: {
+                      color: '#c2410c',
+                      borderColor: alpha('#c2410c', 0.5),
+                    },
+                  },
+                  {
+                    props: { variant: 'text', color: 'warning' } as const,
+                    style: { color: '#c2410c' },
+                  },
+                ]),
           ],
         },
       },
