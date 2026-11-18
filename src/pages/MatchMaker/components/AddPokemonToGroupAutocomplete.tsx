@@ -235,8 +235,8 @@ export const AddPokemonToGroupAutocomplete = memo(
                     size="small"
                     variant="outlined"
                     sx={{
-                      height: 20,
-                      fontSize: 9,
+                      height: 22,
+                      fontSize: 12,
                       fontWeight: 700,
                       letterSpacing: "0.02em",
                       bgcolor: alpha(
@@ -274,8 +274,8 @@ export const AddPokemonToGroupAutocomplete = memo(
                     label={`+${add!.score} Score`}
                     size="small"
                     sx={{
-                      height: 20,
-                      fontSize: 10,
+                      height: 22,
+                      fontSize: 12,
                       fontWeight: 700,
                       bgcolor: "action.selected",
                       color: "text.secondary",

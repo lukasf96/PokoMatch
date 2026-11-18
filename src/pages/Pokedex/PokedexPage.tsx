@@ -187,10 +187,13 @@ export default function PokedexPage() {
     >
       <Typography
         component="h1"
-        variant="h6"
+        variant="h5"
         sx={{
-          fontWeight: 950,
-          lineHeight: 1.1,
+          fontSize: { xs: "1.25rem", sm: "1.5rem" },
+          fontWeight: 800,
+          letterSpacing: "-0.02em",
+          lineHeight: 1.15,
+          textWrap: "balance",
           mb: 0.75,
         }}
       >

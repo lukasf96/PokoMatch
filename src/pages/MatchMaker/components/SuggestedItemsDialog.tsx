@@ -27,8 +27,8 @@ function FavoriteChip({ label, matched }: { label: string; matched: boolean }) {
       size="small"
       variant="outlined"
       sx={{
-        height: 18,
-        fontSize: 10,
+        height: 22,
+        fontSize: 12,
         fontWeight: matched ? 700 : 400,
         bgcolor: matched
           ? isDark
@@ -105,8 +105,8 @@ function ItemRow({
           label={`${pokemonCoverage}/${groupSize} Pokémon`}
           size="small"
           sx={{
-            height: 20,
-            fontSize: 10,
+            height: 22,
+            fontSize: 12,
             fontWeight: 700,
             flexShrink: 0,
             bgcolor: isDark
@@ -120,7 +120,7 @@ function ItemRow({
           variant="caption"
           sx={{
             color: "text.disabled",
-            fontSize: 10
+            fontSize: 12
           }}>
           {score} favorite{score !== 1 ? "s" : ""}
         </Typography>

@@ -93,11 +93,10 @@ export const PokemonCard = memo(function PokemonCard({
   };
 
   const metaChipStyles = {
-    height: 16,
-    fontSize: 9,
-    fontWeight: 700,
+    height: 20,
+    fontSize: 12,
+    fontWeight: 600,
     borderRadius: "4px",
-    textTransform: "uppercase",
   };
 
   const sortedFavorites = useMemo(() => {
@@ -182,7 +181,7 @@ export const PokemonCard = memo(function PokemonCard({
           <Typography
             variant="caption"
             sx={{
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 600,
               color: unlocked ? alpha(colors.text, 0.7) : "text.disabled",
               letterSpacing: "0.02em",
@@ -295,7 +294,7 @@ export const PokemonCard = memo(function PokemonCard({
               sx={{
                 display: "block",
                 mb: 0.75,
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: 700,
                 color: "text.secondary",
                 textTransform: "uppercase",
@@ -365,8 +364,8 @@ function FavoriteChip({
   const isEmphasized = Boolean(isUniversal || isShared);
 
   const favoriteChipSx: SxProps<Theme> = {
-    height: 22,
-    fontSize: 11,
+    height: 24,
+    fontSize: 12,
     fontWeight: 600,
     borderRadius: "6px",
     border: "1px solid",

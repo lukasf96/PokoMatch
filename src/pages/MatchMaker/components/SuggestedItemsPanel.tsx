@@ -61,8 +61,8 @@ function ItemTooltipContent({
               size="small"
               variant="outlined"
               sx={{
-                height: 18,
-                fontSize: 10,
+                height: 22,
+                fontSize: 12,
                 fontWeight: matched ? 700 : 400,
                 bgcolor: matched
                   ? isDark
@@ -153,7 +153,7 @@ function ItemChip({
                 <Box
                   component="span"
                   sx={{
-                    fontSize: 10,
+                    fontSize: 12,
                     fontWeight: 700,
                     px: 0.5,
                     py: 0.1,
@@ -254,7 +254,7 @@ export const SuggestedItemsPanel = memo(function SuggestedItemsPanel({
             variant="text"
             onClick={() => setDialogOpen(true)}
             sx={{
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               color: isDark ? "primary.light" : "primary.main",
               px: 0.75,

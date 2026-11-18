@@ -212,8 +212,8 @@ export default function Layout({ children, preloadRoute = noopPreload }: LayoutP
               size="small"
               sx={{
                 ml: 0.2,
-                height: 16,
-                fontSize: 10,
+                height: 20,
+                fontSize: 12,
                 "& .MuiChip-label": { px: 0.5, py: 0 },
               }}
             />

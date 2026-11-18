@@ -81,8 +81,8 @@ export const SpecialtyChip = memo(function SpecialtyChip(
       }
       sx={[
         density === "compact"
-          ? { height: 22, fontSize: 11, fontWeight: 600 }
-          : { height: 20, fontSize: 10, fontWeight: 600 },
+          ? { height: 24, fontSize: 12, fontWeight: 600 }
+          : { height: 22, fontSize: 12, fontWeight: 600 },
         base,
         ...(sx != null ? (Array.isArray(sx) ? sx : [sx]) : []),
       ]}

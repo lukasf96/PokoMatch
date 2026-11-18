@@ -96,8 +96,8 @@ function HabitatRow({ habitat, pokemon }: HabitatRowProps) {
             sx={{
               bgcolor: colors.border,
               color: readableTextOn(colors.border),
-              height: 20,
-              fontSize: 11,
+              height: 22,
+              fontSize: 12,
               flexShrink: 0,
             }}
           />

@@ -24,8 +24,8 @@ export function PokemonChip({ pokemon }: PokemonChipProps) {
       label={`#${pokemon.dexNumber} ${pokemonDisplayName}${marker}`}
       size="small"
       sx={{
-        height: 20,
-        fontSize: 10,
+        height: 22,
+        fontSize: 12,
         bgcolor: isEvent
           ? "secondary.light"
           : isBasin
