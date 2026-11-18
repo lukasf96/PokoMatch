@@ -4,6 +4,8 @@ import { allPokemon } from "../services/pokemon";
 import type { CustomGroup, PokopiaLocation } from "../types/types";
 import { createCustomGroup, normalizeCustomGroups } from "./customGroups";
 
+const isBrowser = typeof window !== "undefined";
+
 /** Debounce localStorage writes — full-state JSON on each toggle was blocking the main thread. */
 function createDebouncedJsonStorage(delayMs: number): StateStorage {
   let timer: ReturnType<typeof setTimeout> | null = null;
@@ -17,7 +19,7 @@ function createDebouncedJsonStorage(delayMs: number): StateStorage {
     timer = null;
   }
 
-  if (typeof window !== "undefined") {
+  if (isBrowser) {
     window.addEventListener("beforeunload", flush);
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === "hidden") flush();
@@ -25,13 +27,16 @@ function createDebouncedJsonStorage(delayMs: number): StateStorage {
   }
 
   return {
-    getItem: (name) => localStorage.getItem(name),
+    getItem: (name) => (isBrowser ? localStorage.getItem(name) : null),
     setItem: (name, value) => {
+      if (!isBrowser) return;
       pending = { name, value };
       if (timer !== null) clearTimeout(timer);
       timer = setTimeout(flush, delayMs);
     },
-    removeItem: (name) => localStorage.removeItem(name),
+    removeItem: (name) => {
+      if (isBrowser) localStorage.removeItem(name);
+    },
   };
 }
 
@@ -212,9 +217,13 @@ export const useStore = create<AppState>()(
     }),
     {
       name: "pokomatch",
+      // The server and the first browser render must use the same defaults.
+      // The browser restores its local-only collection after React hydrates.
+      skipHydration: true,
       // Serialize Set → array and back; migrate legacy customGroups shapes
       storage: {
         getItem: (name) => {
+          if (!isBrowser) return null;
           const raw = localStorage.getItem(name);
           if (!raw) return null;
           const parsed: { state: PersistedState; version: number } =
@@ -259,6 +268,7 @@ export const useStore = create<AppState>()(
           };
         },
         setItem: (name, value) => {
+          if (!isBrowser) return;
           const serializable = {
             ...value,
             state: {
@@ -268,8 +278,15 @@ export const useStore = create<AppState>()(
           };
           debouncedPersistStorage.setItem(name, JSON.stringify(serializable));
         },
-        removeItem: (name) => localStorage.removeItem(name),
+        removeItem: (name) => {
+          if (isBrowser) localStorage.removeItem(name);
+        },
       },
     },
   ),
 );
+
+/** Restores the visitor's locally saved collection after client hydration. */
+export function rehydrateStore(): void {
+  if (isBrowser) useStore.persist.rehydrate();
+}

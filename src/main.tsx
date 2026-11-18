@@ -1,12 +1,12 @@
 import { CssBaseline } from "@mui/material";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { AppErrorBoundary } from "./components/AppErrorBoundary.tsx";
 import { AppThemeProvider } from "./components/AppThemeProvider.tsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
+const app = (
   <StrictMode>
     <AppThemeProvider>
       <CssBaseline />
@@ -14,5 +14,13 @@ createRoot(document.getElementById("root")!).render(
         <App />
       </AppErrorBoundary>
     </AppThemeProvider>
-  </StrictMode>,
+  </StrictMode>
 );
+
+const root = document.getElementById("root")!;
+// The Vite development template contains only a comment, not rendered markup.
+if (root.childElementCount > 0) {
+  hydrateRoot(root, app);
+} else {
+  createRoot(root).render(app);
+}

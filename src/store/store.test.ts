@@ -41,7 +41,8 @@ describe("persisted store", () => {
       }),
     );
 
-    const { useStore } = await import("./store");
+    const { rehydrateStore, useStore } = await import("./store");
+    await rehydrateStore();
     const state = useStore.getState();
 
     expect(state.unlockedIds).toEqual(new Set(["001", "004"]));
@@ -146,5 +147,141 @@ describe("persisted store", () => {
     expect(useStore.getState().customGroups).toEqual([
       { id: "second", pokemonIds: ["004"] },
     ]);
+  });
+
+  it("ignores no-op group reorders and suggestions", async () => {
+    const { useStore } = await import("./store");
+    useStore.getState().replaceCollectionData({
+      unlockedIds: [],
+      customGroups: [
+        { id: "first", pokemonIds: ["001"], location: "Palette Town" },
+        { id: "second", pokemonIds: ["004"] },
+      ],
+    });
+    const before = useStore.getState().customGroups;
+
+    useStore.getState().reorderCustomGroups("first", "first");
+    useStore.getState().reorderCustomGroups("first", "missing");
+    useStore.getState().reorderCustomGroups("missing", "first");
+    useStore.getState().addSuggestedGroupToCustomGroups(["001", "004"]);
+
+    expect(useStore.getState().customGroups).toBe(before);
+    expect(before[0]).toEqual({
+      id: "first",
+      pokemonIds: ["001"],
+      location: "Palette Town",
+    });
+  });
+
+  it("stores display preferences", async () => {
+    const { useStore } = await import("./store");
+
+    useStore.getState().setNameLanguage("de");
+    useStore.getState().setThemeMode("dark");
+    useStore.getState().setPreferEvolutionLinesInMatching(true);
+    useStore.getState().unlockAll();
+
+    const state = useStore.getState();
+    expect(state.nameLanguage).toBe("de");
+    expect(state.themeMode).toBe("dark");
+    expect(state.preferEvolutionLinesInMatching).toBe(true);
+    expect(state.unlockedIds.size).toBeGreaterThan(0);
+  });
+
+  it("hydrates saved preferences and current-shape groups without rewriting", async () => {
+    const saved = JSON.stringify({
+      state: {
+        nameLanguage: "fr",
+        themeMode: "light",
+        preferEvolutionLinesInMatching: true,
+        customGroups: [{ id: "kept", pokemonIds: ["001"] }],
+      },
+      version: 0,
+    });
+    localStorage.setItem("pokomatch", saved);
+    const setItem = vi.spyOn(localStorage, "setItem");
+
+    const { rehydrateStore, useStore } = await import("./store");
+    await rehydrateStore();
+    const state = useStore.getState();
+
+    expect(state.nameLanguage).toBe("fr");
+    expect(state.themeMode).toBe("light");
+    expect(state.preferEvolutionLinesInMatching).toBe(true);
+    // Missing unlockedIds falls back to everything unlocked.
+    expect(state.unlockedIds.size).toBeGreaterThan(1);
+    expect(state.customGroups).toEqual([{ id: "kept", pokemonIds: ["001"] }]);
+    expect(setItem).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["a null entry", [null]],
+    ["an entry without an id", [{ pokemonIds: ["001"] }]],
+  ])("rewrites stored groups containing %s", async (_label, customGroups) => {
+    localStorage.setItem(
+      "pokomatch",
+      JSON.stringify({ state: { unlockedIds: [], customGroups }, version: 0 }),
+    );
+    const setItem = vi.spyOn(localStorage, "setItem");
+
+    const { rehydrateStore } = await import("./store");
+    await rehydrateStore();
+
+    expect(setItem).toHaveBeenCalledWith("pokomatch", expect.any(String));
+  });
+
+  it("keeps defaults when nothing is saved", async () => {
+    const { rehydrateStore, useStore } = await import("./store");
+    await rehydrateStore();
+
+    expect(useStore.getState().nameLanguage).toBe("en");
+    expect(localStorage.getItem("pokomatch")).toBeNull();
+  });
+
+  it("debounces writes and serializes the unlocked Set as an array", async () => {
+    const { useStore } = await import("./store");
+
+    useStore.getState().lockAll();
+    useStore.getState().unlockMany(["001"]);
+    expect(localStorage.getItem("pokomatch")).toBeNull();
+
+    vi.advanceTimersByTime(320);
+    const stored = JSON.parse(localStorage.getItem("pokomatch") ?? "null") as {
+      state: { unlockedIds: string[] };
+    };
+    expect(stored.state.unlockedIds).toEqual(["001"]);
+  });
+
+  it("flushes pending writes when the page is hidden or unloaded", async () => {
+    const { useStore } = await import("./store");
+    let hidden = false;
+    vi.spyOn(document, "visibilityState", "get").mockImplementation(() =>
+      hidden ? "hidden" : "visible",
+    );
+
+    useStore.getState().setThemeMode("dark");
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(localStorage.getItem("pokomatch")).toBeNull();
+
+    hidden = true;
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(localStorage.getItem("pokomatch")).toContain('"themeMode":"dark"');
+
+    useStore.getState().setThemeMode("light");
+    window.dispatchEvent(new Event("beforeunload"));
+    expect(localStorage.getItem("pokomatch")).toContain('"themeMode":"light"');
+
+    // Nothing pending: flushing again leaves storage untouched.
+    window.dispatchEvent(new Event("beforeunload"));
+    expect(localStorage.getItem("pokomatch")).toContain('"themeMode":"light"');
+  });
+
+  it("removes the saved collection when persistence is cleared", async () => {
+    localStorage.setItem("pokomatch", "{}");
+    const { useStore } = await import("./store");
+
+    await useStore.persist.clearStorage();
+
+    expect(localStorage.getItem("pokomatch")).toBeNull();
   });
 });

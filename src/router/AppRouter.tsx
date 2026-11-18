@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from "@mui/material";
-import { Suspense } from "react";
+import { Suspense, type ElementType } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import {
   HomePage,
@@ -9,7 +9,17 @@ import {
   PokedexPage,
   SpecialtyGroupsGuidePage,
 } from "./lazyPages";
-import { appRoutes } from "./routes";
+import { StoreHydrator } from "../components/StoreHydrator";
+import { appRouteEntries, appRoutes, type AppRouteId } from "./routes";
+
+const routeComponents: Record<AppRouteId, ElementType> = {
+  home: HomePage,
+  matchmaker: MatcherPage,
+  insights: InsightsPage,
+  pokedex: PokedexPage,
+  habitatGuide: HabitatRoommateGuidePage,
+  specialtyGuide: SpecialtyGroupsGuidePage,
+};
 
 function RouteFallback() {
   return (
@@ -29,21 +39,15 @@ function RouteFallback() {
 export default function AppRouter() {
   return (
     <Suspense fallback={<RouteFallback />}>
-    <Routes>
-      <Route path={appRoutes.home} element={<HomePage />} />
-      <Route path={appRoutes.matchmaker} element={<MatcherPage />} />
-      <Route path={appRoutes.insights} element={<InsightsPage />} />
-      <Route path={appRoutes.pokedex} element={<PokedexPage />} />
-      <Route
-        path={appRoutes.habitatGuide}
-        element={<HabitatRoommateGuidePage />}
-      />
-      <Route
-        path={appRoutes.specialtyGuide}
-        element={<SpecialtyGroupsGuidePage />}
-      />
-      <Route path="*" element={<Navigate to={appRoutes.home} replace />} />
-    </Routes>
+      <StoreHydrator>
+        <Routes>
+          {appRouteEntries.map(([id, route]) => {
+            const Component = routeComponents[id];
+            return <Route key={id} path={route.path} element={<Component />} />;
+          })}
+          <Route path="*" element={<Navigate to={appRoutes.home} replace />} />
+        </Routes>
+      </StoreHydrator>
     </Suspense>
   );
 }

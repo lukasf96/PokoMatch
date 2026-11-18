@@ -1,15 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./Layout";
+import { AppShell } from "./AppShell";
+import { preloadRoute } from "./router/lazyPages";
 import AppRouter from "./router/AppRouter";
-import { DocumentTitle } from "./router/DocumentTitle";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <DocumentTitle />
-      <Layout>
+      <AppShell preloadRoute={preloadRoute}>
         <AppRouter />
-      </Layout>
+      </AppShell>
     </BrowserRouter>
   );
 }

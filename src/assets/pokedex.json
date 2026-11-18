@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T21:02:18.518Z",
+  "generatedAt": "2026-11-18T19:19:43.726Z",
   "standard": [
     {
       "id": "001",
@@ -6380,6 +6380,146 @@
         "fr": "Milobellus"
       },
       "evolutionLinePeerIds": ["e006"]
+    },
+    {
+      "id": "e008",
+      "dexNumber": "008",
+      "name": "Pumpkaboo",
+      "specialties": ["Hype"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Spooky stuff",
+        "Lots of nature",
+        "Pretty flowers",
+        "Group Activities",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Irrbis",
+        "fr": "Pitrouille"
+      },
+      "evolutionLinePeerIds": ["e009"]
+    },
+    {
+      "id": "e009",
+      "dexNumber": "009",
+      "name": "Gourgeist",
+      "specialties": ["Hype", "Gather"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Spooky stuff",
+        "Lots of nature",
+        "Pretty flowers",
+        "Group Activities",
+        "Noisy stuff"
+      ],
+      "favoriteFlavor": "Dry flavors",
+      "localizedNames": {
+        "de": "Pumpdjinn",
+        "fr": "Banshitrouye"
+      },
+      "evolutionLinePeerIds": ["e008"]
+    },
+    {
+      "id": "e010",
+      "dexNumber": "010",
+      "name": "Applin",
+      "specialties": ["Grow"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Looks like food",
+        "Pretty flowers",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Knapfel",
+        "fr": "Verpom"
+      },
+      "evolutionLinePeerIds": ["e011", "e012", "e013", "e014"]
+    },
+    {
+      "id": "e011",
+      "dexNumber": "011",
+      "name": "Flapple",
+      "specialties": ["Grow", "Fly"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Looks like food",
+        "Healing",
+        "Exercise"
+      ],
+      "favoriteFlavor": "Sour flavors",
+      "localizedNames": {
+        "de": "Drapfel",
+        "fr": "Pomdrapi"
+      },
+      "evolutionLinePeerIds": ["e010", "e012", "e013", "e014"]
+    },
+    {
+      "id": "e012",
+      "dexNumber": "012",
+      "name": "Appletun",
+      "specialties": ["Grow", "Crush"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Looks like food",
+        "Pretty flowers",
+        "Watching stuff"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Schlapfel",
+        "fr": "Dratatin"
+      },
+      "evolutionLinePeerIds": ["e010", "e011", "e013", "e014"]
+    },
+    {
+      "id": "e013",
+      "dexNumber": "013",
+      "name": "Dipplin",
+      "specialties": ["Grow", "Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Looks like food",
+        "Gatherings",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Sirapfel",
+        "fr": "Pomdramour"
+      },
+      "evolutionLinePeerIds": ["e010", "e011", "e012", "e014"]
+    },
+    {
+      "id": "e014",
+      "dexNumber": "014",
+      "name": "Hydrapple",
+      "specialties": ["Trade", "Recycle"],
+      "idealHabitat": "Bright",
+      "favorites": [
+        "Lots of nature",
+        "Wooden stuff",
+        "Slender objects",
+        "Gatherings",
+        "Containers"
+      ],
+      "favoriteFlavor": "Sweet flavors",
+      "localizedNames": {
+        "de": "Hydrapfel",
+        "fr": "Pomdorochi"
+      },
+      "evolutionLinePeerIds": ["e010", "e011", "e012", "e013"]
     }
   ],
   "basin": [

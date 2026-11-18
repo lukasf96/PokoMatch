@@ -221,6 +221,39 @@ interface PokeApiPokemonResolve {
 }
 
 /**
+ * Species whose `pokemon` resources are all form-suffixed (e.g. `pumpkaboo` only
+ * exists as `pumpkaboo-average`, `pumpkaboo-small`, …) resolve via the species'
+ * default variety.
+ */
+async function resolveDefaultVarietyBySpeciesName(
+  speciesApiName: string,
+  options: { seqGap: number; beforeRequest?: () => Promise<void> },
+): Promise<PokeApiPokemonResolve | null> {
+  const { seqGap, beforeRequest } = options;
+  if (beforeRequest) await beforeRequest();
+  else if (seqGap > 0) await sleep(seqGap);
+  const speciesJson = await fetchJson<{
+    name?: string;
+    varieties?: { is_default?: boolean; pokemon?: { url?: string } }[];
+  }>(`${POKEAPI_BASE}/api/v2/pokemon-species/${speciesApiName}`);
+  const defaultPokemonUrl = speciesJson?.varieties?.find((v) => v.is_default)
+    ?.pokemon?.url;
+  if (!defaultPokemonUrl) return null;
+
+  if (beforeRequest) await beforeRequest();
+  else if (seqGap > 0) await sleep(seqGap);
+  const pokemonJson = await fetchJson<{ id?: unknown }>(defaultPokemonUrl);
+  if (!pokemonJson || typeof pokemonJson.id !== "number") return null;
+
+  return {
+    id: pokemonJson.id,
+    spriteRepoStem: String(pokemonJson.id),
+    pokemonJsonUrl: defaultPokemonUrl,
+    speciesName: speciesJson?.name ?? speciesApiName,
+  };
+}
+
+/**
  * Resolves a name from {@link toPokemonApiName} to the underlying `pokemon` resource.
  * Form-only slugs (e.g. `shellos-east`) are accepted via `/pokemon-form/{name}`.
  */
@@ -260,7 +293,12 @@ export async function resolvePokeApiPokemonByApiName(
   const formUrl = `${POKEAPI_BASE}/api/v2/pokemon-form/${pokemonApiName}`;
   const formJson = await fetchJson<PokeApiPokemonFormJson>(formUrl);
   const linkedPokemonUrl = formJson?.pokemon?.url;
-  if (!linkedPokemonUrl) return null;
+  if (!linkedPokemonUrl) {
+    return resolveDefaultVarietyBySpeciesName(pokemonApiName, {
+      seqGap,
+      beforeRequest,
+    });
+  }
 
   if (beforeRequest) await beforeRequest();
   else if (seqGap > 0) await sleep(seqGap);

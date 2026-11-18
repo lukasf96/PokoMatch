@@ -2,6 +2,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import { Container, Stack, Typography } from "@mui/material";
 import {
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -108,9 +109,11 @@ export default function MatcherPage() {
   const [groupToastMessage, setGroupToastMessage] = useState<string | null>(
     null,
   );
-  const [sharedGroup, setSharedGroup] = useState(() =>
-    readSharedGroup(window.location.search, habitablePokemon),
-  );
+  const [sharedGroup, setSharedGroup] =
+    useState<ReturnType<typeof readSharedGroup>>(null);
+  useEffect(() => {
+    setSharedGroup(readSharedGroup(window.location.search, habitablePokemon));
+  }, []);
   const sharedPokemon = useMemo(() => {
     if (!sharedGroup) return [];
     const sharedIds = new Set(sharedGroup.pokemonIds);

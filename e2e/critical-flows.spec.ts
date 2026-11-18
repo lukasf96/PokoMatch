@@ -65,11 +65,84 @@ test("Pokédex choices flow into custom groups and survive a reload", async ({ p
 test("production route chunks render through the primary navigation", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByRole("link", { name: /Insights/ }).click();
+  await page.getByRole("link", { name: "Insights", exact: true }).click();
   await expect(page).toHaveURL(/\/insights$/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
-  await page.getByRole("link", { name: /Pokédex/ }).click();
+  await page.getByRole("link", { name: /^Pokédex/ }).click();
   await expect(page).toHaveURL(/\/pokedex$/);
   await expect(page.getByRole("heading", { name: "Pokopia Pokédex" })).toBeVisible();
 });
+
+test("public routes contain useful HTML and metadata before JavaScript runs", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  const routes = [
+    ["/", "Pokopia Habitat Planner & Match‑Maker"],
+    ["/matchmaker", "Match Maker"],
+    ["/insights", "Pokopia Insights"],
+    ["/pokedex", "Pokopia Pokédex"],
+    [
+      "/pokopia-habitat-roommates",
+      "Pokopia habitats and roommates: a simple way to plan a happy home",
+    ],
+    [
+      "/pokopia-specialty-groups",
+      "Pokopia specialty groups: build a factory district without sacrificing comfort",
+    ],
+  ] as const;
+
+  for (const [path, heading] of routes) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://pokomatch.com${path}`,
+    );
+    await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
+  }
+
+  await context.close();
+});
+
+for (const colorScheme of ["light", "dark"] as const) {
+  test(`prerendered routes hydrate without replacing content (${colorScheme})`, async ({ browser }) => {
+    const context = await browser.newContext({ colorScheme });
+    await context.addInitScript(() => {
+      localStorage.setItem("pokomatch", JSON.stringify({
+        state: { unlockedIds: ["001", "004"], customGroups: [], themeMode: "system" },
+        version: 0,
+      }));
+    });
+    for (const path of ["/", "/matchmaker", "/matchmaker?group=001,004", "/insights", "/pokedex", "/pokopia-habitat-roommates", "/pokopia-specialty-groups"]) {
+      const page = await context.newPage();
+      const errors: string[] = [];
+      page.on("pageerror", error => errors.push(error.message));
+      page.on("console", message => {
+        if (message.type() === "error") errors.push(message.text());
+      });
+      let releaseScripts!: () => void;
+      const scriptsReady = new Promise<void>(resolve => { releaseScripts = resolve; });
+      await page.route("**/assets/*.js", async route => {
+        await scriptsReady;
+        await route.continue();
+      });
+      await page.goto(path, { waitUntil: "commit" });
+      const heading = page.getByRole("heading", { level: 1 });
+      await expect(heading).toBeVisible();
+      const originalHeading = await heading.elementHandle();
+      releaseScripts();
+      await page.waitForLoadState("networkidle");
+      await expect(page.getByRole("link", { name: /^Pokédex 2\// })).toBeVisible();
+      expect(errors, path).toEqual([]);
+      expect(await originalHeading!.evaluate(node => node.isConnected), path).toBe(true);
+      if (path.includes("?group=")) {
+        await expect(page.getByRole("heading", { name: "Someone shared this group with you" })).toBeVisible();
+      }
+      await page.close();
+    }
+    await context.close();
+  });
+}
